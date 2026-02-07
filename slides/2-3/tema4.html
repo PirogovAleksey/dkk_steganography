@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Порівняльний аналіз адаптивних методів | Лекція 7.4</title>
+  <title>Виявлення та протидія | Лекція 11.4</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/slides.css">
 </head>
@@ -14,331 +14,414 @@
 
     <!-- Слайд 1: Титульний -->
     <section class="slide active title-slide">
-        <h1>📊 Порівняльний аналіз адаптивних методів</h1>
+        <h1>🔍 Виявлення та протидія</h1>
         <div class="subtitle">
-            Тема 4: Оцінка та порівняння HUGO, WOW, S-UNIWARD
+            Тема 4: Методи детекції мережевої стеганографії
         </div>
     </section>
 
-    <!-- Слайд 2: Огляд методів -->
+    <!-- Слайд 2: Огляд проблеми -->
     <section class="slide">
-        <h2>🎭 Три підходи до адаптивності</h2>
-
-                <div class="comparison-grid">
-                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 10px;">
-                        <h3 style="text-align: center;">🎭 HUGO</h3>
-                        <p style="text-align: center; margin-top: 1rem;">
-                            Статистичний підхід<br>
-                            <strong>SPAM модель</strong><br>
-                            Мінімізація змін ознак
-                        </p>
-                    </div>
-
-                    <div style="background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%); color: #1a202c; padding: 1.5rem; border-radius: 10px;">
-                        <h3 style="text-align: center;">🌊 WOW</h3>
-                        <p style="text-align: center; margin-top: 1rem;">
-                            Директивний підхід<br>
-                            <strong>Вейвлет-фільтри</strong><br>
-                            Аналіз напрямків
-                        </p>
-                    </div>
-
-                    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1.5rem; border-radius: 10px;">
-                        <h3 style="text-align: center;">📐 S-UNIWARD</h3>
-                        <p style="text-align: center; margin-top: 1rem;">
-                            Універсальний підхід<br>
-                            <strong>Багаторівнева декомпозиція</strong><br>
-                            Відносне спотворення
-                        </p>
-                    </div>
-                </div>
+        <h2>🎯 Проблема виявлення</h2>
 
         <div class="info-box">
-            Кожен метод використовує свій підхід до визначення "безпечних" місць для вбудовування
+            <strong>Виклик:</strong> Мережева стеганографія маскується під легітимний трафік. Як відрізнити стеганографічний пакет від звичайного?
+        </div>
+
+        <h3>Підходи до виявлення:</h3>
+
+        <div class="two-column">
+            <div class="column">
+                <h4>1. Rule-based</h4>
+                <ul>
+                    <li>Відомі сигнатури інструментів</li>
+                    <li>Аномальні значення полів</li>
+                    <li>Заборонені комбінації</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h4>2. Statistical</h4>
+                <ul>
+                    <li>Аналіз розподілів</li>
+                    <li>Кореляційний аналіз</li>
+                    <li>Machine Learning</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>Складність:</strong> Більшість методів дають false positives на легітимному трафіку з незвичними характеристиками.
         </div>
     </section>
 
-    <!-- Слайд 3: Порівняльна таблиця -->
+    <!-- Слайд 3: Header Analysis -->
     <section class="slide">
-        <h2>📋 Детальне порівняння</h2>
+        <h2>📋 Аналіз заголовків пакетів</h2>
 
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Критерій</th>
-                            <th>HUGO</th>
-                            <th>WOW</th>
-                            <th>S-UNIWARD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="background: #f9fafb;">
-                            <td><strong>Безпека</strong></td>
-                            <td><span class="rating">★★★★☆</span> Висока</td>
-                            <td><span class="rating">★★★★☆</span> Висока</td>
-                            <td><span class="rating">★★★★★</span> Найвища</td>
-                        </tr>
-                        <tr style="background: white;">
-                            <td><strong>Швидкість</strong></td>
-                            <td><span class="rating">★★☆☆☆</span> Повільна</td>
-                            <td><span class="rating">★★★★☆</span> Швидка</td>
-                            <td><span class="rating">★★★☆☆</span> Середня</td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td><strong>Складність реалізації</strong></td>
-                            <td><span class="rating">★★★★★</span> Складна</td>
-                            <td><span class="rating">★★☆☆☆</span> Проста</td>
-                            <td><span class="rating">★★★☆☆</span> Середня</td>
-                        </tr>
-                        <tr style="background: white;">
-                            <td><strong>Універсальність</strong></td>
-                            <td>Тільки spatial</td>
-                            <td>Тільки spatial</td>
-                            <td>Spatial, DCT, DWT</td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td><strong>Пам'ять</strong></td>
-                            <td>Висока</td>
-                            <td>Низька</td>
-                            <td>Середня</td>
-                        </tr>
-                        <tr style="background: white;">
-                            <td><strong>Payload (bpp)</strong></td>
-                            <td>До 0.5</td>
-                            <td>До 0.5</td>
-                            <td>До 0.5</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <h3>1. Аномалії в заголовках IP (IP Header Anomalies)</h3>
+        <div class="code-block">// Перевірки IP заголовка
+- TTL (Time To Live): чи відповідає типовим значенням для ОС?
+  (Windows: 128, Linux: 64, Cisco: 255)
+- ID: чи послідовні? чи випадкові?
+- DSCP/ECN: чи використовуються коректно?
+- Options (опції): чи є незвичні опції?</div>
+
+        <h3>2. Аномалії в заголовках TCP (TCP Header Anomalies)</h3>
+        <div class="code-block">// Перевірки TCP заголовка
+- Reserved bits: мають бути 0
+- Urgent pointer: рідко != 0
+- Window size: чи реалістичний?
+- Options: чи валідні timestamps?</div>
+
+        <h3>3. Protocol Compliance</h3>
+        <ul>
+            <li>Чи відповідає RFC специфікації?</li>
+            <li>Чи є неочікувані комбінації прапорців?</li>
+            <li>Чи коректна послідовність станів?</li>
+        </ul>
     </section>
 
-    <!-- Слайд 4: Метрики безпеки -->
+    <!-- Слайд 4: Statistical Analysis -->
     <section class="slide">
-        <h2>🛡️ Стійкість до стегоаналізу</h2>
+        <h2>📊 Статистичний аналіз трафіку</h2>
 
-                <div class="method-card">
-                    <h3>Тестування на BOSS базі (10000 зображень)</h3>
-                    <p style="font-size: 1.05rem;">Payload: 0.4 bpp | Детектор: Ensemble Classifier</p>
-                </div>
+        <h3>1. Розподіл значень полів</h3>
+        <div class="code-block">// IP ID distribution
+Легітимний: послідовний або випадковий рівномірний
+Стего: може мати незвичний розподіл (encoded data)
 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
-                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #92400e;">HUGO</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #92400e;">
-                            58%
-                        </div>
-                        <p>Точність виявлення</p>
-                    </div>
+// Chi-square test
+χ² = Σ (observed - expected)² / expected
+Якщо χ² > threshold → підозріло</div>
 
-                    <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #1e40af;">WOW</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #1e40af;">
-                            57%
-                        </div>
-                        <p>Точність виявлення</p>
-                    </div>
+        <h3>2. Ентропія</h3>
+        <div class="code-block">H = -Σ p(x) * log₂(p(x))
 
-                    <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #065f46;">S-UNIWARD</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #065f46;">
-                            54%
-                        </div>
-                        <p>Точність виявлення</p>
-                    </div>
-                </div>
+// Приховані дані зазвичай мають високу ентропію
+H(random) ≈ 8 біт/байт
+H(text) ≈ 4-5 біт/байт
+H(encoded_data) ≈ 7-8 біт/байт</div>
+
+        <h3>3. Autocorrelation</h3>
+        <p>Перевірка кореляції між послідовними значеннями полів. Стеганографічні дані зазвичай некорельовані.</p>
+    </section>
+
+    <!-- Слайд 5: DNS Tunnel Detection -->
+    <section class="slide">
+        <h2>🌐 Виявлення DNS Tunneling</h2>
+
+        <div class="info-box">
+            <strong>Ознаки DNS tunneling:</strong>
+        </div>
+
+        <h3>1. Аналіз корисного навантаження (Payload Analysis)</h3>
+        <ul>
+            <li><strong>Довжина запитів:</strong> > 50 символів підозріло</li>
+            <li><strong>Ентропія subdomain:</strong> Base32/64 має високу ентропію</li>
+            <li><strong>Кількість міток:</strong> багато рівнів (a.b.c.d.e.domain.com)</li>
+        </ul>
+
+        <h3>2. Behavioral Analysis</h3>
+        <ul>
+            <li><strong>Query volume:</strong> аномально багато запитів до одного домену</li>
+            <li><strong>TXT queries:</strong> незвично багато TXT запитів</li>
+            <li><strong>Response size:</strong> великі відповіді</li>
+            <li><strong>NXDomain:</strong> багато невдалих запитів</li>
+        </ul>
+
+        <h3>Інструменти:</h3>
+        <div class="code-block">// Zeek (Bro) script для DNS tunnel detection
+event dns_request(c: connection, msg: dns_msg) {
+    if (|msg$query| > 52)
+        NOTICE("Long DNS query - possible tunnel");
+}</div>
+    </section>
+
+    <!-- Слайд 6: Timing Analysis -->
+    <section class="slide">
+        <h2>⏱️ Виявлення часових каналів</h2>
+
+        <h3>1. IPD Distribution Analysis</h3>
+        <div class="code-block">// Нормальний трафік
+- Логнормальний або експоненціальний розподіл
+- Плавні переходи
+
+// Timing channel
+- Бімодальний розподіл (два піки)
+- Різкі границі між класами</div>
+
+        <h3>2. Regularity Detection</h3>
+        <ul>
+            <li><strong>Variance:</strong> занадто стабільні інтервали підозрілі</li>
+            <li><strong>Periodicity:</strong> FFT для виявлення регулярних патернів</li>
+            <li><strong>Autocorrelation:</strong> штучні патерни мають характерні піки</li>
+        </ul>
+
+        <h3>3. Kolmogorov-Smirnov Test</h3>
+        <div class="code-block">// Порівняння з еталонним розподілом
+D = max|F_observed(x) - F_reference(x)|
+if D > critical_value:
+    "Трафік відрізняється від нормального"</div>
+    </section>
+
+    <!-- Слайд 7: Machine Learning -->
+    <section class="slide">
+        <h2>🤖 Machine Learning для детекції</h2>
+
+        <h3>Популярні підходи:</h3>
+
+        <table>
+            <tr>
+                <th>Метод</th>
+                <th>Переваги</th>
+                <th>Недоліки</th>
+            </tr>
+            <tr>
+                <td>Random Forest</td>
+                <td>Точний, інтерпретований</td>
+                <td>Потребує features</td>
+            </tr>
+            <tr>
+                <td>SVM</td>
+                <td>Добрий для малих даних</td>
+                <td>Масштабування</td>
+            </tr>
+            <tr>
+                <td>LSTM</td>
+                <td>Часові патерни</td>
+                <td>Багато даних</td>
+            </tr>
+            <tr>
+                <td>Autoencoder</td>
+                <td>Anomaly detection</td>
+                <td>False positives</td>
+            </tr>
+        </table>
+
+        <h3>Типові features:</h3>
+        <ul>
+            <li>Статистики полів (mean, std, entropy)</li>
+            <li>Packet timing features</li>
+            <li>Flow-level features (duration, bytes, packets)</li>
+            <li>Protocol-specific features</li>
+        </ul>
+    </section>
+
+    <!-- Слайд 8: Traffic Normalization -->
+    <section class="slide">
+        <h2>🔧 Traffic Normalization</h2>
+
+        <div class="info-box">
+            <strong>Ідея:</strong> Замість виявлення — знищення прихованих каналів шляхом нормалізації трафіку.
+        </div>
+
+        <h3>Методи нормалізації:</h3>
+
+        <h4>1. Header Scrubbing</h4>
+        <div class="code-block">// Перезапис підозрілих полів
+packet.ip_id = random()
+packet.ip_ttl = normalize_ttl(packet)
+packet.tcp_timestamp = regenerate_timestamp()</div>
+
+        <h4>2. Timing Normalization</h4>
+        <div class="code-block">// Буферизація та відправка з фіксованим інтервалом
+buffer_packet(packet)
+every INTERVAL:
+    send_buffered_packets()</div>
+
+        <h4>3. Protocol Enforcement</h4>
+        <ul>
+            <li>Strict RFC compliance</li>
+            <li>Removal of optional fields</li>
+            <li>Regeneration of checksums</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>Недолік:</strong> Може впливати на легітимну функціональність та продуктивність.
+        </div>
+    </section>
+
+    <!-- Слайд 9: Active Wardens -->
+    <section class="slide">
+        <h2>🛡️ Active Wardens</h2>
+
+        <div class="info-box">
+            <strong>Active Warden:</strong> Мережевий пристрій, що активно модифікує трафік для знищення прихованих каналів.
+        </div>
+
+        <h3>Архітектура:</h3>
+        <div class="code-block">Internet ─── [Active Warden] ─── Internal Network
+                      │
+            ┌─────────┼─────────┐
+            │         │         │
+         Detect   Normalize   Log</div>
+
+        <h3>Можливості:</h3>
+        <ul class="checklist">
+            <li>Перезапис IP ID, TTL, TCP options</li>
+            <li>Нормалізація timing (packet shaping)</li>
+            <li>Видалення невідомих protocol options</li>
+            <li>DNS response filtering</li>
+            <li>HTTP header sanitization</li>
+        </ul>
+
+        <h3>Приклади:</h3>
+        <ul>
+            <li><strong>Norm:</strong> TCP normalizer для FreeBSD</li>
+            <li><strong>Traffic shapers:</strong> tc (Linux), pf (BSD)</li>
+        </ul>
+    </section>
+
+    <!-- Слайд 10: Practical Tools -->
+    <section class="slide">
+        <h2>🛠️ Практичні інструменти</h2>
+
+        <h3>Network Monitoring</h3>
+        <table>
+            <tr>
+                <th>Інструмент</th>
+                <th>Призначення</th>
+            </tr>
+            <tr>
+                <td><strong>Wireshark</strong></td>
+                <td>Аналіз пакетів, статистика</td>
+            </tr>
+            <tr>
+                <td><strong>Zeek (Bro)</strong></td>
+                <td>Network security monitoring</td>
+            </tr>
+            <tr>
+                <td><strong>Suricata</strong></td>
+                <td>IDS/IPS з правилами</td>
+            </tr>
+            <tr>
+                <td><strong>tcpdump</strong></td>
+                <td>Захоплення трафіку</td>
+            </tr>
+        </table>
+
+        <h3>Specialized Tools</h3>
+        <ul>
+            <li><strong>dnstop:</strong> моніторинг DNS трафіку</li>
+            <li><strong>passivedns:</strong> логування DNS</li>
+            <li><strong>NetworkMiner:</strong> network forensics</li>
+            <li><strong>Argus:</strong> flow analysis</li>
+        </ul>
+
+        <h3>Suricata Rule Example:</h3>
+        <div class="code-block">alert dns any any -> any any (msg:"Possible DNS Tunnel";
+    dns_query; content:"."; offset:50; sid:1000001;)</div>
+    </section>
+
+    <!-- Слайд 11: Defense Strategies -->
+    <section class="slide">
+        <h2>🏰 Стратегії захисту</h2>
+
+        <h3>1. Prevention (Запобігання)</h3>
+        <ul>
+            <li>Strict firewall rules</li>
+            <li>Whitelist allowed protocols</li>
+            <li>Block unnecessary ICMP</li>
+            <li>DNS filtering/proxy</li>
+        </ul>
+
+        <h3>2. Detection (Виявлення)</h3>
+        <ul>
+            <li>IDS/IPS rules</li>
+            <li>Anomaly detection</li>
+            <li>Behavioral analysis</li>
+            <li>Regular traffic audits</li>
+        </ul>
+
+        <h3>3. Response (Реагування)</h3>
+        <ul>
+            <li>Automated blocking</li>
+            <li>Alert and investigate</li>
+            <li>Traffic normalization</li>
+            <li>Incident response procedures</li>
+        </ul>
 
         <div class="success-box">
-            <strong>💡 Довідка:</strong> 50% = випадковий вибір (не виявлено). Нижче = краще безпека!
+            <strong>Defense in Depth:</strong> Комбінація всіх трьох стратегій забезпечує найкращий захист.
         </div>
     </section>
 
-    <!-- Слайд 5: Швидкодія -->
+    <!-- Слайд 12: Limitations -->
     <section class="slide">
-        <h2>⚡ Порівняння швидкодії</h2>
+        <h2>⚠️ Обмеження методів виявлення</h2>
 
-                <div class="method-card">
-                    <h3>Час вбудовування (зображення 512×512, 0.4 bpp)</h3>
-                    <p style="font-size: 1.05rem;">Тестування на Intel i7, 16GB RAM</p>
-                </div>
+        <h3>1. False Positives</h3>
+        <p>Легітимний трафік може мати "підозрілі" характеристики:</p>
+        <ul>
+            <li>VPN та tunneling protocols</li>
+            <li>CDN та cloud services</li>
+            <li>IoT devices з нестандартною поведінкою</li>
+        </ul>
 
-                <div style="background: #f8fafc; padding: 2rem; border-radius: 10px; margin: 1.5rem 0;">
-                    <div style="display: flex; align-items: center; margin: 1rem 0;">
-                        <div style="width: 150px; font-weight: bold;">HUGO:</div>
-                        <div style="flex: 1; background: #cbd5e1; height: 30px; border-radius: 5px; position: relative;">
-                            <div style="background: #667eea; width: 90%; height: 100%; border-radius: 5px;"></div>
-                            <span style="position: absolute; right: 10px; top: 5px; font-weight: bold;">~18 сек</span>
-                        </div>
-                    </div>
+        <h3>2. Evasion Techniques</h3>
+        <ul>
+            <li><strong>Mimicry:</strong> імітація легітимного трафіку</li>
+            <li><strong>Encryption:</strong> HTTPS приховує payload</li>
+            <li><strong>Low bandwidth:</strong> дуже повільна передача</li>
+            <li><strong>Polymorphism:</strong> зміна методів</li>
+        </ul>
 
-                    <div style="display: flex; align-items: center; margin: 1rem 0;">
-                        <div style="width: 150px; font-weight: bold;">WOW:</div>
-                        <div style="flex: 1; background: #cbd5e1; height: 30px; border-radius: 5px; position: relative;">
-                            <div style="background: #10b981; width: 20%; height: 100%; border-radius: 5px;"></div>
-                            <span style="position: absolute; right: 10px; top: 5px; font-weight: bold;">~4 сек</span>
-                        </div>
-                    </div>
+        <h3>3. Resource Constraints</h3>
+        <ul>
+            <li>Real-time analysis складна при високих швидкостях</li>
+            <li>Зберігання даних для ретроспективного аналізу</li>
+            <li>ML моделі потребують постійного оновлення</li>
+        </ul>
+    </section>
 
-                    <div style="display: flex; align-items: center; margin: 1rem 0;">
-                        <div style="width: 150px; font-weight: bold;">S-UNIWARD:</div>
-                        <div style="flex: 1; background: #cbd5e1; height: 30px; border-radius: 5px; position: relative;">
-                            <div style="background: #f59e0b; width: 50%; height: 100%; border-radius: 5px;"></div>
-                            <span style="position: absolute; right: 10px; top: 5px; font-weight: bold;">~10 сек</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Слайд 13: Best Practices -->
+    <section class="slide">
+        <h2>✅ Best Practices</h2>
+
+        <h3>Для захисту мережі:</h3>
+        <ul class="checklist">
+            <li>Моніторинг DNS трафіку (об'єм, ентропія, типи)</li>
+            <li>Baseline нормальної поведінки мережі</li>
+            <li>Обмеження ICMP до необхідного мінімуму</li>
+            <li>Інспекція HTTPS через SSL/TLS proxy</li>
+            <li>Сегментація мережі</li>
+            <li>Регулярний аудит firewall rules</li>
+        </ul>
+
+        <h3>Для дослідників:</h3>
+        <ul class="checklist">
+            <li>Тестування на реалістичному трафіку</li>
+            <li>Оцінка false positive rate</li>
+            <li>Документування обмежень</li>
+            <li>Етичні міркування</li>
+        </ul>
+    </section>
+
+    <!-- Слайд 14: Висновки -->
+    <section class="slide">
+        <h2>📌 Висновки</h2>
+
+        <h3>Ключові ідеї:</h3>
+        <ul class="checklist">
+            <li>Виявлення базується на аномаліях та статистиці</li>
+            <li>DNS tunneling детектується за ентропією та об'ємом</li>
+            <li>Timing channels виявляються аналізом розподілів IPD</li>
+            <li>Machine Learning покращує точність детекції</li>
+            <li>Traffic normalization знищує канали без детекції</li>
+            <li>Defense in Depth — найкраща стратегія</li>
+        </ul>
 
         <div class="info-box">
-            <strong>Висновок:</strong> WOW найшвидший, S-UNIWARD збалансований, HUGO найповільніший
+            <strong>Підсумок лекції:</strong> Мережева стеганографія — потужний інструмент як для атак, так і для захисту приватності. Розуміння методів допомагає будувати кращий захист.
         </div>
-    </section>
 
-    <!-- Слайд 6: Практичні рекомендації -->
-    <section class="slide">
-        <h2>🎯 Коли використовувати який метод?</h2>
-
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
-                    <h3>🎭 Використовуйте HUGO, якщо:</h3>
-                    <ul style="font-size: 1.05rem; line-height: 1.8;">
-                        <li>Потрібна максимальна безпека для spatial domain</li>
-                        <li>Швидкість не критична</li>
-                        <li>Є достатньо обчислювальних ресурсів</li>
-                        <li>Працюєте з природними фотографіями</li>
-                    </ul>
-                </div>
-
-                <div style="background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
-                    <h3>🌊 Використовуйте WOW, якщо:</h3>
-                    <ul style="font-size: 1.05rem; line-height: 1.8;">
-                        <li>Потрібен баланс між безпекою та швидкістю</li>
-                        <li>Обробляєте багато зображень</li>
-                        <li>Працюєте в реальному часі</li>
-                        <li>Простота реалізації важлива</li>
-                    </ul>
-                </div>
-
-                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
-                    <h3>📐 Використовуйте S-UNIWARD, якщо:</h3>
-                    <ul style="font-size: 1.05rem; line-height: 1.8;">
-                        <li>Потрібна найвища безпека</li>
-                        <li>Працюєте з різними форматами (JPEG, spatial)</li>
-                        <li>Важлива універсальність</li>
-                        <li>Це дослідницький або академічний проект</li>
-                    </ul>
-                </div>
-    </section>
-
-    <!-- Слайд 7: Еволюція методів -->
-    <section class="slide">
-        <h2>📈 Еволюція адаптивних методів</h2>
-
-                <div style="position: relative; padding: 2rem 0;">
-                    <div style="border-left: 4px solid #667eea; padding-left: 2rem; margin: 2rem 0;">
-                        <div style="background: #eff6ff; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-                            <h4 style="color: #1e40af;">2010: LSB, базові методи</h4>
-                            <p>Рівномірне вбудовування, легко виявляються</p>
-                        </div>
-
-                        <div style="background: #f0fdf4; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-                            <h4 style="color: #065f46;">2012: HUGO</h4>
-                            <p>Перший справжній адаптивний метод з SPAM моделлю</p>
-                        </div>
-
-                        <div style="background: #fef3c7; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-                            <h4 style="color: #92400e;">2013: WOW</h4>
-                            <p>Директивний підхід, швидше та практичніше</p>
-                        </div>
-
-                        <div style="background: #fce7f3; padding: 1rem; border-radius: 10px;">
-                            <h4 style="color: #9f1239;">2014: S-UNIWARD</h4>
-                            <p>Універсальний підхід, найкраща безпека</p>
-                        </div>
-                    </div>
-                </div>
-
-        <div class="info-box">
-            <strong>💡 Тренд:</strong> Від простих до складних, від швидких до безпечних, від специфічних до універсальних
-        </div>
-    </section>
-
-    <!-- Слайд 8: Майбутнє -->
-    <section class="slide">
-        <h2>🚀 Сучасні тренди та майбутнє</h2>
-
-                <div class="comparison-grid">
-                    <div style="background: linear-gradient(145deg, #ffffff, #f3f4f6); padding: 1.5rem; border-radius: 10px; border: 2px solid #667eea;">
-                        <h4 style="color: #667eea; text-align: center;">🤖 Deep Learning</h4>
-                        <p>GAN-based стеганографія, навчання на даних</p>
-                    </div>
-
-                    <div style="background: linear-gradient(145deg, #ffffff, #f3f4f6); padding: 1.5rem; border-radius: 10px; border: 2px solid #10b981;">
-                        <h4 style="color: #10b981; text-align: center;">🎨 Content-Aware</h4>
-                        <p>Семантичний аналіз, розпізнавання об'єктів</p>
-                    </div>
-
-                    <div style="background: linear-gradient(145deg, #ffffff, #f3f4f6); padding: 1.5rem; border-radius: 10px; border: 2px solid #f59e0b;">
-                        <h4 style="color: #f59e0b; text-align: center;">⚡ Оптимізація</h4>
-                        <p>Швидші алгоритми, GPU прискорення</p>
-                    </div>
-                </div>
-
-                <div class="advantage-list" style="margin-top: 2rem;">
-                    <h4>🔮 Перспективні напрямки</h4>
-                    <ul style="font-size: 1.05rem; line-height: 1.8;">
-                        <li><strong>Adversarial стеганографія:</strong> методи, стійкі до ML-детекторів</li>
-                        <li><strong>Multi-domain:</strong> одночасне вбудовування в кілька областей</li>
-                        <li><strong>Adaptive payload:</strong> динамічна ємність залежно від зображення</li>
-                        <li><strong>Privacy-preserving:</strong> захист приватності під час передачі</li>
-                    </ul>
-                </div>
-    </section>
-
-    <!-- Слайд 9: Практичні поради -->
-    <section class="slide">
-        <h2>💡 Практичні поради</h2>
-
-                <div class="method-card">
-                    <h4>✅ Найкращі практики</h4>
-                    <ul style="font-size: 1.05rem; line-height: 1.8;">
-                        <li>Завжди <strong>шифруйте</strong> повідомлення перед вбудовуванням</li>
-                        <li>Використовуйте <strong>payload &lt; 0.4 bpp</strong> для безпеки</li>
-                        <li>Тестуйте на <strong>різних зображеннях</strong></li>
-                        <li>Використовуйте <strong>формати без втрат</strong> (PNG, TIFF)</li>
-                        <li>Комбінуйте з <strong>криптографією</strong></li>
-                    </ul>
-                </div>
-
-                <div class="method-card">
-                    <h4>⚠️ Типові помилки</h4>
-                    <ul style="font-size: 1.05rem; line-height: 1.8;">
-                        <li>Занадто високий payload (виявлюваність зростає)</li>
-                        <li>Використання JPEG після вбудовування (додаткове спотворення)</li>
-                        <li>Ігнорування формату зображення</li>
-                        <li>Відсутність тестування на реальних даних</li>
-                    </ul>
-                </div>
-    </section>
-
-    <!-- Слайд 10: Підсумки -->
-    <section class="slide">
-        <h2>📝 Загальні підсумки</h2>
-
-                <div class="algorithm-box">
-                    <h3 style="text-align: center; color: #667eea;">Ключові висновки</h3>
-                </div>
-
-                <div class="advantage-list">
-                    <ul style="font-size: 1.15rem; line-height: 2;">
-                        <li><strong>Адаптивні методи</strong> - це майбутнє стеганографії</li>
-                        <li><strong>HUGO</strong> - піонер адаптивного підходу (статистичний)</li>
-                        <li><strong>WOW</strong> - найкращий баланс швидкості та безпеки</li>
-                        <li><strong>S-UNIWARD</strong> - універсальний стандарт з найвищою безпекою</li>
-                        <li><strong>Вибір методу</strong> залежить від ваших вимог та обмежень</li>
-                        <li><strong>Майбутнє</strong> - за deep learning та content-aware методами</li>
-                    </ul>
-                </div>
-
-        <div class="success-box" style="margin-top: 2rem;">
-            <strong>💡 Головне:</strong> Не існує "найкращого" методу - кожен оптимальний для своїх умов. Розумійте компроміси та вибирайте відповідно до ваших потреб!
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#" class="btn btn-primary" style="margin: 0 0.5rem;">
+                ← Часові канали
+            </a>
+            <a href="#" onclick="goHome();return false;" class="btn btn-primary" style="margin: 0 0.5rem;">
+                🏠 До переліку тем
+            </a>
         </div>
     </section>
 

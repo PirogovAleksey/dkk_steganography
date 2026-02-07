@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Методи на основі DWT | Лекція 6.2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/slides.css">
+</head>
+<body>
+
+<div class="slide-deck">
+
+
+    <!-- Слайд 1: Титульний -->
+    <section class="slide active title-slide">
+        <h1>🌊 Методи стеганографії на основі DWT</h1>
+        <div class="subtitle">
+            Тема 2: Дискретне вейвлет-перетворення
+        </div>
+    </section>
+
+    <!-- Слайд 2: Вступ -->
+    <section class="slide">
+         
+             
+                <h2>🔬 Вступ до вейвлет-перетворення</h2>
+
+                <div style="background: #f0f4ff; border-left: 5px solid #667eea; padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: #1e293b;">
+                        Дискретне вейвлет-перетворення (ДВП) представляє альтернативний підхід до аналізу зображень порівняно з DCT. Основна відмінність - багатомасштабний аналіз з адаптивною локалізацією.
+                    </p>
+                </div>
+
+                <div class="wavelet-grid">
+                    <div class="wavelet-card">
+                        <h3 style="color: #667eea;">📐 DCT</h3>
+                        <ul>
+                            <li>Фіксовані блоки 8×8</li>
+                            <li>Тільки частотна інформація</li>
+                            <li>Блокові артефакти</li>
+                            <li>Для JPEG стиснення</li>
+                        </ul>
+                    </div>
+
+                    <div class="wavelet-card" style="border-left-color: #10b981;">
+                        <h3 style="color: #10b981;">🌊 DWT</h3>
+                        <ul>
+                            <li>Багатомасштабний аналіз</li>
+                            <li>Частотна + просторова інформація</li>
+                            <li>Плавні переходи</li>
+                            <li>Для JPEG2000</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>🔍 Аналогія:</strong> Вейвлет-перетворення - це як розгляд зображення через систему лінз різної сили. Кожна лінза показує різний рівень деталізації, зберігаючи інформацію про розташування.
+                </div>
+            </section>
+        
+</div>
+
+<div class="slide-counter" id="counter"></div>
+<div class="slide-progress" id="progress"></div>
+
+<div class="controls">
+  <button onclick="goHome()" title="На головну">&#x1F3E0;</button>
+  <button onclick="prev()" id="btn-prev" title="Попередній">&larr;</button>
+  <button onclick="next()" id="btn-next" title="Наступний">&rarr;</button>
+</div>
+
+<script src="../../js/slides.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Стегоаналіз частотних методів | Лекція 8.2</title>
+  <title>Форматні методи | Лекція 12.2</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/slides.css">
 </head>
@@ -14,422 +14,372 @@
 
     <!-- Слайд 1: Титульний -->
     <section class="slide active title-slide">
-        <h1>📐 Стегоаналіз частотних методів</h1>
+        <h1>Форматні методи</h1>
         <div class="subtitle">
-            Тема 2: Виявлення вбудовування в DCT та DWT домені
+            Тема 2: Whitespace, Unicode zero-width, HTML/CSS стеганографія
         </div>
     </section>
 
-    <!-- Слайд 2: Чому частотна область складніша -->
+    <!-- Слайд 2: Огляд форматних методів -->
     <section class="slide">
-        <h2>🎯 Виклики стегоаналізу частотних методів</h2>
-
-        <div class="two-column">
-            <div class="column">
-                <div class="info-box">
-                    <h4>🖼️ Просторова область (LSB)</h4>
-                    <ul>
-                        <li>Прямий доступ до пікселів</li>
-                        <li>Очевидні статистичні зміни</li>
-                        <li>Гістограми легко аналізувати</li>
-                        <li>Chi-square, RS працюють добре</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="warning-box">
-                    <h4>📊 Частотна область (DCT/DWT)</h4>
-                    <ul>
-                        <li>Вбудовування в коефіцієнти</li>
-                        <li>Компресія маскує зміни (JPEG)</li>
-                        <li>Складніші статистичні залежності</li>
-                        <li>Потрібні спеціалізовані методи</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="warning-box">
-            <strong>⚠️ Ключова проблема:</strong> JPEG-стеганографія маскується під природні артефакти компресії
-        </div>
+        <h2>Форматні методи стеганографії</h2>
 
         <div class="info-box">
-            <h3>🎯 Цілі стегоаналізу DCT/DWT</h3>
-            <ul>
-                <li>Виявити аномалії в розподілі DCT коефіцієнтів</li>
-                <li>Детектувати специфічні сигнатури методів (JSteg, F5, OutGuess)</li>
-                <li>Використовувати калібраційні техніки</li>
-                <li>Аналізувати блоковість JPEG</li>
-            </ul>
+            <p style="text-align: center; font-size: 1.1rem;">
+                Використання особливостей <strong>форматування</strong> тексту для приховування даних
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;">
+            <div style="background: #dbeafe; padding: 1.2rem; border-radius: 10px; text-align: center;">
+                <h4 style="color: #1e40af;">Whitespace</h4>
+                <p style="font-size: 0.9rem;">Пробіли, табуляції, закінчення рядків</p>
+            </div>
+            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px; text-align: center;">
+                <h4 style="color: #166534;">Unicode</h4>
+                <p style="font-size: 0.9rem;">Zero-width символи</p>
+            </div>
+            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px; text-align: center;">
+                <h4 style="color: #854d0e;">HTML/CSS</h4>
+                <p style="font-size: 0.9rem;">Теги, атрибути, стилі</p>
+            </div>
+        </div>
+
+        <div class="success-box" style="margin-top: 1.5rem;">
+            <p style="text-align: center;">
+                <strong>Перевага:</strong> Текст виглядає абсолютно нормально для читача
+            </p>
         </div>
     </section>
 
-    <!-- Слайд 3: JPEG структура і вразливості -->
+    <!-- Слайд 3: Whitespace стеганографія -->
     <section class="slide">
-        <h2>📸 JPEG структура і точки вбудовування</h2>
+        <h2>Whitespace стеганографія</h2>
 
         <div class="info-box">
-            <h3>JPEG Pipeline</h3>
-            <div class="code-block">Пікселі → DCT → Квантування → Huffman кодування</div>
+            <h4>Принцип</h4>
+            <p style="text-align: center;">
+                Використання комбінацій пробілів та табуляцій для кодування бінарних даних
+            </p>
         </div>
 
-        <table>
+        <div class="code-example">
+Базове кодування:
+───────────────────
+Пробіл (space) = 0
+Табуляція (tab) = 1
+
+Приклад: приховати "A" (ASCII 65 = 01000001)
+"Hello[SP][TAB][SP][SP][SP][SP][SP][TAB]World"
+        </div>
+
+        <div class="two-column" style="margin-top: 1rem;">
+            <div>
+                <h4>Місця вбудовування:</h4>
+                <ul style="font-size: 0.9rem;">
+                    <li>Кінець рядків</li>
+                    <li>Між словами</li>
+                    <li>Між абзацами</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Типова ємність:</h4>
+                <ul style="font-size: 0.9rem;">
+                    <li>~3 біти на 8 колонок</li>
+                    <li>~1 біт на рядок</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайд 4: Інструмент SNOW -->
+    <section class="slide">
+        <h2>Інструмент SNOW</h2>
+
+        <div class="info-box">
+            <p style="text-align: center;">
+                <strong>SNOW</strong> — популярний інструмент whitespace стеганографії
+            </p>
+        </div>
+
+        <div class="code-example">
+# Кодування повідомлення
+stegsnow -C -m "Secret message" -p "password" input.txt output.txt
+
+# Декодування
+stegsnow -C -p "password" output.txt
+        </div>
+
+        <h4 style="margin-top: 1.5rem;">Особливості SNOW:</h4>
+        <ul>
+            <li>Додає послідовності до 7 пробілів з табуляціями в кінці рядків</li>
+            <li>Підтримує ICE шифрування для додаткової безпеки</li>
+            <li>Доступний для Linux/Windows</li>
+        </ul>
+
+        <div class="warning-box" style="margin-top: 1rem;">
+            <p style="text-align: center; font-size: 0.9rem;">
+                Trailing whitespace часто видаляється текстовими редакторами!
+            </p>
+        </div>
+    </section>
+
+    <!-- Слайд 5: Line endings -->
+    <section class="slide">
+        <h2>Маніпуляція закінченнями рядків</h2>
+
+        <p style="text-align: center; margin-bottom: 1.5rem;">
+            Різні ОС використовують різні символи закінчення рядків
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <div style="background: #dbeafe; padding: 1.2rem; border-radius: 10px; text-align: center;">
+                <h4>Windows</h4>
+                <code style="font-size: 1.2rem;">\r\n</code>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">CR + LF</p>
+            </div>
+            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px; text-align: center;">
+                <h4>Unix/Linux</h4>
+                <code style="font-size: 1.2rem;">\n</code>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">LF</p>
+            </div>
+            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px; text-align: center;">
+                <h4>Classic Mac</h4>
+                <code style="font-size: 1.2rem;">\r</code>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">CR</p>
+            </div>
+        </div>
+
+        <div class="formula-box" style="margin-top: 1.5rem;">
+            Ємність: 2 біти на рядок (4 можливі комбінації)
+        </div>
+
+        <div class="warning-box" style="margin-top: 1rem;">
+            <p style="text-align: center; font-size: 0.9rem;">
+                Git та багато редакторів автоматично нормалізують line endings!
+            </p>
+        </div>
+    </section>
+
+    <!-- Слайд 6: Unicode Zero-Width символи -->
+    <section class="slide">
+        <h2>Unicode Zero-Width символи</h2>
+
+        <div class="info-box">
+            <p style="text-align: center;">
+                Unicode містить <strong>невидимі</strong> символи нульової ширини
+            </p>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem;">
+            <tr style="background: #f1f5f9;">
+                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Символ</th>
+                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Unicode</th>
+                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Назва</th>
+                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Біт</th>
+            </tr>
             <tr>
-                <td>
-                    <h4>🎲 JSteg</h4>
-                    <p>LSB заміна в <strong>квантованих DCT коефіцієнтах</strong></p>
-                    <p>Уникає 0 і 1</p>
-                </td>
-                <td>
-                    <h4>🎭 OutGuess</h4>
-                    <p>Вбудовування + <strong>корекція гістограми</strong></p>
-                    <p>Зберігає статистику</p>
-                </td>
-                <td>
-                    <h4>🔥 F5</h4>
-                    <p>Matrix encoding + <strong>shrinkage</strong></p>
-                    <p>Зменшує |коеф|</p>
-                </td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">ZWSP</span></td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+200B</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Zero Width Space</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">0</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">ZWNJ</span></td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+200C</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Zero Width Non-Joiner</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">1</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">ZWJ</span></td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+200D</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Zero Width Joiner</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">-</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">WJ</span></td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+2060</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Word Joiner</td>
+                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">-</td>
             </tr>
         </table>
 
-        <div class="info-box">
-            <h3>🎯 Що змінюється при вбудовуванні?</h3>
-            <ul>
-                <li><strong>Гістограма DCT коефіцієнтів:</strong> пари вирівнюються (як LSB)</li>
-                <li><strong>Блоковість:</strong> артефакти між 8×8 блоками</li>
-                <li><strong>Статистичні залежності:</strong> між сусідніми коефіцієнтами</li>
-                <li><strong>Асиметрія розподілу:</strong> порушується природна асиметрія</li>
-            </ul>
+        <div class="success-box" style="margin-top: 1rem;">
+            <p style="text-align: center;">
+                Текст виглядає <strong>ідентично</strong> — символи повністю невидимі!
+            </p>
         </div>
     </section>
 
-    <!-- Слайд 4: Chi-square для DCT -->
+    <!-- Слайд 7: Unicode кодування -->
     <section class="slide">
-        <h2>χ² тест для JPEG (Westfeld & Pfitzmann)</h2>
+        <h2>Алгоритм Unicode кодування</h2>
 
-        <div class="info-box">
-            <h3>Адаптація χ² для DCT домену</h3>
-            <p>Той самий принцип, але застосовується до <strong>квантованих DCT коефіцієнтів</strong></p>
+        <div class="code-example">
+def encode_message(secret, cover_text):
+    # Конвертуємо в бінарний
+    binary = ''.join(format(ord(c), '08b') for c in secret)
+
+    # Кодуємо zero-width символами
+    encoded = ""
+    for bit in binary:
+        if bit == '0':
+            encoded += '\u200B'  # ZWSP
+        else:
+            encoded += '\u200C'  # ZWNJ
+
+    # Вставляємо в середину cover-тексту
+    mid = len(cover_text) // 2
+    return cover_text[:mid] + encoded + cover_text[mid:]
         </div>
 
-        <div class="code-block">
-            χ² = Σ [(h(2k) - h(2k+1))² / (h(2k) + h(2k+1))]
-            <br><br>
-            k пробігає всі ненульові квантовані коефіцієнти
+        <div class="formula-box">
+            Ємність = len(cover_text) × біти_на_позицію
         </div>
 
-        <div class="success-box">
-            <strong>✅ Ефективність:</strong>
-            <ul class="checklist">
-                <li>Легко виявляє JSteg (простий LSB в DCT)</li>
-                <li>Може оцінити довжину повідомлення</li>
-                <li>Швидкий обчислення</li>
-            </ul>
+        <p style="text-align: center; margin-top: 1rem;">
+            При 3-бітовому кодуванні (8 різних ZW-символів) — вища ємність
+        </p>
+    </section>
+
+    <!-- Слайд 8: HTML/CSS методи -->
+    <section class="slide">
+        <h2>HTML/CSS стеганографія</h2>
+
+        <h4>Маніпуляція регістром тегів:</h4>
+        <div class="code-example">
+&lt;!-- Оригінал --&gt;
+&lt;HTML&gt;&lt;BODY&gt;&lt;P&gt;Text&lt;/P&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+&lt;!-- З прихованим "10" --&gt;
+&lt;html&gt;&lt;BODY&gt;&lt;P&gt;Text&lt;/P&gt;&lt;/BODY&gt;&lt;/html&gt;
+
+lowercase = 0, uppercase = 1
         </div>
+
+        <h4 style="margin-top: 1rem;">Перестановка атрибутів:</h4>
+        <div class="code-example">
+&lt;!-- Біт 0 --&gt;
+&lt;img src="#" alt="photo" width="100"&gt;
+
+&lt;!-- Біт 1 (атрибути переставлені) --&gt;
+&lt;img alt="photo" src="#" width="100"&gt;
+        </div>
+
+        <p style="text-align: center; margin-top: 1rem;">
+            <strong>Ємність:</strong> 1 біт на тег з 2+ атрибутами
+        </p>
+    </section>
+
+    <!-- Слайд 9: CSS приховування -->
+    <section class="slide">
+        <h2>CSS-based приховування</h2>
+
+        <div class="code-example">
+/* Приховані дані в значеннях кольорів */
+.class {
+    color: #000001;     /* LSB кодує 1 біт */
+    background: #FFFFFE; /* LSB кодує 0 */
+}
+
+/* Надлишкові значення */
+.element {
+    margin: 10px 10px;  /* Може бути margin: 10px */
+    padding: 5px 5px 5px 5px; /* Може бути padding: 5px */
+}
+
+/* Порядок властивостей */
+.item {
+    color: red;    /* Порядок A = біт 0 */
+    font-size: 12px;
+}
+/* vs */
+.item {
+    font-size: 12px; /* Порядок B = біт 1 */
+    color: red;
+}
+        </div>
+
+        <div class="info-box" style="margin-top: 1rem;">
+            <p style="text-align: center; font-size: 0.9rem;">
+                CSS нормалізація браузерами може зруйнувати приховані дані
+            </p>
+        </div>
+    </section>
+
+    <!-- Слайд 10: Вразливості -->
+    <section class="slide">
+        <h2>Вразливості форматних методів</h2>
 
         <div class="warning-box">
-            <strong>❌ Не працює для:</strong>
-            <ul>
-                <li><strong>OutGuess:</strong> метод коригує гістограму → χ² не помічає</li>
-                <li><strong>F5:</strong> використовує matrix encoding і shrinkage</li>
-                <li><strong>nsF5, MMx:</strong> сучасні методи з контрзаходами</li>
+            <h4>Whitespace</h4>
+            <ul style="font-size: 0.9rem;">
+                <li>Текстові редактори видаляють trailing spaces</li>
+                <li>Copy-paste часто нормалізує пробіли</li>
+                <li>Email системи переформатовують текст</li>
+            </ul>
+        </div>
+
+        <div class="warning-box" style="margin-top: 1rem;">
+            <h4>Unicode Zero-Width</h4>
+            <ul style="font-size: 0.9rem;">
+                <li>Деякі платформи видаляють ZW-символи</li>
+                <li>Легко виявити аналізом символів</li>
+                <li>Соціальні мережі часто фільтрують</li>
+            </ul>
+        </div>
+
+        <div class="warning-box" style="margin-top: 1rem;">
+            <h4>HTML/CSS</h4>
+            <ul style="font-size: 0.9rem;">
+                <li>HTML minifiers руйнують дані</li>
+                <li>Браузери нормалізують атрибути</li>
+                <li>CMS можуть переформатувати код</li>
             </ul>
         </div>
     </section>
 
-    <!-- Слайд 5: Калібраційна техніка -->
+    <!-- Слайд 11: Підсумок -->
     <section class="slide">
-        <h2>🔧 Калібраційна техніка (Fridrich et al.)</h2>
+        <h2>Підсумок теми</h2>
 
-        <div class="info-box">
-            <h3>Основна ідея</h3>
-            <p>Створити "чисту" версію зображення і <strong>порівняти статистики</strong></p>
-        </div>
-
-        <div class="info-box">
-            <h3>📋 Алгоритм калібрації</h3>
-            <ol>
-                <li><strong>Декомпресувати</strong> підозріле JPEG → отримати пікселі</li>
-                <li><strong>Обрізати</strong> 4 пікселі з кожного краю (зміщення блоків)</li>
-                <li><strong>Повторно закомпресувати</strong> з тим самим Quality Factor</li>
-                <li><strong>Отримати "calibrated" зображення</strong> — наближення до чистого cover</li>
-                <li><strong>Порівняти статистики</strong> оригінального vs каліброваного</li>
-            </ol>
-        </div>
-
-        <div class="code-block">
-            Якщо статистики сильно відрізняються → підозра на стегано
-        </div>
-
-        <div class="success-box">
-            <strong>✅ Переваги:</strong> Працює для OutGuess, F5 та інших методів, що обманюють χ²
-        </div>
-    </section>
-
-    <!-- Слайд 6: Blockiness аналіз -->
-    <section class="slide">
-        <h2>🧩 Blockiness (блоковість) аналіз</h2>
-
-        <div class="info-box">
-            <h3>Що таке blockiness?</h3>
-            <p><strong>Блоковість</strong> — видимі або статистичні артефакти на межах 8×8 блоків JPEG.</p>
-            <p>DCT працює незалежно на кожному блоці → розриви на стиках</p>
-        </div>
-
-        <div class="two-column">
-            <div class="column">
-                <div class="success-box">
-                    <h4>📸 Природне JPEG</h4>
-                    <ul>
-                        <li>Певна блоковість (від компресії)</li>
-                        <li>Рівномірна по зображенню</li>
-                        <li>Залежить від Quality Factor</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="warning-box">
-                    <h4>🔐 Після стеганографії</h4>
-                    <ul>
-                        <li>Блоковість зростає/зменшується</li>
-                        <li>Нерівномірна зміна</li>
-                        <li>Детектується статистично</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="code-block">
-            B = Σ |I(8i, j) - I(8i+1, j)| + Σ |I(i, 8j) - I(i, 8j+1)|
-            <br><br>
-            Міра блоковості — сума різниць на межах блоків
-        </div>
-
-        <div class="info-box">
-            <strong>💡 Застосування:</strong> Використовується в комбінації з іншими ознаками для ML-детекторів
-        </div>
-    </section>
-
-    <!-- Слайд 7: F5 специфічні атаки -->
-    <section class="slide">
-        <h2>🔥 Виявлення F5 стеганографії</h2>
-
-        <div class="info-box">
-            <h3>Особливість F5</h3>
-            <p>F5 використовує <strong>shrinkage</strong> — зменшення абсолютної величини коефіцієнта:</p>
-            <p>Замість зміни LSB, F5 робить <code>|coef| → |coef| - 1</code></p>
-        </div>
-
-        <div class="info-box">
-            <h3>Ефекти shrinkage</h3>
-            <ul>
-                <li>Коефіцієнти з <code>|value| = 1</code> стають <code>0</code> → зникають</li>
-                <li>Гістограма асиметрично змінюється</li>
-                <li>Кількість нульових коефіцієнтів зростає</li>
-            </ul>
-        </div>
-
-        <div class="success-box">
-            <strong>🎯 Атака на F5:</strong>
-            <ul class="checklist">
-                <li><strong>Negative quality factor attack:</strong> Аналіз асиметрії гістограми</li>
-                <li><strong>Калібрація:</strong> Порівняння з re-compressed версією</li>
-                <li><strong>Статистика нулів:</strong> Надмірна кількість нульових коефіцієнтів</li>
-            </ul>
-        </div>
-
-        <div class="warning-box">
-            <strong>⚠️ Складність:</strong> F5 з низьким payload (<5%) важко виявити навіть цими методами
-        </div>
-    </section>
-
-    <!-- Слайд 8: DWT стегоаналіз -->
-    <section class="slide">
-        <h2>🌊 Стегоаналіз DWT методів</h2>
-
-        <div class="info-box">
-            <h3>Вейвлет-стеганографія</h3>
-            <p>DWT розкладає зображення на субсмуги (LL, LH, HL, HH).</p>
-            <p>Стеганографія вбудовує в <strong>HH (high-frequency)</strong> або середні частоти.</p>
-        </div>
-
-        <div class="two-column">
-            <div class="column">
-                <div class="info-box">
-                    <h4>🔍 Що шукаємо?</h4>
-                    <ul>
-                        <li>Статистичні аномалії в HH субсмузі</li>
-                        <li>Порушення кореляцій між субсмугами</li>
-                        <li>Зміни в текстурних характеристиках</li>
-                        <li>Нетипові розподіли коефіцієнтів</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="success-box">
-                    <h4>🎯 Методи виявлення</h4>
-                    <ul>
-                        <li>HOS (Higher Order Statistics)</li>
-                        <li>Wavelet characteristic function</li>
-                        <li>Multi-resolution analysis</li>
-                        <li>Machine learning на ознаках</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-box">
-            <strong>💡 Практика:</strong> DWT стегоаналіз складніший за DCT, бо методи менш стандартизовані (немає JPEG-структури)
-        </div>
-    </section>
-
-    <!-- Слайд 9: Higher Order Statistics -->
-    <section class="slide">
-        <h2>📊 Higher Order Statistics (HOS)</h2>
-
-        <div class="info-box">
-            <h3>Ідея HOS</h3>
-            <p>Аналіз <strong>моментів вищого порядку</strong> (skewness, kurtosis) розподілів вейвлет-коефіцієнтів</p>
-        </div>
-
-        <table>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+            <tr style="background: #f1f5f9;">
+                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Метод</th>
+                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Ємність</th>
+                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Непомітність</th>
+                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Робастність</th>
+            </tr>
             <tr>
-                <td>
-                    <h4>📐 Mean</h4>
-                    <p>μ = E[X]</p>
-                    <p>1-й момент</p>
-                </td>
-                <td>
-                    <h4>📊 Variance</h4>
-                    <p>σ² = E[(X-μ)²]</p>
-                    <p>2-й центральний момент</p>
-                </td>
-                <td>
-                    <h4>🎯 Skewness</h4>
-                    <p>γ = E[(X-μ)³]/σ³</p>
-                    <p>3-й момент</p>
-                </td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Whitespace</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Низька</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #dcfce7;">Висока</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #fee2e2;">Дуже низька</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Unicode ZWC</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Середня</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #dcfce7;">Дуже висока</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #fee2e2;">Низька</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">HTML/CSS</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Середня</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #dcfce7;">Висока</td>
+                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #fef9c3;">Середня</td>
             </tr>
         </table>
 
-        <div class="info-box">
-            <h3>🔬 Застосування HOS</h3>
-            <ul>
-                <li>Природні зображення мають <strong>специфічні статистики</strong> у вейвлет-домені</li>
-                <li>Вбудовування порушує kurtosis (різкість піку розподілу)</li>
-                <li>Skewness (асиметрія) також змінюється</li>
-                <li>Ці ознаки подаються в ML-класифікатор</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Слайд 10: Wavelet Characteristic Function -->
-    <section class="slide">
-        <h2>📈 Wavelet Characteristic Function</h2>
-
-        <div class="info-box">
-            <h3>Метод Farid (2002)</h3>
-            <p>Моделювання розподілу вейвлет-коефіцієнтів через <strong>характеристичну функцію</strong></p>
+        <div class="success-box" style="margin-top: 1.5rem;">
+            <p style="text-align: center;">
+                Форматні методи прості в реалізації, але <strong>вразливі</strong> до переформатування
+            </p>
         </div>
 
-        <div class="code-block">
-            Природний розподіл: heavy-tailed, peaked, sub-Gaussian
-            <br><br>
-            Після embedding: відхилення від моделі → detection
-        </div>
-
-        <div class="success-box">
-            <strong>✅ Переваги WCF:</strong>
-            <ul class="checklist">
-                <li>Універсальний підхід (не залежить від конкретного методу)</li>
-                <li>Працює для різних рівнів DWT</li>
-                <li>Може комбінуватися з іншими ознаками</li>
-            </ul>
-        </div>
-
-        <div class="info-box">
-            <strong>💡 Сучасний підхід:</strong> WCF та HOS використовуються як <strong>feature extractors</strong> для ML-класифікаторів
-        </div>
-    </section>
-
-    <!-- Слайд 11: Обмеження і виклики -->
-    <section class="slide">
-        <h2>⚠️ Обмеження частотного стегоаналізу</h2>
-
-        <div class="warning-box">
-            <h3>❌ Основні проблеми</h3>
-            <ul>
-                <li><strong>Адаптивні методи:</strong> J-UNIWARD, UED обходять класичні детектори</li>
-                <li><strong>Низький payload:</strong> <5% embedding rate важко виявити</li>
-                <li><strong>Різноманітність форматів:</strong> JPEG quality factors, типи вейвлетів</li>
-                <li><strong>Double compression:</strong> повторне стиснення маскує сигнатури</li>
-            </ul>
-        </div>
-
-        <div class="info-box">
-            <h3>🚀 Необхідність багатих моделей</h3>
-            <p>Для виявлення сучасних адаптивних методів у частотній області потрібні:</p>
-            <ul>
-                <li>🔬 <strong>JPEG Rich Models:</strong> тисячі ознак з DCT домену</li>
-                <li>🌊 <strong>Wavelet-based features:</strong> мульти-масштабний аналіз</li>
-                <li>🤖 <strong>Deep learning:</strong> CNN, що навчаються на JPEG даних</li>
-                <li>📊 <strong>Hybrid моделі:</strong> комбінація частотних і просторових ознак</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Слайд 12: Підсумки -->
-    <section class="slide">
-        <h2>📝 Підсумки теми</h2>
-
-        <table>
-            <tr>
-                <td>
-                    <h4>📸 JPEG</h4>
-                    <ul>
-                        <li>Chi-square для DCT</li>
-                        <li>Калібраційні техніки</li>
-                        <li>Blockiness аналіз</li>
-                        <li>F5 детектування</li>
-                    </ul>
-                </td>
-                <td>
-                    <h4>🌊 DWT</h4>
-                    <ul>
-                        <li>HOS (статистики)</li>
-                        <li>WCF (char. function)</li>
-                        <li>Субсмуговий аналіз</li>
-                        <li>Multi-resolution</li>
-                    </ul>
-                </td>
-                <td>
-                    <h4>🎯 Виклики</h4>
-                    <ul>
-                        <li>Адаптивні методи</li>
-                        <li>Низький payload</li>
-                        <li>Double compression</li>
-                        <li>Різноманітність</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-
-        <div class="success-box">
-            <h3>✅ Що ми вивчили:</h3>
-            <ul class="checklist">
-                <li>Методи виявлення JPEG-стеганографії (χ², калібрація, blockiness)</li>
-                <li>Специфічні атаки на JSteg, OutGuess, F5</li>
-                <li>DWT стегоаналіз через HOS та WCF</li>
-                <li>Обмеження класичних методів проти адаптивних алгоритмів</li>
-            </ul>
-        </div>
-
-        <div class="info-box">
-            <strong>➡️ Далі:</strong> Багаті моделі ознак (SRM, SPAM) для універсального виявлення
+        <div class="info-box" style="margin-top: 1rem;">
+            <p style="text-align: center;">
+                <strong>Наступна тема:</strong> Лінгвістичні методи (синоніми, синтаксис)
+            </p>
         </div>
     </section>
 
