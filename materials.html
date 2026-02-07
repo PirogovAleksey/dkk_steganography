@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0ea5e9">
+  <title>Матеріали — Основи стеганографії</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}</script>
+</head>
+<body>
+
+  <aside>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        Основи<br>стеганографії
+        <span>онлайн-курс</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></span>
+        Лекції
+      </a>
+      <a href="practicals.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+        Практичні
+      </a>
+      <a href="tests.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        Тести
+      </a>
+      <a href="materials.html" class="active">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span>
+        Матеріали
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span id="theme-label">Темна тема</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="page-header">
+      <h1>Навчальні матеріали</h1>
+      <p>Додаткові ресурси для поглибленого вивчення курсу: презентації, документація, корисні посилання.</p>
+    </div>
+
+    <section class="materials-section">
+      <h2>Презентації до лекцій</h2>
+      <div class="materials-list">
+
+        <a href="lectures/lecture1.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 1.1: Вступ до стеганографії</h3>
+            <p>Історія, основні поняття та класифікація методів</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture2.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 1.2: Математичні основи стеганографії</h3>
+            <p>Теорія інформації, статистичні методи</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture3.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 1.3: Принципи побудови стегосистем</h3>
+            <p>Архітектура стегосистем, вимоги та методологія проектування</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture4.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 1.4: Фундаментальні компроміси стеганографії</h3>
+            <p>Трикутник компромісів: ємність, непомітність, стійкість</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture5.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 2.1: LSB стеганографія</h3>
+            <p>Метод найменшого значущого біта</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture6.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 2.2: Частотні методи стеганографії</h3>
+            <p>DCT, DWT, розширення спектру та квантова індексна модуляція</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture7.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 2.3: Адаптивні методи</h3>
+            <p>HUGO, WOW, S-UNIWARD та інші сучасні адаптивні методи стеганографії</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture8.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 2.4: Стегоаналіз зображень</h3>
+            <p>Методи виявлення прихованої інформації в цифрових зображеннях</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture9.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 3.1: Аудіо стеганографія</h3>
+            <p>LSB, фазове кодування, розширення спектру</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture10.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 3.2: Відео стеганографія</h3>
+            <p>Методи для відеопотоків: просторові, темпоральні та стиснуті формати</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture11.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 3.3: Мережева стеганографія</h3>
+            <p>Приховування інформації в мережевих протоколах та комунікаціях</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+        <a href="lectures/lecture12.html" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="material-info">
+            <h3>Лекція 3.4: Текстова стеганографія</h3>
+            <p>Лінгвістичні методи приховування інформації в текстових документах</p>
+          </div>
+          <span class="material-type">HTML</span>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="materials-section">
+      <h2>Корисні ресурси</h2>
+      <div class="materials-list">
+
+        <a href="#" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="m10 14 11-11"/></svg></div>
+          <div class="material-info">
+            <h3>StegOnline</h3>
+            <p>Онлайн-інструмент для стеганографічного аналізу зображень</p>
+          </div>
+          <span class="material-type">WEB</span>
+        </a>
+
+        <a href="#" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="m10 14 11-11"/></svg></div>
+          <div class="material-info">
+            <h3>Aperi'Solve</h3>
+            <p>Автоматичний аналіз зображень на наявність прихованих даних</p>
+          </div>
+          <span class="material-type">WEB</span>
+        </a>
+
+        <a href="#" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="m10 14 11-11"/></svg></div>
+          <div class="material-info">
+            <h3>OpenStego</h3>
+            <p>Безкоштовна програма для стеганографії з відкритим кодом</p>
+          </div>
+          <span class="material-type">WEB</span>
+        </a>
+
+        <a href="#" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="m10 14 11-11"/></svg></div>
+          <div class="material-info">
+            <h3>Stegseek</h3>
+            <p>Швидкий інструмент для злому steghide паролів</p>
+          </div>
+          <span class="material-type">WEB</span>
+        </a>
+
+        <a href="#" class="material-item">
+          <div class="material-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="m10 14 11-11"/></svg></div>
+          <div class="material-info">
+            <h3>Digital Invisible Ink Toolkit</h3>
+            <p>Набір інструментів для LSB стеганографії</p>
+          </div>
+          <span class="material-type">WEB</span>
+        </a>
+
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div>
+          Кафедра ДКК<br>
+          Фізичний факультет<br>
+          Одеський національний університет<br>
+          <a href="https://dkk.onu.edu.ua" target="_blank" rel="noopener">dkk.onu.edu.ua</a>
+        </div>
+        <div class="footer-right">
+          &copy; 2026 Основи стеганографії
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
