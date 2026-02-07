@@ -1,4 +1,4 @@
-var lectures = [
+const lectures = [
   {
     id: 1,
     title: "Вступ до стеганографії",
@@ -37,10 +37,10 @@ var lectures = [
     ],
     conspect: "lectures/konspekt2.html",
     presentations: [
-      { title: "Тема 1.2.1 — Теорія інформації", desc: "Ентропія Шеннона, взаємна інформація", url: "slides/1-2/tema1.html" },
-      { title: "Тема 1.2.2 — Ентропія та надлишковість", desc: "Типи надлишковості у цифрових носіях", url: "slides/1-2/tema2.html" },
-      { title: "Тема 1.2.3 — Статистичні характеристики", desc: "Марківські моделі, закон квадратного кореня", url: "slides/1-2/tema3.html" },
-      { title: "Тема 1.2.4 — Моделі безпеки", desc: "KL-дивергенція, ε-безпека", url: "slides/1-2/tema4.html" }
+      { title: "Тема 2.1 — Теорія інформації", desc: "Ентропія Шеннона, взаємна інформація", url: "slides/1-2/tema1.html" },
+      { title: "Тема 2.2 — Ентропія та надлишковість", desc: "Типи надлишковості у цифрових носіях", url: "slides/1-2/tema2.html" },
+      { title: "Тема 2.3 — Статистичні характеристики", desc: "Марківські моделі, закон квадратного кореня", url: "slides/1-2/tema3.html" },
+      { title: "Тема 2.4 — Моделі безпеки", desc: "KL-дивергенція, ε-безпека", url: "slides/1-2/tema4.html" }
     ]
   },
   {
@@ -58,9 +58,9 @@ var lectures = [
     ],
     conspect: null,
     presentations: [
-      { title: "Тема 1.3.1 — Архітектура стегосистем", desc: "Компоненти, ролі, архітектурні патерни", url: "slides/1-3/tema1.html" },
-      { title: "Тема 1.3.2 — Вимоги до стегосистем", desc: "Функціональні та нефункціональні вимоги", url: "slides/1-3/tema2.html" },
-      { title: "Тема 1.3.3 — Методологія проектування", desc: "Етапи розробки, тестування, валідація", url: "slides/1-3/tema3.html" }
+      { title: "Тема 3.1 — Архітектура стегосистем", desc: "Компоненти, ролі, архітектурні патерни", url: "slides/1-3/tema1.html" },
+      { title: "Тема 3.2 — Вимоги до стегосистем", desc: "Функціональні та нефункціональні вимоги", url: "slides/1-3/tema2.html" },
+      { title: "Тема 3.3 — Методологія проектування", desc: "Етапи розробки, тестування, валідація", url: "slides/1-3/tema3.html" }
     ]
   },
   {
@@ -79,10 +79,10 @@ var lectures = [
     ],
     conspect: null,
     presentations: [
-      { title: "Тема 1.4.1 — Інформаційно-теоретичні обмеження", desc: "Пропускна здатність стегоканалу", url: "slides/1-4/tema1.html" },
-      { title: "Тема 1.4.2 — Статистичні межі виявлення", desc: "ROC-криві, парадокс досконалої стеганографії", url: "slides/1-4/tema2.html" },
-      { title: "Тема 1.4.3 — Обчислювальні обмеження", desc: "Асиметрія обчислювальних ресурсів", url: "slides/1-4/tema3.html" },
-      { title: "Тема 1.4.4 — Фундаментальні компроміси", desc: "Трикутник ємність-непомітність-стійкість", url: "slides/1-4/tema4.html" }
+      { title: "Тема 4.1 — Інформаційно-теоретичні обмеження", desc: "Пропускна здатність стегоканалу", url: "slides/1-4/tema1.html" },
+      { title: "Тема 4.2 — Статистичні межі виявлення", desc: "ROC-криві, парадокс досконалої стеганографії", url: "slides/1-4/tema2.html" },
+      { title: "Тема 4.3 — Обчислювальні обмеження", desc: "Асиметрія обчислювальних ресурсів", url: "slides/1-4/tema3.html" },
+      { title: "Тема 4.4 — Фундаментальні компроміси", desc: "Трикутник ємність-непомітність-стійкість", url: "slides/1-4/tema4.html" }
     ]
   },
   {
@@ -101,10 +101,10 @@ var lectures = [
     ],
     conspect: "lectures/konspekt5.html",
     presentations: [
-      { title: "Тема 1.5.1 — Основи LSB методу", desc: "Бітові площини, RGB канали", url: "slides/1-5/tema1.html" },
-      { title: "Тема 1.5.2 — Алгоритми вбудовування", desc: "Послідовний, псевдовипадковий, багатобітовий LSB", url: "slides/1-5/tema2.html" },
-      { title: "Тема 1.5.3 — Метрики якості", desc: "MSE, PSNR, SSIM", url: "slides/1-5/tema3.html" },
-      { title: "Тема 1.5.4 — Стегоаналіз LSB", desc: "Хі-квадрат атака, RS-аналіз", url: "slides/1-5/tema4.html" }
+      { title: "Тема 5.1 — Основи LSB методу", desc: "Бітові площини, RGB канали", url: "slides/1-5/tema1.html" },
+      { title: "Тема 5.2 — Алгоритми вбудовування", desc: "Послідовний, псевдовипадковий, багатобітовий LSB", url: "slides/1-5/tema2.html" },
+      { title: "Тема 5.3 — Метрики якості", desc: "MSE, PSNR, SSIM", url: "slides/1-5/tema3.html" },
+      { title: "Тема 5.4 — Стегоаналіз LSB", desc: "Хі-квадрат атака, RS-аналіз", url: "slides/1-5/tema4.html" }
     ]
   },
   {
@@ -123,10 +123,10 @@ var lectures = [
     ],
     conspect: null,
     presentations: [
-      { title: "Тема 1.6.1 — Методи на основі DCT", desc: "JSteg, OutGuess, F5", url: "slides/1-6/tema1.html" },
-      { title: "Тема 1.6.2 — Методи на основі DWT", desc: "Багатомасштабний аналіз, вейвлети", url: "slides/1-6/tema2.html" },
-      { title: "Тема 1.6.3 — Розширення спектру", desc: "DSSS, FHSS, кореляційне детектування", url: "slides/1-6/tema3.html" },
-      { title: "Тема 1.6.4 — Квантова індексна модуляція", desc: "QIM, DC-QIM, dither модуляція", url: "slides/1-6/tema4.html" }
+      { title: "Тема 6.1 — Методи на основі DCT", desc: "JSteg, OutGuess, F5", url: "slides/1-6/tema1.html" },
+      { title: "Тема 6.2 — Методи на основі DWT", desc: "Багатомасштабний аналіз, вейвлети", url: "slides/1-6/tema2.html" },
+      { title: "Тема 6.3 — Розширення спектру", desc: "DSSS, FHSS, кореляційне детектування", url: "slides/1-6/tema3.html" },
+      { title: "Тема 6.4 — Квантова індексна модуляція", desc: "QIM, DC-QIM, dither модуляція", url: "slides/1-6/tema4.html" }
     ]
   },
   {
@@ -145,10 +145,10 @@ var lectures = [
     ],
     conspect: "lectures/konspekt7.html",
     presentations: [
-      { title: "Тема 1.7.1 — HUGO", desc: "Аналіз локальної складності, алгоритм", url: "slides/1-7/tema1.html" },
-      { title: "Тема 1.7.2 — WOW", desc: "Вейвлет-орієнтовані вагові коефіцієнти", url: "slides/1-7/tema2.html" },
-      { title: "Тема 1.7.3 — S-UNIWARD", desc: "Багаторівнева вейвлет-декомпозиція", url: "slides/1-7/tema3.html" },
-      { title: "Тема 1.7.4 — Порівняльний аналіз", desc: "Метрики безпеки, швидкодія", url: "slides/1-7/tema4.html" }
+      { title: "Тема 7.1 — HUGO", desc: "Аналіз локальної складності, алгоритм", url: "slides/1-7/tema1.html" },
+      { title: "Тема 7.2 — WOW", desc: "Вейвлет-орієнтовані вагові коефіцієнти", url: "slides/1-7/tema2.html" },
+      { title: "Тема 7.3 — S-UNIWARD", desc: "Багаторівнева вейвлет-декомпозиція", url: "slides/1-7/tema3.html" },
+      { title: "Тема 7.4 — Порівняльний аналіз", desc: "Метрики безпеки, швидкодія", url: "slides/1-7/tema4.html" }
     ]
   },
   {
@@ -167,10 +167,10 @@ var lectures = [
     ],
     conspect: "lectures/konspekt8.html",
     presentations: [
-      { title: "Тема 1.8.1 — Візуальний стегоаналіз", desc: "Типи атак, моделі противника", url: "slides/1-8/tema1.html" },
-      { title: "Тема 1.8.2 — Стегоаналіз частотних методів", desc: "Калібраційні техніки, аномалії", url: "slides/1-8/tema2.html" },
-      { title: "Тема 1.8.3 — Розширені моделі ознак", desc: "SRM, SPAM, високорозмірні простори", url: "slides/1-8/tema3.html" },
-      { title: "Тема 1.8.4 — ML-класифікатори", desc: "Ensemble класифікатори, CNN-детектори", url: "slides/1-8/tema4.html" }
+      { title: "Тема 8.1 — Візуальний стегоаналіз", desc: "Типи атак, моделі противника", url: "slides/1-8/tema1.html" },
+      { title: "Тема 8.2 — Стегоаналіз частотних методів", desc: "Калібраційні техніки, аномалії", url: "slides/1-8/tema2.html" },
+      { title: "Тема 8.3 — Розширені моделі ознак", desc: "SRM, SPAM, високорозмірні простори", url: "slides/1-8/tema3.html" },
+      { title: "Тема 8.4 — ML-класифікатори", desc: "Ensemble класифікатори, CNN-детектори", url: "slides/1-8/tema4.html" }
     ]
   },
   {
@@ -189,10 +189,10 @@ var lectures = [
     ],
     conspect: "lectures/konspekt9.html",
     presentations: [
-      { title: "Тема 2.1.1 — LSB методи в аудіо", desc: "WAV/PCM, ємність, перцептивна якість", url: "slides/2-1/tema1.html" },
-      { title: "Тема 2.1.2 — Фазове кодування", desc: "FFT, фазові зсуви, синхронізація", url: "slides/2-1/tema2.html" },
-      { title: "Тема 2.1.3 — Розширення спектру", desc: "Псевдовипадкові послідовності, кореляція", url: "slides/2-1/tema3.html" },
-      { title: "Тема 2.1.4 — Echo Hiding", desc: "Ехо-сигнали, кепстральний аналіз", url: "slides/2-1/tema4.html" }
+      { title: "Тема 9.1 — LSB методи в аудіо", desc: "WAV/PCM, ємність, перцептивна якість", url: "slides/2-1/tema1.html" },
+      { title: "Тема 9.2 — Фазове кодування", desc: "FFT, фазові зсуви, синхронізація", url: "slides/2-1/tema2.html" },
+      { title: "Тема 9.3 — Розширення спектру", desc: "Псевдовипадкові послідовності, кореляція", url: "slides/2-1/tema3.html" },
+      { title: "Тема 9.4 — Echo Hiding", desc: "Ехо-сигнали, кепстральний аналіз", url: "slides/2-1/tema4.html" }
     ]
   },
   {
@@ -212,11 +212,11 @@ var lectures = [
     ],
     conspect: "lectures/konspekt10.html",
     presentations: [
-      { title: "Тема 2.2.1 — Основи відео стеганографії", desc: "Формати, кадри, надмірність", url: "slides/2-2/tema1.html" },
-      { title: "Тема 2.2.2 — Просторові методи", desc: "LSB, адаптивні методи, міжкадрова різниця", url: "slides/2-2/tema2.html" },
-      { title: "Тема 2.2.3 — Темпоральні методи", desc: "Вектори руху, GOP структура", url: "slides/2-2/tema3.html" },
-      { title: "Тема 2.2.4 — Стиснуте відео", desc: "H.264/H.265, DCT коефіцієнти", url: "slides/2-2/tema4.html" },
-      { title: "Тема 2.2.5 — Практичні приклади", desc: "Розрахунки, кейси, інструменти", url: "slides/2-2/tema5.html" }
+      { title: "Тема 10.1 — Основи відео стеганографії", desc: "Формати, кадри, надмірність", url: "slides/2-2/tema1.html" },
+      { title: "Тема 10.2 — Просторові методи", desc: "LSB, адаптивні методи, міжкадрова різниця", url: "slides/2-2/tema2.html" },
+      { title: "Тема 10.3 — Темпоральні методи", desc: "Вектори руху, GOP структура", url: "slides/2-2/tema3.html" },
+      { title: "Тема 10.4 — Стиснуте відео", desc: "H.264/H.265, DCT коефіцієнти", url: "slides/2-2/tema4.html" },
+      { title: "Тема 10.5 — Практичні приклади", desc: "Розрахунки, кейси, інструменти", url: "slides/2-2/tema5.html" }
     ]
   },
   {
@@ -235,10 +235,10 @@ var lectures = [
     ],
     conspect: "lectures/konspekt11.html",
     presentations: [
-      { title: "Тема 2.3.1 — Основи мережевої стеганографії", desc: "Приховані канали, класифікація, OSI", url: "slides/2-3/tema1.html" },
-      { title: "Тема 2.3.2 — Протокольні методи", desc: "TCP/IP, DNS tunneling, HTTP, ICMP", url: "slides/2-3/tema2.html" },
-      { title: "Тема 2.3.3 — Часові канали", desc: "IPD кодування, джиттер, синхронізація", url: "slides/2-3/tema3.html" },
-      { title: "Тема 2.3.4 — Виявлення та протидія", desc: "Детекція, аналіз трафіку, нормалізація", url: "slides/2-3/tema4.html" }
+      { title: "Тема 11.1 — Основи мережевої стеганографії", desc: "Приховані канали, класифікація, OSI", url: "slides/2-3/tema1.html" },
+      { title: "Тема 11.2 — Протокольні методи", desc: "TCP/IP, DNS tunneling, HTTP, ICMP", url: "slides/2-3/tema2.html" },
+      { title: "Тема 11.3 — Часові канали", desc: "IPD кодування, джиттер, синхронізація", url: "slides/2-3/tema3.html" },
+      { title: "Тема 11.4 — Виявлення та протидія", desc: "Детекція, аналіз трафіку, нормалізація", url: "slides/2-3/tema4.html" }
     ]
   },
   {
@@ -257,10 +257,10 @@ var lectures = [
     ],
     conspect: "lectures/konspekt12.html",
     presentations: [
-      { title: "Тема 2.4.1 — Основи текстової стеганографії", desc: "Історичні методи, особливості", url: "slides/2-4/tema1.html" },
-      { title: "Тема 2.4.2 — Форматні методи", desc: "Unicode zero-width, HTML/CSS стеганографія", url: "slides/2-4/tema2.html" },
-      { title: "Тема 2.4.3 — Лінгвістичні методи", desc: "Синоніми, синтаксис, NLG", url: "slides/2-4/tema3.html" },
-      { title: "Тема 2.4.4 — Стегоаналіз тексту", desc: "Статистичний аналіз, ML-детектори", url: "slides/2-4/tema4.html" }
+      { title: "Тема 12.1 — Основи текстової стеганографії", desc: "Історичні методи, особливості", url: "slides/2-4/tema1.html" },
+      { title: "Тема 12.2 — Форматні методи", desc: "Unicode zero-width, HTML/CSS стеганографія", url: "slides/2-4/tema2.html" },
+      { title: "Тема 12.3 — Лінгвістичні методи", desc: "Синоніми, синтаксис, NLG", url: "slides/2-4/tema3.html" },
+      { title: "Тема 12.4 — Стегоаналіз тексту", desc: "Статистичний аналіз, ML-детектори", url: "slides/2-4/tema4.html" }
     ]
   },
   {
@@ -302,12 +302,9 @@ var lectures = [
 ];
 
 (function () {
-  var params = new URLSearchParams(location.search);
-  var id = parseInt(params.get('id'), 10) || 1;
-  var lecture = null;
-  for (var i = 0; i < lectures.length; i++) {
-    if (lectures[i].id === id) { lecture = lectures[i]; break; }
-  }
+  const params = new URLSearchParams(location.search);
+  const id = parseInt(params.get('id'), 10) || 1;
+  const lecture = lectures.find(function (l) { return l.id === id; });
 
   if (!lecture) {
     document.getElementById('lecture-title').textContent = 'Лекцію не знайдено';
@@ -317,8 +314,8 @@ var lectures = [
     document.getElementById('lecture-overview').style.display = 'none';
     document.getElementById('lecture-materials').style.display = 'none';
     document.getElementById('lecture-presentations').style.display = 'none';
-    var prevBtn = document.getElementById('nav-prev');
-    var nextBtn = document.getElementById('nav-next');
+    const prevBtn = document.getElementById('nav-prev');
+    const nextBtn = document.getElementById('nav-next');
     prevBtn.classList.add('disabled');
     prevBtn.removeAttribute('href');
     nextBtn.classList.add('disabled');
@@ -326,18 +323,18 @@ var lectures = [
     return;
   }
 
-  var isLocked = lecture.badge === 'locked';
+  const isLocked = lecture.badge === 'locked';
 
   document.title = 'Лекція ' + lecture.id + ' — ДКК: Стеганографія';
   document.getElementById('lecture-badge-top').textContent = 'Лекція ' + lecture.id + ' з ' + lectures.length;
   document.getElementById('lecture-title').textContent = lecture.title;
 
-  var infoEl = document.getElementById('lecture-info');
-  var durationSpan = document.createElement('span');
+  const infoEl = document.getElementById('lecture-info');
+  const durationSpan = document.createElement('span');
   durationSpan.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' + lecture.duration;
   infoEl.appendChild(durationSpan);
 
-  var badgeSpan = document.createElement('span');
+  const badgeSpan = document.createElement('span');
   if (isLocked) {
     badgeSpan.className = 'badge badge-locked';
     badgeSpan.textContent = 'Скоро';
@@ -348,8 +345,7 @@ var lectures = [
   infoEl.appendChild(badgeSpan);
 
   if (isLocked) {
-    var lockedSection = document.getElementById('lecture-locked');
-    lockedSection.style.display = 'block';
+    document.getElementById('lecture-locked').style.display = 'block';
     document.getElementById('lecture-locked-desc').textContent = lecture.description;
     document.getElementById('lecture-overview').style.display = 'none';
     document.getElementById('lecture-materials').style.display = 'none';
@@ -357,31 +353,31 @@ var lectures = [
   } else {
     document.getElementById('lecture-locked').style.display = 'none';
 
-    var overviewSection = document.getElementById('lecture-overview');
-    var overviewH2 = document.createElement('h2');
+    const overviewSection = document.getElementById('lecture-overview');
+    const overviewH2 = document.createElement('h2');
     overviewH2.textContent = 'Огляд лекції';
     overviewSection.appendChild(overviewH2);
 
-    var overviewP = document.createElement('p');
+    const overviewP = document.createElement('p');
     overviewP.textContent = lecture.overview;
     overviewSection.appendChild(overviewP);
 
     if (lecture.overviewExtra) {
-      var extraP = document.createElement('p');
+      const extraP = document.createElement('p');
       extraP.textContent = lecture.overviewExtra;
       overviewSection.appendChild(extraP);
     }
 
     if (lecture.topics && lecture.topics.length) {
-      var topicsH3 = document.createElement('h3');
+      const topicsH3 = document.createElement('h3');
       topicsH3.textContent = 'Теми лекції';
       overviewSection.appendChild(topicsH3);
 
-      var ol = document.createElement('ol');
-      for (var t = 0; t < lecture.topics.length; t++) {
-        var topic = lecture.topics[t];
-        var li = document.createElement('li');
-        var strong = document.createElement('strong');
+      const ol = document.createElement('ol');
+      for (let t = 0; t < lecture.topics.length; t++) {
+        const topic = lecture.topics[t];
+        const li = document.createElement('li');
+        const strong = document.createElement('strong');
         strong.textContent = topic.title;
         li.appendChild(strong);
         li.appendChild(document.createTextNode(' — ' + topic.desc));
@@ -390,16 +386,16 @@ var lectures = [
       overviewSection.appendChild(ol);
     }
 
-    var materialsSection = document.getElementById('lecture-materials');
+    const materialsSection = document.getElementById('lecture-materials');
     if (lecture.conspect) {
-      var matH2 = document.createElement('h2');
+      const matH2 = document.createElement('h2');
       matH2.textContent = 'Матеріали лекції';
       materialsSection.appendChild(matH2);
 
-      var matList = document.createElement('div');
+      const matList = document.createElement('div');
       matList.className = 'lecture-materials';
 
-      var matLink = document.createElement('a');
+      const matLink = document.createElement('a');
       matLink.href = lecture.conspect;
       matLink.className = 'material-item';
       matLink.innerHTML =
@@ -415,18 +411,18 @@ var lectures = [
       materialsSection.style.display = 'none';
     }
 
-    var presSection = document.getElementById('lecture-presentations');
+    const presSection = document.getElementById('lecture-presentations');
     if (lecture.presentations && lecture.presentations.length) {
-      var presH2 = document.createElement('h2');
+      const presH2 = document.createElement('h2');
       presH2.textContent = 'Презентації';
       presSection.appendChild(presH2);
 
-      var presList = document.createElement('div');
+      const presList = document.createElement('div');
       presList.className = 'lecture-materials';
 
-      for (var p = 0; p < lecture.presentations.length; p++) {
-        var pres = lecture.presentations[p];
-        var presLink = document.createElement('a');
+      for (let p = 0; p < lecture.presentations.length; p++) {
+        const pres = lecture.presentations[p];
+        const presLink = document.createElement('a');
         presLink.href = pres.url;
         presLink.target = '_blank';
         presLink.className = 'material-item';
@@ -445,8 +441,8 @@ var lectures = [
     }
   }
 
-  var prevBtn = document.getElementById('nav-prev');
-  var nextBtn = document.getElementById('nav-next');
+  const prevBtn = document.getElementById('nav-prev');
+  const nextBtn = document.getElementById('nav-next');
 
   if (id <= 1) {
     prevBtn.classList.add('disabled');
