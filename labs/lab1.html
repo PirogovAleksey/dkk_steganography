@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0ea5e9">
+  <title>Лабораторна №1: LSB стеганографія — Основи стеганографії</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}</script>
+</head>
+<body>
+
+  <aside>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        Основи<br>стеганографії
+        <span>онлайн-курс</span>
+      </div>
+    </div>
+    <nav>
+      <a href="../index.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></span>
+        Лекції
+      </a>
+      <a href="../practicals.html" class="active">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+        Практичні
+      </a>
+      <a href="../tests.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        Тести
+      </a>
+      <a href="../materials.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span>
+        Матеріали
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span id="theme-label">Темна тема</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="lecture-nav-top">
+      <a href="../practicals.html" class="back-link">&larr; Назад до практичних</a>
+      <span class="lecture-badge">Лабораторна 1</span>
+    </div>
+
+    <article class="lecture-content">
+
+    <!-- Цілі роботи -->
+    <section class="task-box">
+        <h2>🎯 Цілі лабораторної роботи</h2>
+        <ul>
+            <li>Зрозуміти принцип роботи методу найменшого значущого біта (LSB)</li>
+            <li>Реалізувати базовий LSB кодувальник та декодувальник на Python</li>
+            <li>Реалізувати покращений LSB з використанням секретного ключа (PRNG)</li>
+            <li>Обчислити та проаналізувати метрики якості стего-зображень: PSNR та SSIM</li>
+            <li>Дослідити вплив об'єму вбудованих даних на якість зображення</li>
+        </ul>
+    </section>
+
+    <!-- Теоретична частина -->
+    <section>
+        <h2>📚 Теоретична частина</h2>
+
+        <div class="tabs-container">
+            <div class="tabs-nav">
+                <button class="tab-button active" onclick="switchTab(event, 'lsb-principle')">
+                    🔢 LSB принцип
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'pixel-repr')">
+                    🖼️ Пікселі та біти
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'key-based')">
+                    🔑 Ключ-базований LSB
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'quality-metrics')">
+                    📊 Метрики якості
+                </button>
+            </div>
+
+            <!-- LSB принцип -->
+            <div class="tab-content active" id="lsb-principle">
+                <h3>Метод найменшого значущого біта</h3>
+
+                <p>
+                    LSB (Least Significant Bit) — найпростіший і найпоширеніший метод стеганографії
+                    зображень. Суть полягає в заміні молодшого біта кожного пікселя на біт
+                    прихованого повідомлення.
+                </p>
+
+                <div class="formula-box">
+                    Значення пікселя: P = b₇b₆b₅b₄b₃b₂b₁b₀
+
+                    LSB вбудовування:
+                    P' = (P & 0xFE) | m
+
+                    де m ∈ {0, 1} — біт повідомлення
+                </div>
+
+                <p><strong>Приклад:</strong></p>
+                <ul>
+                    <li>Піксель = 156 = <code>10011100</code></li>
+                    <li>Біт повідомлення = 1</li>
+                    <li>Результат = <code>10011101</code> = 157</li>
+                    <li>Зміна: ±1 (непомітна для ока)</li>
+                </ul>
+
+                <p><strong>Ємність вбудовування:</strong></p>
+                <div class="formula-box">
+                    C = W × H × K біт
+
+                    де W — ширина, H — висота, K — кількість каналів
+                    Для RGB 512×512: C = 512 × 512 × 3 = 786 432 біт ≈ 96 КБ
+                </div>
+            </div>
+
+            <!-- Пікселі та біти -->
+            <div class="tab-content" id="pixel-repr">
+                <h3>Представлення зображень у комп'ютері</h3>
+
+                <p>
+                    Цифрове зображення — це двовимірний масив пікселів. Кожен піксель зберігає
+                    інтенсивність кольору у вигляді цілого числа від 0 до 255 (8 біт).
+                </p>
+
+                <h4>Відтінки сірого (Grayscale)</h4>
+                <ul>
+                    <li>1 канал, значення 0–255</li>
+                    <li>0 = чорний, 255 = білий</li>
+                    <li>Ємність: W × H біт (1 біт на піксель)</li>
+                </ul>
+
+                <h4>Кольорове зображення (RGB)</h4>
+                <ul>
+                    <li>3 канали: червоний (R), зелений (G), синій (B)</li>
+                    <li>Кожен канал: 0–255</li>
+                    <li>Ємність: W × H × 3 біт (3 біти на піксель)</li>
+                </ul>
+
+                <div class="formula-box">
+                    Піксель RGB: (R, G, B) = (142, 200, 87)
+
+                    У двійковій формі:
+                    R = 10001110
+                    G = 11001000
+                    B = 01010111
+
+                    LSB кожного каналу → 3 біти повідомлення на піксель
+                </div>
+
+                <h4>Бітове маскування</h4>
+                <ul>
+                    <li><code>P & 0xFE</code> — обнулити LSB (маска <code>11111110</code>)</li>
+                    <li><code>P | 0x01</code> — встановити LSB у 1</li>
+                    <li><code>P & 0x01</code> — витягнути LSB</li>
+                    <li><code>P ^ 0x01</code> — інвертувати LSB</li>
+                </ul>
+            </div>
+
+            <!-- Ключ-базований LSB -->
+            <div class="tab-content" id="key-based">
+                <h3>LSB з секретним ключем (PRNG)</h3>
+
+                <p>
+                    Базовий LSB вбудовує дані послідовно, що робить його вразливим.
+                    Покращений варіант використовує генератор псевдовипадкових чисел (PRNG)
+                    для вибору позицій вбудовування.
+                </p>
+
+                <div class="formula-box">
+                    seed = hash(key)
+                    PRNG(seed) → перестановка індексів пікселів
+
+                    Вбудовування: message[i] → pixel[permutation[i]]
+                    Витягування: pixel[permutation[i]] → message[i]
+                </div>
+
+                <p><strong>Переваги:</strong></p>
+                <ul>
+                    <li>Біти розподіляються рівномірно по всьому зображенню</li>
+                    <li>Без ключа неможливо відновити порядок бітів</li>
+                    <li>Ускладнює візуальний та статистичний стеганоаналіз</li>
+                    <li>Кожен ключ створює унікальний розподіл</li>
+                </ul>
+
+                <p><strong>Алгоритм:</strong></p>
+                <ol>
+                    <li>Ініціалізувати PRNG з секретним ключем (seed)</li>
+                    <li>Згенерувати перестановку індексів пікселів</li>
+                    <li>Вбудовувати біти повідомлення у пікселі за перестановкою</li>
+                    <li>Для витягування — відтворити ту ж перестановку з тим же ключем</li>
+                </ol>
+            </div>
+
+            <!-- Метрики якості -->
+            <div class="tab-content" id="quality-metrics">
+                <h3>Метрики якості стего-зображень</h3>
+
+                <h4>PSNR (Peak Signal-to-Noise Ratio)</h4>
+                <p>
+                    Вимірює відношення максимально можливої потужності сигналу до потужності шуму.
+                    Чим вище PSNR, тим менше спотворень.
+                </p>
+
+                <div class="formula-box">
+                    MSE = (1 / M·N) · Σᵢ Σⱼ [I(i,j) - I'(i,j)]²
+
+                    PSNR = 10 · log₁₀(MAX² / MSE) дБ
+
+                    де MAX = 255 для 8-бітних зображень
+                </div>
+
+                <p><strong>Інтерпретація:</strong></p>
+                <ul>
+                    <li>PSNR &gt; 40 дБ — відмінна якість, зміни непомітні</li>
+                    <li>30–40 дБ — хороша якість</li>
+                    <li>20–30 дБ — задовільна якість, помітні артефакти</li>
+                    <li>&lt; 20 дБ — погана якість</li>
+                </ul>
+
+                <h4>SSIM (Structural Similarity Index)</h4>
+                <p>
+                    Оцінює структурну подібність зображень, враховуючи яскравість, контраст та структуру.
+                    Ближче до людського сприйняття ніж PSNR.
+                </p>
+
+                <div class="formula-box">
+                    SSIM(x,y) = [l(x,y)]^α · [c(x,y)]^β · [s(x,y)]^γ
+
+                    l(x,y) = (2μₓμᵧ + C₁) / (μₓ² + μᵧ² + C₁)      — яскравість
+                    c(x,y) = (2σₓσᵧ + C₂) / (σₓ² + σᵧ² + C₂)      — контраст
+                    s(x,y) = (σₓᵧ + C₃) / (σₓσᵧ + C₃)              — структура
+                </div>
+
+                <p><strong>Інтерпретація:</strong></p>
+                <ul>
+                    <li>SSIM = 1.0 — ідентичні зображення</li>
+                    <li>SSIM &gt; 0.99 — зміни непомітні</li>
+                    <li>SSIM &gt; 0.95 — хороша якість</li>
+                    <li>SSIM &lt; 0.90 — помітні спотворення</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Практична частина -->
+    <section>
+        <h2>💻 Практична частина</h2>
+
+        <!-- Завдання 1 -->
+        <div class="task-box">
+            <h3><span class="step-number">1</span>Базовий LSB кодувальник/декодувальник</h3>
+
+            <h4>Допоміжні функції:</h4>
+            <pre class="python"><code>import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
+def text_to_binary(text):
+    """Перетворює текст у бінарний рядок (UTF-8)"""
+    binary = ''.join(format(byte, '08b') for byte in text.encode('utf-8'))
+    return binary
+
+def binary_to_text(binary_string):
+    """Перетворює бінарний рядок назад у текст (UTF-8)"""
+    # Доповнюємо до кратного 8
+    while len(binary_string) % 8 != 0:
+        binary_string += '0'
+    bytes_list = [int(binary_string[i:i+8], 2) for i in range(0, len(binary_string), 8)]
+    return bytes(bytes_list).decode('utf-8', errors='replace')
+
+# Тест
+text = "Привіт, стеганографіє!"
+binary = text_to_binary(text)
+print(f"Текст: {text}")
+print(f"Довжина тексту (байт): {len(text.encode('utf-8'))}")
+print(f"Бінарне представлення ({len(binary)} біт): {binary[:40]}...")
+print(f"Відновлення: {binary_to_text(binary)}")</code></pre>
+
+            <h4>LSB Encoder (вбудовування):</h4>
+            <pre class="python"><code>def lsb_encode(image_path, message, output_path):
+    """
+    Вбудовує текстове повідомлення у зображення методом LSB.
+
+    Parameters:
+    -----------
+    image_path : str — шлях до вхідного зображення
+    message : str — повідомлення для приховування
+    output_path : str — шлях для збереження стего-зображення
+
+    Returns:
+    --------
+    capacity : int — максимальна ємність у бітах
+    used : int — використано бітів
+    """
+    # Завантажуємо зображення
+    img = Image.open(image_path)
+    img_array = np.array(img, dtype=np.uint8)
+
+    # Перетворюємо повідомлення у біти
+    message_binary = text_to_binary(message)
+
+    # Додаємо 32-бітний заголовок з довжиною повідомлення
+    message_length = len(message_binary)
+    length_header = format(message_length, '032b')
+    full_payload = length_header + message_binary
+
+    # Перевіряємо ємність
+    if len(img_array.shape) == 3:
+        h, w, c = img_array.shape
+        capacity = h * w * c
+    else:
+        h, w = img_array.shape
+        capacity = h * w
+
+    if len(full_payload) > capacity:
+        raise ValueError(
+            f"Повідомлення занадто довге! "
+            f"Потрібно: {len(full_payload)} біт, доступно: {capacity} біт"
+        )
+
+    # Вбудовуємо біти у LSB
+    flat = img_array.flatten()
+    for i, bit in enumerate(full_payload):
+        flat[i] = (flat[i] & 0xFE) | int(bit)
+
+    # Зберігаємо результат
+    stego_array = flat.reshape(img_array.shape)
+    stego_img = Image.fromarray(stego_array)
+    stego_img.save(output_path)
+
+    print(f"✅ Повідомлення вбудовано!")
+    print(f"   Ємність: {capacity} біт ({capacity // 8} байт)")
+    print(f"   Використано: {len(full_payload)} біт ({len(full_payload) / capacity:.2%})")
+
+    return capacity, len(full_payload)
+
+# Тестуємо
+# lsb_encode("original.png", "Привіт, це секретне повідомлення!", "stego.png")</code></pre>
+
+            <h4>LSB Decoder (витягування):</h4>
+            <pre class="python"><code>def lsb_decode(image_path):
+    """
+    Витягує приховане повідомлення із стего-зображення.
+
+    Parameters:
+    -----------
+    image_path : str — шлях до стего-зображення
+
+    Returns:
+    --------
+    message : str — витягнуте повідомлення
+    """
+    # Завантажуємо зображення
+    img = Image.open(image_path)
+    img_array = np.array(img, dtype=np.uint8)
+    flat = img_array.flatten()
+
+    # Витягуємо заголовок (32 біти = довжина повідомлення)
+    header_bits = ''.join(str(flat[i] & 1) for i in range(32))
+    message_length = int(header_bits, 2)
+
+    print(f"📖 Довжина повідомлення: {message_length} біт")
+
+    if message_length <= 0 or message_length > len(flat) - 32:
+        return "[Помилка: некоректна довжина повідомлення]"
+
+    # Витягуємо біти повідомлення
+    message_bits = ''.join(str(flat[32 + i] & 1) for i in range(message_length))
+
+    # Перетворюємо у текст
+    message = binary_to_text(message_bits)
+    return message
+
+# Тестуємо
+# extracted = lsb_decode("stego.png")
+# print(f"Витягнуте повідомлення: {extracted}")</code></pre>
+
+            <h4>Повний тест:</h4>
+            <pre class="python"><code>def test_basic_lsb():
+    """Повний тест базового LSB: вбудовування → витягування"""
+    # Створюємо тестове зображення (або завантажте своє)
+    test_image = np.random.randint(50, 200, (256, 256, 3), dtype=np.uint8)
+    Image.fromarray(test_image).save("test_original.png")
+
+    # Повідомлення
+    message = "Привіт! Це секретне повідомлення, вбудоване методом LSB."
+    print(f"Оригінал: '{message}'")
+
+    # Вбудовування
+    lsb_encode("test_original.png", message, "test_stego.png")
+
+    # Витягування
+    extracted = lsb_decode("test_stego.png")
+    print(f"Витягнуто: '{extracted}'")
+
+    # Перевірка
+    if extracted == message:
+        print("\n✅ Тест пройдено! Повідомлення співпадають.")
+    else:
+        print("\n❌ Тест не пройдено! Повідомлення відрізняються.")
+
+    # Візуалізація
+    original = np.array(Image.open("test_original.png"))
+    stego = np.array(Image.open("test_stego.png"))
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+    axes[0].imshow(original)
+    axes[0].set_title("Оригінал")
+    axes[0].axis('off')
+
+    axes[1].imshow(stego)
+    axes[1].set_title("Стего-зображення")
+    axes[1].axis('off')
+
+    # Різниця (підсилена)
+    diff = np.abs(original.astype(int) - stego.astype(int))
+    axes[2].imshow(diff * 50, cmap='hot')
+    axes[2].set_title("Різниця (×50)")
+    axes[2].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+test_basic_lsb()</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Очікувані результати:</h4>
+                <ul>
+                    <li>Повідомлення коректно витягується з стего-зображення</li>
+                    <li>Візуально оригінал та стего-зображення нерозрізнювані</li>
+                    <li>На карті різниці видно лише зони вбудовування (початок зображення)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Завдання 2 -->
+        <div class="task-box">
+            <h3><span class="step-number">2</span>LSB з секретним ключем (Key-based LSB)</h3>
+
+            <h4>Генерація перестановки на основі ключа:</h4>
+            <pre class="python"><code>import hashlib
+
+def generate_permutation(key, size):
+    """
+    Генерує псевдовипадкову перестановку індексів на основі ключа.
+
+    Parameters:
+    -----------
+    key : str — секретний ключ
+    size : int — кількість індексів
+
+    Returns:
+    --------
+    permutation : numpy array — перестановка індексів
+    """
+    # Використовуємо хеш ключа як seed для PRNG
+    seed = int(hashlib.sha256(key.encode()).hexdigest(), 16) % (2**32)
+    rng = np.random.RandomState(seed)
+
+    # Генеруємо перестановку
+    permutation = np.arange(size)
+    rng.shuffle(permutation)
+
+    return permutation</code></pre>
+
+            <h4>Key-based LSB Encoder:</h4>
+            <pre class="python"><code>def lsb_encode_keyed(image_path, message, key, output_path):
+    """
+    Вбудовує повідомлення з використанням секретного ключа.
+    Позиції вбудовування визначаються PRNG(key).
+
+    Parameters:
+    -----------
+    image_path : str — шлях до зображення
+    message : str — повідомлення
+    key : str — секретний ключ
+    output_path : str — шлях для збереження
+    """
+    img = Image.open(image_path)
+    img_array = np.array(img, dtype=np.uint8)
+    flat = img_array.flatten()
+
+    # Підготовка payload
+    message_binary = text_to_binary(message)
+    length_header = format(len(message_binary), '032b')
+    full_payload = length_header + message_binary
+
+    # Перевірка ємності
+    if len(full_payload) > len(flat):
+        raise ValueError("Повідомлення занадто довге!")
+
+    # Генеруємо перестановку
+    permutation = generate_permutation(key, len(flat))
+
+    # Вбудовуємо у псевдовипадковому порядку
+    for i, bit in enumerate(full_payload):
+        pos = permutation[i]
+        flat[pos] = (flat[pos] & 0xFE) | int(bit)
+
+    # Зберігаємо
+    stego_array = flat.reshape(img_array.shape)
+    Image.fromarray(stego_array).save(output_path)
+
+    print(f"🔑 Повідомлення вбудовано з ключем!")
+    print(f"   Використано позицій: {len(full_payload)} з {len(flat)}")
+
+    return len(full_payload)</code></pre>
+
+            <h4>Key-based LSB Decoder:</h4>
+            <pre class="python"><code>def lsb_decode_keyed(image_path, key):
+    """
+    Витягує повідомлення з використанням секретного ключа.
+
+    Parameters:
+    -----------
+    image_path : str — шлях до стего-зображення
+    key : str — секретний ключ (повинен збігатися з використаним при вбудовуванні)
+
+    Returns:
+    --------
+    message : str — витягнуте повідомлення
+    """
+    img = Image.open(image_path)
+    img_array = np.array(img, dtype=np.uint8)
+    flat = img_array.flatten()
+
+    # Генеруємо ту ж перестановку
+    permutation = generate_permutation(key, len(flat))
+
+    # Витягуємо заголовок
+    header_bits = ''.join(str(flat[permutation[i]] & 1) for i in range(32))
+    message_length = int(header_bits, 2)
+
+    if message_length <= 0 or message_length > len(flat) - 32:
+        return "[Помилка: невірний ключ або пошкоджені дані]"
+
+    # Витягуємо повідомлення
+    message_bits = ''.join(
+        str(flat[permutation[32 + i]] & 1) for i in range(message_length)
+    )
+
+    return binary_to_text(message_bits)</code></pre>
+
+            <h4>Тестування та порівняння:</h4>
+            <pre class="python"><code>def test_keyed_lsb():
+    """Тест key-based LSB: правильний та неправильний ключ"""
+    # Створюємо тестове зображення
+    test_image = np.random.randint(50, 200, (256, 256, 3), dtype=np.uint8)
+    Image.fromarray(test_image).save("test_original.png")
+
+    message = "Цей текст захищений ключем!"
+    correct_key = "my_secret_key_2026"
+    wrong_key = "wrong_key"
+
+    # Вбудовуємо з ключем
+    lsb_encode_keyed("test_original.png", message, correct_key, "test_keyed.png")
+
+    # Витягуємо з правильним ключем
+    result_correct = lsb_decode_keyed("test_keyed.png", correct_key)
+    print(f"\n🔑 Правильний ключ: '{result_correct}'")
+
+    # Витягуємо з неправильним ключем
+    result_wrong = lsb_decode_keyed("test_keyed.png", wrong_key)
+    print(f"🔒 Неправильний ключ: '{result_wrong}'")
+
+    # Порівняння розподілу змін: послідовний vs key-based
+    original = np.array(Image.open("test_original.png"))
+    lsb_encode("test_original.png", message, "test_sequential.png")
+    sequential = np.array(Image.open("test_sequential.png"))
+    keyed = np.array(Image.open("test_keyed.png"))
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+    diff_seq = np.any(original != sequential, axis=2).astype(float)
+    diff_key = np.any(original != keyed, axis=2).astype(float)
+
+    axes[0].imshow(original)
+    axes[0].set_title("Оригінал")
+    axes[0].axis('off')
+
+    axes[1].imshow(diff_seq, cmap='Reds')
+    axes[1].set_title("Послідовний LSB\n(зміни зверху)")
+    axes[1].axis('off')
+
+    axes[2].imshow(diff_key, cmap='Reds')
+    axes[2].set_title("Key-based LSB\n(зміни розподілені)")
+    axes[2].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+test_keyed_lsb()</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Очікувані результати:</h4>
+                <ul>
+                    <li>З правильним ключем повідомлення витягується коректно</li>
+                    <li>З неправильним ключем — нечитабельний текст або помилка</li>
+                    <li>На карті змін: послідовний LSB — блок зверху, key-based — рівномірний шум</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Завдання 3 -->
+        <div class="task-box">
+            <h3><span class="step-number">3</span>Метрики якості: PSNR та SSIM</h3>
+
+            <h4>Реалізація PSNR:</h4>
+            <pre class="python"><code>def calculate_mse(original, modified):
+    """Обчислює середньоквадратичну помилку (MSE)"""
+    return np.mean((original.astype(float) - modified.astype(float)) ** 2)
+
+def calculate_psnr(original, modified):
+    """
+    Обчислює PSNR між оригіналом та модифікованим зображенням.
+
+    Parameters:
+    -----------
+    original : numpy array — оригінальне зображення
+    modified : numpy array — модифіковане зображення
+
+    Returns:
+    --------
+    psnr : float — значення PSNR у дБ
+    """
+    mse = calculate_mse(original, modified)
+    if mse == 0:
+        return float('inf')  # Ідентичні зображення
+
+    max_pixel = 255.0
+    psnr = 10 * np.log10(max_pixel ** 2 / mse)
+    return psnr</code></pre>
+
+            <h4>Реалізація SSIM:</h4>
+            <pre class="python"><code>def calculate_ssim(original, modified, window_size=11):
+    """
+    Обчислює SSIM між двома зображеннями.
+
+    Parameters:
+    -----------
+    original : numpy array — оригінальне зображення (grayscale)
+    modified : numpy array — модифіковане зображення (grayscale)
+    window_size : int — розмір вікна для обчислення
+
+    Returns:
+    --------
+    ssim : float — значення SSIM (від -1 до 1)
+    """
+    C1 = (0.01 * 255) ** 2  # Стабілізуюча константа
+    C2 = (0.03 * 255) ** 2
+
+    orig = original.astype(float)
+    mod = modified.astype(float)
+
+    # Ковзне середнє (спрощений варіант без гаусового ядра)
+    from scipy.ndimage import uniform_filter
+
+    mu_orig = uniform_filter(orig, window_size)
+    mu_mod = uniform_filter(mod, window_size)
+
+    sigma_orig_sq = uniform_filter(orig ** 2, window_size) - mu_orig ** 2
+    sigma_mod_sq = uniform_filter(mod ** 2, window_size) - mu_mod ** 2
+    sigma_cross = uniform_filter(orig * mod, window_size) - mu_orig * mu_mod
+
+    # SSIM формула
+    numerator = (2 * mu_orig * mu_mod + C1) * (2 * sigma_cross + C2)
+    denominator = (mu_orig ** 2 + mu_mod ** 2 + C1) * (sigma_orig_sq + sigma_mod_sq + C2)
+
+    ssim_map = numerator / denominator
+    return np.mean(ssim_map)</code></pre>
+
+            <h4>Порівняльний аналіз якості:</h4>
+            <pre class="python"><code>def analyze_quality(image_path, payloads):
+    """
+    Аналізує якість стего-зображень при різних об'ємах вбудовування.
+
+    Parameters:
+    -----------
+    image_path : str — шлях до зображення
+    payloads : list — список відсотків заповнення (0.01, 0.1, 0.25, 0.5, 1.0)
+    """
+    original = np.array(Image.open(image_path))
+
+    if len(original.shape) == 3:
+        capacity = original.shape[0] * original.shape[1] * original.shape[2]
+    else:
+        capacity = original.shape[0] * original.shape[1]
+
+    results = []
+
+    for payload_ratio in payloads:
+        # Генеруємо випадкові біти потрібного розміру
+        num_bits = int(capacity * payload_ratio)
+        random_bits = np.random.randint(0, 2, num_bits)
+
+        # Вбудовуємо
+        flat = original.flatten().copy()
+        for i in range(num_bits):
+            flat[i] = (flat[i] & 0xFE) | random_bits[i]
+        stego = flat.reshape(original.shape)
+
+        # Обчислюємо метрики
+        psnr = calculate_psnr(original, stego)
+
+        # SSIM для grayscale
+        if len(original.shape) == 3:
+            from PIL import Image as PILImage
+            orig_gray = np.array(PILImage.fromarray(original).convert('L'))
+            stego_gray = np.array(PILImage.fromarray(stego.astype(np.uint8)).convert('L'))
+        else:
+            orig_gray = original
+            stego_gray = stego
+
+        ssim = calculate_ssim(orig_gray, stego_gray)
+
+        results.append({
+            'payload': payload_ratio,
+            'bits': num_bits,
+            'psnr': psnr,
+            'ssim': ssim
+        })
+
+        print(f"Payload {payload_ratio:6.1%}: PSNR = {psnr:.2f} дБ, SSIM = {ssim:.6f}")
+
+    return results
+
+def plot_quality_metrics(results):
+    """Візуалізує залежність якості від об'єму payload"""
+    payloads = [r['payload'] * 100 for r in results]
+    psnrs = [r['psnr'] for r in results]
+    ssims = [r['ssim'] for r in results]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+    # PSNR
+    ax1.plot(payloads, psnrs, 'b-o', linewidth=2, markersize=8)
+    ax1.axhline(y=40, color='g', linestyle='--', alpha=0.5, label='Відмінна якість (40 дБ)')
+    ax1.axhline(y=30, color='orange', linestyle='--', alpha=0.5, label='Хороша якість (30 дБ)')
+    ax1.set_xlabel('Payload (%)')
+    ax1.set_ylabel('PSNR (дБ)')
+    ax1.set_title('PSNR vs Payload')
+    ax1.legend()
+    ax1.grid(True, alpha=0.3)
+
+    # SSIM
+    ax2.plot(payloads, ssims, 'r-o', linewidth=2, markersize=8)
+    ax2.axhline(y=0.99, color='g', linestyle='--', alpha=0.5, label='Непомітно (0.99)')
+    ax2.axhline(y=0.95, color='orange', linestyle='--', alpha=0.5, label='Хороша якість (0.95)')
+    ax2.set_xlabel('Payload (%)')
+    ax2.set_ylabel('SSIM')
+    ax2.set_title('SSIM vs Payload')
+    ax2.legend()
+    ax2.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    plt.show()
+
+# Запуск аналізу
+# Створюємо або завантажте реальне зображення
+test_img = np.random.randint(0, 256, (512, 512, 3), dtype=np.uint8)
+Image.fromarray(test_img).save("quality_test.png")
+
+payloads = [0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1.0]
+results = analyze_quality("quality_test.png", payloads)
+plot_quality_metrics(results)</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Очікувані результати:</h4>
+                <ul>
+                    <li>При 1% payload: PSNR ≈ 65–70 дБ, SSIM ≈ 0.9999</li>
+                    <li>При 100% payload: PSNR ≈ 51 дБ, SSIM ≈ 0.99</li>
+                    <li>PSNR зменшується логарифмічно зі зростанням payload</li>
+                    <li>LSB стеганографія забезпечує високу якість навіть при повному заповненні</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Завдання 4 -->
+        <div class="task-box">
+            <h3><span class="step-number">4</span>Порівняльний аналіз методів</h3>
+
+            <h4>Порівняння послідовного та key-based LSB:</h4>
+            <pre class="python"><code>def compare_methods(image_path, message, key):
+    """
+    Порівнює послідовний і key-based LSB за різними критеріями.
+
+    Parameters:
+    -----------
+    image_path : str — шлях до зображення
+    message : str — повідомлення для вбудовування
+    key : str — секретний ключ для key-based методу
+    """
+    original = np.array(Image.open(image_path))
+
+    # Послідовний LSB
+    lsb_encode(image_path, message, "compare_sequential.png")
+    sequential = np.array(Image.open("compare_sequential.png"))
+
+    # Key-based LSB
+    lsb_encode_keyed(image_path, message, key, "compare_keyed.png")
+    keyed = np.array(Image.open("compare_keyed.png"))
+
+    # Метрики
+    psnr_seq = calculate_psnr(original, sequential)
+    psnr_key = calculate_psnr(original, keyed)
+
+    if len(original.shape) == 3:
+        orig_gray = np.array(Image.fromarray(original).convert('L'))
+        seq_gray = np.array(Image.fromarray(sequential).convert('L'))
+        key_gray = np.array(Image.fromarray(keyed.astype(np.uint8)).convert('L'))
+    else:
+        orig_gray, seq_gray, key_gray = original, sequential, keyed
+
+    ssim_seq = calculate_ssim(orig_gray, seq_gray)
+    ssim_key = calculate_ssim(orig_gray, key_gray)
+
+    # Аналіз розподілу змінених пікселів
+    diff_seq = (original != sequential).any(axis=2) if len(original.shape) == 3 else (original != sequential)
+    diff_key = (original != keyed).any(axis=2) if len(original.shape) == 3 else (original != keyed)
+
+    print("=" * 55)
+    print(f"{'Метрика':<25} {'Послідовний':>12} {'Key-based':>12}")
+    print("=" * 55)
+    print(f"{'PSNR (дБ)':<25} {psnr_seq:>12.2f} {psnr_key:>12.2f}")
+    print(f"{'SSIM':<25} {ssim_seq:>12.6f} {ssim_key:>12.6f}")
+    print(f"{'Змінених пікселів':<25} {diff_seq.sum():>12} {diff_key.sum():>12}")
+    print("=" * 55)
+
+    # Візуалізація
+    fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+
+    axes[0][0].imshow(original)
+    axes[0][0].set_title("Оригінал")
+    axes[0][0].axis('off')
+
+    axes[0][1].imshow(sequential)
+    axes[0][1].set_title(f"Послідовний LSB\nPSNR={psnr_seq:.1f} дБ")
+    axes[0][1].axis('off')
+
+    axes[0][2].imshow(keyed)
+    axes[0][2].set_title(f"Key-based LSB\nPSNR={psnr_key:.1f} дБ")
+    axes[0][2].axis('off')
+
+    # LSB площини
+    axes[1][0].imshow((original.flatten() & 1).reshape(original.shape[:2], -1)[:,:,0] * 255, cmap='gray')
+    axes[1][0].set_title("LSB площина: оригінал")
+    axes[1][0].axis('off')
+
+    axes[1][1].imshow(diff_seq.astype(float), cmap='Reds')
+    axes[1][1].set_title("Карта змін: послідовний")
+    axes[1][1].axis('off')
+
+    axes[1][2].imshow(diff_key.astype(float), cmap='Reds')
+    axes[1][2].set_title("Карта змін: key-based")
+    axes[1][2].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+# Тест
+test_img = np.random.randint(0, 256, (256, 256, 3), dtype=np.uint8)
+Image.fromarray(test_img).save("compare_original.png")
+
+compare_methods(
+    "compare_original.png",
+    "Порівняльний аналіз двох методів LSB стеганографії!",
+    "secret_key_2026"
+)</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Очікувані результати:</h4>
+                <ul>
+                    <li>PSNR обох методів — однаковий (обидва змінюють LSB)</li>
+                    <li>Кількість змінених пікселів — однакова</li>
+                    <li>Різниця — у розташуванні: послідовний → компактний блок, key-based → рівномірно</li>
+                    <li>Key-based LSB краще протистоїть візуальному стеганоаналізу</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Додаткові завдання -->
+    <section>
+        <h2>🎯 Додаткові завдання</h2>
+
+        <div class="analysis-grid">
+            <div class="analysis-card">
+                <h4>🔢 Завдання 1: Multi-bit LSB</h4>
+                <p>Реалізуйте вбудовування у 2, 3 та 4 молодших біти. Порівняйте ємність та PSNR. При скількох бітах зміни стають помітними?</p>
+            </div>
+
+            <div class="analysis-card">
+                <h4>🎨 Завдання 2: Порівняння каналів</h4>
+                <p>Вбудовуйте тільки в R, тільки в G, тільки в B канал. Порівняйте PSNR та візуальну непомітність. Який канал найкращий?</p>
+            </div>
+
+            <div class="analysis-card">
+                <h4>📏 Завдання 3: Адаптивний LSB</h4>
+                <p>Реалізуйте LSB, що вбудовує лише у текстурні (складні) ділянки зображення, уникаючи однотонних зон. Обчисліть локальну дисперсію.</p>
+            </div>
+
+            <div class="analysis-card">
+                <h4>📊 Завдання 4: Візуалізація бітових площин</h4>
+                <p>Створіть функцію, що відображає всі 8 бітових площин оригінального та стего-зображення. Проаналізуйте відмінності.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Звіт про виконання -->
+    <section class="submission-section">
+        <h2>📝 Звіт про виконання та формат здачі</h2>
+
+        <div class="submission-grid">
+            <div class="submission-card">
+                <h3>📁 Структура звіту</h3>
+                <ul>
+                    <li>Титульна сторінка з даними студента</li>
+                    <li>Мета та завдання роботи</li>
+                    <li>Теоретична частина (коротко)</li>
+                    <li>Хід виконання роботи</li>
+                    <li>Результати та скріншоти</li>
+                    <li>Аналіз результатів</li>
+                    <li>Висновки</li>
+                    <li>Додатки (повний код)</li>
+                </ul>
+            </div>
+
+            <div class="submission-card">
+                <h3>💾 Файли для здачі</h3>
+                <ul>
+                    <li><span class="file-format">report.pdf</span> — звіт у форматі PDF</li>
+                    <li><span class="file-format">lsb_stego.py</span> — реалізація LSB</li>
+                    <li><span class="file-format">test_images/</span> — тестові зображення</li>
+                    <li><span class="file-format">results/</span> — графіки та результати</li>
+                    <li><span class="file-format">README.md</span> — інструкція запуску</li>
+                </ul>
+            </div>
+
+            <div class="submission-card">
+                <h3>⚡ Вимоги до коду</h3>
+                <ul>
+                    <li>Коментарі до кожної функції</li>
+                    <li>Docstrings у форматі PEP 257</li>
+                    <li>Обробка винятків (try/except)</li>
+                    <li>Модульна структура коду</li>
+                    <li>requirements.txt з залежностями</li>
+                </ul>
+            </div>
+
+            <div class="submission-card">
+                <h3>🎯 Демонстрація</h3>
+                <ul>
+                    <li>Запуск коду на реальних зображеннях</li>
+                    <li>Вбудовування та витягування повідомлень</li>
+                    <li>Порівняння послідовного та key-based</li>
+                    <li>Графіки PSNR/SSIM при різних payload</li>
+                    <li>Відповіді на питання викладача</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="deadline-warning">
+            <strong>⏰ Термін здачі:</strong> Протягом двох тижнів після проведення лабораторної роботи.
+            Затримка здачі знижує оцінку на 10% за кожен тиждень.
+        </div>
+    </section>
+
+    <!-- Висновки -->
+    <section class="result-box">
+        <h2>🎓 Висновки</h2>
+        <p>
+            У цій лабораторній роботі ви реалізували та дослідили основний метод стеганографії зображень — LSB:
+        </p>
+        <ul>
+            <li><strong>Базовий LSB</strong> — послідовне вбудовування бітів у молодші біти пікселів</li>
+            <li><strong>Key-based LSB</strong> — розподіл бітів за псевдовипадковою перестановкою з ключем</li>
+            <li><strong>Метрики якості</strong> — PSNR (об'єктивна) та SSIM (структурна) оцінки спотворень</li>
+            <li><strong>Аналіз</strong> — залежність якості від об'єму payload та переваги key-based підходу</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ Важливо пам'ятати:</strong>
+            <ul>
+                <li>LSB стеганографія — найпростіший, але й найуразливіший метод</li>
+                <li>Послідовний LSB легко виявляється візуальним та статистичним аналізом</li>
+                <li>Key-based LSB значно підвищує стійкість до виявлення</li>
+                <li>Формат PNG зберігає LSB без втрат, JPEG — ні (LSB руйнується при стисненні)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Корисні ресурси -->
+    <section>
+        <h2>📚 Корисні ресурси</h2>
+
+        <div class="resources-list">
+            <ul>
+                <li>📖 <a href="https://docs.python.org/3/library/struct.html">Python struct — робота з бінарними даними</a></li>
+                <li>🖼️ <a href="https://pillow.readthedocs.io/">Pillow — бібліотека обробки зображень</a></li>
+                <li>📊 <a href="https://numpy.org/doc/stable/">NumPy — числові обчислення</a></li>
+                <li>📈 <a href="https://matplotlib.org/stable/">Matplotlib — візуалізація даних</a></li>
+                <li>🔬 <a href="https://scikit-image.org/docs/stable/api/skimage.metrics.html">scikit-image metrics — PSNR, SSIM</a></li>
+            </ul>
+        </div>
+    </section>
+
+    </article>
+
+    <div class="lecture-nav-bottom">
+      <span class="nav-btn disabled">&larr; Попередня</span>
+      <a href="lab3.html" class="nav-btn">Наступна &rarr;</a>
+    </div>
+
+    <footer></footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+
+    function switchTab(event, tabId) {
+      var container = event.target.closest('.tabs-container');
+      container.querySelectorAll('.tab-button').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      container.querySelectorAll('.tab-content').forEach(function(content) {
+        content.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
