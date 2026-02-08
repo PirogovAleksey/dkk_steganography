@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0ea5e9">
+  <title>Фундаментальні компроміси стеганографії — Конспект | Основи стеганографії</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}</script>
+</head>
+<body>
+
+  <aside>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        Основи<br>стеганографії
+        <span>онлайн-курс</span>
+      </div>
+    </div>
+    <nav>
+      <a href="../index.html" class="active">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></span>
+        Лекції
+      </a>
+      <a href="../practicals.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+        Практичні
+      </a>
+      <a href="../tests.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        Тести
+      </a>
+      <a href="../materials.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span>
+        Матеріали
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span id="theme-label">Темна тема</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="reading-progress">
+    <div class="reading-progress-bar"></div>
+  </div>
+
+  <main>
+    <div class="lecture-nav-top">
+      <a href="../lecture.html?id=4" class="back-link">&larr; Назад до лекції 4</a>
+      <span class="lecture-badge">Конспект лекції 4</span>
+    </div>
+
+    <article class="lecture-content">
+      <h1>Фундаментальні компроміси стеганографії</h1>
+      <div class="lecture-info">
+        <span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>Детальний конспект</span>
+        <span class="badge badge-new">Готовий</span>
+      </div>
+
+      <div class="konspekt-layout">
+        <div class="konspekt-text">
+          <div class="konspekt-content">
+
+
+            <!-- Introduction -->
+            <section id="intro">
+                <h2>Вступ</h2>
+
+                <p>
+                    Кожна стеганографічна система працює в межах фундаментальних обмежень, встановлених теорією інформації та статистикою. Розуміння цих обмежень — ключ до проектування ефективних систем і до усвідомлення того, чому «ідеальна» стеганографія залишається теоретичним ідеалом.
+                </p>
+
+                <div class="info-box">
+                    <h4>Центральне питання лекції</h4>
+                    <p>
+                        Які <strong>теоретичні межі</strong> існують для стеганографії? Скільки даних можна приховати непомітно? Чи можлива досконала стеганографія? Чому стегоаналітик завжди має структурну перевагу?
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- Information-theoretic limits -->
+            <section id="information-limits">
+                <h2>1. Інформаційно-теоретичні обмеження</h2>
+
+                <h3>1.1 Стеганографічний канал</h3>
+
+                <p>
+                    Стеганографію можна моделювати як спеціальний <strong>канал зв'язку</strong>, вбудований у легітимний комунікаційний канал. Аліса передає зображення (легітимний канал), а всередині цього зображення — приховане повідомлення (стегоканал).
+                </p>
+
+                <p>Пропускна здатність стегоканалу обмежена <strong>надлишковістю контейнера</strong>:</p>
+
+                <div class="formula-box">
+                    C<sub>stego</sub> ≤ H<sub>max</sub>(cover) − H<sub>actual</sub>(cover)
+                </div>
+
+                <p>
+                    де H<sub>max</sub> — максимально можлива ентропія (якби всі значення були рівноймовірні), а H<sub>actual</sub> — фактична ентропія контейнера.
+                </p>
+
+                <div class="example-box">
+                    <h4>Приклад: ємність 8-бітного зображення</h4>
+                    <p>Для зображення у відтінках сірого (8 біт на піксель):</p>
+                    <ul>
+                        <li>H<sub>max</sub> = 8 біт (256 рівноймовірних значень)</li>
+                        <li>Типове фото: H<sub>actual</sub> ≈ 7.2 біт (не всі значення однаково ймовірні)</li>
+                        <li>Теоретична надлишковість: 8 − 7.2 = 0.8 біт на піксель</li>
+                        <li>Для Full HD (1920×1080): 0.8 × 2,073,600 ≈ 1,658,880 біт ≈ <strong>202 КБ</strong></li>
+                    </ul>
+                    <p>На практиці безпечна ємність значно менша — зазвичай 0.1–0.4 bpp, тобто 25–100 КБ для Full HD.</p>
+                </div>
+
+                <h3>1.2 Закон квадратного кореня (Square Root Law)</h3>
+
+                <p>
+                    Один з найважливіших теоретичних результатів у стеганографії, доведений Filler, Ker та Fridrich (2009):
+                </p>
+
+                <div class="formula-box">
+                    m = O(√n)
+                </div>
+
+                <p>
+                    де <strong>m</strong> — максимальна кількість бітів, яку можна безпечно вбудувати, а <strong>n</strong> — розмір контейнера (кількість елементів).
+                </p>
+
+                <div class="warning-box">
+                    <h4>Ключовий висновок</h4>
+                    <p>
+                        Безпечна ємність зростає <strong>як корінь квадратний</strong> від розміру контейнера, а не лінійно. Це означає, що подвоєння розміру контейнера дає лише ~41% приросту безпечної ємності, а не 100%.
+                    </p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Числовий приклад</h4>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Зображення</th>
+                            <th>Пікселів (n)</th>
+                            <th>√n</th>
+                            <th>Безпечна ємність (≈)</th>
+                        </tr>
+                        <tr>
+                            <td>256×256</td>
+                            <td>65,536</td>
+                            <td>256</td>
+                            <td>~32 байти</td>
+                        </tr>
+                        <tr>
+                            <td>512×512</td>
+                            <td>262,144</td>
+                            <td>512</td>
+                            <td>~64 байти</td>
+                        </tr>
+                        <tr>
+                            <td>1920×1080</td>
+                            <td>2,073,600</td>
+                            <td>1,440</td>
+                            <td>~180 байтів</td>
+                        </tr>
+                        <tr>
+                            <td>4000×3000</td>
+                            <td>12,000,000</td>
+                            <td>3,464</td>
+                            <td>~433 байти</td>
+                        </tr>
+                    </table>
+                    <p>
+                        Зверніть увагу: навіть для 12-мегапіксельного фото абсолютно безпечна ємність — лише ~433 байти! Це обмеження стосується <strong>ідеально невиявлюваної</strong> стеганографії. На практиці, допускаючи невелику виявлюваність, можна приховати значно більше.
+                    </p>
+                </div>
+
+                <h3>1.3 Теорема Шеннона та досконала секретність</h3>
+
+                <p>
+                    За аналогією з теоремою Шеннона про досконалу секретність шифру (one-time pad), Кашин (1998) сформулював умову <strong>досконалої стеганографії</strong>:
+                </p>
+
+                <div class="formula-box">
+                    D<sub>KL</sub>(P<sub>cover</sub> || P<sub>stego</sub>) = 0
+                </div>
+
+                <p>
+                    Стегосистема є досконалою, якщо розподіл стего-об'єктів <strong>ідентичний</strong> розподілу оригінальних контейнерів. У цьому випадку жоден стегоаналітик, навіть з необмеженими ресурсами, не може відрізнити cover від stego.
+                </p>
+
+                <div class="info-box">
+                    <h4>Парадокс досконалої стеганографії</h4>
+                    <p>
+                        Досконала стеганографія теоретично можлива, але практично недосяжна для реалістичних контейнерів. Причина: ми не знаємо точного розподілу P<sub>cover</sub> для реальних фотографій — він занадто складний (мільйони вимірів, складні залежності між пікселями). Без точної моделі контейнера неможливо гарантувати D<sub>KL</sub> = 0.
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- Statistical limits -->
+            <section id="statistical-limits">
+                <h2>2. Статистичні межі виявлення</h2>
+
+                <h3>2.1 Стегоаналіз як задача перевірки гіпотез</h3>
+
+                <p>
+                    Стегоаналіз формально є задачею <strong>бінарної класифікації</strong> (перевірки статистичних гіпотез):
+                </p>
+
+                <ul>
+                    <li><strong>H₀</strong> (нульова гіпотеза): об'єкт є оригінальним контейнером (cover)</li>
+                    <li><strong>H₁</strong> (альтернативна гіпотеза): об'єкт містить приховане повідомлення (stego)</li>
+                </ul>
+
+                <p>При прийнятті рішення можливі чотири результати:</p>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th></th>
+                        <th>Справді cover</th>
+                        <th>Справді stego</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Рішення: cover</strong></td>
+                        <td>Правильне відхилення (True Negative)</td>
+                        <td>Пропуск (False Negative, Type II)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Рішення: stego</strong></td>
+                        <td>Хибна тривога (False Positive, Type I)</td>
+                        <td>Правильне виявлення (True Positive)</td>
+                    </tr>
+                </table>
+
+                <h3>2.2 Ключові метрики стегоаналізу</h3>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Метрика</th>
+                        <th>Формула</th>
+                        <th>Інтерпретація</th>
+                    </tr>
+                    <tr>
+                        <td><strong>P<sub>FA</sub></strong> (False Alarm Rate)</td>
+                        <td>P(рішення=stego | cover)</td>
+                        <td>Ймовірність хибної тривоги — чистий cover класифікований як stego</td>
+                    </tr>
+                    <tr>
+                        <td><strong>P<sub>MD</sub></strong> (Missed Detection)</td>
+                        <td>P(рішення=cover | stego)</td>
+                        <td>Ймовірність пропуску — stego не виявлено</td>
+                    </tr>
+                    <tr>
+                        <td><strong>P<sub>E</sub></strong> (Error Rate)</td>
+                        <td>½(P<sub>FA</sub> + P<sub>MD</sub>)</td>
+                        <td>Мінімальна середня помилка — головна метрика безпеки</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>Інтерпретація P<sub>E</sub></h4>
+                    <ul>
+                        <li><strong>P<sub>E</sub> = 0.5</strong> — ідеальна безпека: стегоаналітик не краще за підкидання монети</li>
+                        <li><strong>P<sub>E</sub> = 0.4</strong> — добра безпека: помилка детекції 40%, практично важко використати</li>
+                        <li><strong>P<sub>E</sub> = 0.2</strong> — слабка безпека: 80% точність виявлення</li>
+                        <li><strong>P<sub>E</sub> = 0.0</strong> — повний провал: стегоаналітик завжди правильно класифікує</li>
+                    </ul>
+                </div>
+
+                <h3>2.3 ROC-криві</h3>
+
+                <p>
+                    <strong>ROC-крива</strong> (Receiver Operating Characteristic) візуалізує компроміс між True Positive Rate та False Positive Rate при різних порогах рішення стегоаналітика.
+                </p>
+
+                <ul>
+                    <li><strong>Діагональ</strong> (TPR = FPR) — випадковий класифікатор, неможливість виявлення</li>
+                    <li><strong>Верхній лівий кут</strong> (TPR = 1, FPR = 0) — ідеальне виявлення</li>
+                    <li><strong>AUC</strong> (Area Under Curve) — площа під ROC-кривою. AUC = 0.5 → безпечно; AUC = 1.0 → повне виявлення</li>
+                </ul>
+
+                <div class="example-box">
+                    <h4>Приклад: ROC для різних embedding rates</h4>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Embedding rate (bpp)</th>
+                            <th>AUC</th>
+                            <th>P<sub>E</sub></th>
+                            <th>Оцінка безпеки</th>
+                        </tr>
+                        <tr>
+                            <td>0.05</td>
+                            <td>0.52</td>
+                            <td>0.48</td>
+                            <td>Практично невиявлювана</td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td>0.58</td>
+                            <td>0.43</td>
+                            <td>Безпечна для більшості застосувань</td>
+                        </tr>
+                        <tr>
+                            <td>0.2</td>
+                            <td>0.68</td>
+                            <td>0.35</td>
+                            <td>Помірний ризик виявлення</td>
+                        </tr>
+                        <tr>
+                            <td>0.4</td>
+                            <td>0.82</td>
+                            <td>0.22</td>
+                            <td>Високий ризик виявлення</td>
+                        </tr>
+                        <tr>
+                            <td>1.0</td>
+                            <td>0.98</td>
+                            <td>0.04</td>
+                            <td>Майже гарантоване виявлення</td>
+                        </tr>
+                    </table>
+                    <p>Дані для S-UNIWARD у BOSSbase при детекції SRM + ensemble classifier.</p>
+                </div>
+
+                <h3>2.4 Критерій Кашина</h3>
+
+                <p>
+                    Кашин (1998) формалізував зв'язок між безпекою стеганографії та KL-дивергенцією:
+                </p>
+
+                <div class="formula-box">
+                    D<sub>KL</sub>(P<sub>c</sub> || P<sub>s</sub>) = Σ P<sub>c</sub>(x) · log(P<sub>c</sub>(x) / P<sub>s</sub>(x))
+                </div>
+
+                <ul>
+                    <li>Якщо D<sub>KL</sub> = 0 → стегосистема <strong>абсолютно безпечна</strong> (розподіли ідентичні)</li>
+                    <li>Якщо D<sub>KL</sub> ≤ ε → стегосистема <strong>ε-безпечна</strong> (розподіли майже нерозрізненні)</li>
+                    <li>Чим більше D<sub>KL</sub>, тим легше виявити стеганографію</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h4>Зв'язок D<sub>KL</sub> з оптимальним детектором</h4>
+                    <p>
+                        Нерівність Пінскера дає нижню межу для помилки оптимального детектора через D<sub>KL</sub>:
+                    </p>
+                    <div class="formula-box">
+                        P<sub>E</sub> ≥ ½(1 − √(D<sub>KL</sub>/2))
+                    </div>
+                    <p>
+                        Це означає: навіть найкращий стегоаналітик не може досягти помилки меншої за цю межу. Чим менше D<sub>KL</sub>, тим більше гарантована мінімальна помилка.
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- Computational limits -->
+            <section id="computational-limits">
+                <h2>3. Обчислювальні обмеження</h2>
+
+                <h3>3.1 Асиметрія стеганографії та стегоаналізу</h3>
+
+                <p>
+                    Між стеганографом та стегоаналітиком існує фундаментальна <strong>асиметрія</strong>, яка, на відміну від криптографії, працює <strong>не на користь</strong> того, хто ховає інформацію.
+                </p>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Аспект</th>
+                        <th>Стеганограф</th>
+                        <th>Стегоаналітик</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Знання моделі</strong></td>
+                        <td>Повинен зберігати <em>всі</em> статистичні властивості контейнера</td>
+                        <td>Достатньо знайти <em>одну</em> статистичну аномалію</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Розмірність задачі</strong></td>
+                        <td>Контролює обмежену кількість параметрів</td>
+                        <td>Може аналізувати мільйони ознак (SRM: 34,671 feature)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Адаптація</strong></td>
+                        <td>Фіксований алгоритм</td>
+                        <td>Може навчатись на нових прикладах (ML/DL)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ресурси</strong></td>
+                        <td>Обмежений час (реальний час / інтерактивність)</td>
+                        <td>Необмежений час для аналізу (offline)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Помилковість</strong></td>
+                        <td>Одна помилка → виявлення</td>
+                        <td>Може робити багато хибних тривог — достатньо одного правильного виявлення</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>Аналогія: злодій vs охорона</h4>
+                    <p>
+                        Стеганограф — як злодій, який повинен бути непомітним <em>у кожному</em> аспекті. Стегоаналітик — як охоронець, якому достатньо помітити <em>одну</em> підозрілу деталь. Ця асиметрія фундаментальна і пояснює, чому стеганографія концептуально складніша за криптографію.
+                    </p>
+                </div>
+
+                <h3>3.2 Гонка озброєнь</h3>
+
+                <p>
+                    Розвиток стеганографії та стегоаналізу нагадує гонку озброєнь, де кожне покоління методів відповідає на досягнення противника:
+                </p>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Етап</th>
+                        <th>Стеганографія</th>
+                        <th>Стегоаналіз</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1990-ті</strong></td>
+                        <td>Послідовний LSB replacement</td>
+                        <td>Хі-квадрат тест (Westfeld & Pfitzmann)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2000-ті</strong></td>
+                        <td>LSB matching, F5, OutGuess</td>
+                        <td>RS-аналіз, калібрація JPEG</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2010-ті</strong></td>
+                        <td>HUGO, WOW, S-UNIWARD</td>
+                        <td>SRM + ensemble, maxSRMd2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2020-ті</strong></td>
+                        <td>GAN-стеганографія, нейромережеві методи</td>
+                        <td>SRNet, YeNet, CNN-детектори</td>
+                    </tr>
+                </table>
+
+                <h3>3.3 Обчислювальна складність</h3>
+
+                <p>Різні методи стеганографії мають різну обчислювальну складність:</p>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Метод</th>
+                        <th>Складність вбудовування</th>
+                        <th>Складність стегоаналізу</th>
+                    </tr>
+                    <tr>
+                        <td>LSB replacement</td>
+                        <td>O(n) — лінійна</td>
+                        <td>O(n) — хі-квадрат тест</td>
+                    </tr>
+                    <tr>
+                        <td>LSB matching</td>
+                        <td>O(n) — лінійна</td>
+                        <td>O(n·d) — SRM features</td>
+                    </tr>
+                    <tr>
+                        <td>S-UNIWARD</td>
+                        <td>O(n·log n) — вейвлети + STC</td>
+                        <td>O(n·d) + навчання ML</td>
+                    </tr>
+                    <tr>
+                        <td>GAN-стеганографія</td>
+                        <td>O(n²) — генерація зображення</td>
+                        <td>O(n²) — навчання дискримінатора</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <h4>STC — Syndrome-Trellis Codes</h4>
+                    <p>
+                        STC — ключова технологія сучасної стеганографії, яка дозволяє вбудовувати дані з <strong>мінімальною сумарною вартістю змін</strong>. Для кожного елемента контейнера задається «вартість» його модифікації (на основі локальної складності), а STC знаходить оптимальне кодування, що мінімізує сумарну вартість. Складність: O(n·log n), що прийнятно для практичного використання.
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- Fundamental trade-offs -->
+            <section id="tradeoffs">
+                <h2>4. Трикутник компромісів</h2>
+
+                <h3>4.1 Три виміри стеганографії</h3>
+
+                <p>
+                    Будь-яка стегосистема оперує у просторі трьох фундаментальних характеристик, які знаходяться у взаємному конфлікті:
+                </p>
+
+                <div class="info-box">
+                    <h4>Трикутник: Ємність — Непомітність — Стійкість</h4>
+                    <ul>
+                        <li><strong>Ємність (Capacity)</strong> — обсяг даних, що можна приховати</li>
+                        <li><strong>Непомітність (Undetectability)</strong> — стійкість до статистичного виявлення</li>
+                        <li><strong>Стійкість (Robustness)</strong> — збереження повідомлення після обробки контейнера</li>
+                    </ul>
+                    <p>
+                        <strong>Теорема про неможливість:</strong> неможливо одночасно максимізувати всі три характеристики. Покращення будь-якої з них неминуче погіршує принаймні одну з двох інших.
+                    </p>
+                </div>
+
+                <h3>4.2 Пари компромісів</h3>
+
+                <h4>Ємність vs Непомітність</h4>
+
+                <p>Це найбільш вивчений компроміс. Збільшення embedding rate веде до зростання статистичного сліду:</p>
+
+                <div class="example-box">
+                    <h4>Емпіричні дані: S-UNIWARD у BOSSbase</h4>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Embedding rate (bpp)</th>
+                            <th>P<sub>E</sub> (SRM)</th>
+                            <th>P<sub>E</sub> (SRNet)</th>
+                            <th>Практична оцінка</th>
+                        </tr>
+                        <tr>
+                            <td>0.05</td>
+                            <td>0.47</td>
+                            <td>0.44</td>
+                            <td>Практично безпечна</td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td>0.42</td>
+                            <td>0.38</td>
+                            <td>Безпечна</td>
+                        </tr>
+                        <tr>
+                            <td>0.2</td>
+                            <td>0.34</td>
+                            <td>0.28</td>
+                            <td>Помірний ризик</td>
+                        </tr>
+                        <tr>
+                            <td>0.4</td>
+                            <td>0.21</td>
+                            <td>0.14</td>
+                            <td>Високий ризик</td>
+                        </tr>
+                        <tr>
+                            <td>0.5</td>
+                            <td>0.15</td>
+                            <td>0.08</td>
+                            <td>Небезпечна</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Ємність vs Стійкість</h4>
+
+                <p>
+                    Для досягнення стійкості до обробки необхідне <strong>надлишкове кодування</strong> — кожен біт повідомлення кодується кількома елементами контейнера. Це прямо зменшує корисну ємність:
+                </p>
+
+                <ul>
+                    <li>Без надлишковості: 1 біт payload = 1 елемент контейнера → максимальна ємність, нульова стійкість</li>
+                    <li>Spread Spectrum (коефіцієнт розширення 100): 1 біт payload = 100 елементів → ємність /100, висока стійкість</li>
+                    <li>Repetition coding (повторення 7 разів + majority vote): 1 біт = 7 елементів → ємність /7, помірна стійкість</li>
+                </ul>
+
+                <h4>Непомітність vs Стійкість</h4>
+
+                <p>
+                    Стійкі методи (Spread Spectrum, QIM) вносять <strong>більш помітні зміни</strong>, оскільки повідомлення має «пережити» обробку (стиснення, фільтрацію). Непомітні зміни (наприклад, LSB) легко знищуються при будь-якій обробці.
+                </p>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Метод</th>
+                        <th>Непомітність</th>
+                        <th>Стійкість до JPEG 75%</th>
+                        <th>Типове застосування</th>
+                    </tr>
+                    <tr>
+                        <td>LSB matching</td>
+                        <td>Висока (PSNR > 52 дБ)</td>
+                        <td>Нульова (повна втрата)</td>
+                        <td>Таємна комунікація без обробки</td>
+                    </tr>
+                    <tr>
+                        <td>S-UNIWARD</td>
+                        <td>Висока (PSNR > 48 дБ)</td>
+                        <td>Низька</td>
+                        <td>Таємна комунікація (PNG)</td>
+                    </tr>
+                    <tr>
+                        <td>QIM у DCT</td>
+                        <td>Середня (PSNR ~ 40 дБ)</td>
+                        <td>Середня</td>
+                        <td>Водяні знаки в JPEG</td>
+                    </tr>
+                    <tr>
+                        <td>Spread Spectrum</td>
+                        <td>Низька (PSNR ~ 35 дБ)</td>
+                        <td>Висока</td>
+                        <td>Робастні водяні знаки</td>
+                    </tr>
+                </table>
+
+                <h3>4.3 Оптимальні робочі точки</h3>
+
+                <p>
+                    Залежно від задачі, проектувальник обирає <strong>робочу точку</strong> у просторі трьох характеристик:
+                </p>
+
+                <div class="info-box">
+                    <h4>Рекомендовані робочі точки</h4>
+                    <ul>
+                        <li><strong>Таємна комунікація:</strong> embedding rate 0.05–0.2 bpp, P<sub>E</sub> > 0.4, стійкість не потрібна. Використовувати S-UNIWARD + STC, контейнери з камери, формат PNG</li>
+                        <li><strong>Водяні знаки (copyright):</strong> embedding rate 0.001–0.01 bpp, PSNR > 40 дБ, стійкість до JPEG 50%+. Використовувати QIM у DWT, надлишкове кодування</li>
+                        <li><strong>Forensic watermarking:</strong> embedding rate 0.01–0.05 bpp, стійкість до геометричних атак. Використовувати Spread Spectrum + template-based synchronization</li>
+                        <li><strong>Covert channel (мережевий):</strong> пропускна здатність 1–100 bps, невиявлюваність DPI-системами. Використовувати IPD-кодування, DNS tunneling</li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <!-- Conclusion -->
+            <section id="conclusion">
+                <h2>Висновки</h2>
+
+                <div class="info-box">
+                    <h4>Головне з лекції</h4>
+                    <ol>
+                        <li><strong>Пропускна здатність</strong> стегоканалу обмежена надлишковістю контейнера</li>
+                        <li><strong>Закон квадратного кореня:</strong> безпечна ємність зростає як √n, а не лінійно з розміром контейнера</li>
+                        <li><strong>Досконала стеганографія</strong> (D<sub>KL</sub> = 0) теоретично можлива, але практично недосяжна для реальних контейнерів</li>
+                        <li><strong>P<sub>E</sub></strong> — головна метрика безпеки: P<sub>E</sub> = 0.5 → безпечно, P<sub>E</sub> = 0 → повний провал</li>
+                        <li><strong>Нерівність Пінскера</strong> зв'язує D<sub>KL</sub> з мінімальною помилкою оптимального детектора</li>
+                        <li><strong>Асиметрія</strong>: стеганограф повинен зберігати <em>всі</em> статистики, стегоаналітику достатньо знайти <em>одну</em> аномалію</li>
+                        <li><strong>Трикутник компромісів</strong> (ємність—непомітність—стійкість) — фундаментальне обмеження будь-якої стегосистеми</li>
+                        <li><strong>Вибір робочої точки</strong> залежить від задачі: таємна комунікація, водяні знаки, forensic marking</li>
+                    </ol>
+                </div>
+
+                <p>
+                    У наступній лекції ми перейдемо до практичних методів — LSB стеганографії, найпоширенішого і найпростішого підходу до приховування інформації в зображеннях.
+                </p>
+            </section>
+
+
+          </div>
+        </div>
+
+      <aside class="konspekt-sidebar">
+        <div class="section-nav">
+          <h3>Зміст</h3>
+          <ul>
+          <li><a href="#intro">Вступ</a></li>
+          <li><a href="#information-limits">1. Інформаційно-теоретичні обмеження</a></li>
+          <li><a href="#statistical-limits">2. Статистичні межі виявлення</a></li>
+          <li><a href="#computational-limits">3. Обчислювальні обмеження</a></li>
+          <li><a href="#tradeoffs">4. Трикутник компромісів</a></li>
+          <li><a href="#conclusion">Висновки</a></li>
+          </ul>
+        </div>
+      </aside>
+      </div>
+    </article>
+
+    <div class="lecture-nav-bottom">
+      <a href="../lecture.html?id=4" class="nav-btn">&larr; До лекції</a>
+      <a href="../index.html" class="nav-btn">На головну &rarr;</a>
+    </div>
+
+    <footer></footer>
+  </main>
+
+  <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">&#8593;</button>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / docHeight) * 100;
+      document.querySelector('.reading-progress-bar').style.width = scrolled + '%';
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) { backToTop.classList.add('show'); }
+      else { backToTop.classList.remove('show'); }
+    });
+
+    // Active section nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.section-nav a');
+    if (navLinks.length > 0) {
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          if (scrollY >= section.offsetTop - 200) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
