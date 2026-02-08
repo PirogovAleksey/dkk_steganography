@@ -27,12 +27,13 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 60px 10%;
+  justify-content: flex-start;
+  padding: 48px 10% 80px;
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
-  overflow-y: auto;
+  overflow: hidden;
+  transform-origin: top center;
 }
 
 .slide.active {
@@ -56,17 +57,17 @@ body {
 }
 
 .slide h2 {
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 700;
   color: #38bdf8;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .slide h3 {
-  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-size: clamp(1rem, 2vw, 1.4rem);
   font-weight: 600;
   color: #7dd3fc;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .slide h4 {
@@ -77,10 +78,10 @@ body {
 }
 
 .slide p {
-  font-size: clamp(0.95rem, 1.8vw, 1.3rem);
-  line-height: 1.7;
+  font-size: clamp(0.9rem, 1.6vw, 1.15rem);
+  line-height: 1.6;
   color: #94a3b8;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .slide strong {
@@ -97,7 +98,7 @@ body {
 /* --- Lists --- */
 .slide ul, .slide ol {
   text-align: left;
-  margin: 1rem 0 1rem 1.5rem;
+  margin: 0.5rem 0 0.5rem 1.5rem;
   list-style: none;
 }
 
@@ -107,12 +108,12 @@ body {
 }
 
 .slide li {
-  font-size: clamp(0.9rem, 1.6vw, 1.2rem);
-  line-height: 1.8;
+  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+  line-height: 1.6;
   color: #cbd5e1;
   padding-left: 24px;
   position: relative;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .slide ul > li::before {
@@ -164,8 +165,8 @@ body {
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-left: 4px solid #38bdf8;
   border-radius: 12px;
-  padding: 1.5rem 2rem;
-  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+  margin: 0.75rem 0;
 }
 
 .success-box {
@@ -173,8 +174,8 @@ body {
   border: 1px solid rgba(74, 222, 128, 0.25);
   border-left: 4px solid #4ade80;
   border-radius: 12px;
-  padding: 1.5rem 2rem;
-  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+  margin: 0.75rem 0;
 }
 
 .warning-box {
@@ -182,8 +183,8 @@ body {
   border: 1px solid rgba(251, 191, 36, 0.25);
   border-left: 4px solid #fbbf24;
   border-radius: 12px;
-  padding: 1.5rem 2rem;
-  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+  margin: 0.75rem 0;
 }
 
 .info-box h3, .info-box h4 { color: #38bdf8; }
@@ -195,13 +196,13 @@ body {
   background: #0f172a;
   border: 1px solid #1e3a5f;
   border-radius: 12px;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-  line-height: 1.8;
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+  line-height: 1.6;
   color: #e2e8f0;
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 0.75rem 0;
 }
 
 /* --- Highlight --- */
@@ -217,8 +218,8 @@ body {
 .two-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: 1rem 0;
+  gap: 1.25rem;
+  margin: 0.75rem 0;
 }
 
 .three-col-grid {
@@ -235,9 +236,9 @@ body {
 
 /* --- Colored Cards --- */
 .card-blue, .card-green, .card-yellow, .card-red, .card-purple, .card-gray, .card-pink {
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   border-radius: 12px;
-  margin: 0.75rem 0;
+  margin: 0.5rem 0;
 }
 
 .card-blue {
@@ -284,9 +285,9 @@ body {
 
 /* --- Gradient Boxes --- */
 .gradient-box {
-  padding: 2rem;
+  padding: 1.25rem 1.5rem;
   border-radius: 15px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #f0f9ff;
 }
 .gradient-box h3, .gradient-box h4 { color: #f0f9ff; }

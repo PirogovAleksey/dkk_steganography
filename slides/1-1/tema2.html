@@ -65,16 +65,11 @@
         </div>
     </section>
 
-    <!-- Слайд 3: Модель стеганосистеми -->
+    <!-- Слайд 3: Схема вбудовування -->
     <section class="slide">
-        <h2>🔄 Модель стеганографічної системи</h2>
+        <h2>🔄 Схема вбудовування (Embedding)</h2>
 
         <div class="card-blue">
-
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h3>Схема вбудовування (Embedding)</h3>
-            </div>
-
             <div style="font-family: monospace; font-size: 1.1rem; text-align: center; line-height: 2.5;">
                 <div>📄 <strong>Cover</strong> (контейнер)</div>
                 <div style="font-size: 2rem;">+</div>
@@ -90,17 +85,24 @@
                     🖼️ <strong>Stego</strong> (стегоконтейнер)
                 </div>
             </div>
-
         </div>
 
-        <div class="card-yellow" style="margin-top: 2rem;">
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <h3>Схема витягування (Extraction)</h3>
-            </div>
+        <div class="success-box" style="margin-top: 2rem;">
+            <strong>📌 Мета:</strong> Вбудувати секретне повідомлення в контейнер так, щоб результат (стегоконтейнер) був візуально ідентичний оригіналу.
+        </div>
+    </section>
+
+    <!-- Слайд 4: Схема витягування -->
+    <section class="slide">
+        <h2>🔄 Схема витягування (Extraction)</h2>
+
+        <div class="card-yellow">
             <div style="font-family: monospace; font-size: 1.1rem; text-align: center; line-height: 2.5;">
                 <div class="card-green" style="padding: 1rem;">
-                    🖼️ <strong>Stego</strong>
+                    🖼️ <strong>Stego</strong> (стегоконтейнер)
                 </div>
+                <div style="font-size: 2rem;">+</div>
+                <div>🔑 <strong>Key</strong> (опціонально)</div>
                 <div style="font-size: 2rem;">↓</div>
                 <div class="gradient-box gradient-purple" style="padding: 1rem;">
                     <strong>EXTRACTION ALGORITHM</strong>
@@ -108,6 +110,10 @@
                 <div style="font-size: 2rem;">↓</div>
                 <div>💬 <strong>Message</strong> (витягнуте повідомлення)</div>
             </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 2rem;">
+            <strong>📌 Важливо:</strong> Для успішного витягування отримувач повинен знати алгоритм витягування та (за наявності) секретний ключ.
         </div>
     </section>
 
