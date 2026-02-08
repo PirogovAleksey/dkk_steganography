@@ -42,6 +42,26 @@ function getLectureUrl() {
   return '../../index.html';
 }
 
+/* ---- Inter-deck navigation ---- */
+var nextTemaUrl = null;
+var prevTemaUrl = null;
+
+function initTemaNavigation() {
+  var path = window.location.pathname;
+  var match = path.match(/tema(\d+)\.html/);
+  if (!match) return;
+  var num = parseInt(match[1]);
+
+  if (num > 1) {
+    prevTemaUrl = path.replace(/tema\d+\.html/, 'tema' + (num - 1) + '.html');
+  }
+
+  var candidate = path.replace(/tema\d+\.html/, 'tema' + (num + 1) + '.html');
+  fetch(candidate, { method: 'HEAD' })
+    .then(function(r) { if (r.ok) { nextTemaUrl = candidate; updateButtons(); } })
+    .catch(function() {});
+}
+
 /* ---- Navigation ---- */
 function goHome() {
   window.location.href = getLectureUrl();
@@ -79,11 +99,19 @@ function show(index) {
 }
 
 function next() {
-  if (current < slides.length - 1) show(current + 1);
+  if (current < slides.length - 1) {
+    show(current + 1);
+  } else if (nextTemaUrl) {
+    window.location.href = nextTemaUrl;
+  }
 }
 
 function prev() {
-  if (current > 0) show(current - 1);
+  if (current > 0) {
+    show(current - 1);
+  } else if (prevTemaUrl) {
+    window.location.href = prevTemaUrl;
+  }
 }
 
 function updateProgress() {
@@ -93,20 +121,19 @@ function updateProgress() {
 }
 
 function updateButtons() {
-  if (prevBtn) prevBtn.disabled = current === 0;
-  if (nextBtn) nextBtn.disabled = current === slides.length - 1;
+  if (prevBtn) prevBtn.disabled = current === 0 && !prevTemaUrl;
+  if (nextBtn) nextBtn.disabled = current === slides.length - 1 && !nextTemaUrl;
 }
 
-function addScrollIndicators() {
+function fitSlides() {
   slides.forEach(function(slide) {
-    const isScrollable = slide.scrollHeight > slide.clientHeight;
-    if (isScrollable) {
-      if (!slide.querySelector('.scroll-indicator')) {
-        const indicator = document.createElement('div');
-        indicator.className = 'scroll-indicator visible';
-        indicator.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-        slide.appendChild(indicator);
-      }
+    slide.style.transform = 'none';
+    var contentHeight = slide.scrollHeight;
+    var viewHeight = slide.clientHeight;
+    if (contentHeight > viewHeight) {
+      var scale = viewHeight / contentHeight;
+      scale = Math.max(scale, 0.55);
+      slide.style.transform = 'scale(' + scale + ')';
     }
   });
 }
@@ -132,8 +159,9 @@ if (localStorage.getItem('slides-theme') === 'light') {
 
 // Init
 initTopControls();
+initTemaNavigation();
 updateThemeButton(document.body.classList.contains('light'));
 updateProgress();
 updateButtons();
-addScrollIndicators();
-window.addEventListener('resize', addScrollIndicators);
+fitSlides();
+window.addEventListener('resize', fitSlides);
