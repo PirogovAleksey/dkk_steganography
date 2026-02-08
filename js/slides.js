@@ -26,18 +26,16 @@ function prev() {
 function goHome() {
   const path = window.location.pathname;
   const parts = path.split('/');
-  // Navigate up to lectures/lectureN.html
   const slidesIdx = parts.indexOf('slides');
   if (slidesIdx !== -1) {
     const base = parts.slice(0, slidesIdx).join('/');
-    // Extract lecture number from directory name like "1-1" -> lecture 1
-    const dirName = parts[slidesIdx + 1]; // e.g. "1-1"
+    const dirName = parts[slidesIdx + 1];
     if (dirName) {
       const nums = dirName.split('-');
       const moduleNum = parseInt(nums[0]);
       const lecInModule = parseInt(nums[1]);
-      const lectureNum = (moduleNum - 1) * 4 + lecInModule;
-      window.location.href = base + '/lectures/lecture' + lectureNum + '.html';
+      const lectureId = moduleNum === 1 ? lecInModule : 8 + lecInModule;
+      window.location.href = base + '/lecture.html?id=' + lectureId;
       return;
     }
   }
@@ -57,10 +55,10 @@ function updateButtons() {
 
 function addScrollIndicators() {
   slides.forEach(function(slide) {
-    var isScrollable = slide.scrollHeight > slide.clientHeight;
+    const isScrollable = slide.scrollHeight > slide.clientHeight;
     if (isScrollable) {
       if (!slide.querySelector('.scroll-indicator')) {
-        var indicator = document.createElement('div');
+        const indicator = document.createElement('div');
         indicator.className = 'scroll-indicator visible';
         indicator.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
         slide.appendChild(indicator);
