@@ -17,6 +17,19 @@ if (localStorage.getItem('theme') === 'dark') {
   document.getElementById('theme-label').textContent = 'Світла тема';
 }
 
+// Tab switching for lab pages
+function switchTab(event, tabId) {
+  var container = event.target.closest('.tabs-container');
+  container.querySelectorAll('.tab-button').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  container.querySelectorAll('.tab-content').forEach(function(content) {
+    content.classList.remove('active');
+  });
+  event.target.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
 // Reusable footer component
 document.querySelectorAll('footer').forEach(function(footer) {
   footer.innerHTML =

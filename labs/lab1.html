@@ -1035,20 +1035,6 @@ compare_methods(
 
   <script src="../js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script>
-    hljs.highlightAll();
-
-    function switchTab(event, tabId) {
-      var container = event.target.closest('.tabs-container');
-      container.querySelectorAll('.tab-button').forEach(function(btn) {
-        btn.classList.remove('active');
-      });
-      container.querySelectorAll('.tab-content').forEach(function(content) {
-        content.classList.remove('active');
-      });
-      event.target.classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-    }
-  </script>
+  <script>hljs.highlightAll();</script>
 </body>
 </html>

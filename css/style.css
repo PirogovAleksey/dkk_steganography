@@ -1316,9 +1316,17 @@ html.dark .lecture-content code { background: rgba(56,189,248,0.1); }
 
 /* Code blocks in labs (highlight.js) */
 .lecture-content pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 16px 20px;
   margin: 16px 0;
   border-radius: 10px;
   overflow-x: auto;
+}
+
+html.dark .lecture-content pre {
+  background: #0f172a;
+  border: 1px solid var(--card-border);
 }
 
 .lecture-content pre code {
