@@ -50,31 +50,31 @@
         <h2>Типи надлишковості</h2>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
-            <div style="background: #dbeafe; padding: 1.5rem; border-radius: 15px; border: 2px solid #3b82f6;">
-                <h4 style="color: #1e40af;">Просторова</h4>
+            <div class="card-blue">
+                <h4>Просторова</h4>
                 <p>Кореляція між сусідніми елементами</p>
-                <p style="font-size: 0.9rem; color: #64748b;">
+                <p style="font-size: 0.9rem;">
                     <em>Сусідні пікселі зображення схожі</em>
                 </p>
             </div>
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 15px; border: 2px solid #22c55e;">
-                <h4 style="color: #166534;">Часова</h4>
+            <div class="card-green">
+                <h4>Часова</h4>
                 <p>Кореляція між послідовними відліками</p>
-                <p style="font-size: 0.9rem; color: #64748b;">
+                <p style="font-size: 0.9rem;">
                     <em>Сусідні семпли аудіо корельовані</em>
                 </p>
             </div>
-            <div style="background: #fef3c7; padding: 1.5rem; border-radius: 15px; border: 2px solid #f59e0b;">
-                <h4 style="color: #92400e;">Спектральна</h4>
+            <div class="card-yellow">
+                <h4>Спектральна</h4>
                 <p>Кореляція частотних компонент</p>
-                <p style="font-size: 0.9rem; color: #64748b;">
+                <p style="font-size: 0.9rem;">
                     <em>Низькі частоти домінують</em>
                 </p>
             </div>
-            <div style="background: #fce7f3; padding: 1.5rem; border-radius: 15px; border: 2px solid #ec4899;">
-                <h4 style="color: #9d174d;">Перцептивна</h4>
+            <div class="card-pink">
+                <h4>Перцептивна</h4>
                 <p>Непомітна для органів чуття</p>
-                <p style="font-size: 0.9rem; color: #64748b;">
+                <p style="font-size: 0.9rem;">
                     <em>LSB пікселів, ультразвук</em>
                 </p>
             </div>
@@ -103,7 +103,7 @@
             </div>
             <div>
                 <h4>Кількісна оцінка:</h4>
-                <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px;">
+                <div class="card-blue">
                     <p><strong>Теоретично:</strong> 8 біт/піксель</p>
                     <p><strong>Фактично:</strong> 4-6 біт/піксель</p>
                     <p style="color: #10b981; font-weight: bold;">
@@ -169,20 +169,20 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
-            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #0369a1;">Часова кореляція</h4>
+            <div class="card-blue">
+                <h4>Часова кореляція</h4>
                 <p>Сусідні семпли передбачувані</p>
             </div>
-            <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Частотне маскування</h4>
+            <div class="card-green">
+                <h4>Частотне маскування</h4>
                 <p>Гучні звуки маскують тихі</p>
             </div>
-            <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #92400e;">Обмеження слуху</h4>
+            <div class="card-yellow">
+                <h4>Обмеження слуху</h4>
                 <p>Людина не чує все</p>
             </div>
-            <div style="background: #fce7f3; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #9d174d;">Великий розмір</h4>
+            <div class="card-pink">
+                <h4>Великий розмір</h4>
                 <p>Багато "зайвих" даних</p>
             </div>
         </div>
@@ -235,16 +235,16 @@
         </div>
 
         <div class="two-column">
-            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #0369a1;">DCT методи</h4>
+            <div class="card-blue">
+                <h4>DCT методи</h4>
                 <ul>
                     <li>Вбудовування в DCT коефіцієнти</li>
                     <li>Стійкість до JPEG стиснення</li>
                     <li>Використовується в JSteg, F5</li>
                 </ul>
             </div>
-            <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">DWT методи</h4>
+            <div class="card-green">
+                <h4>DWT методи</h4>
                 <ul>
                     <li>Вейвлет-перетворення</li>
                     <li>Багаторівнева декомпозиція</li>
@@ -274,26 +274,26 @@
             <tr>
                 <td><strong>LSB</strong></td>
                 <td>Перцептивна</td>
-                <td style="background: #dcfce7;">Висока</td>
-                <td style="background: #fee2e2;">Низька</td>
+                <td class="cell-green">Висока</td>
+                <td class="cell-red">Низька</td>
             </tr>
             <tr>
                 <td><strong>DCT</strong></td>
                 <td>Спектральна</td>
-                <td style="background: #fef9c3;">Середня</td>
-                <td style="background: #fef9c3;">Середня</td>
+                <td class="cell-yellow">Середня</td>
+                <td class="cell-yellow">Середня</td>
             </tr>
             <tr>
                 <td><strong>DWT</strong></td>
                 <td>Спектральна</td>
-                <td style="background: #fef9c3;">Середня</td>
-                <td style="background: #dcfce7;">Висока</td>
+                <td class="cell-yellow">Середня</td>
+                <td class="cell-green">Висока</td>
             </tr>
             <tr>
                 <td><strong>Адаптивні</strong></td>
                 <td>Просторова</td>
-                <td style="background: #fef9c3;">Середня</td>
-                <td style="background: #dcfce7;">Висока</td>
+                <td class="cell-yellow">Середня</td>
+                <td class="cell-green">Висока</td>
             </tr>
         </table>
     </section>

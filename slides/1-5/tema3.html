@@ -133,7 +133,7 @@
                 <th>Сприйняття</th>
             </tr>
             <tr>
-                <td style="background: #dcfce7; font-weight: bold;">&gt; 50 dB</td>
+                <td class="cell-green" style="font-weight: bold;">&gt; 50 dB</td>
                 <td>Відмінна</td>
                 <td>Абсолютно непомітно</td>
             </tr>
@@ -143,7 +143,7 @@
                 <td>Непомітно без інструментів</td>
             </tr>
             <tr>
-                <td style="background: #fef9c3;">30-40 dB</td>
+                <td class="cell-yellow">30-40 dB</td>
                 <td>Добра</td>
                 <td>Мінімальні артефакти</td>
             </tr>
@@ -164,30 +164,30 @@
     <section class="slide">
         <h2>Типові значення PSNR для LSB</h2>
 
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0;">
-            <div class="metric-card" style="border-color: #10b981;">
+        <div class="pixel-grid cols-4">
+            <div class="metric-card">
                 <h4>1-bit LSB</h4>
                 <div class="metric-value">~51</div>
                 <p>dB</p>
-                <p style="color: #10b981; font-weight: bold;">Відмінно</p>
+                <p style="font-weight: bold;">Відмінно</p>
             </div>
-            <div class="metric-card" style="border-color: #10b981;">
+            <div class="metric-card">
                 <h4>2-bit LSB</h4>
                 <div class="metric-value">~44</div>
                 <p>dB</p>
-                <p style="color: #10b981; font-weight: bold;">Дуже добре</p>
+                <p style="font-weight: bold;">Дуже добре</p>
             </div>
-            <div class="metric-card" style="border-color: #f59e0b;">
+            <div class="metric-card">
                 <h4>3-bit LSB</h4>
                 <div class="metric-value">~37</div>
                 <p>dB</p>
-                <p style="color: #f59e0b; font-weight: bold;">Добре</p>
+                <p style="font-weight: bold;">Добре</p>
             </div>
-            <div class="metric-card" style="border-color: #ef4444;">
+            <div class="metric-card">
                 <h4>4-bit LSB</h4>
                 <div class="metric-value">~31</div>
                 <p>dB</p>
-                <p style="color: #ef4444; font-weight: bold;">Помітно</p>
+                <p style="font-weight: bold;">Помітно</p>
             </div>
         </div>
 
@@ -248,8 +248,8 @@
             </tr>
             <tr>
                 <td>Кореляція з оком</td>
-                <td style="background: #fef9c3;">Помірна</td>
-                <td style="background: #dcfce7;">Висока</td>
+                <td class="cell-yellow">Помірна</td>
+                <td class="cell-green">Висока</td>
             </tr>
             <tr>
                 <td>Діапазон</td>
@@ -263,12 +263,12 @@
             </tr>
             <tr>
                 <td>Обчислення</td>
-                <td style="background: #dcfce7;">Просте</td>
-                <td style="background: #fef9c3;">Складніше</td>
+                <td class="cell-green">Просте</td>
+                <td class="cell-yellow">Складніше</td>
             </tr>
             <tr>
                 <td>Популярність</td>
-                <td style="background: #dcfce7;">Найвища</td>
+                <td class="cell-green">Найвища</td>
                 <td>Зростає</td>
             </tr>
         </table>
@@ -293,18 +293,18 @@
             BPP = Вбудовані біти / Кількість пікселів
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0;">
-            <div class="metric-card" style="border-color: #10b981;">
+        <div class="three-col-grid">
+            <div class="metric-card">
                 <h4>Високий рівень безпеки</h4>
                 <div class="metric-value" style="font-size: 2rem;">≤ 0.1</div>
                 <p>bpp</p>
             </div>
-            <div class="metric-card" style="border-color: #f59e0b;">
+            <div class="metric-card">
                 <h4>Помірний рівень</h4>
                 <div class="metric-value" style="font-size: 2rem;">≤ 0.2</div>
                 <p>bpp</p>
             </div>
-            <div class="metric-card" style="border-color: #ef4444;">
+            <div class="metric-card">
                 <h4>Безпечний рівень</h4>
                 <div class="metric-value" style="font-size: 2rem;">≤ 0.4</div>
                 <p>bpp</p>
@@ -332,7 +332,7 @@
                 <h4>Максимальна ємність</h4>
                 <p style="font-family: monospace; font-size: 1.1rem;">
                     1920 × 1080 × 3 × 1 = <br>
-                    <strong style="color: #667eea;">6,220,800 біт</strong>
+                    <strong>6,220,800 біт</strong>
                 </p>
                 <p>≈ <strong>760 КБ</strong></p>
             </div>

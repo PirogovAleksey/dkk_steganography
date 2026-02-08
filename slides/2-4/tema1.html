@@ -32,12 +32,12 @@
         </div>
 
         <div class="two-column" style="margin-top: 2rem;">
-            <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #1e40af;">Мета</h4>
+            <div class="card-blue">
+                <h4>Мета</h4>
                 <p>Зробити існування прихованого повідомлення невиявленим для сторонніх спостерігачів</p>
             </div>
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Носій</h4>
+            <div class="card-green">
+                <h4>Носій</h4>
                 <p>Текстові документи, повідомлення, статті, веб-сторінки, код</p>
             </div>
         </div>
@@ -52,20 +52,20 @@
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-            <div style="background: #fee2e2; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #991b1b;">Низька надлишковість</h4>
+            <div class="card-red">
+                <h4>Низька надлишковість</h4>
                 <p style="font-size: 0.9rem;">Текст містить мінімум зайвих даних для приховування</p>
             </div>
-            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #854d0e;">Легка детекція</h4>
+            <div class="card-yellow">
+                <h4>Легка детекція</h4>
                 <p style="font-size: 0.9rem;">Модифікації легше помічає людина</p>
             </div>
-            <div style="background: #e0e7ff; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #3730a3;">Семантична коректність</h4>
+            <div class="card-purple">
+                <h4>Семантична коректність</h4>
                 <p style="font-size: 0.9rem;">Зміни повинні зберігати сенс тексту</p>
             </div>
-            <div style="background: #fce7f3; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #9d174d;">Мала ємність</h4>
+            <div class="card-pink">
+                <h4>Мала ємність</h4>
                 <p style="font-size: 0.9rem;">~0.5-2 біти на речення</p>
             </div>
         </div>
@@ -75,30 +75,30 @@
     <section class="slide">
         <h2>Порівняння з іншими типами</h2>
 
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-            <tr style="background: #f1f5f9;">
-                <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">Аспект</th>
-                <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">Зображення</th>
-                <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">Аудіо</th>
-                <th style="padding: 0.8rem; border: 1px solid #e2e8f0;">Текст</th>
+        <table>
+            <tr>
+                <th>Аспект</th>
+                <th>Зображення</th>
+                <th>Аудіо</th>
+                <th>Текст</th>
             </tr>
             <tr>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;"><strong>Надлишковість</strong></td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0; background: #dcfce7;">Висока</td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0; background: #fef9c3;">Середня</td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0; background: #fee2e2;">Дуже низька</td>
+                <td><strong>Надлишковість</strong></td>
+                <td>Висока</td>
+                <td>Середня</td>
+                <td>Дуже низька</td>
             </tr>
             <tr>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;"><strong>Ємність</strong></td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">~1 біт/піксель</td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">Варіює</td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">~0.5-2 біт/речення</td>
+                <td><strong>Ємність</strong></td>
+                <td>~1 біт/піксель</td>
+                <td>Варіює</td>
+                <td>~0.5-2 біт/речення</td>
             </tr>
             <tr>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;"><strong>Детекція</strong></td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">Статистична</td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">Спектральна</td>
-                <td style="padding: 0.8rem; border: 1px solid #e2e8f0;">Лінгвістична</td>
+                <td><strong>Детекція</strong></td>
+                <td>Статистична</td>
+                <td>Спектральна</td>
+                <td>Лінгвістична</td>
             </tr>
         </table>
     </section>
@@ -207,32 +207,32 @@ G = AABBA    N = ABBAB
         <h2>Класифікація методів</h2>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;">
-            <div style="background: #dbeafe; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #1e40af;">Форматні методи</h4>
+            <div class="card-blue">
+                <h4>Форматні методи</h4>
                 <ul style="font-size: 0.9rem; margin-top: 0.5rem;">
                     <li>Whitespace (пробіли, табуляції)</li>
                     <li>Unicode zero-width символи</li>
                     <li>HTML/CSS маніпуляції</li>
                 </ul>
             </div>
-            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Лінгвістичні методи</h4>
+            <div class="card-green">
+                <h4>Лінгвістичні методи</h4>
                 <ul style="font-size: 0.9rem; margin-top: 0.5rem;">
                     <li>Заміна синонімів</li>
                     <li>Синтаксичні трансформації</li>
                     <li>Семантичні методи</li>
                 </ul>
             </div>
-            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #854d0e;">Feature-based</h4>
+            <div class="card-yellow">
+                <h4>Feature-based</h4>
                 <ul style="font-size: 0.9rem; margin-top: 0.5rem;">
                     <li>Line shifting</li>
                     <li>Word shifting</li>
                     <li>Feature coding</li>
                 </ul>
             </div>
-            <div style="background: #fce7f3; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #9d174d;">Генеративні методи</h4>
+            <div class="card-pink">
+                <h4>Генеративні методи</h4>
                 <ul style="font-size: 0.9rem; margin-top: 0.5rem;">
                     <li>NLG (Natural Language Generation)</li>
                     <li>RNN/LSTM стеганографія</li>
@@ -247,23 +247,23 @@ G = AABBA    N = ABBAB
         <h2>Критерії оцінки методів</h2>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
-            <div style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 1.5rem; border-radius: 15px; text-align: center;">
-                <h3 style="color: #667eea; font-size: 2rem;">C</h3>
+            <div class="card-purple" style="text-align: center;">
+                <h3 style="font-size: 2rem;">C</h3>
                 <h4>Capacity (Ємність)</h4>
                 <p style="font-size: 0.9rem;">Максимум бітів для вбудовування</p>
             </div>
-            <div style="background: linear-gradient(135deg, #10b98120, #059669 20); padding: 1.5rem; border-radius: 15px; text-align: center;">
-                <h3 style="color: #10b981; font-size: 2rem;">I</h3>
+            <div class="card-green" style="text-align: center;">
+                <h3 style="font-size: 2rem;">I</h3>
                 <h4>Imperceptibility</h4>
                 <p style="font-size: 0.9rem;">Невиявлюваність людиною</p>
             </div>
-            <div style="background: linear-gradient(135deg, #f59e0b20, #d97706 20); padding: 1.5rem; border-radius: 15px; text-align: center;">
-                <h3 style="color: #f59e0b; font-size: 2rem;">S</h3>
+            <div class="card-yellow" style="text-align: center;">
+                <h3 style="font-size: 2rem;">S</h3>
                 <h4>Security (Безпека)</h4>
                 <p style="font-size: 0.9rem;">Невиявлюваність алгоритмами</p>
             </div>
-            <div style="background: linear-gradient(135deg, #ef444420, #dc2626 20); padding: 1.5rem; border-radius: 15px; text-align: center;">
-                <h3 style="color: #ef4444; font-size: 2rem;">R</h3>
+            <div class="card-red" style="text-align: center;">
+                <h3 style="font-size: 2rem;">R</h3>
                 <h4>Robustness</h4>
                 <p style="font-size: 0.9rem;">Виживання після модифікацій</p>
             </div>

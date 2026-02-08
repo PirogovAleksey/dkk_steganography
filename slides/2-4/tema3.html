@@ -31,29 +31,29 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem;">
-            <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #1e40af;">Лексичні методи</h4>
+            <div class="card-blue">
+                <h4>Лексичні методи</h4>
                 <ul style="font-size: 0.9rem;">
                     <li>Заміна синонімів</li>
                     <li>Вибір слів зі словника</li>
                 </ul>
             </div>
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Синтаксичні методи</h4>
+            <div class="card-green">
+                <h4>Синтаксичні методи</h4>
                 <ul style="font-size: 0.9rem;">
                     <li>Трансформація структури речень</li>
                     <li>Зміна порядку слів</li>
                 </ul>
             </div>
-            <div style="background: #fef9c3; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #854d0e;">Семантичні методи</h4>
+            <div class="card-yellow">
+                <h4>Семантичні методи</h4>
                 <ul style="font-size: 0.9rem;">
                     <li>Парафразування</li>
                     <li>Модифікація значення</li>
                 </ul>
             </div>
-            <div style="background: #fce7f3; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #9d174d;">Генеративні методи</h4>
+            <div class="card-pink">
+                <h4>Генеративні методи</h4>
                 <ul style="font-size: 0.9rem;">
                     <li>NLG (генерація тексту)</li>
                     <li>Neural/LLM підходи</li>
@@ -116,7 +116,7 @@
                     <li>Заміна за секретними бітами</li>
                 </ol>
             </div>
-            <div style="background: #f8fafc; padding: 1rem; border-radius: 10px;">
+            <div class="card-gray">
                 <h4>Приклад графа:</h4>
                 <div class="code-example" style="font-size: 0.85rem;">
     big ──── large
@@ -140,28 +140,28 @@ big=0, large=1, huge=?
         <h2>Проблеми синонімічного методу</h2>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-            <div style="background: #fee2e2; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #991b1b;">Контекстна залежність</h4>
+            <div class="card-red">
+                <h4>Контекстна залежність</h4>
                 <p style="font-size: 0.85rem;">
                     "швидкий поїзд" ✓<br>
                     "прудкий поїзд" ?
                 </p>
             </div>
-            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #854d0e;">Колокації</h4>
+            <div class="card-yellow">
+                <h4>Колокації</h4>
                 <p style="font-size: 0.85rem;">
                     "strong tea" ✓<br>
                     "powerful tea" ✗
                 </p>
             </div>
-            <div style="background: #e0e7ff; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #3730a3;">Статистичні зміни</h4>
+            <div class="card-purple">
+                <h4>Статистичні зміни</h4>
                 <p style="font-size: 0.85rem;">
                     Незвичний розподіл слів може бути виявлений
                 </p>
             </div>
-            <div style="background: #fce7f3; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #9d174d;">Обмежена ємність</h4>
+            <div class="card-pink">
+                <h4>Обмежена ємність</h4>
                 <p style="font-size: 0.85rem;">
                     Не кожне слово має придатний синонім
                 </p>
@@ -217,20 +217,20 @@ big=0, large=1, huge=?
         <h4 style="margin-top: 1.5rem;">Техніки:</h4>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem;">
-            <div style="background: #dbeafe; padding: 1rem; border-radius: 10px;">
-                <h4 style="font-size: 1rem; color: #1e40af;">Парафразування</h4>
+            <div class="card-blue">
+                <h4 style="font-size: 1rem;">Парафразування</h4>
                 <p style="font-size: 0.85rem;">"Він прийшов о 15:00"<br>→ "Його прибуття було о 15:00"</p>
             </div>
-            <div style="background: #dcfce7; padding: 1rem; border-radius: 10px;">
-                <h4 style="font-size: 1rem; color: #166534;">Переупорядкування</h4>
+            <div class="card-green">
+                <h4 style="font-size: 1rem;">Переупорядкування</h4>
                 <p style="font-size: 0.85rem;">"Спочатку A, потім B"<br>→ "B після A"</p>
             </div>
-            <div style="background: #fef9c3; padding: 1rem; border-radius: 10px;">
-                <h4 style="font-size: 1rem; color: #854d0e;">Пресупозиції</h4>
+            <div class="card-yellow">
+                <h4 style="font-size: 1rem;">Пресупозиції</h4>
                 <p style="font-size: 0.85rem;">"Він знову запізнився"<br>(implies: запізнювався раніше)</p>
             </div>
-            <div style="background: #fce7f3; padding: 1rem; border-radius: 10px;">
-                <h4 style="font-size: 1rem; color: #9d174d;">Імплікатури</h4>
+            <div class="card-pink">
+                <h4 style="font-size: 1rem;">Імплікатури</h4>
                 <p style="font-size: 0.85rem;">Непряме вираження думки</p>
             </div>
         </div>
@@ -255,19 +255,19 @@ big=0, large=1, huge=?
         <h4 style="margin-top: 1.5rem;">Процес:</h4>
 
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1rem 0;">
-            <div style="background: #667eea; color: white; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="gradient-box gradient-purple" style="text-align: center;">
                 <strong>1</strong><br>
                 <span style="font-size: 0.8rem;">Навчити RNN</span>
             </div>
-            <div style="background: #764ba2; color: white; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="gradient-box gradient-purple" style="text-align: center;">
                 <strong>2</strong><br>
                 <span style="font-size: 0.8rem;">Передбачити P(слово)</span>
             </div>
-            <div style="background: #667eea; color: white; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="gradient-box gradient-purple" style="text-align: center;">
                 <strong>3</strong><br>
                 <span style="font-size: 0.8rem;">Біти → вибір</span>
             </div>
-            <div style="background: #764ba2; color: white; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="gradient-box gradient-purple" style="text-align: center;">
                 <strong>4</strong><br>
                 <span style="font-size: 0.8rem;">Згенерувати</span>
             </div>
@@ -297,12 +297,12 @@ big=0, large=1, huge=?
         </ol>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
-            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Ємність</h4>
+            <div class="card-green">
+                <h4>Ємність</h4>
                 <p>r бітів на токен</p>
             </div>
-            <div style="background: #dbeafe; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #1e40af;">Безпека</h4>
+            <div class="card-blue">
+                <h4>Безпека</h4>
                 <p>Доказово безпечний за KL-дивергенцією</p>
             </div>
         </div>
@@ -350,36 +350,36 @@ big=0, large=1, huge=?
     <section class="slide">
         <h2>Підсумок теми</h2>
 
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
-            <tr style="background: #f1f5f9;">
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Метод</th>
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Ємність</th>
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Складність</th>
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Робастність</th>
+        <table>
+            <tr>
+                <th>Метод</th>
+                <th>Ємність</th>
+                <th>Складність</th>
+                <th>Робастність</th>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Синоніми</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">~0.67 біт/реч.</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Середня</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0; background: #dcfce7;">Висока</td>
+                <td>Синоніми</td>
+                <td>~0.67 біт/реч.</td>
+                <td>Середня</td>
+                <td>Висока</td>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Синтаксис</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">0.5-1 біт/реч.</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Висока</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0; background: #dcfce7;">Висока</td>
+                <td>Синтаксис</td>
+                <td>0.5-1 біт/реч.</td>
+                <td>Висока</td>
+                <td>Висока</td>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">RNN/ADG</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">r біт/токен</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Дуже висока</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0; background: #fee2e2;">Низька</td>
+                <td>RNN/ADG</td>
+                <td>r біт/токен</td>
+                <td>Дуже висока</td>
+                <td>Низька</td>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">LLM-based</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Висока</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Середня</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0; background: #fee2e2;">Низька</td>
+                <td>LLM-based</td>
+                <td>Висока</td>
+                <td>Середня</td>
+                <td>Низька</td>
             </tr>
         </table>
 

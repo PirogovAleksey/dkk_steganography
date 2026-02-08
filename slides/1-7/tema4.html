@@ -25,7 +25,7 @@
         <h2>🎭 Три підходи до адаптивності</h2>
 
                 <div class="comparison-grid">
-                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 10px;">
+                    <div class="gradient-box gradient-purple">
                         <h3 style="text-align: center;">🎭 HUGO</h3>
                         <p style="text-align: center; margin-top: 1rem;">
                             Статистичний підхід<br>
@@ -34,7 +34,7 @@
                         </p>
                     </div>
 
-                    <div style="background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%); color: #1a202c; padding: 1.5rem; border-radius: 10px;">
+                    <div class="gradient-box gradient-blue">
                         <h3 style="text-align: center;">🌊 WOW</h3>
                         <p style="text-align: center; margin-top: 1rem;">
                             Директивний підхід<br>
@@ -43,7 +43,7 @@
                         </p>
                     </div>
 
-                    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1.5rem; border-radius: 10px;">
+                    <div class="gradient-box gradient-pink">
                         <h3 style="text-align: center;">📐 S-UNIWARD</h3>
                         <p style="text-align: center; margin-top: 1rem;">
                             Універсальний підхід<br>
@@ -72,37 +72,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background: #f9fafb;">
+                        <tr>
                             <td><strong>Безпека</strong></td>
                             <td><span class="rating">★★★★☆</span> Висока</td>
                             <td><span class="rating">★★★★☆</span> Висока</td>
                             <td><span class="rating">★★★★★</span> Найвища</td>
                         </tr>
-                        <tr style="background: white;">
+                        <tr>
                             <td><strong>Швидкість</strong></td>
                             <td><span class="rating">★★☆☆☆</span> Повільна</td>
                             <td><span class="rating">★★★★☆</span> Швидка</td>
                             <td><span class="rating">★★★☆☆</span> Середня</td>
                         </tr>
-                        <tr style="background: #f9fafb;">
+                        <tr>
                             <td><strong>Складність реалізації</strong></td>
                             <td><span class="rating">★★★★★</span> Складна</td>
                             <td><span class="rating">★★☆☆☆</span> Проста</td>
                             <td><span class="rating">★★★☆☆</span> Середня</td>
                         </tr>
-                        <tr style="background: white;">
+                        <tr>
                             <td><strong>Універсальність</strong></td>
                             <td>Тільки spatial</td>
                             <td>Тільки spatial</td>
                             <td>Spatial, DCT, DWT</td>
                         </tr>
-                        <tr style="background: #f9fafb;">
+                        <tr>
                             <td><strong>Пам'ять</strong></td>
                             <td>Висока</td>
                             <td>Низька</td>
                             <td>Середня</td>
                         </tr>
-                        <tr style="background: white;">
+                        <tr>
                             <td><strong>Payload (bpp)</strong></td>
                             <td>До 0.5</td>
                             <td>До 0.5</td>
@@ -121,26 +121,26 @@
                     <p style="font-size: 1.05rem;">Payload: 0.4 bpp | Детектор: Ensemble Classifier</p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
-                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #92400e;">HUGO</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #92400e;">
+                <div class="three-col-grid">
+                    <div class="card-yellow" style="text-align: center;">
+                        <h4>HUGO</h4>
+                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">
                             58%
                         </div>
                         <p>Точність виявлення</p>
                     </div>
 
-                    <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #1e40af;">WOW</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #1e40af;">
+                    <div class="card-blue" style="text-align: center;">
+                        <h4>WOW</h4>
+                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">
                             57%
                         </div>
                         <p>Точність виявлення</p>
                     </div>
 
-                    <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #065f46;">S-UNIWARD</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #065f46;">
+                    <div class="card-green" style="text-align: center;">
+                        <h4>S-UNIWARD</h4>
+                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">
                             54%
                         </div>
                         <p>Точність виявлення</p>
@@ -161,7 +161,7 @@
                     <p style="font-size: 1.05rem;">Тестування на Intel i7, 16GB RAM</p>
                 </div>
 
-                <div style="background: #f8fafc; padding: 2rem; border-radius: 10px; margin: 1.5rem 0;">
+                <div class="card-gray">
                     <div style="display: flex; align-items: center; margin: 1rem 0;">
                         <div style="width: 150px; font-weight: bold;">HUGO:</div>
                         <div style="flex: 1; background: #cbd5e1; height: 30px; border-radius: 5px; position: relative;">
@@ -196,7 +196,7 @@
     <section class="slide">
         <h2>🎯 Коли використовувати який метод?</h2>
 
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                <div class="gradient-box gradient-purple">
                     <h3>🎭 Використовуйте HUGO, якщо:</h3>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li>Потрібна максимальна безпека для spatial domain</li>
@@ -206,7 +206,7 @@
                     </ul>
                 </div>
 
-                <div style="background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                <div class="gradient-box gradient-blue">
                     <h3>🌊 Використовуйте WOW, якщо:</h3>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li>Потрібен баланс між безпекою та швидкістю</li>
@@ -216,7 +216,7 @@
                     </ul>
                 </div>
 
-                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                <div class="gradient-box gradient-pink">
                     <h3>📐 Використовуйте S-UNIWARD, якщо:</h3>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li>Потрібна найвища безпека</li>
@@ -231,28 +231,24 @@
     <section class="slide">
         <h2>📈 Еволюція адаптивних методів</h2>
 
-                <div style="position: relative; padding: 2rem 0;">
-                    <div style="border-left: 4px solid #667eea; padding-left: 2rem; margin: 2rem 0;">
-                        <div style="background: #eff6ff; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-                            <h4 style="color: #1e40af;">2010: LSB, базові методи</h4>
-                            <p>Рівномірне вбудовування, легко виявляються</p>
-                        </div>
+                <div class="card-blue" style="margin-bottom: 1rem;">
+                    <h4>2010: LSB, базові методи</h4>
+                    <p>Рівномірне вбудовування, легко виявляються</p>
+                </div>
 
-                        <div style="background: #f0fdf4; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-                            <h4 style="color: #065f46;">2012: HUGO</h4>
-                            <p>Перший справжній адаптивний метод з SPAM моделлю</p>
-                        </div>
+                <div class="card-green" style="margin-bottom: 1rem;">
+                    <h4>2012: HUGO</h4>
+                    <p>Перший справжній адаптивний метод з SPAM моделлю</p>
+                </div>
 
-                        <div style="background: #fef3c7; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
-                            <h4 style="color: #92400e;">2013: WOW</h4>
-                            <p>Директивний підхід, швидше та практичніше</p>
-                        </div>
+                <div class="card-yellow" style="margin-bottom: 1rem;">
+                    <h4>2013: WOW</h4>
+                    <p>Директивний підхід, швидше та практичніше</p>
+                </div>
 
-                        <div style="background: #fce7f3; padding: 1rem; border-radius: 10px;">
-                            <h4 style="color: #9f1239;">2014: S-UNIWARD</h4>
-                            <p>Універсальний підхід, найкраща безпека</p>
-                        </div>
-                    </div>
+                <div class="card-pink">
+                    <h4>2014: S-UNIWARD</h4>
+                    <p>Універсальний підхід, найкраща безпека</p>
                 </div>
 
         <div class="info-box">
@@ -265,18 +261,18 @@
         <h2>🚀 Сучасні тренди та майбутнє</h2>
 
                 <div class="comparison-grid">
-                    <div style="background: linear-gradient(145deg, #ffffff, #f3f4f6); padding: 1.5rem; border-radius: 10px; border: 2px solid #667eea;">
-                        <h4 style="color: #667eea; text-align: center;">🤖 Deep Learning</h4>
+                    <div class="card-purple">
+                        <h4 style="text-align: center;">🤖 Deep Learning</h4>
                         <p>GAN-based стеганографія, навчання на даних</p>
                     </div>
 
-                    <div style="background: linear-gradient(145deg, #ffffff, #f3f4f6); padding: 1.5rem; border-radius: 10px; border: 2px solid #10b981;">
-                        <h4 style="color: #10b981; text-align: center;">🎨 Content-Aware</h4>
+                    <div class="card-green">
+                        <h4 style="text-align: center;">🎨 Content-Aware</h4>
                         <p>Семантичний аналіз, розпізнавання об'єктів</p>
                     </div>
 
-                    <div style="background: linear-gradient(145deg, #ffffff, #f3f4f6); padding: 1.5rem; border-radius: 10px; border: 2px solid #f59e0b;">
-                        <h4 style="color: #f59e0b; text-align: center;">⚡ Оптимізація</h4>
+                    <div class="card-yellow">
+                        <h4 style="text-align: center;">⚡ Оптимізація</h4>
                         <p>Швидші алгоритми, GPU прискорення</p>
                     </div>
                 </div>
@@ -323,7 +319,7 @@
         <h2>📝 Загальні підсумки</h2>
 
                 <div class="algorithm-box">
-                    <h3 style="text-align: center; color: #667eea;">Ключові висновки</h3>
+                    <h3 style="text-align: center;">Ключові висновки</h3>
                 </div>
 
                 <div class="advantage-list">

@@ -24,8 +24,8 @@
     <section class="slide">
 <h2>🌟 Універсальність S-UNIWARD</h2>
 
-                <div style="background: #f0fdf4; border-left: 5px solid #10b981; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
-                    <h3 style="color: #065f46;">Головна ідея</h3>
+                <div class="card-green">
+                    <h3>Головна ідея</h3>
                     <p style="font-size: 1.2rem; line-height: 1.8;">
                         S-UNIWARD - <strong>універсальна функція спотворення</strong>, яка працює в будь-якій області
                         (просторовій, частотній, JPEG), використовуючи вейвлет-декомпозицію для оцінки локальних змін
@@ -33,12 +33,12 @@
                 </div>
 
                 <div class="two-column">
-                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #92400e;">⚠️ HUGO і WOW</h4>
+                    <div class="card-yellow">
+                        <h4>⚠️ HUGO і WOW</h4>
                         <p>Працюють тільки в просторовій області</p>
                     </div>
-                    <div style="background: #ecfdf5; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #065f46;">✅ S-UNIWARD</h4>
+                    <div class="card-green">
+                        <h4>✅ S-UNIWARD</h4>
                         <p>Універсальний - працює скрізь!</p>
                     </div>
                 </div>
@@ -107,28 +107,28 @@
     <section class="slide">
 <h2>⚙️ Алгоритм S-UNIWARD</h2>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 1: Вейвлет-декомпозиція</h4>
+                <div class="method-card">
+                    <h4>Крок 1: Вейвлет-декомпозиція</h4>
                     <p>Розкладаємо зображення на 3 рівні, отримуємо 9 субдіапазонів (3×3)</p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 2: Обчислення відгуків</h4>
+                <div class="method-card">
+                    <h4>Крок 2: Обчислення відгуків</h4>
                     <p>Для кожного пікселя обчислюємо W<sub>i,j</sub><sup>k</sup> (відгук k-го фільтра)</p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 3: Нормалізація</h4>
+                <div class="method-card">
+                    <h4>Крок 3: Нормалізація</h4>
                     <p>Стабілізуємо відгуки: W̃<sub>i,j</sub><sup>k</sup> = W<sub>i,j</sub><sup>k</sup> / (σ<sup>k</sup> + C)</p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 4: Агрегація</h4>
+                <div class="method-card">
+                    <h4>Крок 4: Агрегація</h4>
                     <p>Обчислюємо вартість: ρ<sub>i,j</sub> = Σ 1 / (|W̃<sub>i,j</sub><sup>k</sup>| + σ)</p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 5: STC + Вбудовування</h4>
+                <div class="method-card">
+                    <h4>Крок 5: STC + Вбудовування</h4>
                     <p>Використовуємо STC для оптимального вибору пікселів, модифікуємо зображення</p>
                 </div>
     </section>
@@ -137,8 +137,8 @@
     <section class="slide">
 <h2>🌍 Чому "Universal"?</h2>
 
-                <div style="background: #f0fdf4; border-left: 5px solid #10b981; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
-                    <h3 style="color: #065f46;">Ключова ідея універсальності</h3>
+                <div class="card-green">
+                    <h3>Ключова ідея універсальності</h3>
                     <p style="font-size: 1.2rem; line-height: 1.8;">
                         S-UNIWARD працює з <strong>будь-яким представленням</strong> зображення завдяки тому, що використовує
                         <strong>відносне спотворення</strong> замість абсолютного
@@ -146,12 +146,12 @@
                 </div>
 
                 <div class="two-column">
-                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #92400e;">⚠️ HUGO, WOW</h4>
+                    <div class="card-yellow">
+                        <h4>⚠️ HUGO, WOW</h4>
                         <p><strong>Spatial-only:</strong> Працюють тільки з пікселями у просторовій області</p>
                     </div>
-                    <div style="background: #ecfdf5; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #065f46;">✅ S-UNIWARD</h4>
+                    <div class="card-green">
+                        <h4>✅ S-UNIWARD</h4>
                         <p><strong>Universal:</strong> Працює з пікселями, DCT коефіцієнтами, вейвлетами!</p>
                     </div>
                 </div>
@@ -178,17 +178,17 @@
                     </p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
-                    <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #1e40af;">🔍 Рівень 1</h4>
+                <div class="three-col-grid">
+                    <div class="card-blue" style="text-align: center;">
+                        <h4>🔍 Рівень 1</h4>
                         <p style="margin-top: 1rem;">Дрібні деталі, текстури, шум</p>
                     </div>
-                    <div style="background: #fed7aa; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #9a3412;">📐 Рівень 2</h4>
+                    <div class="card-yellow" style="text-align: center;">
+                        <h4>📐 Рівень 2</h4>
                         <p style="margin-top: 1rem;">Середні структури, краї об'єктів</p>
                     </div>
-                    <div style="background: #d1fae5; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #065f46;">🏔️ Рівень 3</h4>
+                    <div class="card-green" style="text-align: center;">
+                        <h4>🏔️ Рівень 3</h4>
                         <p style="margin-top: 1rem;">Великі об'єкти, загальна форма</p>
                     </div>
                 </div>
@@ -213,32 +213,32 @@
 <h2>🛡️ Стійкість S-UNIWARD</h2>
 
                 <div class="info-box">
-                    <h3 style="color: #667eea;">BOSS Competition Results</h3>
+                    <h3>BOSS Competition Results</h3>
                     <p style="font-size: 1.1rem; line-height: 1.8;">
                         S-UNIWARD показав <strong>найкращі результати</strong> серед усіх методів на змаганні BOSS
                     </p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
-                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #92400e;">HUGO</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #92400e;">
+                <div class="three-col-grid">
+                    <div class="card-yellow" style="text-align: center;">
+                        <h4>HUGO</h4>
+                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">
                             58%
                         </div>
                         <p>Точність детектування</p>
                     </div>
 
-                    <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #1e40af;">WOW</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #1e40af;">
+                    <div class="card-blue" style="text-align: center;">
+                        <h4>WOW</h4>
+                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">
                             57%
                         </div>
                         <p>Точність детектування</p>
                     </div>
 
-                    <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                        <h4 style="color: #065f46;">S-UNIWARD</h4>
-                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0; color: #065f46;">
+                    <div class="card-green" style="text-align: center;">
+                        <h4>S-UNIWARD</h4>
+                        <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">
                             54%
                         </div>
                         <p>Точність детектування 🏆</p>

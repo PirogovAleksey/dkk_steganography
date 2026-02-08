@@ -64,7 +64,7 @@
         Capacity × Imperceptibility × Robustness = Constant
         </div>
 
-        <p style="text-align: center; font-size: 1.1rem; color: #555; margin-top: 1.5rem;">
+        <p style="text-align: center; font-size: 1.1rem; margin-top: 1.5rem;">
         Покращення одного параметра неминуче призводить до погіршення інших.
         Це фундаментальний закон стеганографії.
         </p>
@@ -74,8 +74,8 @@
     <section class="slide">
         <h2>💾 Ємність (Capacity)</h2>
 
-        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
-        <h3 style="color: white; border: none;">Визначення:</h3>
+        <div class="gradient-box gradient-purple" style="margin-bottom: 2rem;">
+        <h3 style="border: none;">Визначення:</h3>
         <p style="font-size: 1.2rem;">
         Максимальний обсяг інформації, який можна приховати в контейнері без суттєвого погіршення якості або виявлення
         </p>
@@ -99,8 +99,8 @@
         </ul>
         </div>
 
-        <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
-        <h4 style="color: #92400e;">⚠️ Практичні обмеження:</h4>
+        <div class="card-yellow" style="margin-top: 2rem;">
+        <h4>⚠️ Практичні обмеження:</h4>
         <ul>
         <li>LSB: до 3 bpp (але легко виявляється)</li>
         <li>Адаптивні методи: 0.05-0.5 bpp (складніше виявити)</li>
@@ -112,8 +112,8 @@
     <section class="slide">
         <h2>👁️ Непомітність (Imperceptibility)</h2>
 
-        <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
-        <h3 style="color: white; border: none;">Визначення:</h3>
+        <div class="gradient-box gradient-pink" style="margin-bottom: 2rem;">
+        <h3 style="border: none;">Визначення:</h3>
         <p style="font-size: 1.2rem;">
         Здатність системи приховувати факт наявності секретної інформації від візуального та статистичного виявлення
         </p>
@@ -161,8 +161,8 @@
     <section class="slide">
         <h2>🛡️ Стійкість (Robustness)</h2>
 
-        <div style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
-        <h3 style="color: white; border: none;">Визначення:</h3>
+        <div class="gradient-box gradient-blue" style="margin-bottom: 2rem;">
+        <h3 style="border: none;">Визначення:</h3>
         <p style="font-size: 1.2rem;">
         Здатність прихованої інформації залишатися неушкодженою після обробки контейнера або навмисних атак
         </p>
@@ -202,8 +202,8 @@
         </tbody>
         </table>
 
-        <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem;">
-        <h4 style="color: #166534;">✅ Методи підвищення стійкості:</h4>
+        <div class="card-green" style="margin-top: 1.5rem;">
+        <h4>✅ Методи підвищення стійкості:</h4>
         <ul>
         <li>Використання стійких доменів (DCT, DWT)</li>
         <li>Розподілене вбудовування з надлишковістю</li>
@@ -293,7 +293,7 @@
         <div class="metric-fill fill-robustness" style="width: 20%;" data-value="20%"></div>
         </div>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
         ⚡ Висока ємність, але легко виявляється
         </p>
         </div>
@@ -318,7 +318,7 @@
         <div class="metric-fill fill-robustness" style="width: 80%;" data-value="80%"></div>
         </div>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
         ⚖️ Збалансований підхід для JPEG
         </p>
         </div>
@@ -343,7 +343,7 @@
         <div class="metric-fill fill-robustness" style="width: 60%;" data-value="60%"></div>
         </div>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
         🎯 Максимальна непомітність
         </p>
         </div>
@@ -368,7 +368,7 @@
         <div class="metric-fill fill-robustness" style="width: 95%;" data-value="95%"></div>
         </div>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
         🛡️ Максимальна стійкість до атак
         </p>        </div>
     </div>
@@ -395,7 +395,7 @@
 
         <div id="covert" class="scenario-content active">
         <h3>🕵️ Прихований канал зв'язку</h3>
-        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+        <div class="gradient-box gradient-purple" style="margin: 1rem 0;">
         <p><strong>Пріоритет:</strong> Непомітність > Стійкість > Ємність</p>
         </div>
         <ul class="slide-list">
@@ -410,7 +410,7 @@
 
         <div id="watermark" class="scenario-content">
         <h3>© Цифрові водяні знаки</h3>
-        <div style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+        <div class="gradient-box gradient-blue" style="margin: 1rem 0;">
         <p><strong>Пріоритет:</strong> Стійкість > Непомітність > Ємність</p>
         </div>
         <ul class="slide-list">
@@ -425,7 +425,7 @@
 
         <div id="forensics" class="scenario-content">
         <h3>🔍 Судова експертиза</h3>
-        <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+        <div class="gradient-box gradient-pink" style="margin: 1rem 0;">
         <p><strong>Пріоритет:</strong> Стійкість > Непомітність = Ємність</p>
         </div>
         <ul class="slide-list">
@@ -440,7 +440,7 @@
 
         <div id="capacity" class="scenario-content">
         <h3>💾 Максимальна ємність</h3>
-        <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+        <div class="gradient-box gradient-purple" style="margin: 1rem 0;">
         <p><strong>Пріоритет:</strong> Ємність > Непомітність > Стійкість</p>
         </div>
         <ul class="slide-list">
@@ -469,8 +469,8 @@
         <h3>📈 Функції компромісу:</h3>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0;">
-        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px;">
-        <h4 style="color: #0369a1;">Лінійна модель:</h4>
+        <div class="card-blue">
+        <h4>Лінійна модель:</h4>
         <code style="display: block; padding: 1rem; background: #1f2937; color: #f3f4f6; border-radius: 5px;">
         Q = αC + βI + γR<br>
         при α + β + γ = 1
@@ -478,8 +478,8 @@
         <p style="margin-top: 1rem;">Проста, але неточна для екстремальних значень</p>
         </div>
 
-        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 10px;">
-        <h4 style="color: #14532d;">Мультиплікативна модель:</h4>
+        <div class="card-green">
+        <h4>Мультиплікативна модель:</h4>
         <code style="display: block; padding: 1rem; background: #1f2937; color: #f3f4f6; border-radius: 5px;">
         Q = C^α × I^β × R^γ<br>
         α, β, γ ∈ [0, 1]
@@ -488,8 +488,8 @@
         </div>
         </div>
 
-        <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px;">
-        <h4 style="color: #713f12;">⚠️ Обмеження Шеннона для стеганографії:</h4>
+        <div class="card-yellow">
+        <h4>⚠️ Обмеження Шеннона для стеганографії:</h4>
         <p>Максимальна ємність обмежена ентропією контейнера та вимогами непомітності:</p>
         <div style="text-align: center; font-family: monospace; margin: 1rem 0; font-size: 1.1rem;">
         C_max ≤ H(Cover) × (1 - D_threshold)        </div>
@@ -539,8 +539,8 @@
         </tbody>
         </table>
 
-        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem; border-radius: 15px; margin-top: 2rem;">
-        <h3 style="color: white;">📋 Чек-лист оптимізації:</h3>
+        <div class="gradient-box gradient-purple" style="margin-top: 2rem;">
+        <h3>📋 Чек-лист оптимізації:</h3>
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem;">
         <div>
         ✅ Визначте пріоритетний параметр<br>
@@ -561,8 +561,8 @@
     <section class="slide">
         <h2>📌 Висновки</h2>
 
-        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem; border-radius: 15px;">
-        <h3 style="color: white;">Ключові принципи компромісів:</h3>
+        <div class="gradient-box gradient-purple">
+        <h3>Ключові принципи компромісів:</h3>
         <ul style="line-height: 2; font-size: 1.1rem;">
         <li>⚖️ Неможливо максимізувати всі три параметри одночасно</li>
         <li>📐 Трикутник компромісів - фундаментальний закон стеганографії</li>
@@ -572,7 +572,7 @@
         </ul>
         </div>
 
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #f9fafb; border-radius: 10px;">
+        <div class="card-gray" style="margin-top: 2rem;">
         <p style="font-size: 1.1rem; line-height: 1.8; text-align: center;">
         <strong>Мистецтво стеганографії</strong> полягає не в подоланні фундаментальних компромісів,
         а в їх оптимальному балансуванні для конкретної задачі. Розуміння цих обмежень -

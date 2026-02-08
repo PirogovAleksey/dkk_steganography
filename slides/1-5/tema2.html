@@ -63,16 +63,16 @@
             <p>Обхід пікселів зліва направо, зверху вниз</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; max-width: 500px; margin: 1rem auto;">
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">1</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">2</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">3</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">4</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">5</div>
-            <div style="background: #818cf8; color: white; padding: 1rem; text-align: center; border-radius: 5px;">6</div>
-            <div style="background: #a5b4fc; color: #1e293b; padding: 1rem; text-align: center; border-radius: 5px;">...</div>
-            <div style="background: #c7d2fe; color: #1e293b; padding: 1rem; text-align: center; border-radius: 5px;">...</div>
-            <div style="background: #e0e7ff; color: #1e293b; padding: 1rem; text-align: center; border-radius: 5px;">...</div>
+        <div class="pixel-grid cols-3">
+            <div class="pixel-cell active">1</div>
+            <div class="pixel-cell active">2</div>
+            <div class="pixel-cell active">3</div>
+            <div class="pixel-cell active">4</div>
+            <div class="pixel-cell active">5</div>
+            <div class="pixel-cell semi">6</div>
+            <div class="pixel-cell faded">...</div>
+            <div class="pixel-cell faded">...</div>
+            <div class="pixel-cell faded">...</div>
         </div>
 
         <div class="warning-box">
@@ -120,16 +120,16 @@
             <p>PRNG з секретним ключем визначає позиції вбудовування</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; max-width: 500px; margin: 1rem auto;">
-            <div style="background: #e0e7ff; color: #1e293b; padding: 1rem; text-align: center; border-radius: 5px;">-</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">3</div>
-            <div style="background: #e0e7ff; color: #1e293b; padding: 1rem; text-align: center; border-radius: 5px;">-</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">1</div>
-            <div style="background: #e0e7ff; color: #1e293b; padding: 1rem; text-align: center; border-radius: 5px;">-</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">5</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">2</div>
-            <div style="background: #e0e7ff; color: #1e293b; padding: 1rem; text-align: center; border-radius: 5px;">-</div>
-            <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 5px;">4</div>
+        <div class="pixel-grid cols-3">
+            <div class="pixel-cell faded">-</div>
+            <div class="pixel-cell active">3</div>
+            <div class="pixel-cell faded">-</div>
+            <div class="pixel-cell active">1</div>
+            <div class="pixel-cell faded">-</div>
+            <div class="pixel-cell active">5</div>
+            <div class="pixel-cell active">2</div>
+            <div class="pixel-cell faded">-</div>
+            <div class="pixel-cell active">4</div>
         </div>
 
         <div class="success-box">
@@ -180,28 +180,28 @@
             </tr>
             <tr>
                 <td>Складність</td>
-                <td style="background: #dcfce7;">Низька</td>
-                <td style="background: #fef9c3;">Середня</td>
+                <td class="cell-green">Низька</td>
+                <td class="cell-yellow">Середня</td>
             </tr>
             <tr>
                 <td>Потреба в ключі</td>
                 <td>Ні</td>
-                <td style="background: #dcfce7;">Так</td>
+                <td class="cell-green">Так</td>
             </tr>
             <tr>
                 <td>Стійкість до детекції</td>
-                <td style="background: #fee2e2;">Низька</td>
-                <td style="background: #fef9c3;">Середня</td>
+                <td class="cell-red">Низька</td>
+                <td class="cell-yellow">Середня</td>
             </tr>
             <tr>
                 <td>Chi-Square атака</td>
-                <td style="background: #fee2e2;">Вразливий</td>
-                <td style="background: #dcfce7;">Стійкий</td>
+                <td class="cell-red">Вразливий</td>
+                <td class="cell-green">Стійкий</td>
             </tr>
             <tr>
                 <td>Швидкість</td>
-                <td style="background: #dcfce7;">Висока</td>
-                <td style="background: #fef9c3;">Середня</td>
+                <td class="cell-green">Висока</td>
+                <td class="cell-yellow">Середня</td>
             </tr>
         </table>
     </section>
@@ -302,21 +302,21 @@
             </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
-            <div style="background: #fee2e2; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                <h3 style="color: #dc2626;">Red</h3>
+        <div class="three-col-grid">
+            <div class="card-red" style="text-align: center;">
+                <h3>Red</h3>
                 <p style="font-size: 2rem; font-weight: bold;">3 біти</p>
-                <p style="font-family: monospace;">xxxxx<span style="color: #dc2626; font-weight: bold;">210</span></p>
+                <p style="font-family: monospace;">xxxxx<span style="font-weight: bold;">210</span></p>
             </div>
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                <h3 style="color: #16a34a;">Green</h3>
+            <div class="card-green" style="text-align: center;">
+                <h3>Green</h3>
                 <p style="font-size: 2rem; font-weight: bold;">3 біти</p>
-                <p style="font-family: monospace;">xxxxx<span style="color: #16a34a; font-weight: bold;">543</span></p>
+                <p style="font-family: monospace;">xxxxx<span style="font-weight: bold;">543</span></p>
             </div>
-            <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                <h3 style="color: #2563eb;">Blue</h3>
+            <div class="card-blue" style="text-align: center;">
+                <h3>Blue</h3>
                 <p style="font-size: 2rem; font-weight: bold;">2 біти</p>
-                <p style="font-family: monospace;">xxxxxx<span style="color: #2563eb; font-weight: bold;">76</span></p>
+                <p style="font-family: monospace;">xxxxxx<span style="font-weight: bold;">76</span></p>
             </div>
         </div>
 
@@ -352,9 +352,9 @@
                 <td>~576 КБ</td>
             </tr>
             <tr>
-                <td style="background: #dcfce7;"><strong>LSB 3-3-2</strong></td>
-                <td style="background: #dcfce7;"><strong>8 bpp</strong></td>
-                <td style="background: #dcfce7;"><strong>~768 КБ</strong></td>
+                <td class="cell-green"><strong>LSB 3-3-2</strong></td>
+                <td class="cell-green"><strong>8 bpp</strong></td>
+                <td class="cell-green"><strong>~768 КБ</strong></td>
             </tr>
         </table>
 

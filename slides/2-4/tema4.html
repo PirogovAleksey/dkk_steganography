@@ -32,16 +32,16 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem;">
-            <div style="background: #dbeafe; padding: 1.2rem; border-radius: 10px; text-align: center;">
-                <h4 style="color: #1e40af;">Форматний</h4>
+            <div class="card-blue" style="text-align: center;">
+                <h4>Форматний</h4>
                 <p style="font-size: 0.85rem;">Виявлення whitespace, Unicode ZWC</p>
             </div>
-            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px; text-align: center;">
-                <h4 style="color: #166534;">Статистичний</h4>
+            <div class="card-green" style="text-align: center;">
+                <h4>Статистичний</h4>
                 <p style="font-size: 0.85rem;">Аналіз розподілів, n-gram</p>
             </div>
-            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px; text-align: center;">
-                <h4 style="color: #854d0e;">ML-based</h4>
+            <div class="card-yellow" style="text-align: center;">
+                <h4>ML-based</h4>
                 <p style="font-size: 0.85rem;">Класифікатори, нейронні мережі</p>
             </div>
         </div>
@@ -131,12 +131,12 @@ def detect_zwc(text):
         </div>
 
         <div class="two-column" style="margin-top: 1.5rem;">
-            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Низька PPL</h4>
+            <div class="card-green">
+                <h4>Низька PPL</h4>
                 <p style="font-size: 0.9rem;">Текст природний, очікуваний моделлю</p>
             </div>
-            <div style="background: #fee2e2; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #991b1b;">Висока PPL</h4>
+            <div class="card-red">
+                <h4>Висока PPL</h4>
                 <p style="font-size: 0.9rem;">Неприродний вибір слів — можливе стего</p>
             </div>
         </div>
@@ -153,8 +153,8 @@ def detect_zwc(text):
         <h2>Статистичні ознаки для детекції</h2>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-            <div style="background: #f8fafc; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #334155;">Лексичні</h4>
+            <div class="card-gray">
+                <h4>Лексичні</h4>
                 <ul style="font-size: 0.85rem;">
                     <li>Частота слів</li>
                     <li>Розмір словника</li>
@@ -162,24 +162,24 @@ def detect_zwc(text):
                     <li>Hapax legomena</li>
                 </ul>
             </div>
-            <div style="background: #f8fafc; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #334155;">N-gram</h4>
+            <div class="card-gray">
+                <h4>N-gram</h4>
                 <ul style="font-size: 0.85rem;">
                     <li>Unigram/Bigram частоти</li>
                     <li>Trigram ймовірності</li>
                     <li>Character n-grams</li>
                 </ul>
             </div>
-            <div style="background: #f8fafc; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #334155;">Синтаксичні</h4>
+            <div class="card-gray">
+                <h4>Синтаксичні</h4>
                 <ul style="font-size: 0.85rem;">
                     <li>POS-tag розподіл</li>
                     <li>Довжина речень</li>
                     <li>Глибина дерева</li>
                 </ul>
             </div>
-            <div style="background: #f8fafc; padding: 1.2rem; border-radius: 10px;">
-                <h4 style="color: #334155;">Стилістичні</h4>
+            <div class="card-gray">
+                <h4>Стилістичні</h4>
                 <ul style="font-size: 0.85rem;">
                     <li>Пунктуація</li>
                     <li>Використання passive</li>
@@ -262,31 +262,31 @@ Input → BERT Encoder → [CLS] token → Dense → Output
     <section class="slide">
         <h2>Інструменти стегоаналізу</h2>
 
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-            <tr style="background: #f1f5f9;">
-                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Інструмент</th>
-                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Тип аналізу</th>
-                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Метод</th>
+        <table>
+            <tr>
+                <th>Інструмент</th>
+                <th>Тип аналізу</th>
+                <th>Метод</th>
             </tr>
             <tr>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;"><strong>stegdetect</strong></td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Загальний</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Статистичний</td>
+                <td><strong>stegdetect</strong></td>
+                <td>Загальний</td>
+                <td>Статистичний</td>
             </tr>
             <tr>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;"><strong>StegExpose</strong></td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Fusion</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">ML ensemble</td>
+                <td><strong>StegExpose</strong></td>
+                <td>Fusion</td>
+                <td>ML ensemble</td>
             </tr>
             <tr>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;"><strong>Python NLTK</strong></td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Лінгвістичний</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Feature extraction</td>
+                <td><strong>Python NLTK</strong></td>
+                <td>Лінгвістичний</td>
+                <td>Feature extraction</td>
             </tr>
             <tr>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;"><strong>Transformers</strong></td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Deep Learning</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">BERT classifiers</td>
+                <td><strong>Transformers</strong></td>
+                <td>Deep Learning</td>
+                <td>BERT classifiers</td>
             </tr>
         </table>
 

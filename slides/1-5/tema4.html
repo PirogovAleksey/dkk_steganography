@@ -62,20 +62,20 @@
             <p>Значення, що відрізняються лише в LSB, утворюють пари</p>
         </div>
 
-        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0;">
-            <div style="background: #dbeafe; padding: 0.8rem 1.2rem; border-radius: 8px; font-family: monospace;">
+        <div class="flow-row">
+            <div class="card-blue" style="font-family: monospace;">
                 (0, 1)
             </div>
-            <div style="background: #dbeafe; padding: 0.8rem 1.2rem; border-radius: 8px; font-family: monospace;">
+            <div class="card-blue" style="font-family: monospace;">
                 (2, 3)
             </div>
-            <div style="background: #dbeafe; padding: 0.8rem 1.2rem; border-radius: 8px; font-family: monospace;">
+            <div class="card-blue" style="font-family: monospace;">
                 (4, 5)
             </div>
-            <div style="background: #e0e7ff; padding: 0.8rem 1.2rem; border-radius: 8px;">
+            <div class="card-purple">
                 ...
             </div>
-            <div style="background: #dbeafe; padding: 0.8rem 1.2rem; border-radius: 8px; font-family: monospace;">
+            <div class="card-blue" style="font-family: monospace;">
                 (254, 255)
             </div>
         </div>
@@ -106,7 +106,7 @@
         </div>
 
         <div class="two-column" style="margin-top: 1rem;">
-            <div class="metric-card" style="background: #f8fafc; padding: 1rem; border-radius: 10px;">
+            <div class="card-gray">
                 <h4>Змінні</h4>
                 <ul style="text-align: left;">
                     <li><strong>nᵢ</strong> — частота значення 2i</li>
@@ -114,7 +114,7 @@
                     <li>nᵢ* = (n₂ᵢ + n₂ᵢ₊₁) / 2</li>
                 </ul>
             </div>
-            <div class="metric-card" style="background: #f8fafc; padding: 1rem; border-radius: 10px;">
+            <div class="card-gray">
                 <h4>Інтерпретація</h4>
                 <ul style="text-align: left;">
                     <li>Високий χ² → природне</li>
@@ -179,13 +179,13 @@
         <p style="text-align: center;">Вимірює "шумність" групи пікселів</p>
 
         <div class="two-column" style="margin-top: 1rem;">
-            <div style="background: #dcfce7; padding: 1rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Regular (R)</h4>
+            <div class="card-green">
+                <h4>Regular (R)</h4>
                 <p>f(F(G)) > f(G)</p>
                 <p>Шум збільшився</p>
             </div>
-            <div style="background: #fee2e2; padding: 1rem; border-radius: 10px;">
-                <h4 style="color: #991b1b;">Singular (S)</h4>
+            <div class="card-red">
+                <h4>Singular (S)</h4>
                 <p>f(F(G)) < f(G)</p>
                 <p>Шум зменшився</p>
             </div>
@@ -260,26 +260,26 @@
     <section class="slide">
         <h2>Інструменти стегоаналізу</h2>
 
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 1.5rem 0;">
-            <div class="format-card" style="background: #dbeafe; border: 2px solid #3b82f6;">
-                <h3 style="color: #1e40af;">Stegsolve</h3>
+        <div class="two-column">
+            <div class="card-blue">
+                <h3>Stegsolve</h3>
                 <p>Візуалізація бітових площин</p>
-                <p style="font-size: 0.9rem; color: #64748b;">Java, GUI інтерфейс</p>
+                <p style="font-size: 0.9rem;">Java, GUI інтерфейс</p>
             </div>
-            <div class="format-card" style="background: #dcfce7; border: 2px solid #22c55e;">
-                <h3 style="color: #166534;">zsteg</h3>
+            <div class="card-green">
+                <h3>zsteg</h3>
                 <p>Аналіз LSB у PNG/BMP</p>
-                <p style="font-size: 0.9rem; color: #64748b;">Ruby, командний рядок</p>
+                <p style="font-size: 0.9rem;">Ruby, командний рядок</p>
             </div>
-            <div class="format-card" style="background: #fef3c7; border: 2px solid #f59e0b;">
-                <h3 style="color: #92400e;">StegExpose</h3>
+            <div class="card-yellow">
+                <h3>StegExpose</h3>
                 <p>Комбінований детектор</p>
-                <p style="font-size: 0.9rem; color: #64748b;">Chi-Square + RS + SPA</p>
+                <p style="font-size: 0.9rem;">Chi-Square + RS + SPA</p>
             </div>
-            <div class="format-card" style="background: #fce7f3; border: 2px solid #ec4899;">
-                <h3 style="color: #9d174d;">Aletheia</h3>
+            <div class="card-pink">
+                <h3>Aletheia</h3>
                 <p>ML-based стегоаналіз</p>
-                <p style="font-size: 0.9rem; color: #64748b;">Python, нейронні мережі</p>
+                <p style="font-size: 0.9rem;">Python, нейронні мережі</p>
             </div>
         </div>
     </section>
@@ -298,25 +298,25 @@
             <tr>
                 <td><strong>BMP</strong></td>
                 <td>Без стиснення</td>
-                <td style="background: #dcfce7;">Відмінна</td>
+                <td class="cell-green">Відмінна</td>
                 <td>Підходить, але підозрілий</td>
             </tr>
             <tr>
                 <td><strong>PNG</strong></td>
                 <td>Без втрат</td>
-                <td style="background: #dcfce7;">Відмінна</td>
-                <td style="background: #dcfce7;"><strong>Рекомендовано!</strong></td>
+                <td class="cell-green">Відмінна</td>
+                <td class="cell-green"><strong>Рекомендовано!</strong></td>
             </tr>
             <tr>
                 <td><strong>JPEG</strong></td>
                 <td>З втратами</td>
-                <td style="background: #fee2e2;">Погана</td>
-                <td style="background: #fee2e2;">НЕ підходить</td>
+                <td class="cell-red">Погана</td>
+                <td class="cell-red">НЕ підходить</td>
             </tr>
             <tr>
                 <td><strong>GIF</strong></td>
                 <td>Палітра</td>
-                <td style="background: #fef9c3;">Обмежена</td>
+                <td class="cell-yellow">Обмежена</td>
                 <td>Можливо (палітра)</td>
             </tr>
         </table>
@@ -340,32 +340,32 @@
             </tr>
             <tr>
                 <td><strong>Chi-Square</strong></td>
-                <td style="background: #dcfce7;">Висока</td>
-                <td style="background: #dcfce7;">Низька</td>
+                <td class="cell-green">Висока</td>
+                <td class="cell-green">Низька</td>
                 <td>Послідовний LSB</td>
             </tr>
             <tr>
                 <td><strong>RS-аналіз</strong></td>
-                <td style="background: #dcfce7;">Дуже висока</td>
-                <td style="background: #fef9c3;">Середня</td>
+                <td class="cell-green">Дуже висока</td>
+                <td class="cell-yellow">Середня</td>
                 <td>Всі LSB методи</td>
             </tr>
             <tr>
                 <td><strong>Візуальний</strong></td>
-                <td style="background: #fef9c3;">Середня</td>
-                <td style="background: #dcfce7;">Низька</td>
+                <td class="cell-yellow">Середня</td>
+                <td class="cell-green">Низька</td>
                 <td>Послідовний LSB</td>
             </tr>
             <tr>
                 <td><strong>SPA</strong></td>
-                <td style="background: #dcfce7;">Висока</td>
-                <td style="background: #fef9c3;">Середня</td>
+                <td class="cell-green">Висока</td>
+                <td class="cell-yellow">Середня</td>
                 <td>Випадковий LSB</td>
             </tr>
             <tr>
                 <td><strong>ML-based</strong></td>
-                <td style="background: #dcfce7;">Найвища</td>
-                <td style="background: #fee2e2;">Висока</td>
+                <td class="cell-green">Найвища</td>
+                <td class="cell-red">Висока</td>
                 <td>Всі методи</td>
             </tr>
         </table>

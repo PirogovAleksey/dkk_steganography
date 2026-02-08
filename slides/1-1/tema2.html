@@ -69,43 +69,43 @@
     <section class="slide">
         <h2>🔄 Модель стеганографічної системи</h2>
 
-        <div style="background: linear-gradient(145deg, #f0f9ff, #e0f2fe); padding: 2rem; border-radius: 15px;">
+        <div class="card-blue">
 
             <div style="text-align: center; margin-bottom: 2rem;">
                 <h3>Схема вбудовування (Embedding)</h3>
             </div>
 
-            <div style="background: white; padding: 1.5rem; border-radius: 10px; font-family: monospace; font-size: 1.1rem; text-align: center; line-height: 2.5;">
+            <div style="font-family: monospace; font-size: 1.1rem; text-align: center; line-height: 2.5;">
                 <div>📄 <strong>Cover</strong> (контейнер)</div>
                 <div style="font-size: 2rem;">+</div>
                 <div>💬 <strong>Message</strong> (повідомлення)</div>
                 <div style="font-size: 2rem;">+</div>
                 <div>🔑 <strong>Key</strong> (опціонально)</div>
-                <div style="font-size: 2rem; color: #667eea;">↓</div>
-                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                <div style="font-size: 2rem;">↓</div>
+                <div class="gradient-box gradient-purple" style="padding: 1rem; margin-top: 1rem;">
                     <strong>EMBEDDING ALGORITHM</strong>
                 </div>
-                <div style="font-size: 2rem; color: #667eea;">↓</div>
-                <div style="background: #10b981; color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                <div style="font-size: 2rem;">↓</div>
+                <div class="card-green" style="padding: 1rem; margin-top: 1rem;">
                     🖼️ <strong>Stego</strong> (стегоконтейнер)
                 </div>
             </div>
 
         </div>
 
-        <div style="background: linear-gradient(145deg, #fef3c7, #fde68a); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+        <div class="card-yellow" style="margin-top: 2rem;">
             <div style="text-align: center; margin-bottom: 1rem;">
                 <h3>Схема витягування (Extraction)</h3>
             </div>
-            <div style="background: white; padding: 1.5rem; border-radius: 10px; font-family: monospace; font-size: 1.1rem; text-align: center; line-height: 2.5;">
-                <div style="background: #10b981; color: white; padding: 1rem; border-radius: 10px;">
+            <div style="font-family: monospace; font-size: 1.1rem; text-align: center; line-height: 2.5;">
+                <div class="card-green" style="padding: 1rem;">
                     🖼️ <strong>Stego</strong>
                 </div>
-                <div style="font-size: 2rem; color: #667eea;">↓</div>
-                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem; border-radius: 10px;">
+                <div style="font-size: 2rem;">↓</div>
+                <div class="gradient-box gradient-purple" style="padding: 1rem;">
                     <strong>EXTRACTION ALGORITHM</strong>
                 </div>
-                <div style="font-size: 2rem; color: #667eea;">↓</div>
+                <div style="font-size: 2rem;">↓</div>
                 <div>💬 <strong>Message</strong> (витягнуте повідомлення)</div>
             </div>
         </div>
@@ -162,7 +162,7 @@
             </p>
         </div>
 
-        <div style="background: linear-gradient(145deg, #fef2f2, #fee2e2); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+        <div class="card-red" style="margin-top: 2rem;">
             <h3 style="text-align: center;">🏛️ Сценарій</h3>
             <div style="margin-top: 1.5rem; line-height: 2;">
                 <p style="font-size: 1.1rem;">
@@ -246,7 +246,7 @@ C_rel = C / (розмір контейнера)
             </p>
         </div>
 
-        <div style="background: linear-gradient(145deg, #ecfdf5, #d1fae5); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+        <div class="card-green" style="margin-top: 2rem;">
             <h3>📐 Метрики якості для зображень</h3>
 
             <div class="two-column" style="margin-top: 1.5rem;">
@@ -310,7 +310,7 @@ PSNR = 10·log₁₀(MAX² / MSE)
 
             <div>
                 <h3>⚔️ Навмисні атаки</h3>
-                <div class="warning-box" style="margin-top: 1rem; background: #fef2f2;">
+                <div class="warning-box" style="margin-top: 1rem;">
                     <ul style="line-height: 1.8;">
                         <li>🔨 Атаки видалення (removal)</li>
                         <li>🎯 Атаки геометричні</li>
@@ -349,7 +349,7 @@ PSNR = 10·log₁₀(MAX² / MSE)
             </p>
         </div>
 
-        <div style="background: linear-gradient(145deg, #fef3c7, #fde68a); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+        <div class="card-yellow" style="margin-top: 2rem;">
             <h3>🛡️ Принцип Керкгоффса для стеганографії</h3>
             <div class="success-box" style="margin-top: 1rem;">
                 <p style="font-size: 1.15rem; line-height: 1.8;">
@@ -404,11 +404,11 @@ PSNR = 10·log₁₀(MAX² / MSE)
             </p>
         </div>
 
-        <div style="background: white; border: 3px solid #667eea; border-radius: 15px; padding: 2rem; margin-top: 2rem;">
-            <h3 style="text-align: center; color: #667eea;">Структура вбудованих даних</h3>
+        <div class="card-blue" style="margin-top: 2rem;">
+            <h3 style="text-align: center;">Структура вбудованих даних</h3>
 
             <div style="margin-top: 2rem;">
-                <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                <div class="card-blue" style="margin-bottom: 1rem;">
                     <strong>1️⃣ Header (Заголовок):</strong> метадані
                     <ul style="margin-top: 0.5rem; line-height: 1.8;">
                         <li>Довжина повідомлення</li>
@@ -417,7 +417,7 @@ PSNR = 10·log₁₀(MAX² / MSE)
                     </ul>
                 </div>
 
-                <div style="background: #d1fae5; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                <div class="card-green" style="margin-bottom: 1rem;">
                     <strong>2️⃣ Payload (Корисні дані):</strong> саме повідомлення
                     <ul style="margin-top: 0.5rem; line-height: 1.8;">
                         <li>Текст, файл, зображення</li>
@@ -426,7 +426,7 @@ PSNR = 10·log₁₀(MAX² / MSE)
                     </ul>
                 </div>
 
-                <div style="background: #fef3c7; padding: 1rem; border-radius: 10px;">
+                <div class="card-yellow">
                     <strong>3️⃣ Padding (Доповнення):</strong> опціонально
                     <ul style="margin-top: 0.5rem; line-height: 1.8;">
                         <li>Випадкові біти для заповнення</li>

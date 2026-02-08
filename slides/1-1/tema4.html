@@ -89,7 +89,7 @@
 
             <div>
                 <h3>🔐 Криптографія</h3>
-                <div style="background: linear-gradient(145deg, #fef2f2, #fee2e2); padding: 2rem; border-radius: 15px; margin-top: 1rem;">
+                <div class="card-red" style="margin-top: 1rem;">
                     <h4 style="text-align: center; margin-bottom: 1.5rem;">Шифрування</h4>
 
                     <div class="info-box">
@@ -112,7 +112,7 @@
                         </div>
                     </div>
 
-                    <div class="warning-box" style="margin-top: 1.5rem; background: #fee2e2;">
+                    <div class="warning-box" style="margin-top: 1.5rem;">
                         <strong>⚠️ Проблема:</strong>
                         <ul style="line-height: 1.8; margin-top: 0.5rem;">
                             <li>Всі бачать незрозумілий текст</li>
@@ -125,7 +125,7 @@
 
             <div>
                 <h3>🎭 Стеганографія</h3>
-                <div style="background: linear-gradient(145deg, #ecfdf5, #d1fae5); padding: 2rem; border-radius: 15px; margin-top: 1rem;">
+                <div class="card-green" style="margin-top: 1rem;">
                     <h4 style="text-align: center; margin-bottom: 1.5rem;">Приховування</h4>
 
                     <div class="info-box">
@@ -144,12 +144,12 @@
                         <p style="margin-top: 0.5rem; font-size: 1.1rem;">
                             🖼️ Фото котика (виглядає звичайно)
                         </p>
-                        <p style="margin-top: 0.5rem; font-style: italic; color: #666;">
+                        <p style="margin-top: 0.5rem; font-style: italic;">
                             Повідомлення приховане в LSB пікселів
                         </p>
                     </div>
 
-                    <div class="success-box" style="margin-top: 1.5rem; background: #d1fae5;">
+                    <div class="success-box" style="margin-top: 1.5rem;">
                         <strong>✅ Перевага:</strong>
                         <ul style="line-height: 1.8; margin-top: 0.5rem;">
                             <li>Виглядає як звичайне фото</li>
@@ -278,35 +278,35 @@ P-value < 0.05 → Підозра! 🚨
     <section class="slide">
         <h2>🤝 Поєднання криптографії та стеганографії</h2>
 
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; margin-bottom: 2rem;">
-            <h3 style="color: white; text-align: center; margin-bottom: 1rem;">Defense in Depth (Захист в глибину)</h3>
+        <div class="gradient-box gradient-purple" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <h3 style="text-align: center; margin-bottom: 1rem;">Defense in Depth (Захист в глибину)</h3>
             <p style="text-align: center; font-size: 1.2rem; line-height: 1.8;">
                 Комбінація обох технологій створює <strong>подвійний захист</strong>: <br>
                 навіть якщо виявлено приховані дані, їх неможливо прочитати
             </p>
         </div>
 
-        <div style="background: white; border: 3px solid #667eea; border-radius: 15px; padding: 2rem; margin-top: 2rem;">
-            <h3 style="text-align: center; color: #667eea;">Схема: Encrypt-then-Embed</h3>
+        <div class="card-blue" style="margin-top: 2rem;">
+            <h3 style="text-align: center;">Схема: Encrypt-then-Embed</h3>
 
             <div style="margin-top: 2rem; font-size: 1.1rem; line-height: 3; text-align: center;">
-                <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px; margin-bottom: 0.5rem;">
+                <div class="card-blue" style="margin-bottom: 0.5rem;">
                     📄 <strong>Plaintext</strong> (відкрите повідомлення)
                 </div>
-                <div style="font-size: 1.5rem; color: #667eea;">↓</div>
-                <div style="background: #fef3c7; padding: 1rem; border-radius: 10px; margin-bottom: 0.5rem;">
+                <div style="font-size: 1.5rem;">↓</div>
+                <div class="card-yellow" style="margin-bottom: 0.5rem;">
                     🔐 <strong>Encryption (AES-256)</strong>
                 </div>
-                <div style="font-size: 1.5rem; color: #667eea;">↓</div>
-                <div style="background: #fee2e2; padding: 1rem; border-radius: 10px; margin-bottom: 0.5rem;">
+                <div style="font-size: 1.5rem;">↓</div>
+                <div class="card-red" style="margin-bottom: 0.5rem;">
                     📜 <strong>Ciphertext</strong> (зашифрований текст)
                 </div>
-                <div style="font-size: 1.5rem; color: #667eea;">↓</div>
-                <div style="background: #ecfdf5; padding: 1rem; border-radius: 10px; margin-bottom: 0.5rem;">
+                <div style="font-size: 1.5rem;">↓</div>
+                <div class="card-green" style="margin-bottom: 0.5rem;">
                     🎭 <strong>Steganography (LSB/HUGO/WOW)</strong>
                 </div>
-                <div style="font-size: 1.5rem; color: #667eea;">↓</div>
-                <div style="background: #d1fae5; padding: 1rem; border-radius: 10px; font-weight: bold;">
+                <div style="font-size: 1.5rem;">↓</div>
+                <div class="card-green" style="font-weight: bold;">
                     🖼️ <strong>Stego-image</strong> (виглядає звичайно)
                 </div>
             </div>
@@ -451,7 +451,7 @@ P-value < 0.05 → Підозра! 🚨
 
         <div style="margin-top: 2rem;">
 
-            <div style="background: linear-gradient(145deg, #f0f9ff, #e0f2fe); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
+            <div class="card-blue" style="margin-bottom: 1.5rem;">
                 <h3>📧 Сценарій 1: Email листування</h3>
                 <div class="two-column" style="margin-top: 1rem;">
                     <div>
@@ -473,7 +473,7 @@ P-value < 0.05 → Підозра! 🚨
                 </div>
             </div>
 
-            <div style="background: linear-gradient(145deg, #ecfdf5, #d1fae5); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
+            <div class="card-green" style="margin-bottom: 1.5rem;">
                 <h3>📸 Сценарій 2: Передача через соцмережі</h3>
                 <div class="two-column" style="margin-top: 1rem;">
                     <div>
@@ -495,7 +495,7 @@ P-value < 0.05 → Підозра! 🚨
                 </div>
             </div>
 
-            <div style="background: linear-gradient(145deg, #fef3c7, #fde68a); padding: 1.5rem; border-radius: 15px; margin-bottom: 1.5rem;">
+            <div class="card-yellow" style="margin-bottom: 1.5rem;">
                 <h3>🌍 Сценарій 3: Цензурний режим</h3>
                 <div class="two-column" style="margin-top: 1rem;">
                     <div>
@@ -517,7 +517,7 @@ P-value < 0.05 → Підозра! 🚨
                 </div>
             </div>
 
-            <div style="background: linear-gradient(145deg, #fef2f2, #fee2e2); padding: 1.5rem; border-radius: 15px;">
+            <div class="card-red">
                 <h3>🎨 Сценарій 4: Захист авторських прав</h3>
                 <div class="two-column" style="margin-top: 1rem;">
                     <div>

@@ -171,7 +171,7 @@
                 <h2>🔬 SRM (Spatial Rich Model)</h2>
 
                 <div class="info-box">
-                    <h3 style="text-align: center; color: #667eea;">Fridrich & Kodovsky (2012)</h3>
+                    <h3 style="text-align: center;">Fridrich & Kodovsky (2012)</h3>
                     <p style="font-size: 1.2rem; text-align: center; margin: 1.5rem 0;">
                         "Якщо 686 ознак добре, то <strong>34,671 ознака краще!</strong>"<br>
                         Найпотужніша модель для просторової стеганографії
@@ -179,7 +179,7 @@
                 </div>
 
                 <div class="info-box">
-                    <h3 style="color: #667eea;">🎯 Філософія SRM</h3>
+                    <h3>🎯 Філософія SRM</h3>
                     <p style="font-size: 1.1rem; line-height: 1.8;">
                         SRM використовує <strong>множину різних фільтрів</strong> для витягання noise residuals,<br>
                         а потім будує co-occurrence матриці для кожного типу шуму
@@ -216,7 +216,7 @@
                 <h2>🧩 SRM: Компоненти моделі</h2>
 
                 <div class="info-box">
-                    <h3 style="color: #667eea;">1️⃣ Noise Residuals</h3>
+                    <h3>1️⃣ Noise Residuals</h3>
                     <p style="font-size: 1.05rem; line-height: 1.8;">
                         Застосовуємо фільтри (kernels) для витягання високочастотного "шуму":
                     </p>
@@ -232,7 +232,7 @@
                 </div>
 
                 <div class="info-box">
-                    <h3 style="color: #667eea;">2️⃣ Quantization & Truncation</h3>
+                    <h3>2️⃣ Quantization & Truncation</h3>
                     <p style="font-size: 1.05rem; line-height: 1.8;">
                         <strong>q</strong> = quantization level (зазвичай q=1 або q=1.5)<br>
                         <strong>T</strong> = truncation threshold (T=2 або T=3)<br>
@@ -241,7 +241,7 @@
                 </div>
 
                 <div class="info-box">
-                    <h3 style="color: #667eea;">3️⃣ Co-occurrence Matrices</h3>
+                    <h3>3️⃣ Co-occurrence Matrices</h3>
                     <p style="font-size: 1.05rem; line-height: 1.8;">
                         Для кожного напрямку (H, V, D, MD) та зсуву d=1,2,3,4:<br>
                         Підраховуємо частоти пар (R<sub>i</sub>, R<sub>i+d</sub>)
@@ -253,8 +253,8 @@
     <section class="slide">
                 <h2>📦 SRM: 106 субмоделей</h2>
 
-                <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-                    <h4 style="color: #0369a1;">🔧 Types of submodels:</h4>
+                <div class="card-blue">
+                    <h4>🔧 Types of submodels:</h4>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li><strong>SPAM (8 моделей):</strong> різні T та q</li>
                         <li><strong>Min/Max residuals (48 моделей):</strong> min(H,V), max(D,MD), ...</li>
@@ -288,7 +288,7 @@
                 <h2>🎯 Як SRM виявляє адаптивні методи?</h2>
 
                 <div class="info-box">
-                    <h3 style="text-align: center; color: #667eea;">Ключ до успіху</h3>
+                    <h3 style="text-align: center;">Ключ до успіху</h3>
                     <p style="font-size: 1.1rem; text-align: center; margin: 1.5rem 0;">
                         Адаптивні методи (HUGO, WOW) мінімізують <strong>специфічні distortion функції</strong>,<br>
                         але не можуть одночасно мінімізувати <strong>всі 34,671 статистики</strong>
@@ -322,7 +322,7 @@
                 </div>
 
                 <div class="warning-box">
-                    <h3 style="color: #991b1b;">⚠️ "Arms race"</h3>
+                    <h3>⚠️ "Arms race"</h3>
                     <p style="font-size: 1.05rem; line-height: 1.8;">
                         Після публікації SRM, нові адаптивні методи (S-UNIWARD, MiPOD) намагаються мінімізувати SRM features.<br>
                         Але SRM все одно залишається ефективним для більшості payload >0.2 bpp
@@ -334,44 +334,42 @@
     <section class="slide">
                 <h2>📊 Порівняння Rich Models</h2>
 
-                <div style="background: white; padding: 1.5rem; border-radius: 10px; border: 2px solid #e5e7eb; margin: 1.5rem 0;">
-                    <table style="width: 100%; border-collapse: collapse; font-size: 1.05rem;">
-                        <thead>
-                            <tr style="background: #f3f4f6;">
-                                <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #cbd5e1;">Модель</th>
-                                <th style="padding: 0.75rem; text-align: center; border-bottom: 2px solid #cbd5e1;">Features</th>
-                                <th style="padding: 0.75rem; text-align: center; border-bottom: 2px solid #cbd5e1;">Рік</th>
-                                <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #cbd5e1;">Особливості</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>SPAM</strong></td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">686</td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">2010</td>
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Markov chains, швидкий</td>
-                            </tr>
-                            <tr style="background: #f9fafb;">
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>PEV</strong></td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">548</td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">2010</td>
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Projection, eigenvalues</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>SRM</strong></td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;"><strong>34,671</strong></td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">2012</td>
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">106 submodels, найкращий</td>
-                            </tr>
-                            <tr style="background: #f9fafb;">
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>maxSRMd2</strong></td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">~100k+</td>
-                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">2014</td>
-                                <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Розширений SRM, повільний</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Модель</th>
+                            <th>Features</th>
+                            <th>Рік</th>
+                            <th>Особливості</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SPAM</strong></td>
+                            <td>686</td>
+                            <td>2010</td>
+                            <td>Markov chains, швидкий</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PEV</strong></td>
+                            <td>548</td>
+                            <td>2010</td>
+                            <td>Projection, eigenvalues</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SRM</strong></td>
+                            <td><strong>34,671</strong></td>
+                            <td>2012</td>
+                            <td>106 submodels, найкращий</td>
+                        </tr>
+                        <tr>
+                            <td><strong>maxSRMd2</strong></td>
+                            <td>~100k+</td>
+                            <td>2014</td>
+                            <td>Розширений SRM, повільний</td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <div class="info-box">
                     <strong>💡 Практика:</strong> Зазвичай використовують <strong>SRM</strong> як компроміс між точністю та швидкістю
@@ -383,7 +381,7 @@
                 <h2>📸 Rich Models для JPEG</h2>
 
                 <div class="info-box">
-                    <h3 style="color: #667eea;">JPEG Rich Models (J-SRM, DCTR)</h3>
+                    <h3>JPEG Rich Models (J-SRM, DCTR)</h3>
                     <p style="font-size: 1.1rem; line-height: 1.8;">
                         SRM спочатку розроблявся для просторової області.<br>
                         Для JPEG потрібна адаптація:
@@ -427,7 +425,7 @@
                 <h2>📏 Проблема розмірності (Curse of Dimensionality)</h2>
 
                 <div class="warning-box">
-                    <h3 style="color: #991b1b;">❌ Виклики high-dimensional моделей</h3>
+                    <h3>❌ Виклики high-dimensional моделей</h3>
                     <ul style="font-size: 1.1rem; line-height: 1.8;">
                         <li><strong>Час обчислення:</strong> 34,671 features × N зображень = повільно</li>
                         <li><strong>Пам'ять:</strong> великі feature матриці для навчання</li>
@@ -436,8 +434,8 @@
                     </ul>
                 </div>
 
-                <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-                    <h3 style="color: #92400e;">🚀 Рішення</h3>
+                <div class="card-yellow">
+                    <h3>🚀 Рішення</h3>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li><strong>Feature selection:</strong> відібрати найважливіші ознаки (Fisher, mutual information)</li>
                         <li><strong>Ensemble learning:</strong> класифікатори (FLD) з regularization</li>
@@ -456,7 +454,7 @@
                 <h2>⚠️ Обмеження Rich Models</h2>
 
                 <div class="warning-box">
-                    <h3 style="color: #991b1b;">❌ Що не можуть Rich Models?</h3>
+                    <h3>❌ Що не можуть Rich Models?</h3>
                     <ul style="font-size: 1.1rem; line-height: 1.8;">
                         <li><strong>Дуже низький payload:</strong> <0.1 bpp важко виявити навіть з SRM</li>
                         <li><strong>Cover-source mismatch:</strong> тренуємо на одних зображеннях, тестуємо на інших</li>
@@ -466,8 +464,8 @@
                 </div>
 
                 <div class="comparison-grid">
-                    <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #0369a1;">🔬 Handcrafted features</h4>
+                    <div class="card-blue">
+                        <h4>🔬 Handcrafted features</h4>
                         <ul style="line-height: 1.8;">
                             <li>Людина проектує ознаки</li>
                             <li>Базуються на експертних знаннях</li>
@@ -476,8 +474,8 @@
                         </ul>
                     </div>
 
-                    <div style="background: #ecfdf5; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #065f46;">🤖 Learned features</h4>
+                    <div class="card-green">
+                        <h4>🤖 Learned features</h4>
                         <ul style="line-height: 1.8;">
                             <li>CNN автоматично вчить ознаки</li>
                             <li>Data-driven підхід</li>
@@ -497,15 +495,15 @@
                 <h2>📈 Практичні результати SRM</h2>
 
                 <div class="info-box">
-                    <h3 style="text-align: center; color: #667eea;">Benchmark: BOSSbase dataset</h3>
+                    <h3 style="text-align: center;">Benchmark: BOSSbase dataset</h3>
                     <p style="font-size: 1.05rem; text-align: center; margin: 1rem 0;">
                         10,000 зображень 512×512, ніколи не стискані<br>
                         Ensemble Classifier, 50/50 cover/stego split
                     </p>
                 </div>
 
-                <div style="background: white; padding: 1.5rem; border-radius: 10px; border: 2px solid #e5e7eb; margin: 1.5rem 0;">
-                    <h4 style="color: #0369a1; margin-bottom: 1rem;">Detection Accuracy (0.4 bpp payload)</h4>
+                <div class="card-blue">
+                    <h4>Detection Accuracy (0.4 bpp payload)</h4>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li><strong>LSB replacement:</strong> ~99% (тривіально виявляється)</li>
                         <li><strong>LSB matching:</strong> ~95% (SPAM+SRM)</li>

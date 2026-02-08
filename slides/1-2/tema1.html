@@ -26,7 +26,7 @@
 
         <div class="two-column">
             <div class="scientist-card">
-                <h3 style="color: #0369a1;">Claude Shannon</h3>
+                <h3>Claude Shannon</h3>
                 <p style="font-size: 1.1rem;">(1916-2001)</p>
                 <p style="margin-top: 1rem;">
                     "A Mathematical Theory of Communication"<br>
@@ -55,18 +55,18 @@
     <section class="slide">
         <h2>Модель комунікації Шеннона</h2>
 
-        <div style="display: flex; justify-content: space-around; align-items: center; margin: 2rem 0;">
-            <div style="background: #dcfce7; padding: 1.5rem 2rem; border-radius: 10px; text-align: center;">
+        <div class="flow-row">
+            <div class="flow-step card-green">
                 <strong>Джерело</strong><br>
                 <small>Генерує повідомлення</small>
             </div>
-            <div style="font-size: 2rem;">→</div>
-            <div style="background: #fef3c7; padding: 1.5rem 2rem; border-radius: 10px; text-align: center;">
+            <div class="flow-arrow">→</div>
+            <div class="flow-step card-yellow">
                 <strong>Канал</strong><br>
                 <small>Передає (+ шум)</small>
             </div>
-            <div style="font-size: 2rem;">→</div>
-            <div style="background: #dbeafe; padding: 1.5rem 2rem; border-radius: 10px; text-align: center;">
+            <div class="flow-arrow">→</div>
+            <div class="flow-step card-blue">
                 <strong>Приймач</strong><br>
                 <small>Декодує</small>
             </div>
@@ -132,15 +132,15 @@
         <h4 style="text-align: center; margin-top: 1.5rem;">Властивості ентропії:</h4>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
-            <div style="background: #dcfce7; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-green" style="text-align: center;">
                 <strong>H(X) ≥ 0</strong>
                 <p style="font-size: 0.9rem;">Завжди невід'ємна</p>
             </div>
-            <div style="background: #fef9c3; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-yellow" style="text-align: center;">
                 <strong>Максимум</strong>
                 <p style="font-size: 0.9rem;">При рівноймовірних подіях</p>
             </div>
-            <div style="background: #fee2e2; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-red" style="text-align: center;">
                 <strong>H(X) = 0</strong>
                 <p style="font-size: 0.9rem;">При детермінованій події</p>
             </div>
@@ -159,14 +159,14 @@
         </div>
 
         <div class="two-column">
-            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px;">
+            <div class="card-blue">
                 <h4>Теоретичний максимум</h4>
                 <p>26 рівноймовірних букв:</p>
                 <p style="text-align: center; font-size: 1.3rem;">
                     log₂(26) ≈ <strong>4.7 біт</strong>
                 </p>
             </div>
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px;">
+            <div class="card-green">
                 <h4>Надлишковість</h4>
                 <p>Різниця:</p>
                 <p style="text-align: center; font-size: 1.3rem;">
@@ -199,7 +199,7 @@
         <h4 style="text-align: center; margin-top: 1.5rem;">Властивості:</h4>
 
         <div class="two-column">
-            <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px;">
+            <div class="card-blue">
                 <p style="text-align: center; font-size: 1.2rem;">
                     <strong>H(X,Y) ≤ H(X) + H(Y)</strong>
                 </p>
@@ -207,7 +207,7 @@
                     Рівність тільки при незалежності
                 </p>
             </div>
-            <div style="background: #fef9c3; padding: 1rem; border-radius: 10px;">
+            <div class="card-yellow">
                 <p style="text-align: center; font-size: 1.2rem;">
                     <strong>H(X,Y) ≥ max(H(X), H(Y))</strong>
                 </p>
@@ -266,13 +266,13 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;">
-            <div style="background: #dcfce7; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-green" style="text-align: center;">
                 <strong>I(X;Y) ≥ 0</strong>
             </div>
-            <div style="background: #dbeafe; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-blue" style="text-align: center;">
                 <strong>I(X;Y) = I(Y;X)</strong>
             </div>
-            <div style="background: #fef9c3; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-yellow" style="text-align: center;">
                 <strong>I = 0 ⟺ незалежні</strong>
             </div>
         </div>

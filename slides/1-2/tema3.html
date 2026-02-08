@@ -31,20 +31,20 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
-            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #0369a1;">Гістограма</h4>
+            <div class="card-blue">
+                <h4>Гістограма</h4>
                 <p>Розподіл значень пікселів</p>
             </div>
-            <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Середнє</h4>
+            <div class="card-green">
+                <h4>Середнє</h4>
                 <p>μ = (1/N) Σ x<sub>i</sub></p>
             </div>
-            <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #92400e;">Дисперсія</h4>
+            <div class="card-yellow">
+                <h4>Дисперсія</h4>
                 <p>σ² = (1/N) Σ (x<sub>i</sub> - μ)²</p>
             </div>
-            <div style="background: #fce7f3; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #9d174d;">Моменти</h4>
+            <div class="card-pink">
+                <h4>Моменти</h4>
                 <p>Асиметрія, ексцес</p>
             </div>
         </div>
@@ -65,20 +65,20 @@
         <div class="two-column" style="margin-top: 1.5rem;">
             <div style="text-align: center;">
                 <h4>До вбудовування</h4>
-                <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px;">
+                <div class="card-blue">
                     <p>Пара (100, 101):</p>
                     <p><strong>n₁₀₀ = 50</strong></p>
                     <p><strong>n₁₀₁ = 80</strong></p>
-                    <p style="color: #10b981;">Різні!</p>
+                    <p>Різні!</p>
                 </div>
             </div>
             <div style="text-align: center;">
                 <h4>Після вбудовування</h4>
-                <div style="background: #fee2e2; padding: 1rem; border-radius: 10px;">
+                <div class="card-red">
                     <p>Пара (100, 101):</p>
                     <p><strong>n₁₀₀ ≈ 65</strong></p>
                     <p><strong>n₁₀₁ ≈ 65</strong></p>
-                    <p style="color: #ef4444;">Вирівнялися!</p>
+                    <p>Вирівнялися!</p>
                 </div>
             </div>
         </div>
@@ -149,12 +149,12 @@
         </p>
 
         <div class="two-column" style="margin-top: 1.5rem;">
-            <div style="background: #f0f9ff; padding: 1rem; border-radius: 10px;">
-                <h4 style="color: #0369a1;">Для стегоаналізу</h4>
+            <div class="card-blue">
+                <h4>Для стегоаналізу</h4>
                 <p>Виявлення порушень марківських залежностей</p>
             </div>
-            <div style="background: #f0fdf4; padding: 1rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Для стеганографії</h4>
+            <div class="card-green">
+                <h4>Для стеганографії</h4>
                 <p>Збереження марківської статистики</p>
             </div>
         </div>
@@ -172,16 +172,16 @@
         </div>
 
         <div class="two-column" style="margin-top: 1.5rem;">
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Досконала система</h4>
+            <div class="card-green">
+                <h4>Досконала система</h4>
                 <p>D<sub>KL</sub> = 0</p>
                 <p style="text-align: center; font-size: 1.2rem;">
                     m ∝ <strong>n</strong>
                 </p>
                 <p style="font-size: 0.9rem;">Лінійно з розміром</p>
             </div>
-            <div style="background: #fef3c7; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #92400e;">Недосконала система</h4>
+            <div class="card-yellow">
+                <h4>Недосконала система</h4>
                 <p>D<sub>KL</sub> > 0</p>
                 <p style="text-align: center; font-size: 1.2rem;">
                     m ∝ <strong>√n</strong>
@@ -235,9 +235,9 @@
                 <td>1,000,000 біт ≈ 122 КБ</td>
             </tr>
             <tr>
-                <td style="background: #fef3c7;">Практична (√n)</td>
-                <td style="background: #fef3c7;">m = √n</td>
-                <td style="background: #fef3c7;">1,000 біт ≈ 125 байт</td>
+                <td class="cell-yellow">Практична (√n)</td>
+                <td class="cell-yellow">m = √n</td>
+                <td class="cell-yellow">1,000 біт ≈ 125 байт</td>
             </tr>
         </table>
 
@@ -276,12 +276,12 @@
             </tr>
             <tr>
                 <td>Матричне кодування</td>
-                <td style="background: #dcfce7;">e > 1</td>
+                <td class="cell-green">e > 1</td>
                 <td>Кілька бітів на зміну</td>
             </tr>
             <tr>
                 <td>STC коди</td>
-                <td style="background: #dcfce7;">e → оптимум</td>
+                <td class="cell-green">e → оптимум</td>
                 <td>Близько до теорії</td>
             </tr>
         </table>

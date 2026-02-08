@@ -32,16 +32,16 @@
         </div>
 
         <div class="two-column" style="margin-top: 1.5rem;">
-            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #0369a1;">Задача противника</h4>
+            <div class="card-blue">
+                <h4>Задача противника</h4>
                 <p>Розрізнити:</p>
                 <ul>
                     <li>H₀: X ~ C (чистий контейнер)</li>
                     <li>H₁: X ~ S (стего-об'єкт)</li>
                 </ul>
             </div>
-            <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Задача стеганографа</h4>
+            <div class="card-green">
+                <h4>Задача стеганографа</h4>
                 <p>Зробити розрізнення <strong>неможливим</strong> або максимально важким</p>
             </div>
         </div>
@@ -63,11 +63,11 @@
         </p>
 
         <div class="two-column">
-            <div style="background: #dbeafe; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-blue" style="text-align: center;">
                 <h4>C</h4>
                 <p>Розподіл "чистих" контейнерів</p>
             </div>
-            <div style="background: #fce7f3; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-pink" style="text-align: center;">
                 <h4>S</h4>
                 <p>Розподіл стего-об'єктів</p>
             </div>
@@ -98,15 +98,15 @@
         <h4 style="text-align: center; margin-top: 1.5rem;">Властивості:</h4>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
-            <div style="background: #dcfce7; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-green" style="text-align: center;">
                 <strong>D<sub>KL</sub> ≥ 0</strong>
                 <p style="font-size: 0.9rem;">Завжди невід'ємна</p>
             </div>
-            <div style="background: #fef9c3; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-yellow" style="text-align: center;">
                 <strong>D<sub>KL</sub> = 0 ⟺ P = Q</strong>
                 <p style="font-size: 0.9rem;">Нуль при ідентичності</p>
             </div>
-            <div style="background: #fee2e2; padding: 1rem; border-radius: 10px; text-align: center;">
+            <div class="card-red" style="text-align: center;">
                 <strong>Несиметрична</strong>
                 <p style="font-size: 0.9rem;">D(P||Q) ≠ D(Q||P)</p>
             </div>
@@ -122,13 +122,13 @@
         </div>
 
         <div class="two-column" style="margin-top: 1.5rem;">
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #166534;">Мала D<sub>KL</sub></h4>
+            <div class="card-green">
+                <h4>Мала D<sub>KL</sub></h4>
                 <p>Розподіли схожі</p>
                 <p style="font-size: 1.2rem; text-align: center;">→ <strong>Вища безпека</strong></p>
             </div>
-            <div style="background: #fee2e2; padding: 1.5rem; border-radius: 10px;">
-                <h4 style="color: #991b1b;">Велика D<sub>KL</sub></h4>
+            <div class="card-red">
+                <h4>Велика D<sub>KL</sub></h4>
                 <p>Розподіли відрізняються</p>
                 <p style="font-size: 1.2rem; text-align: center;">→ <strong>Легко виявити</strong></p>
             </div>
@@ -223,18 +223,18 @@
             </tr>
             <tr>
                 <td><strong>Гарантія</strong></td>
-                <td style="background: #dcfce7;">Безумовна</td>
-                <td style="background: #fef9c3;">Умовна</td>
+                <td class="cell-green">Безумовна</td>
+                <td class="cell-yellow">Умовна</td>
             </tr>
             <tr>
                 <td><strong>Квантова стійкість</strong></td>
-                <td style="background: #dcfce7;">Так</td>
-                <td style="background: #fee2e2;">Можливо ні</td>
+                <td class="cell-green">Так</td>
+                <td class="cell-red">Можливо ні</td>
             </tr>
             <tr>
                 <td><strong>Практичність</strong></td>
-                <td style="background: #fef9c3;">Складна</td>
-                <td style="background: #dcfce7;">Практична</td>
+                <td class="cell-yellow">Складна</td>
+                <td class="cell-green">Практична</td>
             </tr>
             <tr>
                 <td><strong>Приклад</strong></td>

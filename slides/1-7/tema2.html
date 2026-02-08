@@ -24,8 +24,8 @@
     <section class="slide">
 <h2>🎯 Ідея WOW</h2>
 
-                <div style="background: #f0f9ff; border-left: 5px solid #0284c7; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
-                    <h3 style="color: #0369a1;">Основний принцип</h3>
+                <div class="card-blue">
+                    <h3>Основний принцип</h3>
                     <p style="font-size: 1.2rem; line-height: 1.8;">
                         WOW використовує <strong>вейвлет-перетворення</strong> для визначення напрямків в зображенні
                         (горизонтальні, вертикальні, діагональні) та <strong>уникає змін</strong> вздовж цих напрямків
@@ -33,12 +33,12 @@
                 </div>
 
                 <div class="two-column">
-                    <div style="background: #fef2f2; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #991b1b;">❌ HUGO підхід</h4>
+                    <div class="card-red">
+                        <h4>❌ HUGO підхід</h4>
                         <p>Аналізує глобальну статистику без врахування локальних напрямків</p>
                     </div>
-                    <div style="background: #ecfdf5; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #065f46;">✅ WOW підхід</h4>
+                    <div class="card-green">
+                        <h4>✅ WOW підхід</h4>
                         <p>Враховує напрямки текстури та уникає змін вздовж них</p>
                     </div>
                 </div>
@@ -119,28 +119,28 @@
     <section class="slide">
 <h2>⚙️ Алгоритм WOW - покроково</h2>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 1: Підготовка фільтрів</h4>
+                <div class="method-card">
+                    <h4>Крок 1: Підготовка фільтрів</h4>
                     <p>Визначаємо три директивні фільтри K<sup>H</sup>, K<sup>V</sup>, K<sup>D</sup></p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 2: Застосування фільтрів</h4>
+                <div class="method-card">
+                    <h4>Крок 2: Застосування фільтрів</h4>
                     <p>Згортаємо зображення з кожним фільтром, отримуємо три карти відгуків</p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 3: Обчислення вартості</h4>
+                <div class="method-card">
+                    <h4>Крок 3: Обчислення вартості</h4>
                     <p>Для кожного пікселя обчислюємо ρ на основі всіх трьох відгуків</p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 4: STC кодування</h4>
+                <div class="method-card">
+                    <h4>Крок 4: STC кодування</h4>
                     <p>Використовуємо Syndrome Trellis Codes для оптимального вбудовування</p>
                 </div>
 
-                <div class="method-card" style="background: #f9fafb;">
-                    <h4 style="color: #1e40af;">Крок 5: Модифікація</h4>
+                <div class="method-card">
+                    <h4>Крок 5: Модифікація</h4>
                     <p>Змінюємо обрані пікселі ±1, отримуємо стего-зображення</p>
                 </div>
     </section>
@@ -149,20 +149,20 @@
     <section class="slide">
 <h2>🔍 Чому WOW ефективний?</h2>
 
-                <div style="background: #f0f9ff; border-left: 5px solid #0284c7; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
-                    <h3 style="color: #0369a1;">Ключова інтуїція</h3>
+                <div class="card-blue">
+                    <h3>Ключова інтуїція</h3>
                     <p style="font-size: 1.2rem; line-height: 1.8;">
                         Людське око краще помічає зміни <strong>вздовж напрямків текстури</strong>, ніж зміни <strong>перпендикулярні</strong> до них
                     </p>
                 </div>
 
                 <div class="two-column">
-                    <div style="background: #fff7ed; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #9a3412;">📏 Вздовж краю</h4>
+                    <div class="card-yellow">
+                        <h4>📏 Вздовж краю</h4>
                         <p>Зміна створює "сходинку" на краю - <strong>помітно!</strong></p>
                     </div>
-                    <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #14532d;">⊥ Перпендикулярно</h4>
+                    <div class="card-green">
+                        <h4>⊥ Перпендикулярно</h4>
                         <p>Зміна сприймається як частина текстури - <strong>непомітно!</strong></p>
                     </div>
                 </div>
@@ -213,8 +213,8 @@
     <section class="slide">
 <h2>⚠️ Недоліки та обмеження WOW</h2>
 
-                <div style="background: #fef2f2; padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-                    <h4 style="color: #991b1b;">🎨 Тільки spatial domain</h4>
+                <div class="card-red">
+                    <h4>🎨 Тільки spatial domain</h4>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li>Не працює з JPEG (потрібна адаптація)</li>
                         <li>Вимагає формати без втрат (PNG, BMP)</li>
@@ -222,8 +222,8 @@
                     </ul>
                 </div>
 
-                <div style="background: #fef2f2; padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-                    <h4 style="color: #991b1b;">📉 Залежність від текстури</h4>
+                <div class="card-red">
+                    <h4>📉 Залежність від текстури</h4>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li>Менш ефективний на гладких зображеннях</li>
                         <li>Потребує достатньо країв для роботи</li>
@@ -231,8 +231,8 @@
                     </ul>
                 </div>
 
-                <div style="background: #fef2f2; padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-                    <h4 style="color: #991b1b;">🔬 Дещо поступається S-UNIWARD</h4>
+                <div class="card-red">
+                    <h4>🔬 Дещо поступається S-UNIWARD</h4>
                     <ul style="font-size: 1.05rem; line-height: 1.8;">
                         <li>Трохи гірша безпека ніж S-UNIWARD</li>
                         <li>Не універсальний (не працює в різних доменах)</li>
@@ -244,36 +244,36 @@
     <section class="slide">
 <h2>⚖️ WOW vs HUGO</h2>
 
-                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem;">
+                <table>
                     <thead>
-                        <tr style="background: #667eea; color: white;">
+                        <tr>
                             <th style="padding: 1rem; border: 1px solid #ddd;">Аспект</th>
                             <th style="padding: 1rem; border: 1px solid #ddd;">HUGO</th>
                             <th style="padding: 1rem; border: 1px solid #ddd;">WOW</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background: #f9fafb;">
+                        <tr>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;"><strong>Підхід</strong></td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Статистична модель (SPAM)</td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Директивні фільтри</td>
                         </tr>
-                        <tr style="background: white;">
+                        <tr>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;"><strong>Швидкість</strong></td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">~18 сек</td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">~4 сек ⚡</td>
                         </tr>
-                        <tr style="background: #f9fafb;">
+                        <tr>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;"><strong>Безпека</strong></td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Дуже висока (58%)</td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Дуже висока (57%)</td>
                         </tr>
-                        <tr style="background: white;">
+                        <tr>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;"><strong>Складність</strong></td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Складна</td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Проста ✅</td>
                         </tr>
-                        <tr style="background: #f9fafb;">
+                        <tr>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;"><strong>Пам'ять</strong></td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Висока</td>
                             <td style="padding: 0.8rem; border: 1px solid #ddd;">Низька ✅</td>

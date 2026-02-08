@@ -31,16 +31,16 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;">
-            <div style="background: #dbeafe; padding: 1.2rem; border-radius: 10px; text-align: center;">
-                <h4 style="color: #1e40af;">Whitespace</h4>
+            <div class="card-blue" style="text-align: center;">
+                <h4>Whitespace</h4>
                 <p style="font-size: 0.9rem;">Пробіли, табуляції, закінчення рядків</p>
             </div>
-            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px; text-align: center;">
-                <h4 style="color: #166534;">Unicode</h4>
+            <div class="card-green" style="text-align: center;">
+                <h4>Unicode</h4>
                 <p style="font-size: 0.9rem;">Zero-width символи</p>
             </div>
-            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px; text-align: center;">
-                <h4 style="color: #854d0e;">HTML/CSS</h4>
+            <div class="card-yellow" style="text-align: center;">
+                <h4>HTML/CSS</h4>
                 <p style="font-size: 0.9rem;">Теги, атрибути, стилі</p>
             </div>
         </div>
@@ -133,17 +133,17 @@ stegsnow -C -p "password" output.txt
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-            <div style="background: #dbeafe; padding: 1.2rem; border-radius: 10px; text-align: center;">
+            <div class="card-blue" style="text-align: center;">
                 <h4>Windows</h4>
                 <code style="font-size: 1.2rem;">\r\n</code>
                 <p style="font-size: 0.85rem; margin-top: 0.5rem;">CR + LF</p>
             </div>
-            <div style="background: #dcfce7; padding: 1.2rem; border-radius: 10px; text-align: center;">
+            <div class="card-green" style="text-align: center;">
                 <h4>Unix/Linux</h4>
                 <code style="font-size: 1.2rem;">\n</code>
                 <p style="font-size: 0.85rem; margin-top: 0.5rem;">LF</p>
             </div>
-            <div style="background: #fef9c3; padding: 1.2rem; border-radius: 10px; text-align: center;">
+            <div class="card-yellow" style="text-align: center;">
                 <h4>Classic Mac</h4>
                 <code style="font-size: 1.2rem;">\r</code>
                 <p style="font-size: 0.85rem; margin-top: 0.5rem;">CR</p>
@@ -171,36 +171,36 @@ stegsnow -C -p "password" output.txt
             </p>
         </div>
 
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem;">
-            <tr style="background: #f1f5f9;">
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Символ</th>
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Unicode</th>
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Назва</th>
-                <th style="padding: 0.6rem; border: 1px solid #e2e8f0;">Біт</th>
+        <table style="margin-top: 1rem;">
+            <tr>
+                <th>Символ</th>
+                <th>Unicode</th>
+                <th>Назва</th>
+                <th>Біт</th>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">ZWSP</span></td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+200B</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Zero Width Space</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">0</td>
+                <td><span class="unicode-char">ZWSP</span></td>
+                <td>U+200B</td>
+                <td>Zero Width Space</td>
+                <td>0</td>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">ZWNJ</span></td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+200C</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Zero Width Non-Joiner</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">1</td>
+                <td><span class="unicode-char">ZWNJ</span></td>
+                <td>U+200C</td>
+                <td>Zero Width Non-Joiner</td>
+                <td>1</td>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">ZWJ</span></td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+200D</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Zero Width Joiner</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">-</td>
+                <td><span class="unicode-char">ZWJ</span></td>
+                <td>U+200D</td>
+                <td>Zero Width Joiner</td>
+                <td>-</td>
             </tr>
             <tr>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;"><span class="unicode-char">WJ</span></td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">U+2060</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">Word Joiner</td>
-                <td style="padding: 0.6rem; border: 1px solid #e2e8f0;">-</td>
+                <td><span class="unicode-char">WJ</span></td>
+                <td>U+2060</td>
+                <td>Word Joiner</td>
+                <td>-</td>
             </tr>
         </table>
 
@@ -343,30 +343,30 @@ lowercase = 0, uppercase = 1
     <section class="slide">
         <h2>Підсумок теми</h2>
 
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-            <tr style="background: #f1f5f9;">
-                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Метод</th>
-                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Ємність</th>
-                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Непомітність</th>
-                <th style="padding: 0.7rem; border: 1px solid #e2e8f0;">Робастність</th>
+        <table>
+            <tr>
+                <th>Метод</th>
+                <th>Ємність</th>
+                <th>Непомітність</th>
+                <th>Робастність</th>
             </tr>
             <tr>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Whitespace</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Низька</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #dcfce7;">Висока</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #fee2e2;">Дуже низька</td>
+                <td>Whitespace</td>
+                <td>Низька</td>
+                <td>Висока</td>
+                <td>Дуже низька</td>
             </tr>
             <tr>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Unicode ZWC</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Середня</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #dcfce7;">Дуже висока</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #fee2e2;">Низька</td>
+                <td>Unicode ZWC</td>
+                <td>Середня</td>
+                <td>Дуже висока</td>
+                <td>Низька</td>
             </tr>
             <tr>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">HTML/CSS</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0;">Середня</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #dcfce7;">Висока</td>
-                <td style="padding: 0.7rem; border: 1px solid #e2e8f0; background: #fef9c3;">Середня</td>
+                <td>HTML/CSS</td>
+                <td>Середня</td>
+                <td>Висока</td>
+                <td>Середня</td>
             </tr>
         </table>
 

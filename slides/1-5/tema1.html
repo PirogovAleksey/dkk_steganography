@@ -25,7 +25,7 @@
         <h2>Що таке LSB стеганографія?</h2>
 
         <div class="info-box">
-            <h3 style="color: #667eea; text-align: center;">LSB = Least Significant Bit</h3>
+            <h3 style="text-align: center;">LSB = Least Significant Bit</h3>
             <p style="font-size: 1.2rem; text-align: center;">
                 Найменш значущий біт — біт з найменшою вагою у двійковому представленні числа
             </p>
@@ -168,7 +168,7 @@
                 <td>Площина 7 (MSB)</td>
                 <td>Біт 7</td>
                 <td>128</td>
-                <td style="background: #dcfce7;">Максимальний</td>
+                <td class="cell-green">Максимальний</td>
             </tr>
             <tr>
                 <td>Площина 6</td>
@@ -180,25 +180,25 @@
                 <td>Площина 5</td>
                 <td>Біт 5</td>
                 <td>32</td>
-                <td style="background: #fef9c3;">Середній</td>
+                <td class="cell-yellow">Середній</td>
             </tr>
             <tr>
                 <td>Площина 4</td>
                 <td>Біт 4</td>
                 <td>16</td>
-                <td style="background: #fef9c3;">Середній</td>
+                <td class="cell-yellow">Середній</td>
             </tr>
             <tr>
                 <td>Площина 3</td>
                 <td>Біт 3</td>
                 <td>8</td>
-                <td style="background: #fee2e2;">Низький</td>
+                <td class="cell-red">Низький</td>
             </tr>
             <tr>
                 <td>Площина 2</td>
                 <td>Біт 2</td>
                 <td>4</td>
-                <td style="background: #fee2e2;">Низький</td>
+                <td class="cell-red">Низький</td>
             </tr>
             <tr>
                 <td>Площина 1</td>
@@ -256,19 +256,19 @@
             24-бітне кольорове зображення = 3 канали по 8 біт
         </p>
 
-        <div class="three-col-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0;">
-            <div style="background: #fee2e2; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                <h3 style="color: #dc2626;">Red (R)</h3>
+        <div class="three-col-grid">
+            <div class="card-red" style="text-align: center;">
+                <h3>Red (R)</h3>
                 <p style="font-size: 3rem;">🔴</p>
                 <p>8 біт (0-255)</p>
             </div>
-            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                <h3 style="color: #16a34a;">Green (G)</h3>
+            <div class="card-green" style="text-align: center;">
+                <h3>Green (G)</h3>
                 <p style="font-size: 3rem;">🟢</p>
                 <p>8 біт (0-255)</p>
             </div>
-            <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px; text-align: center;">
-                <h3 style="color: #2563eb;">Blue (B)</h3>
+            <div class="card-blue" style="text-align: center;">
+                <h3>Blue (B)</h3>
                 <p style="font-size: 3rem;">🔵</p>
                 <p>8 біт (0-255)</p>
             </div>
@@ -296,17 +296,17 @@
                 <th>Рекомендація</th>
             </tr>
             <tr>
-                <td style="background: #dcfce7;"><strong>Green</strong></td>
+                <td class="cell-green"><strong>Green</strong></td>
                 <td>Найвища (59%)</td>
                 <td>Обережно</td>
             </tr>
             <tr>
-                <td style="background: #fee2e2;"><strong>Red</strong></td>
+                <td class="cell-red"><strong>Red</strong></td>
                 <td>Середня (30%)</td>
                 <td>Помірно</td>
             </tr>
             <tr>
-                <td style="background: #dbeafe;"><strong>Blue</strong></td>
+                <td class="cell-blue"><strong>Blue</strong></td>
                 <td>Найнижча (11%)</td>
                 <td>Більше бітів</td>
             </tr>
