@@ -385,32 +385,39 @@
           </div>
 
           <div class="prep-visual">
+            <div class="prep-visual-title">Як працює LSB-стеганографія</div>
             <div class="prep-comparison">
               <div class="prep-compare-item">
                 <div class="prep-compare-label">Оригінал</div>
                 <div class="prep-compare-demo">
                   <div class="pixel-grid">
-                    <span style="background:#c0392b">R: 192</span>
-                    <span style="background:#27ae60">G: 140</span>
-                    <span style="background:#2980b9">B: 96</span>
+                    <span class="px-r">192</span>
+                    <span class="px-g">140</span>
+                    <span class="px-b">96</span>
                   </div>
                 </div>
               </div>
               <div class="prep-compare-arrow">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </div>
               <div class="prep-compare-item">
                 <div class="prep-compare-label">Після LSB</div>
                 <div class="prep-compare-demo">
                   <div class="pixel-grid">
-                    <span style="background:#c0392b">R: 19<strong>3</strong></span>
-                    <span style="background:#27ae60">G: 14<strong>1</strong></span>
-                    <span style="background:#2980b9">B: 9<strong>7</strong></span>
+                    <span class="px-r">193</span>
+                    <span class="px-g">141</span>
+                    <span class="px-b">97</span>
                   </div>
                 </div>
               </div>
             </div>
-            <p class="prep-caption">Зміна найменш значущого біта не помітна оку — різниця лише &plusmn;1 на канал</p>
+            <div class="prep-binary-row">
+              <span>1100000<em class="bit-old">0</em></span>
+              <span>&rarr;</span>
+              <span>1100000<em class="bit-new">1</em></span>
+              <span class="prep-binary-label">Змінюється лише останній біт</span>
+            </div>
+            <p class="prep-caption">Різниця &plusmn;1 на канал &mdash; абсолютно непомітна людському оку</p>
           </div>
 
           <!-- Основні методи -->
@@ -435,7 +442,7 @@
               <div class="prep-method-icon" style="background: rgba(34,197,94,0.12); color: #22c55e;">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
               </div>
-              <h3>Метадані (EXIF/PNG Comments)</h3>
+              <h3>Метадані (EXIF / PNG)</h3>
               <p>Інформація ховається у метаданих файлу: EXIF, PNG text chunks, IPTC, XMP. Перевіряй <code>exiftool</code>!</p>
               <div class="prep-method-tools">
                 <span>exiftool</span>
@@ -449,7 +456,7 @@
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>
               </div>
               <h3>Вбудовані файли</h3>
-              <p>Файли можуть бути склеєні: після кінця PNG можна дописати ZIP-архів. Зображення відкриється нормально, але binwalk знайде вкладення.</p>
+              <p>Після кінця PNG можна дописати ZIP. Зображення відкриється нормально, але binwalk знайде вкладення.</p>
               <div class="prep-method-tools">
                 <span>binwalk</span>
                 <span>foremost</span>
@@ -475,7 +482,7 @@
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>
               </div>
               <h3>Текстова стеганографія</h3>
-              <p>Пробіли та табуляції в кінці рядків кодують біти. Unicode zero-width символи (U+200B, U+200C) невидимі, але несуть інформацію.</p>
+              <p>Пробіли/табуляції в кінці рядків кодують біти. Unicode zero-width символи невидимі, але несуть інформацію.</p>
               <div class="prep-method-tools">
                 <span>cat -A</span>
                 <span>xxd</span>
@@ -488,7 +495,7 @@
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               </div>
               <h3>Ланцюжки кодувань</h3>
-              <p>Прапор закодований кілька разів: base64 &rarr; ROT13 &rarr; hex &rarr; binary. CyberChef з кнопкою <strong>Magic</strong> автоматично розпізнає ланцюжок!</p>
+              <p>Прапор закодований кілька разів: base64, ROT13, hex, binary. CyberChef Magic автоматично розпізнає ланцюжок!</p>
               <div class="prep-method-tools">
                 <span>CyberChef</span>
                 <span>base64</span>
@@ -496,6 +503,108 @@
               </div>
             </div>
 
+          </div>
+
+          <!-- Інструменти -->
+          <h2 class="section-title" style="margin-top: 40px;">Інструменти для CTF Stego</h2>
+
+          <div class="prep-tools-section">
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="M9 9h.01"/><path d="M15 15h.01"/></svg>
+                Онлайн (нічого встановлювати не треба)
+              </h3>
+              <div class="prep-tools-grid">
+                <a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>CyberChef</h4>
+                  <p>Швейцарський ніж для кодувань. Кнопка <em>Magic</em> автоматично визначає base64, hex, rot13 тощо. Перетягуй рецепти та декодуй ланцюжки.</p>
+                  <span class="prep-tool-url">gchq.github.io/CyberChef</span>
+                </a>
+                <a href="https://stegonline.georgeom.net/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>StegOnline</h4>
+                  <p>Завантаж зображення &rarr; побачиш bit planes, LSB extract, strings, metadata. Все в одному вікні браузера.</p>
+                  <span class="prep-tool-url">stegonline.georgeom.net</span>
+                </a>
+                <a href="https://www.aperisolve.com/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>Aperi'Solve</h4>
+                  <p>Завантажуєш зображення &mdash; сервер автоматично запускає zsteg, exiftool, binwalk, foremost та повертає всі результати.</p>
+                  <span class="prep-tool-url">aperisolve.com</span>
+                </a>
+                <a href="https://hexed.it/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>HexEd.it</h4>
+                  <p>Hex-редактор у браузері. Дивись магічні байти, шукай рядки, редагуй файли побайтово.</p>
+                  <span class="prep-tool-url">hexed.it</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                Десктопні програми
+              </h3>
+              <div class="prep-tools-grid">
+                <div class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>Audacity</h4>
+                  <p>Безкоштовний аудіоредактор. Клік на доріжку &rarr; Spectrogram &mdash; шукай текст чи зображення у спектрограмі.</p>
+                  <span class="prep-tool-url">audacityteam.org</span>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>HxD</h4>
+                  <p>Hex-редактор для Windows. Швидкий пошук, порівняння файлів, перегляд магічних байтів.</p>
+                  <span class="prep-tool-url">mh-nexus.de/hxd</span>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>Stegsolve (Java)</h4>
+                  <p>GUI для аналізу зображень: перемикання між bit planes, frame browse, data extract з налаштуванням бітів.</p>
+                  <span class="prep-tool-url">github.com &mdash; потрібна Java</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                Командний рядок (CLI)
+              </h3>
+              <div class="prep-tools-grid">
+                <div class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>exiftool</h4>
+                  <p>Читає ВСІ метадані: EXIF, PNG text, IPTC, XMP. Перший крок для будь-якого файлу.</p>
+                  <code class="prep-tool-install">apt install libimage-exiftool-perl</code>
+                </div>
+                <div class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>binwalk</h4>
+                  <p>Сканує файл на вбудовані архіви, зображення та інші файли. <code>-e</code> для автоматичного витягнення.</p>
+                  <code class="prep-tool-install">pip install binwalk</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>zsteg</h4>
+                  <p>Автоматичний LSB-аналіз PNG/BMP. <code>-a</code> перебирає всі варіанти бітів та каналів.</p>
+                  <code class="prep-tool-install">gem install zsteg</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>steghide</h4>
+                  <p>Стеганографія в JPEG та WAV з паролем. <code>steghide extract -sf file.jpg</code></p>
+                  <code class="prep-tool-install">apt install steghide</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>strings</h4>
+                  <p>Витягує всі текстові рядки з бінарного файлу. <code>strings file | grep FLAG</code></p>
+                  <code class="prep-tool-install">вбудована в Linux/macOS</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>foremost</h4>
+                  <p>Альтернатива binwalk для відновлення файлів за сигнатурами (magic bytes).</p>
+                  <code class="prep-tool-install">apt install foremost</code>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Алгоритм розв'язання -->
@@ -510,9 +619,9 @@
               <div class="algo-arrow">&darr;</div>
               <div class="algo-step"><span class="step-number">3</span> <code>binwalk</code> &mdash; перевірити на вбудовані файли</div>
               <div class="algo-arrow">&darr;</div>
-              <div class="algo-step"><span class="step-number">4</span> Зображення? &rarr; <code>zsteg</code> / stegsolve / StegOnline<br>Аудіо? &rarr; спектрограма + audio LSB<br>Текст? &rarr; whitespace / zero-width</div>
+              <div class="algo-step"><span class="step-number">4</span> Зображення? &rarr; <code>zsteg</code> / StegOnline / Aperi'Solve<br>Аудіо? &rarr; спектрограма + audio LSB<br>Текст? &rarr; whitespace / zero-width</div>
               <div class="algo-arrow">&darr;</div>
-              <div class="algo-step"><span class="step-number">5</span> CyberChef <strong>Magic</strong> &mdash; автоматичне декодування ланцюжка</div>
+              <div class="algo-step"><span class="step-number">5</span> CyberChef Magic &mdash; автоматичне декодування ланцюжка</div>
               <div class="algo-arrow">&darr;</div>
               <div class="algo-step"><span class="step-number">6</span> Якщо зашифровано &mdash; шукати пароль в інших шарах</div>
               <div class="algo-arrow">&darr;</div>
@@ -529,6 +638,24 @@
               <li>Не знають про CyberChef Magic &mdash; він автоматично розпізнає кодування</li>
               <li>Використовують тільки 1-бітну LSB &mdash; бувають 2-бітні та 4-бітні варіанти</li>
             </ul>
+          </div>
+
+          <!-- Магічні байти -->
+          <h2 class="section-title" style="margin-top: 40px;">Магічні байти (сигнатури файлів)</h2>
+
+          <div class="prep-magic-table-wrap">
+            <table class="prep-magic-table">
+              <thead><tr><th>Формат</th><th>Hex-сигнатура</th><th>ASCII</th><th>Типове використання</th></tr></thead>
+              <tbody>
+                <tr><td><span class="prep-fmt">PNG</span></td><td><code>89 50 4E 47 0D 0A 1A 0A</code></td><td>.PNG....</td><td>LSB, bit planes, alpha channel</td></tr>
+                <tr><td><span class="prep-fmt">JPEG</span></td><td><code>FF D8 FF E0</code> / <code>FF D8 FF E1</code></td><td>&mdash;</td><td>steghide, EXIF metadata</td></tr>
+                <tr><td><span class="prep-fmt">GIF</span></td><td><code>47 49 46 38 39 61</code></td><td>GIF89a</td><td>Анімація, frame-by-frame</td></tr>
+                <tr><td><span class="prep-fmt">BMP</span></td><td><code>42 4D</code></td><td>BM</td><td>LSB (без стиснення)</td></tr>
+                <tr><td><span class="prep-fmt">ZIP</span></td><td><code>50 4B 03 04</code></td><td>PK..</td><td>Вбудовані файли, binwalk</td></tr>
+                <tr><td><span class="prep-fmt">WAV</span></td><td><code>52 49 46 46</code></td><td>RIFF</td><td>Audio LSB, спектрограма</td></tr>
+                <tr><td><span class="prep-fmt">PDF</span></td><td><code>25 50 44 46</code></td><td>%PDF</td><td>Вбудовані об'єкти, JS</td></tr>
+              </tbody>
+            </table>
           </div>
 
           <!-- Шпаргалка -->
