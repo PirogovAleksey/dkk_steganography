@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0ea5e9">
+  <title>CTF Тренінг — Основи стеганографії</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ctf.css">
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}</script>
+</head>
+<body>
+
+  <aside>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        Основи<br>стеганографії
+        <span>онлайн-курс</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></span>
+        Лекції
+      </a>
+      <a href="practicals.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+        Практичні
+      </a>
+      <a href="tests.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        Тести
+      </a>
+      <a href="materials.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span>
+        Матеріали
+      </a>
+      <a href="ctf.html" class="active">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+        CTF
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span id="theme-label">Темна тема</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="page-header">
+      <h1>CTF Тренінг: Стеганографія</h1>
+      <p>Практичні завдання з приховування та пошуку інформації. Знайди прапори у файлах, введи їх нижче та набери якомога більше очків!</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="score-display">0</div>
+        <div class="stat-label">Набрано очків</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value"><span id="solved-count">0</span> / 10</div>
+        <div class="stat-label">Завдань розв'язано</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1925</div>
+        <div class="stat-label">Максимум очків</div>
+      </div>
+    </div>
+
+    <!-- Scoreboard -->
+    <section class="ctf-scoreboard">
+      <h2 class="section-title">Здати прапор</h2>
+      <div class="flag-input-wrapper">
+        <input type="text" id="flag-input" class="flag-input" placeholder="FLAG{...}" autocomplete="off" spellcheck="false">
+        <button id="flag-submit" class="flag-submit" onclick="checkFlag()">Перевірити</button>
+      </div>
+      <div id="flag-result" class="flag-result"></div>
+
+      <div class="progress-section">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="progress-label">
+          <span id="progress-text">0 / 1925 очків</span>
+          <span id="progress-percent">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <h2 class="section-title">Завдання</h2>
+
+    <div class="ctf-filters">
+      <button class="filter-btn active" onclick="filterChallenges('all', this)">Всі</button>
+      <button class="filter-btn" onclick="filterChallenges('easy', this)">Легкі</button>
+      <button class="filter-btn" onclick="filterChallenges('medium', this)">Середні</button>
+      <button class="filter-btn" onclick="filterChallenges('hard', this)">Важкі</button>
+      <button class="filter-btn" onclick="filterChallenges('insane', this)">Божевільні</button>
+    </div>
+
+    <div class="challenges-grid" id="challenges-grid">
+
+      <!-- Challenge 1 -->
+      <div class="challenge-card" data-id="1" data-difficulty="easy">
+        <div class="challenge-header">
+          <div class="challenge-number">1</div>
+          <div>
+            <h3>Не те, чим здається</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-easy">Легкий</span>
+              <span class="challenge-points">25 очків</span>
+              <span class="challenge-category">wrong_extension</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-1"></div>
+        </div>
+        <p>Цей файл стверджує, що він JPEG, але щось не так. Чи зможеш зрозуміти, що це насправді?</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Розширення файлу може брехати.</p></details>
+          <details><summary>Підказка 2</summary><p>Запусти команду <code>file</code> щоб перевірити справжній тип файлу.</p></details>
+          <details><summary>Підказка 3</summary><p>Подивись на магічні байти на початку файлу.</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 2 -->
+      <div class="challenge-card" data-id="2" data-difficulty="easy">
+        <div class="challenge-header">
+          <div class="challenge-number">2</div>
+          <div>
+            <h3>Слідкуй за пробілами</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-easy">Легкий</span>
+              <span class="challenge-points">50 очків</span>
+              <span class="challenge-category">whitespace</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-2"></div>
+        </div>
+        <p>Цей текстовий файл виглядає порожнім наприкінці кожного рядка... чи ні?</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Не всі пробіли однакові.</p></details>
+          <details><summary>Підказка 2</summary><p>Зверни увагу на пробіли та табуляції в кінці кожного рядка.</p></details>
+          <details><summary>Підказка 3</summary><p>Пробіл = 0, Табуляція = 1. Це двійковий код!</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 3 -->
+      <div class="challenge-card" data-id="3" data-difficulty="easy">
+        <div class="challenge-header">
+          <div class="challenge-number">3</div>
+          <div>
+            <h3>Базовий табір</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-easy">Легкий</span>
+              <span class="challenge-points">75 очків</span>
+              <span class="challenge-category">encoding_chain</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-3"></div>
+        </div>
+        <p>Дані були закодовані перед приховуванням. Один шар кодування потрібно зняти.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Спочатку витягни приховані дані із зображення.</p></details>
+          <details><summary>Підказка 2</summary><p>Витягнуті дані схожі на base64.</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 4 -->
+      <div class="challenge-card" data-id="4" data-difficulty="medium">
+        <div class="challenge-header">
+          <div class="challenge-number">4</div>
+          <div>
+            <h3>Звук тиші</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-medium">Середній</span>
+              <span class="challenge-points">100 очків</span>
+              <span class="challenge-category">audio_lsb</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-4"></div>
+        </div>
+        <p>Цей аудіофайл звучить нормально, але в ньому щось заховано. Послухай уважно... або подивись глибше.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>LSB працює не тільки з зображеннями.</p></details>
+          <details><summary>Підказка 2</summary><p>Аудіо-семпли теж мають біти.</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 5 -->
+      <div class="challenge-card" data-id="5" data-difficulty="medium">
+        <div class="challenge-header">
+          <div class="challenge-number">5</div>
+          <div>
+            <h3>Відлуння</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-medium">Середній</span>
+              <span class="challenge-points">125 очків</span>
+              <span class="challenge-category">echo_hiding</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-5"></div>
+        </div>
+        <p>Ехо може нести інформацію. Прислухайся до відлуння в цьому аудіофайлі.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Echo hiding — техніка стеганографії в аудіо.</p></details>
+          <details><summary>Підказка 2</summary><p>Затримка ехо кодує біти: коротка = 0, довга = 1.</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 6 -->
+      <div class="challenge-card" data-id="6" data-difficulty="medium">
+        <div class="challenge-header">
+          <div class="challenge-number">6</div>
+          <div>
+            <h3>Голос частот</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-medium">Середній</span>
+              <span class="challenge-points">125 очків</span>
+              <span class="challenge-category">spectrogram</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-6"></div>
+        </div>
+        <p>Іноді щоб побачити звук, потрібно подивитись на нього під іншим кутом.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Відкрий файл у Audacity.</p></details>
+          <details><summary>Підказка 2</summary><p>Переключи відображення на спектрограму.</p></details>
+          <details><summary>Підказка 3</summary><p>Встанови максимальну частоту 22000 Hz.</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 7 -->
+      <div class="challenge-card" data-id="7" data-difficulty="hard">
+        <div class="challenge-header">
+          <div class="challenge-number">7</div>
+          <div>
+            <h3>Шари цибулі</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-hard">Важкий</span>
+              <span class="challenge-points">300 очків</span>
+              <span class="challenge-category">multi_layer</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-7"></div>
+        </div>
+        <p>Як у цибулі, тут кілька шарів захисту. Зніми їх один за одним.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Перевір метадані зображення — там є щось корисне.</p></details>
+          <details><summary>Підказка 2</summary><p>У метаданих може бути пароль для наступного кроку.</p></details>
+          <details><summary>Підказка 3</summary><p>LSB-дані зашифровані AES-256-CBC. Ключ = SHA-256(password).</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 8 -->
+      <div class="challenge-card" data-id="8" data-difficulty="hard">
+        <div class="challenge-header">
+          <div class="challenge-number">8</div>
+          <div>
+            <h3>Подвійний замок</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-hard">Важкий</span>
+              <span class="challenge-points">250 очків</span>
+              <span class="challenge-category">zip_in_image</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-8"></div>
+        </div>
+        <p>Цей файл більше ніж здається. Один формат ховає інший.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Перевір розмір файлу — чи не завеликий він для звичайного PNG?</p></details>
+          <details><summary>Підказка 2</summary><p>Спробуй <code>binwalk</code> — там може бути вбудований ZIP.</p></details>
+          <details><summary>Підказка 3</summary><p>Пароль для ZIP шукай у метаданих зображення.</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 9 -->
+      <div class="challenge-card" data-id="9" data-difficulty="insane">
+        <div class="challenge-header">
+          <div class="challenge-number">9</div>
+          <div>
+            <h3>Аполлон</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-insane">Божевільний</span>
+              <span class="challenge-points">400 очків</span>
+              <span class="challenge-category">sstv</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-9"></div>
+        </div>
+        <p>Як астронавти передавали зображення з космосу? SSTV — Slow Scan Television.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Це аудіофайл з SSTV-сигналом.</p></details>
+          <details><summary>Підказка 2</summary><p>Використай QSSTV (Linux) або онлайн SSTV декодер.</p></details>
+        </div>
+      </div>
+
+      <!-- Challenge 10 -->
+      <div class="challenge-card" data-id="10" data-difficulty="insane">
+        <div class="challenge-header">
+          <div class="challenge-number">10</div>
+          <div>
+            <h3>Лабіринт</h3>
+            <div class="challenge-meta">
+              <span class="badge badge-insane">Божевільний</span>
+              <span class="challenge-points">500 очків</span>
+              <span class="challenge-category">multi_layer</span>
+            </div>
+          </div>
+          <div class="challenge-status" id="status-10"></div>
+        </div>
+        <p>4 шари захисту. Кожен крок веде до наступного. Тільки найнаполегливіші дістануться до фіналу.</p>
+        <div class="challenge-hints">
+          <details><summary>Підказка 1</summary><p>Почни з метаданих — вони вкажуть напрямок.</p></details>
+          <details><summary>Підказка 2</summary><p>Один з кроків потребує аналізу бітових площин (bit planes).</p></details>
+          <details><summary>Підказка 3</summary><p>Дані стиснуті (zlib) та зашифровані (AES).</p></details>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Cheat Sheet -->
+    <h2 class="section-title" style="margin-top: 48px;">Шпаргалка</h2>
+
+    <div class="cheatsheet">
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Перше, що робимо з будь-яким файлом</summary>
+          <div class="cheat-content">
+            <div class="code-block">file challenge.*           # Реальний тип файлу
+strings challenge.* | grep FLAG   # Пошук прапора у тексті
+exiftool challenge.*       # Метадані (EXIF, PNG comments)
+xxd challenge.* | head -5  # Магічні байти
+binwalk challenge.*        # Вбудовані файли</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Магічні байти (сигнатури файлів)</summary>
+          <div class="cheat-content">
+            <table class="cheat-table">
+              <thead><tr><th>Формат</th><th>Hex</th><th>ASCII</th></tr></thead>
+              <tbody>
+                <tr><td>PNG</td><td><code>89 50 4E 47</code></td><td>.PNG</td></tr>
+                <tr><td>JPEG</td><td><code>FF D8 FF E0/E1</code></td><td>-</td></tr>
+                <tr><td>GIF</td><td><code>47 49 46 38</code></td><td>GIF8</td></tr>
+                <tr><td>ZIP</td><td><code>50 4B 03 04</code></td><td>PK..</td></tr>
+                <tr><td>WAV</td><td><code>52 49 46 46</code></td><td>RIFF</td></tr>
+                <tr><td>PDF</td><td><code>25 50 44 46</code></td><td>%PDF</td></tr>
+                <tr><td>BMP</td><td><code>42 4D</code></td><td>BM</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Зображення: LSB, метадані, вбудовані файли</summary>
+          <div class="cheat-content">
+            <h4>Метадані</h4>
+            <div class="code-block">exiftool image.png
+pngcheck -v image.png</div>
+            <h4>LSB (Least Significant Bit)</h4>
+            <div class="code-block">zsteg image.png            # Автоматичний аналіз
+zsteg -a image.png         # Всі комбінації
+stegsolve                  # GUI: bit planes, data extract</div>
+            <h4>Вбудовані файли</h4>
+            <div class="code-block">binwalk challenge.png      # Пошук
+binwalk -e challenge.png   # Витягнення
+foremost challenge.png     # Альтернатива</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Текст: whitespace, Unicode</summary>
+          <div class="cheat-content">
+            <h4>Whitespace стеганографія</h4>
+            <div class="code-block">cat -A challenge.txt       # $ = кінець рядка, ^I = tab
+# Пробіл = 0, Tab = 1, 8 біт = 1 ASCII символ</div>
+            <h4>Unicode zero-width символи</h4>
+            <div class="code-block"># Шукаємо невидимі символи: U+200B, U+200C, U+200D, U+FEFF
+python -c "
+with open('f.txt') as f:
+    for i,ch in enumerate(f.read()):
+        if ord(ch) > 127: print(f'pos {i}: U+{ord(ch):04X}')
+"</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Аудіо: LSB, спектрограма, echo hiding</summary>
+          <div class="cheat-content">
+            <h4>Спектрограма</h4>
+            <p>Audacity &rarr; клік на доріжку &rarr; Spectrogram &rarr; шукай текст/зображення</p>
+            <h4>Audio LSB</h4>
+            <div class="code-block">python -c "
+import wave
+w = wave.open('challenge.wav','rb')
+frames = w.readframes(w.getnframes())
+bits = ''.join(str(b & 1) for b in frames)
+text = ''.join(chr(int(bits[i:i+8],2)) for i in range(0,len(bits),8))
+print(text[:200])
+"</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Кодування: base64, hex, rot13, binary</summary>
+          <div class="cheat-content">
+            <h4>Розпізнавання</h4>
+            <ul>
+              <li><strong>Base64:</strong> A-Z, a-z, 0-9, +, / з = на кінці</li>
+              <li><strong>Hex:</strong> тільки 0-9, a-f, парна кількість</li>
+              <li><strong>Binary:</strong> тільки 0 і 1, групи по 8</li>
+            </ul>
+            <h4>Декодування</h4>
+            <div class="code-block">echo "SGVsbG8=" | base64 -d         # base64
+echo "48656c6c6f" | xxd -r -p       # hex
+echo "Uryyb" | tr 'A-Za-z' 'N-ZA-Mn-za-m'  # rot13</div>
+            <h4>CyberChef</h4>
+            <p><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener">gchq.github.io/CyberChef</a> &mdash; кнопка <strong>Magic</strong> автоматично визначає кодування!</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Алгоритм розв'язання CTF Stego</summary>
+          <div class="cheat-content">
+            <div class="solve-algorithm">
+              <div class="algo-step"><span class="step-number">1</span> <code>file</code> / <code>xxd</code> &mdash; визначити реальний тип файлу</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">2</span> <code>strings</code> / <code>exiftool</code> &mdash; шукати прапор у тексті та метаданих</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">3</span> <code>binwalk</code> &mdash; перевірити на вбудовані файли</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">4</span> Зображення? &rarr; <code>zsteg</code> / stegsolve<br>Аудіо? &rarr; спектрограма + audio LSB<br>Текст? &rarr; whitespace / zero-width</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">5</span> CyberChef Magic &mdash; декодувати ланцюжок</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">6</span> Якщо зашифровано &mdash; шукати пароль в інших шарах</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step algo-flag"><span class="step-number">7</span> FLAG{...}</div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="cheat-section">
+        <details>
+          <summary class="cheat-summary">Корисні інструменти</summary>
+          <div class="cheat-content">
+            <table class="cheat-table">
+              <thead><tr><th>Інструмент</th><th>Для чого</th><th>Посилання</th></tr></thead>
+              <tbody>
+                <tr><td>CyberChef</td><td>Кодування/декодування</td><td><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener">gchq.github.io/CyberChef</a></td></tr>
+                <tr><td>StegOnline</td><td>Аналіз зображень онлайн</td><td><a href="https://stegonline.georgeom.net/" target="_blank" rel="noopener">stegonline.georgeom.net</a></td></tr>
+                <tr><td>Aperi'Solve</td><td>Автоаналіз зображень</td><td><a href="https://www.aperisolve.com/" target="_blank" rel="noopener">aperisolve.com</a></td></tr>
+                <tr><td>Audacity</td><td>Спектрограма аудіо</td><td><a href="https://www.audacityteam.org/" target="_blank" rel="noopener">audacityteam.org</a></td></tr>
+                <tr><td>HxD</td><td>Hex-редактор (Windows)</td><td><a href="https://mh-nexus.de/en/hxd/" target="_blank" rel="noopener">mh-nexus.de/hxd</a></td></tr>
+                <tr><td>zsteg</td><td>LSB аналіз PNG/BMP</td><td><code>gem install zsteg</code></td></tr>
+                <tr><td>binwalk</td><td>Вбудовані файли</td><td><code>pip install binwalk</code></td></tr>
+                <tr><td>steghide</td><td>Стего в JPEG/WAV</td><td><code>apt install steghide</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+
+    </div>
+
+    <footer></footer>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/ctf.js"></script>
+</body>
+</html>
