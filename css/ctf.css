@@ -28,77 +28,98 @@
 }
 
 .ctf-page-tabs > .tab-content {
-  background: transparent;
-  border: none;
+  background: transparent !important;
+  border: none !important;
   padding: 28px 0 0;
+  border-radius: 0;
 }
 
-/* Preparation Tab */
+/* Override .lecture-content card inside CTF page */
+.ctf-page-tabs .lecture-content {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+/* Preparation Tab — LSB Visual */
 .prep-visual {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 32px;
   margin: 28px 0;
+  text-align: center;
 }
 
 .prep-comparison {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 32px;
 }
 
 .prep-compare-item {
   text-align: center;
+  flex: 1;
+  max-width: 280px;
 }
 
 .prep-compare-label {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
 }
 
 .prep-compare-demo {
-  background: var(--card);
+  background: var(--bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 18px;
 }
 
 .pixel-grid {
   display: flex;
   gap: 8px;
+  justify-content: center;
 }
 
 .pixel-grid span {
-  display: inline-block;
-  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
   border-radius: 8px;
   color: #fff;
   font-family: 'Courier New', monospace;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
+  min-width: 70px;
 }
 
 .prep-compare-arrow {
-  font-size: 28px;
+  font-size: 32px;
   color: var(--accent);
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .prep-caption {
-  text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
-  margin-top: 12px;
+  margin-top: 20px;
   font-style: italic;
 }
 
 /* Methods Grid */
 .prep-methods-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
@@ -131,9 +152,10 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 8px;
+  color: var(--text);
 }
 
-.prep-method-card p {
+.prep-method-card > p {
   font-size: 14px;
   line-height: 1.6;
   color: var(--text-secondary);
@@ -165,11 +187,16 @@
   font-family: 'Courier New', monospace;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .prep-methods-grid { grid-template-columns: 1fr; }
-  .prep-comparison { flex-direction: column; }
-  .prep-compare-arrow { transform: rotate(90deg); }
-  .pixel-grid { flex-direction: column; gap: 4px; }
+}
+
+@media (max-width: 768px) {
+  .prep-comparison { flex-direction: column; gap: 16px; }
+  .prep-compare-arrow { transform: rotate(90deg); font-size: 24px; }
+  .pixel-grid { gap: 4px; }
+  .pixel-grid span { padding: 8px 10px; font-size: 12px; min-width: auto; }
+  .prep-visual { padding: 20px; }
   .ctf-page-tabs > .tabs-nav .tab-button { padding: 10px 16px; font-size: 14px; }
 }
 
