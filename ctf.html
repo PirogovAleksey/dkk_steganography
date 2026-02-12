@@ -420,6 +420,24 @@
             <p class="prep-caption">Різниця &plusmn;1 на канал &mdash; абсолютно непомітна людському оку</p>
           </div>
 
+          <!-- Що шукаємо -->
+          <h2 class="section-title" style="margin-top: 40px;">Що ми шукаємо?</h2>
+
+          <div class="info-box">
+            <h4>Формат прапора (Flag)</h4>
+            <p>У CTF-змаганнях ваша мета &mdash; знайти <strong>прапор</strong> (flag). Це рядок у спеціальному форматі:</p>
+            <div class="code-block" style="margin: 12px 0 8px;">FLAG{приклад_прапора_тут}
+CTF{інший_формат}
+flag{малими_літерами}</div>
+            <p style="margin-top: 8px;"><strong>Як шукати:</strong></p>
+            <ul>
+              <li><code>strings file | grep -i flag</code> &mdash; пошук у текстових рядках</li>
+              <li><code>grep -ri "FLAG{" .</code> &mdash; рекурсивний пошук у витягнутих файлах</li>
+              <li>У CyberChef шукай патерн <code>FLAG\{.*\}</code> у результаті декодування</li>
+              <li>Прапор може бути закодований (base64, hex, rot13) &mdash; декодуй перед пошуком!</li>
+            </ul>
+          </div>
+
           <!-- Основні методи -->
           <h2 class="section-title" style="margin-top: 40px;">Основні методи стеганографії у CTF</h2>
 
@@ -527,6 +545,73 @@
             </div>
           </div>
 
+          <!-- Що робити з конкретним типом файлу -->
+          <h2 class="section-title" style="margin-top: 40px;">Що робити з конкретним типом файлу</h2>
+
+          <div class="prep-magic-table-wrap">
+            <table class="prep-magic-table prep-filetype-table">
+              <thead>
+                <tr><th>Тип файлу</th><th>Перші кроки</th><th>Специфічні інструменти</th><th>На що звернути увагу</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="prep-fmt">PNG</span></td>
+                  <td><code>exiftool</code>, <code>pngcheck</code>, <code>binwalk</code></td>
+                  <td><code>zsteg -a</code>, StegOnline, Aperi'Solve</td>
+                  <td>LSB, bit planes, alpha-канал, палітра, CRC-помилки</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">JPEG</span></td>
+                  <td><code>exiftool</code>, <code>strings</code>, <code>binwalk</code></td>
+                  <td><code>steghide</code>, <code>stegseek</code>, <code>outguess</code></td>
+                  <td>EXIF-коментарі, steghide з/без пароля, вбудовані файли після EOI</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">BMP</span></td>
+                  <td><code>strings</code>, <code>xxd</code></td>
+                  <td><code>zsteg</code>, StegOnline</td>
+                  <td>LSB (без стиснення &mdash; ідеальний для стего), великий розмір файлу</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">GIF</span></td>
+                  <td><code>exiftool</code>, <code>binwalk</code></td>
+                  <td><code>ffmpeg</code>, Stegsolve (Frame Browse)</td>
+                  <td>Окремі кадри анімації, палітра кольорів, коментарі</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">WAV</span></td>
+                  <td><code>file</code>, <code>strings</code>, <code>binwalk</code></td>
+                  <td>Audacity (спектрограма), <code>steghide</code></td>
+                  <td>Спектрограма (текст/зображення), audio LSB, ехо-приховування</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">MP3</span></td>
+                  <td><code>strings</code>, <code>binwalk</code>, <code>exiftool</code></td>
+                  <td>Audacity, mp3stego, DeepSound</td>
+                  <td>ID3-теги, спектрограма, вбудовані файли, DeepSound-пароль</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">TXT</span></td>
+                  <td><code>cat -A</code>, <code>xxd</code>, <code>file</code></td>
+                  <td>Python, CyberChef</td>
+                  <td>Whitespace (пробіли/таби), zero-width Unicode, невидимі символи</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">PDF</span></td>
+                  <td><code>strings</code>, <code>binwalk</code>, <code>exiftool</code></td>
+                  <td><code>pdf-parser</code>, <code>pdftotext</code></td>
+                  <td>Вбудовані об'єкти, JavaScript, потоки, приховані шари</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">ZIP</span></td>
+                  <td><code>file</code>, <code>unzip -l</code>, <code>binwalk</code></td>
+                  <td><code>john</code>, <code>fcrackzip</code>, <code>7z</code></td>
+                  <td>Захист паролем, коментарі архіву, вкладені архіви</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <!-- Чеклист для зображень -->
           <h2 class="section-title" style="margin-top: 40px;">Чеклист аналізу зображень</h2>
           <p class="prep-checklist-source">Адаптовано з <a href="https://georgeom.net/StegOnline/checklist" target="_blank" rel="noopener">StegOnline Checklist</a></p>
@@ -609,6 +694,72 @@
                 <span>Невірні magic bytes? CRC-помилка? Відкрий у hex-редакторі та виправ заголовок вручну.</span>
               </div>
             </label>
+          </div>
+
+          <!-- Покроковий приклад -->
+          <h2 class="section-title" style="margin-top: 40px;">Покроковий приклад: розв'язуємо challenge</h2>
+
+          <div class="prep-walkthrough">
+            <div class="walkthrough-scenario">
+              <h4>Сценарій</h4>
+              <p>Маємо файл <code>mystery.png</code> (звичайне фото котика). Треба знайти прапор.</p>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">1</div>
+              <div class="walkthrough-step-body">
+                <h4>Визначаємо тип і шукаємо очевидне</h4>
+                <div class="code-block">$ file mystery.png
+mystery.png: PNG image data, 800 x 600, 8-bit/color RGBA
+
+$ strings mystery.png | grep -i flag
+(нічого не знайдено)</div>
+                <p class="walkthrough-note">Файл справді PNG. Прапор не лежить відкритим текстом &mdash; йдемо далі.</p>
+              </div>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">2</div>
+              <div class="walkthrough-step-body">
+                <h4>Перевіряємо метадані</h4>
+                <div class="code-block">$ exiftool mystery.png
+...
+Comment: aHR0cHM6Ly9leGFtcGxlLmNvbQ==
+Author: Nothing here
+...</div>
+                <p class="walkthrough-note">Є підозрілий коментар! Виглядає як base64 (літери A-Z, a-z, цифри, закінчується на <code>==</code>).</p>
+              </div>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">3</div>
+              <div class="walkthrough-step-body">
+                <h4>Декодуємо знахідку</h4>
+                <div class="code-block">$ echo "aHR0cHM6Ly9leGFtcGxlLmNvbQ==" | base64 -d
+https://example.com</div>
+                <p class="walkthrough-note">Це URL, але не прапор. Можливо це підказка, а прапор в іншому шарі?</p>
+              </div>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">4</div>
+              <div class="walkthrough-step-body">
+                <h4>Перевіряємо вбудовані файли та LSB</h4>
+                <div class="code-block">$ binwalk mystery.png
+DECIMAL    HEXADECIMAL    DESCRIPTION
+0          0x0            PNG image, 800 x 600
+(нічого додаткового)
+
+$ zsteg mystery.png
+b1,rgb,lsb,xy .. text: "FLAG{st3g0_m4st3r_2026}"</div>
+                <p class="walkthrough-note success-note">zsteg знайшов прапор у LSB! <strong>FLAG{st3g0_m4st3r_2026}</strong></p>
+              </div>
+            </div>
+
+            <div class="walkthrough-summary">
+              <h4>Підсумок</h4>
+              <p>Алгоритм спрацював: <code>file</code> &rarr; <code>strings</code> &rarr; <code>exiftool</code> (знайшли base64-підказку) &rarr; <code>binwalk</code> &rarr; <code>zsteg</code> (знайшли прапор). Весь процес зайняв ~2 хвилини.</p>
+            </div>
           </div>
 
           <!-- Підготовка ОС -->
@@ -799,6 +950,28 @@ check_jpg.sh image.jpg</div>
                   <p>Перевіряє структуру PNG: пошкоджені chunks, CRC-помилки, tEXt-дані. <code>-vtp7f</code> для повного аналізу.</p>
                   <code class="prep-tool-install">apt install pngcheck</code>
                 </div>
+              </div>
+            </div>
+
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+                Словники паролів (Wordlists)
+              </h3>
+              <div class="info-box" style="margin-bottom: 0;">
+                <h4>Навіщо потрібні словники?</h4>
+                <p>Багато CTF-завдань використовують <code>steghide</code> з паролем. Інструменти <code>stegseek</code> та <code>fcrackzip</code> перебирають паролі зі словника. Найпопулярніший &mdash; <strong>rockyou.txt</strong> (14 млн паролів).</p>
+                <div class="code-block" style="margin-top: 10px;"># Kali Linux — вже є:
+/usr/share/wordlists/rockyou.txt.gz
+sudo gunzip /usr/share/wordlists/rockyou.txt.gz
+
+# Ubuntu / інші — завантажити:
+wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+
+# Використання:
+stegseek mystery.jpg rockyou.txt
+fcrackzip -u -D -p rockyou.txt archive.zip
+john --wordlist=rockyou.txt hash.txt</div>
               </div>
             </div>
           </div>
