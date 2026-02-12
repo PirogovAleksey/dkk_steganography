@@ -1089,6 +1089,72 @@ html.dark .cheat-content .code-block {
   animation: flagCorrect 0.5s ease;
 }
 
+/* Checklist */
+.prep-checklist-source {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.prep-checklist-source a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.prep-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.prep-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.prep-check-item:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 4%, var(--card));
+}
+.prep-check-item input[type="checkbox"] {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.prep-check-item:has(input:checked) {
+  opacity: 0.55;
+  text-decoration: line-through;
+  text-decoration-color: var(--text-secondary);
+}
+.prep-check-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.prep-check-body strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.prep-check-body span {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.prep-check-body code {
+  font-size: 12px;
+  background: var(--bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .flag-input-wrapper { flex-direction: column; }
@@ -1097,4 +1163,5 @@ html.dark .cheat-content .code-block {
   .challenge-meta { gap: 6px; }
   .ctf-filters { gap: 6px; }
   .filter-btn { padding: 6px 14px; font-size: 12px; }
+  .prep-check-item { padding: 12px 14px; }
 }
