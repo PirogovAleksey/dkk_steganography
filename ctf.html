@@ -65,18 +65,18 @@
     <!-- Page-level Tabs -->
     <div class="tabs-container ctf-page-tabs">
       <div class="tabs-nav">
-        <button class="tab-button active" onclick="switchTab(event, 'tab-challenges')">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-          Завдання
-        </button>
-        <button class="tab-button" onclick="switchTab(event, 'tab-prep')">
+        <button class="tab-button active" onclick="switchTab(event, 'tab-prep')">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
           Підготовка
+        </button>
+        <button class="tab-button" onclick="switchTab(event, 'tab-challenges')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+          Завдання
         </button>
       </div>
 
       <!-- ==================== TAB 1: ЗАВДАННЯ ==================== -->
-      <div id="tab-challenges" class="tab-content active">
+      <div id="tab-challenges" class="tab-content">
 
         <!-- Stats -->
         <div class="stats">
@@ -365,7 +365,7 @@
       </div>
 
       <!-- ==================== TAB 2: ПІДГОТОВКА ==================== -->
-      <div id="tab-prep" class="tab-content">
+      <div id="tab-prep" class="tab-content active">
 
         <div class="lecture-content">
 
