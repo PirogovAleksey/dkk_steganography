@@ -1,5 +1,66 @@
 /* === CTF Page Styles === */
 
+/* Download */
+.ctf-download { margin-bottom: 40px; }
+
+.download-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, var(--card), rgba(14, 165, 233, 0.06));
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+}
+
+.download-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.download-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--accent);
+  border-radius: 12px;
+  color: #fff;
+}
+
+.download-icon svg { width: 24px; height: 24px; }
+.download-info { flex: 1; }
+.download-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.download-info p { font-size: 13px; color: var(--text-secondary); margin: 0; }
+
+.download-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #6366f1);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+}
+
+@media (max-width: 768px) {
+  .download-card { flex-direction: column; text-align: center; }
+  .download-btn { width: 100%; text-align: center; }
+}
+
 /* Scoreboard */
 .ctf-scoreboard {
   background: var(--card);
