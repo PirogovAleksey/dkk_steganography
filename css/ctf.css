@@ -1,5 +1,178 @@
 /* === CTF Page Styles === */
 
+/* Page-level Tabs Override */
+.ctf-page-tabs {
+  margin: 0;
+}
+
+.ctf-page-tabs > .tabs-nav {
+  margin-bottom: 0;
+}
+
+.ctf-page-tabs > .tabs-nav .tab-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ctf-page-tabs > .tabs-nav .tab-button svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.ctf-page-tabs > .tabs-nav .tab-button.active svg {
+  opacity: 1;
+}
+
+.ctf-page-tabs > .tab-content {
+  background: transparent;
+  border: none;
+  padding: 28px 0 0;
+}
+
+/* Preparation Tab */
+.prep-visual {
+  margin: 28px 0;
+}
+
+.prep-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.prep-compare-item {
+  text-align: center;
+}
+
+.prep-compare-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.prep-compare-demo {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.pixel-grid {
+  display: flex;
+  gap: 8px;
+}
+
+.pixel-grid span {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.prep-compare-arrow {
+  font-size: 28px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.prep-caption {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* Methods Grid */
+.prep-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.prep-method-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+}
+
+.prep-method-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.prep-method-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.prep-method-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.prep-method-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.prep-method-card code {
+  background: var(--bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.prep-method-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.prep-method-tools span {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+}
+
+@media (max-width: 768px) {
+  .prep-methods-grid { grid-template-columns: 1fr; }
+  .prep-comparison { flex-direction: column; }
+  .prep-compare-arrow { transform: rotate(90deg); }
+  .pixel-grid { flex-direction: column; gap: 4px; }
+  .ctf-page-tabs > .tabs-nav .tab-button { padding: 10px 16px; font-size: 14px; }
+}
+
 /* Download */
 .ctf-download { margin-bottom: 40px; }
 

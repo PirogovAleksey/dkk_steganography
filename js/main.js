@@ -19,14 +19,15 @@ if (localStorage.getItem('theme') === 'dark') {
 
 // Tab switching for lab pages
 function switchTab(event, tabId) {
-  var container = event.target.closest('.tabs-container');
-  container.querySelectorAll('.tab-button').forEach(function(btn) {
-    btn.classList.remove('active');
+  var btn = event.target.closest('.tab-button');
+  var container = btn.closest('.tabs-container');
+  container.querySelectorAll('.tab-button').forEach(function(b) {
+    b.classList.remove('active');
   });
   container.querySelectorAll('.tab-content').forEach(function(content) {
     content.classList.remove('active');
   });
-  event.target.classList.add('active');
+  btn.classList.add('active');
   document.getElementById(tabId).classList.add('active');
 }
 
