@@ -73,7 +73,7 @@
         <div class="stat-label">Завдань розв'язано</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">1925</div>
+        <div class="stat-value">1400</div>
         <div class="stat-label">Максимум очків</div>
       </div>
     </div>
@@ -116,20 +116,20 @@
         <div class="challenge-header">
           <div class="challenge-number">1</div>
           <div>
-            <h3>Не те, чим здається</h3>
+            <h3>EXIF-фільтрація</h3>
             <div class="challenge-meta">
               <span class="badge badge-easy">Легкий</span>
               <span class="challenge-points">25 очків</span>
-              <span class="challenge-category">wrong_extension</span>
+              <span class="challenge-category">metadata</span>
             </div>
           </div>
           <div class="challenge-status" id="status-1"></div>
         </div>
-        <p>Цей файл стверджує, що він JPEG, але щось не так. Чи зможеш зрозуміти, що це насправді?</p>
+        <p>Таємний агент залишив повідомлення у цьому фото. Де він його сховав?</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Розширення файлу може брехати.</p></details>
-          <details><summary>Підказка 2</summary><p>Запусти команду <code>file</code> щоб перевірити справжній тип файлу.</p></details>
-          <details><summary>Підказка 3</summary><p>Подивись на магічні байти на початку файлу.</p></details>
+          <details><summary>Підказка 1</summary><p>Не всі дані у зображенні є видимими.</p></details>
+          <details><summary>Підказка 2</summary><p>Перевір метадані зображення.</p></details>
+          <details><summary>Підказка 3</summary><p>EXIF-дані можуть зберігати більше, ніж лише налаштування камери.</p></details>
         </div>
       </div>
 
@@ -138,20 +138,20 @@
         <div class="challenge-header">
           <div class="challenge-number">2</div>
           <div>
-            <h3>Слідкуй за пробілами</h3>
+            <h3>Сховано на видному місці</h3>
             <div class="challenge-meta">
               <span class="badge badge-easy">Легкий</span>
               <span class="challenge-points">50 очків</span>
-              <span class="challenge-category">whitespace</span>
+              <span class="challenge-category">image_lsb</span>
             </div>
           </div>
           <div class="challenge-status" id="status-2"></div>
         </div>
-        <p>Цей текстовий файл виглядає порожнім наприкінці кожного рядка... чи ні?</p>
+        <p>Це зображення виглядає звичайно, але всередині щось сховано. Чи зможеш знайти прапор?</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Не всі пробіли однакові.</p></details>
-          <details><summary>Підказка 2</summary><p>Зверни увагу на пробіли та табуляції в кінці кожного рядка.</p></details>
-          <details><summary>Підказка 3</summary><p>Пробіл = 0, Табуляція = 1. Це двійковий код!</p></details>
+          <details><summary>Підказка 1</summary><p>Подумай про найменш значущі частини зображення.</p></details>
+          <details><summary>Підказка 2</summary><p>LSB-стеганографія ховає дані в найменш значущих бітах пікселів.</p></details>
+          <details><summary>Підказка 3</summary><p>Спробуй використати інструмент LSB-витягування на цьому зображенні.</p></details>
         </div>
       </div>
 
@@ -160,19 +160,19 @@
         <div class="challenge-header">
           <div class="challenge-number">3</div>
           <div>
-            <h3>Базовий табір</h3>
+            <h3>Легка здобич</h3>
             <div class="challenge-meta">
               <span class="badge badge-easy">Легкий</span>
-              <span class="challenge-points">75 очків</span>
-              <span class="challenge-category">encoding_chain</span>
+              <span class="challenge-points">25 очків</span>
+              <span class="challenge-category">strings_hidden</span>
             </div>
           </div>
           <div class="challenge-status" id="status-3"></div>
         </div>
-        <p>Дані були закодовані перед приховуванням. Один шар кодування потрібно зняти.</p>
+        <p>Іноді найпростіший підхід працює. Які секрети зберігає цей файл?</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Спочатку витягни приховані дані із зображення.</p></details>
-          <details><summary>Підказка 2</summary><p>Витягнуті дані схожі на base64.</p></details>
+          <details><summary>Підказка 1</summary><p>Спробуй запустити команду <code>strings</code> для файлу.</p></details>
+          <details><summary>Підказка 2</summary><p>Використай <code>grep</code> для пошуку формату прапора у виводі strings.</p></details>
         </div>
       </div>
 
@@ -181,19 +181,20 @@
         <div class="challenge-header">
           <div class="challenge-number">4</div>
           <div>
-            <h3>Звук тиші</h3>
+            <h3>ROT-н-рол</h3>
             <div class="challenge-meta">
               <span class="badge badge-medium">Середній</span>
               <span class="challenge-points">100 очків</span>
-              <span class="challenge-category">audio_lsb</span>
+              <span class="challenge-category">encoding_chain</span>
             </div>
           </div>
           <div class="challenge-status" id="status-4"></div>
         </div>
-        <p>Цей аудіофайл звучить нормально, але в ньому щось заховано. Послухай уважно... або подивись глибше.</p>
+        <p>Цезар був би задоволений. Дані були зміщені перед приховуванням.</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>LSB працює не тільки з зображеннями.</p></details>
-          <details><summary>Підказка 2</summary><p>Аудіо-семпли теж мають біти.</p></details>
+          <details><summary>Підказка 1</summary><p>Спочатку витягни LSB-дані.</p></details>
+          <details><summary>Підказка 2</summary><p>Текст виглядає спотвореним — був застосований класичний шифр.</p></details>
+          <details><summary>Підказка 3</summary><p>ROT13 — це ключ.</p></details>
         </div>
       </div>
 
@@ -202,19 +203,20 @@
         <div class="challenge-header">
           <div class="challenge-number">5</div>
           <div>
-            <h3>Відлуння</h3>
+            <h3>Глибокі біти</h3>
             <div class="challenge-meta">
               <span class="badge badge-medium">Середній</span>
-              <span class="challenge-points">125 очків</span>
-              <span class="challenge-category">echo_hiding</span>
+              <span class="challenge-points">100 очків</span>
+              <span class="challenge-category">image_lsb</span>
             </div>
           </div>
           <div class="challenge-status" id="status-5"></div>
         </div>
-        <p>Ехо може нести інформацію. Прислухайся до відлуння в цьому аудіофайлі.</p>
+        <p>Повідомлення сховане глибше, ніж зазвичай. Стандартні LSB-інструменти можуть його пропустити.</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Echo hiding — техніка стеганографії в аудіо.</p></details>
-          <details><summary>Підказка 2</summary><p>Затримка ехо кодує біти: коротка = 0, довга = 1.</p></details>
+          <details><summary>Підказка 1</summary><p>Не лише 1 біт — використовується більше бітів на канал.</p></details>
+          <details><summary>Підказка 2</summary><p>Спробуй витягти 2 біти на канал.</p></details>
+          <details><summary>Підказка 3</summary><p>Дані використовують 2-бітну LSB-стеганографію.</p></details>
         </div>
       </div>
 
@@ -223,42 +225,42 @@
         <div class="challenge-header">
           <div class="challenge-number">6</div>
           <div>
-            <h3>Голос частот</h3>
+            <h3>Прихований вантаж</h3>
             <div class="challenge-meta">
               <span class="badge badge-medium">Середній</span>
               <span class="challenge-points">125 очків</span>
-              <span class="challenge-category">spectrogram</span>
+              <span class="challenge-category">embedded_file</span>
             </div>
           </div>
           <div class="challenge-status" id="status-6"></div>
         </div>
-        <p>Іноді щоб побачити звук, потрібно подивитись на нього під іншим кутом.</p>
+        <p>Цей файл зображення більший, ніж очікувалося. Може, всередині щось ховається?</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Відкрий файл у Audacity.</p></details>
-          <details><summary>Підказка 2</summary><p>Переключи відображення на спектрограму.</p></details>
-          <details><summary>Підказка 3</summary><p>Встанови максимальну частоту 22000 Hz.</p></details>
+          <details><summary>Підказка 1</summary><p>Розмір файлу здається завеликим для цього зображення.</p></details>
+          <details><summary>Підказка 2</summary><p>Спробуй <code>binwalk</code> для сканування вбудованих файлів.</p></details>
+          <details><summary>Підказка 3</summary><p>Після даних зображення є ZIP-архів.</p></details>
         </div>
       </div>
 
       <!-- Challenge 7 -->
-      <div class="challenge-card" data-id="7" data-difficulty="hard">
+      <div class="challenge-card" data-id="7" data-difficulty="medium">
         <div class="challenge-header">
           <div class="challenge-number">7</div>
           <div>
-            <h3>Шари цибулі</h3>
+            <h3>Невидиме чорнило</h3>
             <div class="challenge-meta">
-              <span class="badge badge-hard">Важкий</span>
-              <span class="challenge-points">300 очків</span>
-              <span class="challenge-category">multi_layer</span>
+              <span class="badge badge-medium">Середній</span>
+              <span class="challenge-points">125 очків</span>
+              <span class="challenge-category">alpha_channel</span>
             </div>
           </div>
           <div class="challenge-status" id="status-7"></div>
         </div>
-        <p>Як у цибулі, тут кілька шарів захисту. Зніми їх один за одним.</p>
+        <p>Це зображення виглядає абсолютно нормально. Але є прихований шар, якого не видно.</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Перевір метадані зображення — там є щось корисне.</p></details>
-          <details><summary>Підказка 2</summary><p>У метаданих може бути пароль для наступного кроку.</p></details>
-          <details><summary>Підказка 3</summary><p>LSB-дані зашифровані AES-256-CBC. Ключ = SHA-256(password).</p></details>
+          <details><summary>Підказка 1</summary><p>PNG-зображення можуть мати 4 канали: R, G, B та Alpha.</p></details>
+          <details><summary>Підказка 2</summary><p>Альфа-канал керує прозорістю.</p></details>
+          <details><summary>Підказка 3</summary><p>Використай stegsolve або витягни альфа-канал окремо.</p></details>
         </div>
       </div>
 
@@ -267,41 +269,42 @@
         <div class="challenge-header">
           <div class="challenge-number">8</div>
           <div>
-            <h3>Подвійний замок</h3>
+            <h3>Бінарний дощ</h3>
             <div class="challenge-meta">
               <span class="badge badge-hard">Важкий</span>
-              <span class="challenge-points">250 очків</span>
-              <span class="challenge-category">zip_in_image</span>
+              <span class="challenge-points">200 очків</span>
+              <span class="challenge-category">encoding_chain</span>
             </div>
           </div>
           <div class="challenge-status" id="status-8"></div>
         </div>
-        <p>Цей файл більше ніж здається. Один формат ховає інший.</p>
+        <p>Матриця містить прапор. Декодуй бінарний дощ.</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Перевір розмір файлу — чи не завеликий він для звичайного PNG?</p></details>
-          <details><summary>Підказка 2</summary><p>Спробуй <code>binwalk</code> — там може бути вбудований ZIP.</p></details>
-          <details><summary>Підказка 3</summary><p>Пароль для ZIP шукай у метаданих зображення.</p></details>
+          <details><summary>Підказка 1</summary><p>Витягни LSB-дані із зображення.</p></details>
+          <details><summary>Підказка 2</summary><p>Результат — двійковий код (0 та 1, розділені пробілами).</p></details>
+          <details><summary>Підказка 3</summary><p>Конвертуй двійковий код в ASCII, потім декодуй base64.</p></details>
         </div>
       </div>
 
       <!-- Challenge 9 -->
-      <div class="challenge-card" data-id="9" data-difficulty="insane">
+      <div class="challenge-card" data-id="9" data-difficulty="hard">
         <div class="challenge-header">
           <div class="challenge-number">9</div>
           <div>
-            <h3>Аполлон</h3>
+            <h3>Потрійна загроза</h3>
             <div class="challenge-meta">
-              <span class="badge badge-insane">Божевільний</span>
-              <span class="challenge-points">400 очків</span>
-              <span class="challenge-category">sstv</span>
+              <span class="badge badge-hard">Важкий</span>
+              <span class="challenge-points">250 очків</span>
+              <span class="challenge-category">multi_layer</span>
             </div>
           </div>
           <div class="challenge-status" id="status-9"></div>
         </div>
-        <p>Як астронавти передавали зображення з космосу? SSTV — Slow Scan Television.</p>
+        <p>Три файли. Один прапор. Шлях: зображення &rarr; аудіо &rarr; відповідь.</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Це аудіофайл з SSTV-сигналом.</p></details>
-          <details><summary>Підказка 2</summary><p>Використай QSSTV (Linux) або онлайн SSTV декодер.</p></details>
+          <details><summary>Підказка 1</summary><p>Почни із зображення — воно містить підказку.</p></details>
+          <details><summary>Підказка 2</summary><p>Підказка із зображення веде до аудіофайлу.</p></details>
+          <details><summary>Підказка 3</summary><p>Зображення містить пароль. Використай його для розшифрування аудіо-повідомлення.</p></details>
         </div>
       </div>
 
@@ -310,20 +313,20 @@
         <div class="challenge-header">
           <div class="challenge-number">10</div>
           <div>
-            <h3>Лабіринт</h3>
+            <h3>Початок</h3>
             <div class="challenge-meta">
               <span class="badge badge-insane">Божевільний</span>
-              <span class="challenge-points">500 очків</span>
-              <span class="challenge-category">multi_layer</span>
+              <span class="challenge-points">400 очків</span>
+              <span class="challenge-category">encoding_chain</span>
             </div>
           </div>
           <div class="challenge-status" id="status-10"></div>
         </div>
-        <p>4 шари захисту. Кожен крок веде до наступного. Тільки найнаполегливіші дістануться до фіналу.</p>
+        <p>Сни у снах. Кодування в кодуванні. Наскільки глибоко ти зможеш зайти?</p>
         <div class="challenge-hints">
-          <details><summary>Підказка 1</summary><p>Почни з метаданих — вони вкажуть напрямок.</p></details>
-          <details><summary>Підказка 2</summary><p>Один з кроків потребує аналізу бітових площин (bit planes).</p></details>
-          <details><summary>Підказка 3</summary><p>Дані стиснуті (zlib) та зашифровані (AES).</p></details>
+          <details><summary>Підказка 1</summary><p>Витягни дані із зображення (LSB).</p></details>
+          <details><summary>Підказка 2</summary><p>Шар 1: переверни байти.</p></details>
+          <details><summary>Підказка 3</summary><p>Шар 2: ROT13 тексту. Шар 3: декодуй base64.</p></details>
         </div>
       </div>
 

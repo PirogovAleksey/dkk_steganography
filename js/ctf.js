@@ -1,20 +1,20 @@
 // CTF Scoreboard — flag verification via SHA-256 hashes (no flags in source code)
 
 const CHALLENGES = [
-  { id: 1,  name: "Не те, чим здається",  points: 25,  hash: "196476c18856638dd34e8a67b1a22ed71041d2a35195c096375a0c42bd937d81" },
-  { id: 2,  name: "Слідкуй за пробілами", points: 50,  hash: "9f1283821d5618aca8dad891d773848c6f58dca05551bdc47b439e085e352ea9" },
-  { id: 3,  name: "Базовий табір",        points: 75,  hash: "a8d6278e28bf534ec36c347ab01752ee51ab0dd0df2d5482ee4ae33f5d206753" },
-  { id: 4,  name: "Звук тиші",           points: 100, hash: "1e2d17f913a9b88bb900df40ae089fc115c4ffd56ced0de5e6afa3be0b545d3a" },
-  { id: 5,  name: "Відлуння",             points: 125, hash: "cf5fca548fa3beb08026e048191778c5cb75cdee3380af76e001626af8738cef" },
-  { id: 6,  name: "Голос частот",         points: 125, hash: "a59aa041f14f01c3d691a4d576f2b38d1aa93fa994987ae22bc996a787307613" },
-  { id: 7,  name: "Шари цибулі",          points: 300, hash: "02334784d580f2be3f3654d407b60dcf2b2cd0f4e53b8c08466001d1300c067a" },
-  { id: 8,  name: "Подвійний замок",       points: 250, hash: "426b40309d1ebd42eb4359ebd78c5ed12659cf558a0d3684f5d1062832a6b837" },
-  { id: 9,  name: "Аполлон",              points: 400, hash: "bb92e063f95b9d9ec081ff34955d16c82d81f0ee49e786d641e0c9d184096487" },
-  { id: 10, name: "Лабіринт",             points: 500, hash: "2643b21d0b3822e015e0045358b5a4e98c57667f0e1dc5a06869132a962c12ab" }
+  { id: 1,  name: "EXIF-фільтрація",          points: 25,  hash: "ed24f34a999ed458c2f33edb20684b47388d850599ba35b3128a389eca74b576" },
+  { id: 2,  name: "Сховано на видному місці",  points: 50,  hash: "52d200b1d3bcf8689f53b6fb2ec41ad7fbe881294cac95cea48dfb76b6e9cd92" },
+  { id: 3,  name: "Легка здобич",              points: 25,  hash: "09a51ce1530966f81d51f9df3666efcb7572f3ca1d3174a36044dffb7bfb7347" },
+  { id: 4,  name: "ROT-н-рол",                points: 100, hash: "8cc22b05dc697ab00ea827b23bed711538bb582eb9b5e6023b71a6f535d6ca2d" },
+  { id: 5,  name: "Глибокі біти",              points: 100, hash: "a464fe93715c766ca2a889c89903ab46bc01dd0e4375c87646c6ab1336e56f09" },
+  { id: 6,  name: "Прихований вантаж",         points: 125, hash: "3fdc37d94afbda6cd0273075f1e49a41b7b36a9d52a81f4ac7152c35596c030c" },
+  { id: 7,  name: "Невидиме чорнило",          points: 125, hash: "5f38e0a83b045775d48389f51c26b829104f56cf897c0d9b07bcc16b795df528" },
+  { id: 8,  name: "Бінарний дощ",              points: 200, hash: "2b71d2acb09ce98e0dd70de0783c90d1186c7d97f1a4d2f34eb57d7f1cbecf40" },
+  { id: 9,  name: "Потрійна загроза",          points: 250, hash: "ff72567c3b93e6a0fad0fdf3fb7dcfeb0cd9d1299813a5ab3f4a6d210dfff051" },
+  { id: 10, name: "Початок",                   points: 400, hash: "de1ee59c88d842b416dbaf97b21d680c74885be3d4378a4ea6a02ac17546e9a1" }
 ];
 
 const MAX_POINTS = CHALLENGES.reduce((s, c) => s + c.points, 0);
-const STORAGE_KEY = "ctf_solved_2026";
+const STORAGE_KEY = "ctf_training_2026";
 
 // Load solved state from localStorage
 function loadSolved() {
