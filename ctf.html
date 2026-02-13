@@ -526,6 +526,103 @@ flag{малими_літерами}</div>
               </div>
             </div>
 
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(236,72,153,0.12); color: #ec4899;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20"/><path d="M17 2v20"/><path d="M2 12h20"/><path d="M2 7h5"/><path d="M2 17h5"/><path d="M17 7h5"/><path d="M17 17h5"/></svg>
+              </div>
+              <h3>DCT стеганографія</h3>
+              <p>Дані ховаються у частотних коефіцієнтах JPEG (DCT). Стійкіше за LSB, але складніше для витягнення. Використовується steghide та outguess.</p>
+              <div class="prep-method-tools">
+                <span>steghide</span>
+                <span>outguess</span>
+                <span>stegdetect</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(20,184,166,0.12); color: #14b8a6;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              </div>
+              <h3>Відео стеганографія</h3>
+              <p>Дані ховаються у окремих кадрах відео через LSB або у метаданих контейнера. Витягни кадри через ffmpeg та аналізуй кожен як зображення.</p>
+              <div class="prep-method-tools">
+                <span>ffmpeg</span>
+                <span>ffprobe</span>
+                <span>Python</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Стегоаналіз -->
+          <h2 class="section-title" style="margin-top: 40px;">Стегоаналіз: як виявити приховані дані</h2>
+
+          <div class="info-box">
+            <h4>Що таке стегоаналіз?</h4>
+            <p><strong>Стегоаналіз</strong> &mdash; це наука про виявлення прихованих повідомлень у файлах. Якщо стеганографія ховає дані, то стегоаналіз намагається їх знайти. У CTF це ключовий навик: потрібно не лише знати інструменти, а й розуміти <em>як</em> і <em>чому</em> вони працюють.</p>
+          </div>
+
+          <div class="prep-methods-grid">
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(239,68,68,0.12); color: #ef4444;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 17 4-8 4 4 6-10"/></svg>
+              </div>
+              <h3>Chi-Square аналіз</h3>
+              <p>Статистичний тест, що порівнює розподіл значень LSB з очікуваним рівномірним. Якщо розподіл занадто ідеальний &mdash; є приховані дані.</p>
+              <div class="prep-method-tools">
+                <span>stegdetect</span>
+                <span>Python/scipy</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(168,85,247,0.12); color: #a855f7;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+              </div>
+              <h3>RS-аналіз</h3>
+              <p>Метод Regular-Singular груп. Аналізує співвідношення &laquo;гладких&raquo; та &laquo;шумних&raquo; груп пікселів. Дозволяє оцінити відсоток заповнення LSB.</p>
+              <div class="prep-method-tools">
+                <span>Aletheia</span>
+                <span>Python</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(14,165,233,0.12); color: #0ea5e9;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h3>Візуальна атака</h3>
+              <p>Перегляд окремих bit planes зображення. У чистому зображенні LSB-площина виглядає як шум; при наявності стего &mdash; з&rsquo;являються паттерни.</p>
+              <div class="prep-method-tools">
+                <span>StegOnline</span>
+                <span>Stegsolve</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(245,158,11,0.12); color: #f59e0b;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+              </div>
+              <h3>Метрики якості</h3>
+              <p>Порівняння з оригіналом (якщо доступний): PSNR, SSIM, MSE. Якщо якість підозріло знижена &mdash; можливо, є вбудовані дані.</p>
+              <div class="prep-method-tools">
+                <span>Python/PIL</span>
+                <span>GIMP</span>
+                <span>ImageMagick</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="example-box">
+            <h4>Практичні поради зі стегоаналізу</h4>
+            <ul>
+              <li><strong>Завжди починай з візуальної атаки</strong> &mdash; завантаж зображення у StegOnline та переглянь bit planes (особливо біт 0 кожного каналу)</li>
+              <li><strong>Порівнюй з оригіналом</strong> &mdash; якщо є чисте зображення, вирахуй різницю пікселів: <code>ImageChops.difference(img1, img2)</code></li>
+              <li><strong>Перевіряй гістограму</strong> &mdash; стего-зображення часто мають характерні &laquo;гребінці&raquo; (pairs of values) на гістограмі</li>
+              <li><strong>Стежи за розміром файлу</strong> &mdash; якщо PNG або BMP файл непропорційно великий для свого розміру &mdash; в ньому можуть бути дані</li>
+            </ul>
           </div>
 
           <!-- Алгоритм розв'язання -->
@@ -753,6 +850,16 @@ check_jpg.sh image.jpg</div>
                   <p>GUI для аналізу зображень: перемикання між bit planes, frame browse, data extract з налаштуванням бітів.</p>
                   <span class="prep-tool-url">github.com &mdash; потрібна Java</span>
                 </a>
+                <a href="https://www.sonicvisualiser.org/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>Sonic Visualiser</h4>
+                  <p>Просунутий аналіз аудіо: спектрограми з точним налаштуванням, шари анотацій, плагіни VAMP. Краще за Audacity для детального аналізу частот.</p>
+                  <span class="prep-tool-url">sonicvisualiser.org</span>
+                </a>
+                <a href="https://www.gimp.org/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>GIMP</h4>
+                  <p>Потужний графічний редактор. Декомпозиція каналів, маніпуляція кривими, фільтри підсилення контрасту для виявлення прихованих даних.</p>
+                  <span class="prep-tool-url">gimp.org</span>
+                </a>
               </div>
             </div>
 
@@ -803,6 +910,12 @@ check_jpg.sh image.jpg</div>
                   <h4>pngcheck</h4>
                   <p>Перевіряє структуру PNG: пошкоджені chunks, CRC-помилки, tEXt-дані. <code>-vtp7f</code> для повного аналізу.</p>
                   <code class="prep-tool-install">apt install pngcheck</code>
+                </div>
+                <div class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>ffmpeg / ffprobe</h4>
+                  <p>Витягнення кадрів з відео, конвертація аудіо, аналіз метаданих контейнера. <code>ffmpeg -i video.mp4 frame_%04d.png</code></p>
+                  <code class="prep-tool-install">apt install ffmpeg</code>
                 </div>
               </div>
             </div>
@@ -900,6 +1013,12 @@ john --wordlist=rockyou.txt hash.txt</div>
                   <td><code>john</code>, <code>fcrackzip</code>, <code>7z</code></td>
                   <td>Захист паролем, коментарі архіву, вкладені архіви</td>
                 </tr>
+                <tr>
+                  <td><span class="prep-fmt">MP4 / AVI</span></td>
+                  <td><code>ffprobe</code>, <code>strings</code>, <code>binwalk</code></td>
+                  <td><code>ffmpeg</code>, Python (OpenCV)</td>
+                  <td>Витягнення кадрів, LSB у кадрах, метадані контейнера, аудіодоріжка</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -988,6 +1107,54 @@ john --wordlist=rockyou.txt hash.txt</div>
             </label>
           </div>
 
+          <!-- Чеклист аналізу відео -->
+          <h2 class="section-title" style="margin-top: 40px;">Чеклист аналізу відео</h2>
+
+          <div class="prep-checklist">
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>1. Метадані контейнера</strong>
+                <span><code>ffprobe -v quiet -print_format json -show_format -show_streams video.mp4</code> &mdash; кодек, розміри, тривалість, коментарі.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>2. Витягнення всіх кадрів</strong>
+                <span><code>ffmpeg -i video.mp4 frames/frame_%04d.png</code> &mdash; кожен кадр як окреме зображення для аналізу.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>3. Порівняння сусідніх кадрів</strong>
+                <span>Вирахуй різницю між кадрами (Python + PIL). Аномальний кадр може містити приховані дані або текст.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>4. LSB-аналіз окремих кадрів</strong>
+                <span>Застосуй zsteg або StegOnline до підозрілих кадрів &mdash; дані можуть бути в LSB лише одного фрейму.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>5. Аудіодоріжка</strong>
+                <span><code>ffmpeg -i video.mp4 -vn audio.wav</code> &mdash; витягни аудіо та аналізуй як окремий WAV (спектрограма, LSB).</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>6. strings + binwalk</strong>
+                <span><code>strings video.mp4 | grep FLAG</code> та <code>binwalk video.mp4</code> &mdash; перевір на вбудовані файли та текстові рядки.</span>
+              </div>
+            </label>
+          </div>
+
           <!-- Магічні байти -->
           <h2 class="section-title" style="margin-top: 40px;">Магічні байти (сигнатури файлів)</h2>
 
@@ -1002,6 +1169,8 @@ john --wordlist=rockyou.txt hash.txt</div>
                 <tr><td><span class="prep-fmt">ZIP</span></td><td><code>50 4B 03 04</code></td><td>PK..</td><td>Вбудовані файли, binwalk</td></tr>
                 <tr><td><span class="prep-fmt">WAV</span></td><td><code>52 49 46 46</code></td><td>RIFF</td><td>Audio LSB, спектрограма</td></tr>
                 <tr><td><span class="prep-fmt">PDF</span></td><td><code>25 50 44 46</code></td><td>%PDF</td><td>Вбудовані об'єкти, JS</td></tr>
+                <tr><td><span class="prep-fmt">MP4</span></td><td><code>00 00 00 .. 66 74 79 70</code></td><td>....ftyp</td><td>Відео кадри, LSB у фреймах</td></tr>
+                <tr><td><span class="prep-fmt">AVI</span></td><td><code>52 49 46 46 .. .. .. .. 41 56 49 20</code></td><td>RIFF....AVI </td><td>Frame-by-frame аналіз</td></tr>
               </tbody>
             </table>
           </div>
@@ -1067,6 +1236,43 @@ john --wordlist=rockyou.txt hash.txt</div>
             </ul>
           </div>
 
+          <!-- Стегоаналіз -->
+          <h2 class="section-title" style="margin-top: 40px;">Методи стегоаналізу</h2>
+
+          <div class="prep-magic-table-wrap">
+            <table class="prep-magic-table">
+              <thead>
+                <tr><th>Метод</th><th>Що виявляє</th><th>Команда / інструмент</th><th>Інтерпретація результату</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Chi-Square</strong></td>
+                  <td>LSB-заміну у зображеннях</td>
+                  <td><code>stegdetect image.jpg</code></td>
+                  <td>Виводить ймовірність наявності steghide/outguess/jphide. <code>(**)</code> = висока ймовірність</td>
+                </tr>
+                <tr>
+                  <td><strong>RS-аналіз</strong></td>
+                  <td>Відсоток заповнення LSB</td>
+                  <td>Aletheia: <code>aletheia rs image.png</code></td>
+                  <td>Повертає оцінку відсотка вбудованих даних (0% = чисте, &gt;5% = підозріле)</td>
+                </tr>
+                <tr>
+                  <td><strong>Візуальна атака</strong></td>
+                  <td>Паттерни у bit planes</td>
+                  <td>StegOnline &rarr; Browse Bit Planes</td>
+                  <td>У чистому LSB &mdash; випадковий шум. При стего &mdash; структуровані області або текст</td>
+                </tr>
+                <tr>
+                  <td><strong>PSNR / SSIM</strong></td>
+                  <td>Зниження якості vs оригінал</td>
+                  <td><code>python -c "from skimage.metrics import structural_similarity as ssim; ..."</code></td>
+                  <td>PSNR &lt; 40 дБ або SSIM &lt; 0.95 &mdash; можливе вбудовування. Норма: PSNR &gt; 45</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <!-- Де практикуватись -->
           <h2 class="section-title" style="margin-top: 40px;">Де практикуватись</h2>
 
@@ -1126,6 +1332,8 @@ binwalk challenge.*        # Вбудовані файли</div>
                       <tr><td>WAV</td><td><code>52 49 46 46</code></td><td>RIFF</td></tr>
                       <tr><td>PDF</td><td><code>25 50 44 46</code></td><td>%PDF</td></tr>
                       <tr><td>BMP</td><td><code>42 4D</code></td><td>BM</td></tr>
+                      <tr><td>MP4</td><td><code>.. .. .. .. 66 74 79 70</code></td><td>....ftyp</td></tr>
+                      <tr><td>AVI</td><td><code>52 49 46 46 .. 41 56 49</code></td><td>RIFF.AVI</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1190,6 +1398,59 @@ print(text[:200])
 
             <div class="cheat-section">
               <details>
+                <summary class="cheat-summary">Відео: витягнення кадрів, аналіз фреймів</summary>
+                <div class="cheat-content">
+                  <h4>Розвідка</h4>
+                  <div class="code-block">ffprobe -v quiet -print_format json -show_streams video.mp4
+strings video.mp4 | grep -i flag
+binwalk video.mp4</div>
+                  <h4>Витягнення кадрів</h4>
+                  <div class="code-block">ffmpeg -i video.mp4 frames/frame_%04d.png   # всі кадри
+ffmpeg -i video.mp4 -vf "select=eq(n\,42)" -vsync vfr frame42.png  # один кадр</div>
+                  <h4>Витягнення аудіо</h4>
+                  <div class="code-block">ffmpeg -i video.mp4 -vn -acodec pcm_s16le audio.wav</div>
+                  <h4>Порівняння кадрів (Python)</h4>
+                  <div class="code-block">from PIL import Image, ImageChops
+f1 = Image.open("frame_0001.png")
+f2 = Image.open("frame_0002.png")
+diff = ImageChops.difference(f1, f2)
+diff.save("diff.png")  # якщо не чорне — є відмінності</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Стегоаналіз: виявлення прихованих даних</summary>
+                <div class="cheat-content">
+                  <h4>Chi-Square / stegdetect</h4>
+                  <div class="code-block">stegdetect image.jpg          # автоматичне виявлення
+stegdetect -s 5 image.jpg     # підвищена чутливість</div>
+                  <h4>Візуальна атака</h4>
+                  <p>StegOnline &rarr; Browse Bit Planes &rarr; переглянь біт 0 каналів R, G, B. Шукай структуровані паттерни.</p>
+                  <h4>Порівняння з оригіналом (Python)</h4>
+                  <div class="code-block">from PIL import Image, ImageChops
+orig = Image.open("original.png")
+steg = Image.open("suspect.png")
+diff = ImageChops.difference(orig, steg)
+# Підсилення різниці для візуалізації:
+from PIL import ImageEnhance
+ImageEnhance.Brightness(diff).enhance(20).save("diff_enhanced.png")</div>
+                  <h4>PSNR / SSIM</h4>
+                  <div class="code-block">python -c "
+import numpy as np; from PIL import Image
+a = np.array(Image.open('orig.png'), float)
+b = np.array(Image.open('steg.png'), float)
+mse = np.mean((a - b) ** 2)
+psnr = 10 * np.log10(255**2 / mse) if mse > 0 else float('inf')
+print(f'MSE={mse:.2f}, PSNR={psnr:.2f} dB')
+"</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
                 <summary class="cheat-summary">Кодування: base64, hex, rot13, binary</summary>
                 <div class="cheat-content">
                   <h4>Розпізнавання</h4>
@@ -1223,6 +1484,9 @@ echo "Uryyb" | tr 'A-Za-z' 'N-ZA-Mn-za-m'  # rot13</div>
                       <tr><td>zsteg</td><td>LSB аналіз PNG/BMP</td><td><code>gem install zsteg</code> (Ruby) або StegOnline</td></tr>
                       <tr><td>binwalk</td><td>Вбудовані файли</td><td><code>pip install binwalk</code></td></tr>
                       <tr><td>steghide</td><td>Стего в JPEG/WAV</td><td><code>apt install steghide</code></td></tr>
+                      <tr><td>Sonic Visualiser</td><td>Детальний аналіз аудіо</td><td><a href="https://www.sonicvisualiser.org/" target="_blank" rel="noopener">sonicvisualiser.org</a></td></tr>
+                      <tr><td>GIMP</td><td>Аналіз каналів зображень</td><td><a href="https://www.gimp.org/" target="_blank" rel="noopener">gimp.org</a></td></tr>
+                      <tr><td>ffmpeg</td><td>Відео: кадри, аудіо, метадані</td><td><code>apt install ffmpeg</code></td></tr>
                     </tbody>
                   </table>
                 </div>
