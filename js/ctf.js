@@ -1,16 +1,16 @@
 // CTF Scoreboard — flag verification via SHA-256 hashes (no flags in source code)
 
 const CHALLENGES = [
-  { id: 1,  name: "EXIF-фільтрація",          points: 25,  hash: "ed24f34a999ed458c2f33edb20684b47388d850599ba35b3128a389eca74b576" },
-  { id: 2,  name: "Сховано на видному місці",  points: 50,  hash: "52d200b1d3bcf8689f53b6fb2ec41ad7fbe881294cac95cea48dfb76b6e9cd92" },
-  { id: 3,  name: "Легка здобич",              points: 25,  hash: "09a51ce1530966f81d51f9df3666efcb7572f3ca1d3174a36044dffb7bfb7347" },
-  { id: 4,  name: "ROT-н-рол",                points: 100, hash: "8cc22b05dc697ab00ea827b23bed711538bb582eb9b5e6023b71a6f535d6ca2d" },
-  { id: 5,  name: "Глибокі біти",              points: 100, hash: "a464fe93715c766ca2a889c89903ab46bc01dd0e4375c87646c6ab1336e56f09" },
-  { id: 6,  name: "Прихований вантаж",         points: 125, hash: "3fdc37d94afbda6cd0273075f1e49a41b7b36a9d52a81f4ac7152c35596c030c" },
-  { id: 7,  name: "Невидиме чорнило",          points: 125, hash: "5f38e0a83b045775d48389f51c26b829104f56cf897c0d9b07bcc16b795df528" },
-  { id: 8,  name: "Бінарний дощ",              points: 200, hash: "2b71d2acb09ce98e0dd70de0783c90d1186c7d97f1a4d2f34eb57d7f1cbecf40" },
-  { id: 9,  name: "Потрійна загроза",          points: 250, hash: "ff72567c3b93e6a0fad0fdf3fb7dcfeb0cd9d1299813a5ab3f4a6d210dfff051" },
-  { id: 10, name: "Початок",                   points: 400, hash: "de1ee59c88d842b416dbaf97b21d680c74885be3d4378a4ea6a02ac17546e9a1" }
+  { id: 1,  name: "EXIF-фільтрація",          points: 25,  hash: "695e8f94e1e40591cf594dc3c5ea646308b95e71866886523eba15c1e50e8a58" },
+  { id: 2,  name: "Сховано на видному місці",  points: 50,  hash: "ce36a458f5003b0e237276f956295f630fcd2ef7ec8c670988d1ab5aae54d476" },
+  { id: 3,  name: "Легка здобич",              points: 25,  hash: "4e94c64fe00261a38e9f7a1a26085c20494d45a3d586ee4eb9ee2b4e9f0a28c8" },
+  { id: 4,  name: "ROT-н-рол",                points: 100, hash: "71ac9fab29de96fe088e7c4912fe8434b69f7aa8c5877b537cb6922b55bcb97f" },
+  { id: 5,  name: "Глибокі біти",              points: 100, hash: "deb9aedbbbf96ecc414f393a5bb5c9fe199d1dbba1b2e7e141fe6fd5d51355fa" },
+  { id: 6,  name: "Прихований вантаж",         points: 125, hash: "0a2c6faf5672a38e45b81570525048321caad789c04012817f61b1230df1732d" },
+  { id: 7,  name: "Невидиме чорнило",          points: 125, hash: "d1296433e463a54efba3d7b3629a89fd32a8a1f0151eb6375f2e1dd84d2434a2" },
+  { id: 8,  name: "Бінарний дощ",              points: 200, hash: "f3355a36acdd9e8b2ec13fd88b4f14187f4ec5f2e25356c2bef3419b7774c300" },
+  { id: 9,  name: "Потрійна загроза",          points: 250, hash: "029e979973c55de3ccbd00689cf46a28a7071e7cb45b7f8e51a96966af7a83c8" },
+  { id: 10, name: "Початок",                   points: 400, hash: "da3287baf246c94c1d7e278e9394183868cd0d8a13267c8bba9116fc5a60f717" }
 ];
 
 const MAX_POINTS = CHALLENGES.reduce((s, c) => s + c.points, 0);
