@@ -93,7 +93,7 @@
             <div class="stat-label">Завдань розв'язано</div>
           </div>
           <div class="stat-card">
-            <div class="stat-value">1400</div>
+            <div class="stat-value">1450</div>
             <div class="stat-label">Максимум очків</div>
           </div>
         </div>
@@ -112,7 +112,7 @@
               <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
             </div>
             <div class="progress-label">
-              <span id="progress-text">0 / 1400 очків</span>
+              <span id="progress-text">0 / 1450 очків</span>
               <span id="progress-percent">0%</span>
             </div>
           </div>
@@ -150,20 +150,20 @@
             <div class="challenge-header">
               <div class="challenge-number">1</div>
               <div>
-                <h3>EXIF-фільтрація</h3>
+                <h3>Перший слід</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-easy">Легкий</span>
                   <span class="challenge-points">25 очків</span>
-                  <span class="challenge-category">metadata</span>
+                  <span class="challenge-category">hex_trail</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-1"></div>
             </div>
-            <p>Таємний агент залишив повідомлення у цьому фото. Де він його сховав?</p>
+            <p>Це фото виглядає цілком звичайно. Але що ховається за межами видимого? Файл зберігає секрет після свого &laquo;офіційного&raquo; кінця.</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Не всі дані у зображенні є видимими.</p></details>
-              <details><summary>Підказка 2</summary><p>Перевір метадані зображення.</p></details>
-              <details><summary>Підказка 3</summary><p>EXIF-дані можуть зберігати більше, ніж лише налаштування камери.</p></details>
+              <details><summary>Підказка 1</summary><p>JPEG-файли завершуються маркером <code>FF D9</code> (End of Image).</p></details>
+              <details><summary>Підказка 2</summary><p>Відкрий файл у hex-редакторі та подивись, що йде після <code>FF D9</code>.</p></details>
+              <details><summary>Підказка 3</summary><p>Текст прапора записаний відкритим текстом після маркера кінця JPEG.</p></details>
             </div>
           </div>
 
@@ -172,20 +172,20 @@
             <div class="challenge-header">
               <div class="challenge-number">2</div>
               <div>
-                <h3>Сховано на видному місці</h3>
+                <h3>Кольорова карта</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-easy">Легкий</span>
                   <span class="challenge-points">50 очків</span>
-                  <span class="challenge-category">image_lsb</span>
+                  <span class="challenge-category">pixel_values</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-2"></div>
             </div>
-            <p>Це зображення виглядає звичайно, але всередині щось сховано. Чи зможеш знайти прапор?</p>
+            <p>Кожен піксель &mdash; це число. А кожне число може бути символом. Перший рядок зображення зберігає таємне повідомлення.</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Подумай про найменш значущі частини зображення.</p></details>
-              <details><summary>Підказка 2</summary><p>LSB-стеганографія ховає дані в найменш значущих бітах пікселів.</p></details>
-              <details><summary>Підказка 3</summary><p>Спробуй використати інструмент LSB-витягування на цьому зображенні.</p></details>
+              <details><summary>Підказка 1</summary><p>Прочитай значення червоного (R) каналу пікселів першого рядка.</p></details>
+              <details><summary>Підказка 2</summary><p>Кожне значення R-каналу &mdash; це ASCII-код символу.</p></details>
+              <details><summary>Підказка 3</summary><p>Конвертуй числа в символи: 70&rarr;F, 76&rarr;L, 65&rarr;A, 71&rarr;G&hellip;</p></details>
             </div>
           </div>
 
@@ -194,19 +194,20 @@
             <div class="challenge-header">
               <div class="challenge-number">3</div>
               <div>
-                <h3>Легка здобич</h3>
+                <h3>Луна у тиші</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-easy">Легкий</span>
-                  <span class="challenge-points">25 очків</span>
-                  <span class="challenge-category">strings_hidden</span>
+                  <span class="challenge-points">50 очків</span>
+                  <span class="challenge-category">audio_reverse</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-3"></div>
             </div>
-            <p>Іноді найпростіший підхід працює. Які секрети зберігає цей файл?</p>
+            <p>Цей аудіофайл звучить як шум. Але що буде, якщо прослухати його навпаки?</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Спробуй запустити команду <code>strings</code> для файлу.</p></details>
-              <details><summary>Підказка 2</summary><p>Використай <code>grep</code> для пошуку формату прапора у виводі strings.</p></details>
+              <details><summary>Підказка 1</summary><p>Відкрий файл в Audacity або іншому аудіоредакторі.</p></details>
+              <details><summary>Підказка 2</summary><p>Спробуй розвернути (reverse) аудіодоріжку.</p></details>
+              <details><summary>Підказка 3</summary><p>Audacity: Edit &rarr; Select All &rarr; Effect &rarr; Reverse. Прослухай результат.</p></details>
             </div>
           </div>
 
@@ -215,20 +216,20 @@
             <div class="challenge-header">
               <div class="challenge-number">4</div>
               <div>
-                <h3>ROT-н-рол</h3>
+                <h3>Привид у кадрі</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-medium">Середній</span>
                   <span class="challenge-points">100 очків</span>
-                  <span class="challenge-category">encoding_chain</span>
+                  <span class="challenge-category">gif_frames</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-4"></div>
             </div>
-            <p>Цезар був би задоволений. Дані були зміщені перед приховуванням.</p>
+            <p>Ця GIF-анімація виглядає нешкідливо. Але один кадр з&rsquo;являється лише на мить &mdash; занадто швидко для ока.</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Спочатку витягни LSB-дані.</p></details>
-              <details><summary>Підказка 2</summary><p>Текст виглядає спотвореним — був застосований класичний шифр.</p></details>
-              <details><summary>Підказка 3</summary><p>ROT13 — це ключ.</p></details>
+              <details><summary>Підказка 1</summary><p>GIF-анімація складається з окремих кадрів із різною тривалістю.</p></details>
+              <details><summary>Підказка 2</summary><p>Розбий GIF на окремі кадри: <code>ffmpeg -i anim.gif frame_%03d.png</code></p></details>
+              <details><summary>Підказка 3</summary><p>Один кадр (10 мс) містить текст прапора. Перегляни всі кадри по черзі.</p></details>
             </div>
           </div>
 
@@ -237,20 +238,20 @@
             <div class="challenge-header">
               <div class="challenge-number">5</div>
               <div>
-                <h3>Глибокі біти</h3>
+                <h3>Цифровий водяний знак</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-medium">Середній</span>
-                  <span class="challenge-points">100 очків</span>
-                  <span class="challenge-category">image_lsb</span>
+                  <span class="challenge-points">125 очків</span>
+                  <span class="challenge-category">watermark</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-5"></div>
             </div>
-            <p>Повідомлення сховане глибше, ніж зазвичай. Стандартні LSB-інструменти можуть його пропустити.</p>
+            <p>На цій фотографії є водяний знак, але він абсолютно невидимий. Як зробити невидиме видимим?</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Не лише 1 біт — використовується більше бітів на канал.</p></details>
-              <details><summary>Підказка 2</summary><p>Спробуй витягти 2 біти на канал.</p></details>
-              <details><summary>Підказка 3</summary><p>Дані використовують 2-бітну LSB-стеганографію.</p></details>
+              <details><summary>Підказка 1</summary><p>Водяний знак має дуже низький контраст &mdash; різниця у 1-2 відтінки.</p></details>
+              <details><summary>Підказка 2</summary><p>Спробуй різко збільшити контраст або застосувати еквалізацію гістограми.</p></details>
+              <details><summary>Підказка 3</summary><p>Python + PIL: <code>ImageOps.autocontrast(img, cutoff=49)</code> або StegOnline &rarr; Contrast.</p></details>
             </div>
           </div>
 
@@ -259,20 +260,20 @@
             <div class="challenge-header">
               <div class="challenge-number">6</div>
               <div>
-                <h3>Прихований вантаж</h3>
+                <h3>Тайна PDF</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-medium">Середній</span>
-                  <span class="challenge-points">125 очків</span>
-                  <span class="challenge-category">embedded_file</span>
+                  <span class="challenge-points">100 очків</span>
+                  <span class="challenge-category">pdf_hidden</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-6"></div>
             </div>
-            <p>Цей файл зображення більший, ніж очікувалося. Може, всередині щось ховається?</p>
+            <p>Цей PDF-документ виглядає як звичайна стаття. Але автор залишив невидиме повідомлення прямо на сторінці.</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Розмір файлу здається завеликим для цього зображення.</p></details>
-              <details><summary>Підказка 2</summary><p>Спробуй <code>binwalk</code> для сканування вбудованих файлів.</p></details>
-              <details><summary>Підказка 3</summary><p>Після даних зображення є ZIP-архів.</p></details>
+              <details><summary>Підказка 1</summary><p>Спробуй виділити весь текст на сторінці (Ctrl+A).</p></details>
+              <details><summary>Підказка 2</summary><p>Білий текст на білому фоні &mdash; не видно, але можна скопіювати.</p></details>
+              <details><summary>Підказка 3</summary><p>Виділи все, скопіюй (Ctrl+C) та встав у текстовий редактор. Або: <code>pdftotext document.pdf -</code></p></details>
             </div>
           </div>
 
@@ -281,20 +282,20 @@
             <div class="challenge-header">
               <div class="challenge-number">7</div>
               <div>
-                <h3>Невидиме чорнило</h3>
+                <h3>Шифр Бекона</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-medium">Середній</span>
-                  <span class="challenge-points">125 очків</span>
-                  <span class="challenge-category">alpha_channel</span>
+                  <span class="challenge-points">150 очків</span>
+                  <span class="challenge-category">bacon_cipher</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-7"></div>
             </div>
-            <p>Це зображення виглядає абсолютно нормально. Але є прихований шар, якого не видно.</p>
+            <p>Текст статті виглядає звичайно. Але деякі літери &mdash; звичайні, а деякі &mdash; жирні. Це не помилка форматування&hellip;</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>PNG-зображення можуть мати 4 канали: R, G, B та Alpha.</p></details>
-              <details><summary>Підказка 2</summary><p>Альфа-канал керує прозорістю.</p></details>
-              <details><summary>Підказка 3</summary><p>Використай stegsolve або витягни альфа-канал окремо.</p></details>
+              <details><summary>Підказка 1</summary><p>Шифр Бекона використовує два типи символів (a/b) для кодування букв.</p></details>
+              <details><summary>Підказка 2</summary><p>Звичайний шрифт = a, <strong>жирний</strong> = b. Групуй по 5 символів.</p></details>
+              <details><summary>Підказка 3</summary><p>Використай <a href="https://gchq.github.io/CyberChef/#recipe=Bacon_Cipher_Decode('Standard%20(I%3DJ%20and%20U%3DV)','A/B',false)" target="_blank">CyberChef Bacon Cipher Decode</a>.</p></details>
             </div>
           </div>
 
@@ -303,20 +304,20 @@
             <div class="challenge-header">
               <div class="challenge-number">8</div>
               <div>
-                <h3>Бінарний дощ</h3>
+                <h3>Сигнал з космосу</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-hard">Важкий</span>
                   <span class="challenge-points">200 очків</span>
-                  <span class="challenge-category">encoding_chain</span>
+                  <span class="challenge-category">dtmf_decode</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-8"></div>
             </div>
-            <p>Матриця містить прапор. Декодуй бінарний дощ.</p>
+            <p>Перехоплено аудіосигнал &mdash; послідовність тонів, схожих на набір телефонного номера. Що вони кодують?</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Витягни LSB-дані із зображення.</p></details>
-              <details><summary>Підказка 2</summary><p>Результат — двійковий код (0 та 1, розділені пробілами).</p></details>
-              <details><summary>Підказка 3</summary><p>Конвертуй двійковий код в ASCII, потім декодуй base64.</p></details>
+              <details><summary>Підказка 1</summary><p>Це DTMF-тони (Dual-Tone Multi-Frequency) &mdash; ті самі звуки, що при натисканні клавіш телефону.</p></details>
+              <details><summary>Підказка 2</summary><p>Кожна пара тонів кодує одну цифру (0-9) або символ (#, *). Декодуй послідовність.</p></details>
+              <details><summary>Підказка 3</summary><p>Числа &mdash; це hex-коди ASCII. Конвертуй пари цифр у символи: 46&rarr;F, 4C&rarr;L, 41&rarr;A, 47&rarr;G&hellip;</p></details>
             </div>
           </div>
 
@@ -325,20 +326,20 @@
             <div class="challenge-header">
               <div class="challenge-number">9</div>
               <div>
-                <h3>Потрійна загроза</h3>
+                <h3>Стеганографічний пінг</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-hard">Важкий</span>
                   <span class="challenge-points">250 очків</span>
-                  <span class="challenge-category">multi_layer</span>
+                  <span class="challenge-category">pcap_stego</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-9"></div>
             </div>
-            <p>Три файли. Один прапор. Шлях: зображення &rarr; аудіо &rarr; відповідь.</p>
+            <p>Перехоплено мережевий трафік. Хтось надсилає підозрілі ping-запити. Що ховається у пакетах?</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Почни із зображення — воно містить підказку.</p></details>
-              <details><summary>Підказка 2</summary><p>Підказка із зображення веде до аудіофайлу.</p></details>
-              <details><summary>Підказка 3</summary><p>Зображення містить пароль. Використай його для розшифрування аудіо-повідомлення.</p></details>
+              <details><summary>Підказка 1</summary><p>Відкрий PCAP-файл у Wireshark. Фільтр: <code>icmp</code>.</p></details>
+              <details><summary>Підказка 2</summary><p>Переглянь payload (дані) кожного ICMP Echo Request пакету.</p></details>
+              <details><summary>Підказка 3</summary><p>Кожен ping-пакет несе один символ прапора у полі data. Склей всі символи по порядку.</p></details>
             </div>
           </div>
 
@@ -347,20 +348,20 @@
             <div class="challenge-header">
               <div class="challenge-number">10</div>
               <div>
-                <h3>Початок</h3>
+                <h3>Фінальний бос</h3>
                 <div class="challenge-meta">
                   <span class="badge badge-insane">Божевільний</span>
                   <span class="challenge-points">400 очків</span>
-                  <span class="challenge-category">encoding_chain</span>
+                  <span class="challenge-category">multi_media</span>
                 </div>
               </div>
               <div class="challenge-status" id="status-10"></div>
             </div>
-            <p>Сни у снах. Кодування в кодуванні. Наскільки глибоко ти зможеш зайти?</p>
+            <p>Чотири кроки. Чотири формати. Один прапор. JPEG &rarr; ZIP &rarr; WAV &rarr; FLAG. Пройди весь ланцюг!</p>
             <div class="challenge-hints">
-              <details><summary>Підказка 1</summary><p>Витягни дані із зображення (LSB).</p></details>
-              <details><summary>Підказка 2</summary><p>Шар 1: переверни байти.</p></details>
-              <details><summary>Підказка 3</summary><p>Шар 2: ROT13 тексту. Шар 3: декодуй base64.</p></details>
+              <details><summary>Підказка 1</summary><p>Почни з JPEG: у EXIF-коментарі &mdash; пароль для steghide.</p></details>
+              <details><summary>Підказка 2</summary><p>Steghide витягне ZIP-архів. Пароль до архіву &mdash; у назві витягнутого файлу.</p></details>
+              <details><summary>Підказка 3</summary><p>В архіві &mdash; WAV-файл. Відкрий спектрограму в Audacity: прапор написаний у частотному спектрі.</p></details>
             </div>
           </div>
 
