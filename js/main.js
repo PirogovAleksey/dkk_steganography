@@ -95,6 +95,10 @@ function renderSubmissionSection(config) {
     '<div class="deadline-warning">' +
       '<strong>\u23F0 Термін здачі:</strong> Протягом двох тижнів після проведення лабораторної роботи. ' +
       'Затримка здачі знижує оцінку на 10% за кожен тиждень.' +
+    '</div>' +
+    '<div class="deadline-warning">' +
+      '<strong>\u26A0\uFE0F Формат звіту:</strong> Звіти приймаються <strong>виключно у форматі PDF</strong>. ' +
+      'Звіти у форматі DOC/DOCX розглядатись не будуть.' +
     '</div>';
 }
 
