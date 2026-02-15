@@ -19,27 +19,23 @@ if (localStorage.getItem('theme') === 'dark') {
 
 // Tab switching for lab pages (event delegation)
 document.addEventListener('click', function(e) {
-  var btn = e.target.closest('.tab-button[data-tab]');
+  const btn = e.target.closest('.tab-button[data-tab]');
   if (!btn) return;
-  var container = btn.closest('.tabs-container') || btn.closest('.ctf-page-tabs');
+  const container = btn.closest('.tabs-container') || btn.closest('.ctf-page-tabs');
   if (!container) return;
-  container.querySelectorAll('.tab-button').forEach(function(b) {
-    b.classList.remove('active');
-  });
-  container.querySelectorAll('.tab-content').forEach(function(content) {
-    content.classList.remove('active');
-  });
+  container.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+  container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   btn.classList.add('active');
-  var target = document.getElementById(btn.dataset.tab);
+  const target = document.getElementById(btn.dataset.tab);
   if (target) target.classList.add('active');
 });
 
 // Reusable submission section for lab pages
 function renderSubmissionSection(config) {
-  var el = document.getElementById('submission-section');
+  const el = document.getElementById('submission-section');
   if (!el) return;
 
-  var reportItems = config.report || [
+  const reportItems = config.report || [
     'Титульна сторінка з даними студента',
     'Мета та завдання роботи',
     'Теоретична частина (коротко)',
@@ -50,7 +46,7 @@ function renderSubmissionSection(config) {
     'Додатки (повний код)'
   ];
 
-  var codeReqs = config.codeRequirements || [
+  const codeReqs = config.codeRequirements || [
     'Коментарі до кожної функції',
     'Docstrings у форматі PEP 257',
     'Обробка винятків (try/except)',
@@ -58,23 +54,11 @@ function renderSubmissionSection(config) {
     'requirements.txt з залежностями'
   ];
 
-  var filesHtml = config.files.map(function(f) {
-    return '<li><span class="file-format">' + f.name + '</span> — ' + f.desc + '</li>';
-  }).join('');
-
-  var demoHtml = config.demo.map(function(d) {
-    return '<li>' + d + '</li>';
-  }).join('');
-
-  var reportHtml = reportItems.map(function(r) {
-    return '<li>' + r + '</li>';
-  }).join('');
-
-  var codeHtml = codeReqs.map(function(c) {
-    return '<li>' + c + '</li>';
-  }).join('');
-
-  var demoTitle = config.demoTitle || '🎯 Демонстрація';
+  const filesHtml = config.files.map(f => '<li><span class="file-format">' + f.name + '</span> — ' + f.desc + '</li>').join('');
+  const demoHtml = config.demo.map(d => '<li>' + d + '</li>').join('');
+  const reportHtml = reportItems.map(r => '<li>' + r + '</li>').join('');
+  const codeHtml = codeReqs.map(c => '<li>' + c + '</li>').join('');
+  const demoTitle = config.demoTitle || '🎯 Демонстрація';
 
   el.innerHTML =
     '<h2>\uD83D\uDCDD Звіт про виконання та формат здачі</h2>' +
@@ -103,13 +87,13 @@ function renderSubmissionSection(config) {
 }
 
 // Auto-render submission section if present
-var submissionEl = document.getElementById('submission-section');
+const submissionEl = document.getElementById('submission-section');
 if (submissionEl && submissionEl.dataset.config) {
   renderSubmissionSection(JSON.parse(submissionEl.dataset.config));
 }
 
 // Reusable footer component
-document.querySelectorAll('footer').forEach(function(footer) {
+document.querySelectorAll('footer').forEach(footer => {
   footer.innerHTML =
     '<div class="footer-content">' +
       '<div>' +

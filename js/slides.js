@@ -43,23 +43,23 @@ function getLectureUrl() {
 }
 
 /* ---- Inter-deck navigation ---- */
-var nextTemaUrl = null;
-var prevTemaUrl = null;
+let nextTemaUrl = null;
+let prevTemaUrl = null;
 
 function initTemaNavigation() {
-  var path = window.location.pathname;
-  var match = path.match(/tema(\d+)\.html/);
+  const path = window.location.pathname;
+  const match = path.match(/tema(\d+)\.html/);
   if (!match) return;
-  var num = parseInt(match[1]);
+  const num = parseInt(match[1]);
 
   if (num > 1) {
     prevTemaUrl = path.replace(/tema\d+\.html/, 'tema' + (num - 1) + '.html');
   }
 
-  var candidate = path.replace(/tema\d+\.html/, 'tema' + (num + 1) + '.html');
+  const candidate = path.replace(/tema\d+\.html/, 'tema' + (num + 1) + '.html');
   fetch(candidate, { method: 'HEAD' })
-    .then(function(r) { if (r.ok) { nextTemaUrl = candidate; updateButtons(); } })
-    .catch(function() {});
+    .then(r => { if (r.ok) { nextTemaUrl = candidate; updateButtons(); } })
+    .catch(() => {});
 }
 
 /* ---- Navigation ---- */
@@ -126,19 +126,18 @@ function updateButtons() {
 }
 
 function fitSlides() {
-  slides.forEach(function(slide) {
+  slides.forEach(slide => {
     slide.style.transform = 'none';
-    var contentHeight = slide.scrollHeight;
-    var viewHeight = slide.clientHeight;
+    const contentHeight = slide.scrollHeight;
+    const viewHeight = slide.clientHeight;
     if (contentHeight > viewHeight) {
-      var scale = viewHeight / contentHeight;
-      scale = Math.max(scale, 0.55);
+      const scale = Math.max(viewHeight / contentHeight, 0.55);
       slide.style.transform = 'scale(' + scale + ')';
     }
   });
 }
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   if (e.key === 'ArrowRight' || e.key === ' ') {
     e.preventDefault();
