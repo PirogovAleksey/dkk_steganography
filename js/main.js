@@ -17,10 +17,12 @@ if (localStorage.getItem('theme') === 'dark') {
   document.getElementById('theme-label').textContent = 'Світла тема';
 }
 
-// Tab switching for lab pages
-function switchTab(event, tabId) {
-  var btn = event.target.closest('.tab-button');
-  var container = btn.closest('.tabs-container');
+// Tab switching for lab pages (event delegation)
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.tab-button[data-tab]');
+  if (!btn) return;
+  var container = btn.closest('.tabs-container') || btn.closest('.ctf-page-tabs');
+  if (!container) return;
   container.querySelectorAll('.tab-button').forEach(function(b) {
     b.classList.remove('active');
   });
@@ -28,7 +30,78 @@ function switchTab(event, tabId) {
     content.classList.remove('active');
   });
   btn.classList.add('active');
-  document.getElementById(tabId).classList.add('active');
+  var target = document.getElementById(btn.dataset.tab);
+  if (target) target.classList.add('active');
+});
+
+// Reusable submission section for lab pages
+function renderSubmissionSection(config) {
+  var el = document.getElementById('submission-section');
+  if (!el) return;
+
+  var reportItems = config.report || [
+    'Титульна сторінка з даними студента',
+    'Мета та завдання роботи',
+    'Теоретична частина (коротко)',
+    'Хід виконання роботи',
+    'Результати та скріншоти',
+    'Аналіз результатів',
+    'Висновки',
+    'Додатки (повний код)'
+  ];
+
+  var codeReqs = config.codeRequirements || [
+    'Коментарі до кожної функції',
+    'Docstrings у форматі PEP 257',
+    'Обробка винятків (try/except)',
+    'Модульна структура коду',
+    'requirements.txt з залежностями'
+  ];
+
+  var filesHtml = config.files.map(function(f) {
+    return '<li><span class="file-format">' + f.name + '</span> — ' + f.desc + '</li>';
+  }).join('');
+
+  var demoHtml = config.demo.map(function(d) {
+    return '<li>' + d + '</li>';
+  }).join('');
+
+  var reportHtml = reportItems.map(function(r) {
+    return '<li>' + r + '</li>';
+  }).join('');
+
+  var codeHtml = codeReqs.map(function(c) {
+    return '<li>' + c + '</li>';
+  }).join('');
+
+  var demoTitle = config.demoTitle || '🎯 Демонстрація';
+
+  el.innerHTML =
+    '<h2>\uD83D\uDCDD Звіт про виконання та формат здачі</h2>' +
+    '<div class="submission-grid">' +
+      '<div class="submission-card">' +
+        '<h3>\uD83D\uDCC1 Структура звіту</h3><ul>' + reportHtml + '</ul>' +
+      '</div>' +
+      '<div class="submission-card">' +
+        '<h3>\uD83D\uDCBE Файли для здачі</h3><ul>' + filesHtml + '</ul>' +
+      '</div>' +
+      '<div class="submission-card">' +
+        '<h3>\u26A1 Вимоги до коду</h3><ul>' + codeHtml + '</ul>' +
+      '</div>' +
+      '<div class="submission-card">' +
+        '<h3>' + demoTitle + '</h3><ul>' + demoHtml + '</ul>' +
+      '</div>' +
+    '</div>' +
+    '<div class="deadline-warning">' +
+      '<strong>\u23F0 Термін здачі:</strong> Протягом двох тижнів після проведення лабораторної роботи. ' +
+      'Затримка здачі знижує оцінку на 10% за кожен тиждень.' +
+    '</div>';
+}
+
+// Auto-render submission section if present
+var submissionEl = document.getElementById('submission-section');
+if (submissionEl && submissionEl.dataset.config) {
+  renderSubmissionSection(JSON.parse(submissionEl.dataset.config));
 }
 
 // Reusable footer component

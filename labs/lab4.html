@@ -6,7 +6,7 @@
   <meta name="description" content="Лабораторна робота з аудіо стеганографії — LSB embedding, echo hiding.">
   <meta name="author" content="Кафедра ТЕІБ, Ужгородський національний університет">
   <meta name="theme-color" content="#0ea5e9">
-  <title>Лабораторна №7: Аудіо LSB — Стеганографія</title>
+  <title>Лабораторна №4: Аудіо LSB — Стеганографія</title>
   <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
@@ -61,7 +61,7 @@
   <main>
     <div class="lecture-nav-top">
       <a href="../practicals.html" class="back-link">&larr; Назад до практичних</a>
-      <span class="lecture-badge">Лабораторна 7</span>
+      <span class="lecture-badge">Лабораторна 4</span>
     </div>
 
     <article class="lecture-content">
@@ -85,16 +85,16 @@
 
         <div class="tabs-container">
             <div class="tabs-nav">
-                <button class="tab-button active" onclick="switchTab(event, 'wav-format')">
+                <button class="tab-button active" data-tab="wav-format">
                     🎼 WAV формат
                 </button>
-                <button class="tab-button" onclick="switchTab(event, 'audio-lsb')">
+                <button class="tab-button" data-tab="audio-lsb">
                     🔊 Audio LSB
                 </button>
-                <button class="tab-button" onclick="switchTab(event, 'perceptual-quality')">
+                <button class="tab-button" data-tab="perceptual-quality">
                     👂 Перцептивна якість
                 </button>
-                <button class="tab-button" onclick="switchTab(event, 'advanced-methods')">
+                <button class="tab-button" data-tab="advanced-methods">
                     🚀 Інші методи
                 </button>
             </div>
@@ -2166,6 +2166,9 @@ print("  аудіо з однорідною динамікою.")
         </div>
     </section>
 
+    <!-- Звіт про виконання -->
+    <section class="submission-section" id="submission-section" data-config='{"files":[{"name":"report.pdf","desc":"звіт у форматі PDF"},{"name":"audio_stego.py","desc":"реалізація аудіо LSB"},{"name":"echo_hiding.py","desc":"реалізація echo hiding"},{"name":"test_audio/","desc":"тестові WAV файли"},{"name":"results/","desc":"графіки та результати"},{"name":"README.md","desc":"інструкція запуску"}],"demo":["Запуск коду на реальних WAV файлах","Вбудовування та витягування повідомлень","Порівняння SNR при різних num_lsb","Демонстрація echo hiding","Відповіді на питання викладача"]}'></section>
+
     <!-- Корисні ресурси -->
     <section>
         <h2>📚 Корисні ресурси</h2>
@@ -2187,7 +2190,7 @@ print("  аудіо з однорідною динамікою.")
     </article>
 
     <div class="lecture-nav-bottom">
-      <a href="lab5.html" class="nav-btn">&larr; Попередня</a>
+      <a href="lab3.html" class="nav-btn">&larr; Попередня</a>
       <span class="nav-btn disabled">Наступна &rarr;</span>
     </div>
 

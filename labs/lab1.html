@@ -87,16 +87,16 @@
 
         <div class="tabs-container">
             <div class="tabs-nav">
-                <button class="tab-button active" onclick="switchTab(event, 'lsb-principle')">
+                <button class="tab-button active" data-tab="lsb-principle">
                     🔢 LSB принцип
                 </button>
-                <button class="tab-button" onclick="switchTab(event, 'pixel-repr')">
+                <button class="tab-button" data-tab="pixel-repr">
                     🖼️ Пікселі та біти
                 </button>
-                <button class="tab-button" onclick="switchTab(event, 'key-based')">
+                <button class="tab-button" data-tab="key-based">
                     🔑 Ключ-базований LSB
                 </button>
-                <button class="tab-button" onclick="switchTab(event, 'quality-metrics')">
+                <button class="tab-button" data-tab="quality-metrics">
                     📊 Метрики якості
                 </button>
             </div>
@@ -867,7 +867,7 @@ plot_quality_metrics(results)</code></pre>
     axes[0][2].axis('off')
 
     # LSB площини
-    axes[1][0].imshow((original.flatten() & 1).reshape(original.shape[:2], -1)[:,:,0] * 255, cmap='gray')
+    axes[1][0].imshow((original.flatten() & 1).reshape(*original.shape[:2], -1)[:,:,0] * 255, cmap='gray')
     axes[1][0].set_title("LSB площина: оригінал")
     axes[1][0].axis('off')
 
@@ -932,63 +932,7 @@ compare_methods(
     </section>
 
     <!-- Звіт про виконання -->
-    <section class="submission-section">
-        <h2>📝 Звіт про виконання та формат здачі</h2>
-
-        <div class="submission-grid">
-            <div class="submission-card">
-                <h3>📁 Структура звіту</h3>
-                <ul>
-                    <li>Титульна сторінка з даними студента</li>
-                    <li>Мета та завдання роботи</li>
-                    <li>Теоретична частина (коротко)</li>
-                    <li>Хід виконання роботи</li>
-                    <li>Результати та скріншоти</li>
-                    <li>Аналіз результатів</li>
-                    <li>Висновки</li>
-                    <li>Додатки (повний код)</li>
-                </ul>
-            </div>
-
-            <div class="submission-card">
-                <h3>💾 Файли для здачі</h3>
-                <ul>
-                    <li><span class="file-format">report.pdf</span> — звіт у форматі PDF</li>
-                    <li><span class="file-format">lsb_stego.py</span> — реалізація LSB</li>
-                    <li><span class="file-format">test_images/</span> — тестові зображення</li>
-                    <li><span class="file-format">results/</span> — графіки та результати</li>
-                    <li><span class="file-format">README.md</span> — інструкція запуску</li>
-                </ul>
-            </div>
-
-            <div class="submission-card">
-                <h3>⚡ Вимоги до коду</h3>
-                <ul>
-                    <li>Коментарі до кожної функції</li>
-                    <li>Docstrings у форматі PEP 257</li>
-                    <li>Обробка винятків (try/except)</li>
-                    <li>Модульна структура коду</li>
-                    <li>requirements.txt з залежностями</li>
-                </ul>
-            </div>
-
-            <div class="submission-card">
-                <h3>🎯 Демонстрація</h3>
-                <ul>
-                    <li>Запуск коду на реальних зображеннях</li>
-                    <li>Вбудовування та витягування повідомлень</li>
-                    <li>Порівняння послідовного та key-based</li>
-                    <li>Графіки PSNR/SSIM при різних payload</li>
-                    <li>Відповіді на питання викладача</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="deadline-warning">
-            <strong>⏰ Термін здачі:</strong> Протягом двох тижнів після проведення лабораторної роботи.
-            Затримка здачі знижує оцінку на 10% за кожен тиждень.
-        </div>
-    </section>
+    <section class="submission-section" id="submission-section" data-config='{"files":[{"name":"report.pdf","desc":"звіт у форматі PDF"},{"name":"lsb_stego.py","desc":"реалізація LSB"},{"name":"test_images/","desc":"тестові зображення"},{"name":"results/","desc":"графіки та результати"},{"name":"README.md","desc":"інструкція запуску"}],"demo":["Запуск коду на реальних зображеннях","Вбудовування та витягування повідомлень","Порівняння послідовного та key-based","Графіки PSNR/SSIM при різних payload","Відповіді на питання викладача"]}'></section>
 
     <!-- Висновки -->
     <section class="result-box">
@@ -1033,7 +977,7 @@ compare_methods(
 
     <div class="lecture-nav-bottom">
       <span class="nav-btn disabled">&larr; Попередня</span>
-      <a href="lab3.html" class="nav-btn">Наступна &rarr;</a>
+      <a href="lab2.html" class="nav-btn">Наступна &rarr;</a>
     </div>
 
     <footer></footer>
