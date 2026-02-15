@@ -1043,80 +1043,80 @@ john --wordlist=rockyou.txt hash.txt</div>
           <div class="prep-checklist">
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>1. Визначити тип файлу</strong>
                 <span>Розширення може бути підмінене! <code>file image.png</code> покаже реальний тип.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>2. Strings</strong>
                 <span><code>strings -n 7 -t x image.png</code> &mdash; текстові рядки довжиною 7+ з позицією у файлі.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>3. Метадані (EXIF)</strong>
                 <span><code>exiftool image.png</code> &mdash; коментарі, GPS, автор, нестандартні поля.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>4. Вбудовані файли</strong>
                 <span><code>binwalk -Me image.png</code> &mdash; рекурсивне витягнення вкладених архівів та файлів.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>5. Перевірка PNG-структури</strong>
                 <span><code>pngcheck -vtp7f image.png</code> &mdash; пошкоджені chunks, tEXt дані, CRC-помилки.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>6. Bit Planes / кольорові канали</strong>
                 <span>StegOnline &rarr; Browse Bit Planes. Шукай статичні патерни у верхній частині площин.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>7. LSB витягнення</strong>
                 <span><code>zsteg -a image.png</code> або StegOnline &rarr; Extract Files/Data. Спробуй різні біти та канали.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>8. RGB(A) значення</strong>
                 <span>Конвертуй значення R/G/B/A пікселів у ASCII. Перевір кожен канал окремо.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>9. Пароль? &rarr; steghide / stegseek</strong>
                 <span><code>steghide extract -sf image.jpg</code>. Немає пароля? Спробуй порожній. Є словник? &rarr; <code>stegseek image.jpg rockyou.txt</code></span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>10. Палітра кольорів</strong>
                 <span>Для PNG type 3 (indexed) &mdash; перегляд та рандомізація палітри у StegOnline.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>11. Ремонт пошкодженого файлу</strong>
                 <span>Невірні magic bytes? CRC-помилка? Відкрий у hex-редакторі та виправ заголовок вручну.</span>
-              </div>
+              </span>
             </label>
           </div>
 
@@ -1126,45 +1126,45 @@ john --wordlist=rockyou.txt hash.txt</div>
           <div class="prep-checklist">
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>1. Метадані контейнера</strong>
                 <span><code>ffprobe -v quiet -print_format json -show_format -show_streams video.mp4</code> &mdash; кодек, розміри, тривалість, коментарі.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>2. Витягнення всіх кадрів</strong>
                 <span><code>ffmpeg -i video.mp4 frames/frame_%04d.png</code> &mdash; кожен кадр як окреме зображення для аналізу.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>3. Порівняння сусідніх кадрів</strong>
                 <span>Вирахуй різницю між кадрами (Python + PIL). Аномальний кадр може містити приховані дані або текст.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>4. LSB-аналіз окремих кадрів</strong>
                 <span>Застосуй zsteg або StegOnline до підозрілих кадрів &mdash; дані можуть бути в LSB лише одного фрейму.</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>5. Аудіодоріжка</strong>
                 <span><code>ffmpeg -i video.mp4 -vn audio.wav</code> &mdash; витягни аудіо та аналізуй як окремий WAV (спектрограма, LSB).</span>
-              </div>
+              </span>
             </label>
             <label class="prep-check-item">
               <input type="checkbox">
-              <div class="prep-check-body">
+              <span class="prep-check-body">
                 <strong>6. strings + binwalk</strong>
                 <span><code>strings video.mp4 | grep FLAG</code> та <code>binwalk video.mp4</code> &mdash; перевір на вбудовані файли та текстові рядки.</span>
-              </div>
+              </span>
             </label>
           </div>
 
