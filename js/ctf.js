@@ -63,7 +63,7 @@ function updateUI() {
 
     if (solved.includes(ch.id)) {
       card.classList.add("solved");
-      statusEl.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>';
+      statusEl.innerHTML = '<svg viewBox="0 0 24 24" class="check-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>';
     } else {
       card.classList.remove("solved");
       statusEl.innerHTML = "";

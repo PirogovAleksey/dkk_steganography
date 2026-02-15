@@ -139,6 +139,7 @@ function fitSlides() {
 }
 
 document.addEventListener('keydown', function(e) {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   if (e.key === 'ArrowRight' || e.key === ' ') {
     e.preventDefault();
     next();

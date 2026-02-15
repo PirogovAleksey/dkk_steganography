@@ -21,6 +21,9 @@
 .ctf-page-tabs > .tabs-nav .tab-button svg {
   flex-shrink: 0;
   opacity: 0.7;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
 }
 
 .ctf-page-tabs > .tabs-nav .tab-button.active svg {
@@ -1264,3 +1267,6 @@ html.dark .walkthrough-note.success-note {
   .filter-btn { padding: 6px 14px; font-size: 12px; }
   .prep-check-item { padding: 12px 14px; }
 }
+
+/* CTF check icon (JS-injected) */
+.check-icon { fill: none; stroke: #22c55e; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }

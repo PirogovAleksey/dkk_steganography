@@ -215,6 +215,22 @@ nav a .nav-icon svg {
   fill: none;
 }
 
+/* --- Focus Visible --- */
+nav a:focus-visible,
+.theme-toggle:focus-visible,
+.tab-button:focus-visible,
+.btn-lab:focus-visible,
+.btn-test:focus-visible,
+.btn-konspekt:focus-visible,
+.btn-back:focus-visible,
+.nav-btn:focus-visible,
+.btn-slides:focus-visible,
+.material-item:focus-visible,
+a.lecture-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* --- Main --- */
 main {
   flex: 1;
@@ -667,6 +683,15 @@ a.lecture-card { text-decoration: none; color: inherit; display: block; }
 .btn-lab:hover { background: var(--accent-hover); }
 
 /* --- Tests Page --- */
+.module-section { margin-bottom: 40px; }
+.module-section h2 { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+
+.tests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
 .tests-list {
   display: flex;
   flex-direction: column;

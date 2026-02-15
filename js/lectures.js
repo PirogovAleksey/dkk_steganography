@@ -337,7 +337,7 @@ const lectures = [
 
   const infoEl = document.getElementById('lecture-info');
   const durationSpan = document.createElement('span');
-  durationSpan.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' + lecture.duration;
+  durationSpan.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' + lecture.duration;
   infoEl.appendChild(durationSpan);
 
   const badgeSpan = document.createElement('span');
