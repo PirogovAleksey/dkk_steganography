@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Налаштування середовища Python для лабораторних робіт зі стеганографії.">
+  <meta name="author" content="Кафедра ТЕІБ, Ужгородський національний університет">
+  <meta name="theme-color" content="#0ea5e9">
+  <title>Лабораторна №0: Налаштування середовища — Стеганографія</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}</script>
+</head>
+<body>
+
+  <aside>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        Стеганографія
+        <span>онлайн-курс</span>
+      </div>
+    </div>
+    <nav aria-label="Головна навігація">
+      <a href="../index.html">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></span>
+        Лекції
+      </a>
+      <a href="../practicals.html" class="active">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+        Практичні
+      </a>
+      <a href="../tests.html">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        Тести
+      </a>
+      <a href="../materials.html">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span>
+        Матеріали
+      </a>
+      <a href="../ctf.html">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+        CTF
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Перемкнути тему">
+        <svg id="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span id="theme-label">Темна тема</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="lecture-nav-top">
+      <a href="../practicals.html" class="back-link">&larr; Назад до практичних</a>
+      <span class="lecture-badge">Лабораторна 0</span>
+    </div>
+
+    <article class="lecture-content">
+
+    <h1>Налаштування середовища</h1>
+    <p class="lecture-subtitle">Python, бібліотеки, IDE та перший тест із зображеннями</p>
+
+    <!-- Цілі роботи -->
+    <section class="task-box">
+        <h2>🎯 Мета</h2>
+        <ul>
+            <li>Встановити Python 3.10+ та необхідні бібліотеки</li>
+            <li>Налаштувати віртуальне середовище (venv)</li>
+            <li>Перевірити роботу з зображеннями (Pillow, NumPy, Matplotlib)</li>
+            <li>Завантажити тестові зображення для майбутніх лабораторних</li>
+            <li>Ознайомитись з базовими операціями над пікселями</li>
+        </ul>
+    </section>
+
+    <!-- Крок 1: Python -->
+    <section>
+        <h2>💻 Крок 1: Встановлення Python</h2>
+
+        <div class="task-box">
+            <h3><span class="step-number">1</span>Перевірте версію Python</h3>
+
+            <p>Відкрийте термінал (CMD, PowerShell або Terminal) та виконайте:</p>
+
+            <pre class="python"><code>python --version
+# Очікуваний результат: Python 3.10.x або новіше</code></pre>
+
+            <div class="warning-box">
+                <strong>⚠️ Якщо Python не встановлено:</strong>
+                <ul>
+                    <li><strong>Windows:</strong> завантажте з <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org/downloads</a>. При встановленні обов'язково поставте галочку <strong>"Add Python to PATH"</strong></li>
+                    <li><strong>macOS:</strong> <code>brew install python</code> (через Homebrew)</li>
+                    <li><strong>Linux:</strong> <code>sudo apt install python3 python3-pip python3-venv</code></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Крок 2: Віртуальне середовище -->
+    <section>
+        <h2>📦 Крок 2: Віртуальне середовище та залежності</h2>
+
+        <div class="task-box">
+            <h3><span class="step-number">2</span>Створіть проект та venv</h3>
+
+            <h4>Створення папки проекту:</h4>
+            <pre class="python"><code># Створіть папку для всіх лабораторних
+mkdir stego_labs
+cd stego_labs
+
+# Створіть віртуальне середовище
+python -m venv venv
+
+# Активуйте середовище:
+# Windows (CMD):
+venv\Scripts\activate
+# Windows (PowerShell):
+venv\Scripts\Activate.ps1
+# macOS / Linux:
+source venv/bin/activate</code></pre>
+
+            <p>Після активації ви побачите <code>(venv)</code> на початку рядка терміналу.</p>
+
+            <h4>Створіть файл <code>requirements.txt</code>:</h4>
+            <pre class="python"><code>numpy
+Pillow
+matplotlib
+scipy
+scikit-image</code></pre>
+
+            <h4>Встановіть залежності:</h4>
+            <pre class="python"><code>pip install -r requirements.txt</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Що встановлюється:</h4>
+                <ul>
+                    <li><strong>NumPy</strong> — робота з масивами пікселів, бітові операції</li>
+                    <li><strong>Pillow</strong> — відкриття, збереження та конвертація зображень</li>
+                    <li><strong>Matplotlib</strong> — побудова графіків, візуалізація зображень</li>
+                    <li><strong>SciPy</strong> — фільтри для SSIM, наукові обчислення</li>
+                    <li><strong>scikit-image</strong> — метрики PSNR/SSIM (для перевірки)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Крок 3: Перевірка -->
+    <section>
+        <h2>🧪 Крок 3: Перевірка встановлення</h2>
+
+        <div class="task-box">
+            <h3><span class="step-number">3</span>Тестовий скрипт</h3>
+
+            <p>Створіть файл <code>check_setup.py</code> та запустіть його:</p>
+
+            <pre class="python"><code>import sys
+print(f"Python: {sys.version}")
+
+# Перевіряємо бібліотеки
+libraries = {
+    'numpy': 'np',
+    'PIL': 'Image',
+    'matplotlib': 'pyplot',
+    'scipy': 'ndimage',
+    'skimage': 'metrics'
+}
+
+all_ok = True
+for lib, module in libraries.items():
+    try:
+        __import__(lib)
+        print(f"  ✅ {lib}")
+    except ImportError:
+        print(f"  ❌ {lib} — не встановлено!")
+        all_ok = False
+
+if all_ok:
+    print("\n🎉 Всі бібліотеки встановлені! Середовище готове.")
+else:
+    print("\n⚠️ Деякі бібліотеки відсутні. Виконайте: pip install -r requirements.txt")</code></pre>
+
+            <pre class="python"><code># Запуск:
+python check_setup.py</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Очікуваний результат:</h4>
+                <ul>
+                    <li>Python: 3.10.x або новіше</li>
+                    <li>Усі 5 бібліотек — зелені галочки</li>
+                    <li>Повідомлення "Всі бібліотеки встановлені!"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Крок 4: Робота із зображеннями -->
+    <section>
+        <h2>🖼️ Крок 4: Перші операції із зображеннями</h2>
+
+        <div class="task-box">
+            <h3><span class="step-number">4</span>Завантаження та дослідження зображення</h3>
+
+            <p>Завантажте будь-яке PNG зображення (фото, не скріншот) та збережіть у папку проекту як <code>test.png</code>.</p>
+
+            <div class="warning-box">
+                <strong>⚠️ Важливо:</strong> Використовуйте формат <strong>PNG</strong> (без втрат). JPEG стискає з втратами та руйнує LSB біти — це зробить стеганографію неможливою.
+            </div>
+
+            <h4>Дослідження зображення:</h4>
+            <pre class="python"><code>import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Завантажуємо зображення
+img = Image.open("test.png")
+print(f"Формат: {img.format}")
+print(f"Розмір: {img.size} (ширина × висота)")
+print(f"Режим: {img.mode}")  # RGB, RGBA, L (grayscale)
+
+# Конвертуємо у масив NumPy
+pixels = np.array(img)
+print(f"Shape: {pixels.shape}")
+print(f"Тип: {pixels.dtype}")
+print(f"Мін/Макс: {pixels.min()} / {pixels.max()}")
+
+# Ємність для LSB стеганографії
+if len(pixels.shape) == 3:
+    h, w, c = pixels.shape
+    capacity_bits = h * w * c
+else:
+    h, w = pixels.shape
+    capacity_bits = h * w
+
+capacity_kb = capacity_bits / 8 / 1024
+print(f"\nЄмність LSB: {capacity_bits:,} біт ({capacity_kb:.1f} КБ)")</code></pre>
+
+            <h4>Візуалізація пікселів:</h4>
+            <pre class="python"><code># Показуємо зображення та його канали
+fig, axes = plt.subplots(1, 4, figsize=(16, 4))
+
+axes[0].imshow(pixels)
+axes[0].set_title("Оригінал")
+axes[0].axis('off')
+
+if len(pixels.shape) == 3:
+    channels = ['Червоний (R)', 'Зелений (G)', 'Синій (B)']
+    cmaps = ['Reds', 'Greens', 'Blues']
+    for i in range(3):
+        axes[i+1].imshow(pixels[:,:,i], cmap=cmaps[i])
+        axes[i+1].set_title(channels[i])
+        axes[i+1].axis('off')
+
+plt.tight_layout()
+plt.savefig("channels.png", dpi=150)
+plt.show()
+print("💾 Збережено: channels.png")</code></pre>
+        </div>
+
+        <div class="task-box">
+            <h3><span class="step-number">5</span>Бітові площини зображення</h3>
+
+            <p>Кожен піксель має 8 біт. Старші біти зберігають основну інформацію, молодші — деталі (шум). Саме в молодших бітах ми будемо ховати дані.</p>
+
+            <pre class="python"><code>from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Завантажуємо та конвертуємо у grayscale
+img = Image.open("test.png").convert('L')
+pixels = np.array(img)
+
+# Витягуємо 8 бітових площин
+fig, axes = plt.subplots(2, 4, figsize=(16, 8))
+fig.suptitle("Бітові площини зображення", fontsize=14)
+
+for bit in range(8):
+    ax = axes[bit // 4][bit % 4]
+    # Витягуємо біт номер `bit` з кожного пікселя
+    plane = (pixels >> bit) & 1
+    ax.imshow(plane * 255, cmap='gray')
+    ax.set_title(f"Біт {bit} ({'LSB' if bit == 0 else 'MSB' if bit == 7 else ''})")
+    ax.axis('off')
+
+plt.tight_layout()
+plt.savefig("bitplanes.png", dpi=150)
+plt.show()
+print("💾 Збережено: bitplanes.png")</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Що ви побачите:</h4>
+                <ul>
+                    <li><strong>Біт 7 (MSB)</strong> — чіткий контур зображення, основна інформація</li>
+                    <li><strong>Біти 4–6</strong> — поступове зменшення деталізації</li>
+                    <li><strong>Біти 1–3</strong> — переважно шум</li>
+                    <li><strong>Біт 0 (LSB)</strong> — візуально випадковий шум. Саме тут ми будемо ховати дані!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="task-box">
+            <h3><span class="step-number">6</span>Перший експеримент: ручна зміна LSB</h3>
+
+            <pre class="python"><code>import numpy as np
+from PIL import Image
+
+# Завантажуємо зображення
+img = Image.open("test.png")
+original = np.array(img)
+
+# Обнуляємо всі LSB біти (встановлюємо в 0)
+zeroed = original & 0xFE  # AND з 11111110
+
+# Встановлюємо всі LSB біти в 1
+ones = original | 0x01    # OR з 00000001
+
+# Порівнюємо
+print(f"Оригінал, піксель [0,0]: {original[0, 0]}")
+print(f"LSB = 0,  піксель [0,0]: {zeroed[0, 0]}")
+print(f"LSB = 1,  піксель [0,0]: {ones[0, 0]}")
+
+# Максимальна різниця — лише ±1!
+diff = np.abs(original.astype(int) - zeroed.astype(int))
+print(f"\nМакс. різниця: {diff.max()}")
+print(f"Змінено пікселів: {(diff > 0).sum()} з {diff.size}")
+
+# Зберігаємо для порівняння
+Image.fromarray(zeroed.astype(np.uint8)).save("test_lsb_zero.png")
+Image.fromarray(ones.astype(np.uint8)).save("test_lsb_ones.png")
+print("\n💾 Збережено: test_lsb_zero.png, test_lsb_ones.png")
+print("👁️ Порівняйте візуально — різниця непомітна!")</code></pre>
+
+            <div class="result-box">
+                <h4>✅ Очікуваний результат:</h4>
+                <ul>
+                    <li>Максимальна різниця між оригіналом та зміненим — лише 1</li>
+                    <li>Візуально зображення ідентичні — зміна LSB непомітна для ока</li>
+                    <li>Це підтверджує: молодший біт можна використовувати для приховування даних</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Структура проекту -->
+    <section>
+        <h2>📁 Рекомендована структура проекту</h2>
+
+        <pre class="python"><code>stego_labs/
+├── venv/                  # Віртуальне середовище (не комітити!)
+├── requirements.txt       # Залежності
+├── check_setup.py         # Скрипт перевірки
+├── test.png               # Тестове зображення
+│
+├── lab1_lsb/              # Лаба 1: LSB стеганографія
+│   ├── lsb_stego.py
+│   ├── test_images/
+│   └── results/
+│
+├── lab2_steganalysis/     # Лаба 2: Стеганоаналіз
+│   ├── steganalysis.py
+│   └── ...
+│
+├── lab3_dct/              # Лаба 3: DCT стеганографія
+│   ├── dct_steganography.py
+│   └── ...
+│
+└── lab4_audio/            # Лаба 4: Аудіо стеганографія
+    ├── audio_stego.py
+    └── ...</code></pre>
+
+        <div class="warning-box">
+            <strong>⚠️ Порада:</strong> Додайте <code>venv/</code> та файли зображень до <code>.gitignore</code> якщо використовуєте Git.
+        </div>
+    </section>
+
+    <!-- Поширені проблеми -->
+    <section>
+        <h2>🔧 Поширені проблеми та рішення</h2>
+
+        <div class="analysis-grid">
+            <div class="analysis-card">
+                <h4>❌ "python" не знайдено</h4>
+                <p>Спробуйте <code>python3</code> замість <code>python</code>. На Windows — перевстановіть Python з галочкою "Add to PATH".</p>
+            </div>
+
+            <div class="analysis-card">
+                <h4>❌ pip install помилка</h4>
+                <p>Переконайтеся що venv активовано (<code>(venv)</code> на початку). Спробуйте: <code>pip install --upgrade pip</code></p>
+            </div>
+
+            <div class="analysis-card">
+                <h4>❌ ImportError: No module named 'PIL'</h4>
+                <p>Бібліотека називається Pillow, але імпортується як PIL: <code>pip install Pillow</code></p>
+            </div>
+
+            <div class="analysis-card">
+                <h4>❌ Зображення виглядає спотвореним</h4>
+                <p>Переконайтеся що використовуєте PNG, а не JPEG. JPEG стискає з втратами та змінює значення пікселів.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Висновки -->
+    <section class="result-box">
+        <h2>🎓 Готово!</h2>
+        <p>Якщо всі кроки пройдені успішно, ваше середовище готове для лабораторних робіт зі стеганографії:</p>
+        <ul>
+            <li><strong>Python 3.10+</strong> встановлено та працює</li>
+            <li><strong>Бібліотеки</strong> (NumPy, Pillow, Matplotlib, SciPy, scikit-image) — встановлені</li>
+            <li><strong>Віртуальне середовище</strong> — налаштоване та активне</li>
+            <li><strong>Базові операції</strong> — ви вмієте відкривати зображення, працювати з пікселями та бітами</li>
+            <li><strong>LSB принцип</strong> — ви переконалися що зміна молодшого біта непомітна</li>
+        </ul>
+        <p>Переходьте до <a href="lab1.html">Лабораторної №1: LSB стеганографія</a>!</p>
+    </section>
+
+    </article>
+
+    <div class="lecture-nav-bottom">
+      <span class="nav-btn disabled">&larr; Попередня</span>
+      <a href="lab1.html" class="nav-btn">Наступна &rarr;</a>
+    </div>
+
+    <footer></footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>
