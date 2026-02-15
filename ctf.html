@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0ea5e9">
+  <title>CTF Тренінг — Стеганографія</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ctf.css">
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}</script>
+</head>
+<body>
+
+  <aside>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        Стеганографія
+        <span>онлайн-курс</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></span>
+        Лекції
+      </a>
+      <a href="practicals.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+        Практичні
+      </a>
+      <a href="tests.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        Тести
+      </a>
+      <a href="materials.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span>
+        Матеріали
+      </a>
+      <a href="ctf.html" class="active">
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+        CTF
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span id="theme-label">Темна тема</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="page-header">
+      <h1>CTF Тренінг: Стеганографія</h1>
+      <p>Практичні завдання з приховування та пошуку інформації. Підготуйся до CTF або одразу переходь до завдань!</p>
+    </div>
+
+    <!-- Page-level Tabs -->
+    <div class="tabs-container ctf-page-tabs">
+      <div class="tabs-nav">
+        <button class="tab-button active" onclick="switchTab(event, 'tab-prep')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          Підготовка
+        </button>
+        <button class="tab-button" onclick="switchTab(event, 'tab-reference')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Довідник
+        </button>
+        <button class="tab-button" onclick="switchTab(event, 'tab-challenges')">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+          Завдання
+        </button>
+      </div>
+
+      <!-- ==================== TAB 1: ЗАВДАННЯ ==================== -->
+      <div id="tab-challenges" class="tab-content">
+
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-value" id="score-display">0</div>
+            <div class="stat-label">Набрано очків</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value"><span id="solved-count">0</span> / 10</div>
+            <div class="stat-label">Завдань розв'язано</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">1450</div>
+            <div class="stat-label">Максимум очків</div>
+          </div>
+        </div>
+
+        <!-- Scoreboard -->
+        <section class="ctf-scoreboard">
+          <h2 class="section-title">Здати прапор</h2>
+          <div class="flag-input-wrapper">
+            <input type="text" id="flag-input" class="flag-input" placeholder="FLAG{...}" autocomplete="off" spellcheck="false">
+            <button id="flag-submit" class="flag-submit" onclick="checkFlag()">Перевірити</button>
+          </div>
+          <div id="flag-result" class="flag-result"></div>
+
+          <div class="progress-section">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
+            </div>
+            <div class="progress-label">
+              <span id="progress-text">0 / 1450 очків</span>
+              <span id="progress-percent">0%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Download -->
+        <section class="ctf-download">
+          <div class="download-card">
+            <div class="download-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <div class="download-info">
+              <h3>Завантажити файли завдань</h3>
+              <p>ZIP-архів з усіма challenge-файлами (10 завдань). Розпакуй та починай розв'язувати!</p>
+            </div>
+            <a href="files/stego_training_2026.zip" download class="download-btn">Завантажити ZIP</a>
+          </div>
+        </section>
+
+        <!-- Challenges -->
+        <h2 class="section-title">Завдання</h2>
+
+        <div class="ctf-filters">
+          <button class="filter-btn active" onclick="filterChallenges('all', this)">Всі</button>
+          <button class="filter-btn" onclick="filterChallenges('easy', this)">Легкі</button>
+          <button class="filter-btn" onclick="filterChallenges('medium', this)">Середні</button>
+          <button class="filter-btn" onclick="filterChallenges('hard', this)">Важкі</button>
+          <button class="filter-btn" onclick="filterChallenges('insane', this)">Божевільні</button>
+        </div>
+
+        <div class="challenges-grid" id="challenges-grid">
+
+          <!-- Challenge 1 -->
+          <div class="challenge-card" data-id="1" data-difficulty="easy">
+            <div class="challenge-header">
+              <div class="challenge-number">1</div>
+              <div>
+                <h3>EXIF-фільтрація</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-easy">Легкий</span>
+                  <span class="challenge-points">25 очків</span>
+                  <span class="challenge-category">metadata</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-1"></div>
+            </div>
+            <p>Це фото виглядає цілком звичайно &mdash; пейзаж з небом та травою. Але хтось залишив секрет у метаданих файлу. Знайди його!</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Перевір метадані зображення: <code>exiftool challenge.png</code></p></details>
+              <details><summary>Підказка 2</summary><p>У полі Comment є закодований рядок. Він схожий на base64 (літери + цифри, закінчується на <code>==</code>).</p></details>
+              <details><summary>Підказка 3</summary><p>Декодуй: <code>echo "рядок" | base64 -d</code>. Або використай нашу програму: <code>python cli.py decode -m metadata -i challenge.png</code></p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 2 -->
+          <div class="challenge-card" data-id="2" data-difficulty="easy">
+            <div class="challenge-header">
+              <div class="challenge-number">2</div>
+              <div>
+                <h3>Сховано на видному місці</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-easy">Легкий</span>
+                  <span class="challenge-points">50 очків</span>
+                  <span class="challenge-category">image_lsb</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-2"></div>
+            </div>
+            <p>Звичайне зображення. Але кожен піксель зберігає один біт таємниці у своєму найменш значущому розряді. Витягни повідомлення з LSB!</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>LSB &mdash; Least Significant Bit. Дані у найменш значущих бітах пікселів.</p></details>
+              <details><summary>Підказка 2</summary><p>Використай <code>zsteg challenge.png</code> або StegOnline &rarr; Extract LSB.</p></details>
+              <details><summary>Підказка 3</summary><p>Наша програма: <code>python cli.py decode -m image-lsb -i challenge.png</code></p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 3 -->
+          <div class="challenge-card" data-id="3" data-difficulty="easy">
+            <div class="challenge-header">
+              <div class="challenge-number">3</div>
+              <div>
+                <h3>Легка здобич</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-easy">Легкий</span>
+                  <span class="challenge-points">50 очків</span>
+                  <span class="challenge-category">strings_hidden</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-3"></div>
+            </div>
+            <p>Цей бінарний файл виглядає загадково. Але іноді прапор лежить просто відкритим текстом &mdash; треба лише знати, де шукати.</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Спробуй витягти текстові рядки: <code>strings challenge.bin</code></p></details>
+              <details><summary>Підказка 2</summary><p>Фільтруй по патерну прапора: <code>strings challenge.bin | grep FLAG</code></p></details>
+              <details><summary>Підказка 3</summary><p>Прапор записаний відкритим текстом серед бінарних даних.</p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 4 -->
+          <div class="challenge-card" data-id="4" data-difficulty="medium">
+            <div class="challenge-header">
+              <div class="challenge-number">4</div>
+              <div>
+                <h3>ROT-н-рол</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-medium">Середній</span>
+                  <span class="challenge-points">100 очків</span>
+                  <span class="challenge-category">encoding_chain</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-4"></div>
+            </div>
+            <p>У цьому зображенні сховано повідомлення &mdash; але його додатково закодовано. LSB витягне текст, а потім доведеться покрутити літери&hellip;</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Спочатку витягни дані через LSB: <code>python cli.py decode -m image-lsb -i challenge.png</code></p></details>
+              <details><summary>Підказка 2</summary><p>Отриманий текст закодований ROT13 &mdash; кожна літера зсунута на 13 позицій.</p></details>
+              <details><summary>Підказка 3</summary><p>Декодуй ROT13: <code>echo "текст" | tr 'A-Za-z' 'N-ZA-Mn-za-m'</code> або CyberChef &rarr; ROT13.</p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 5 -->
+          <div class="challenge-card" data-id="5" data-difficulty="medium">
+            <div class="challenge-header">
+              <div class="challenge-number">5</div>
+              <div>
+                <h3>Глибокі біти</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-medium">Середній</span>
+                  <span class="challenge-points">125 очків</span>
+                  <span class="challenge-category">image_lsb</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-5"></div>
+            </div>
+            <p>Стандартний LSB з 1 бітом &mdash; це занадто просто. А якщо дані записані глибше &mdash; у 2 біти на канал?</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Стандартний 1-бітний LSB нічого не дає. Спробуй 2 біти.</p></details>
+              <details><summary>Підказка 2</summary><p><code>python cli.py decode -m image-lsb -i challenge.png --bits 2</code></p></details>
+              <details><summary>Підказка 3</summary><p>У StegOnline спробуй Extract Data з налаштуванням 2 bits per channel.</p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 6 -->
+          <div class="challenge-card" data-id="6" data-difficulty="medium">
+            <div class="challenge-header">
+              <div class="challenge-number">6</div>
+              <div>
+                <h3>Прихований вантаж</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-medium">Середній</span>
+                  <span class="challenge-points">100 очків</span>
+                  <span class="challenge-category">embedded_file</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-6"></div>
+            </div>
+            <p>Це зображення важить підозріло багато для свого розміру. Може, всередині ховається ще один файл?</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Перевір на вбудовані файли: <code>binwalk challenge.png</code></p></details>
+              <details><summary>Підказка 2</summary><p>Після кінця PNG є ZIP-архів. Витягни: <code>binwalk -e challenge.png</code></p></details>
+              <details><summary>Підказка 3</summary><p>В архіві &mdash; файл <code>flag.txt</code> з прапором.</p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 7 -->
+          <div class="challenge-card" data-id="7" data-difficulty="medium">
+            <div class="challenge-header">
+              <div class="challenge-number">7</div>
+              <div>
+                <h3>Невидиме чорнило</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-medium">Середній</span>
+                  <span class="challenge-points">150 очків</span>
+                  <span class="challenge-category">alpha_channel</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-7"></div>
+            </div>
+            <p>Зображення має 4 канали: R, G, B та Alpha. Перші три виглядають нормально. А що з четвертим?</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Зображення у форматі RGBA. Перевір альфа-канал окремо.</p></details>
+              <details><summary>Підказка 2</summary><p>Альфа-канал містить пікселі зі значеннями 254 і 255. Різниця &mdash; 1 відтінок, невидима оку.</p></details>
+              <details><summary>Підказка 3</summary><p>Підсиль різницю: встанови 254&rarr;0, 255&rarr;255. Побачиш текст прапора у зображенні. GIMP: Colors &rarr; Curves.</p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 8 -->
+          <div class="challenge-card" data-id="8" data-difficulty="hard">
+            <div class="challenge-header">
+              <div class="challenge-number">8</div>
+              <div>
+                <h3>Бінарний дощ</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-hard">Важкий</span>
+                  <span class="challenge-points">200 очків</span>
+                  <span class="challenge-category">encoding_chain</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-8"></div>
+            </div>
+            <p>У зображенні сховані дані, але вони закодовані кількома шарами. LSB &rarr; Base64 &rarr; Binary &rarr; FLAG. Розплутай ланцюжок!</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Витягни LSB-дані: <code>python cli.py decode -m image-lsb -i challenge.png</code></p></details>
+              <details><summary>Підказка 2</summary><p>Отриманий текст &mdash; це base64. Декодуй його.</p></details>
+              <details><summary>Підказка 3</summary><p>Після base64 отримаєш рядки з 0 та 1 (по 8 біт). Конвертуй кожну групу у ASCII-символ.</p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 9 -->
+          <div class="challenge-card" data-id="9" data-difficulty="hard">
+            <div class="challenge-header">
+              <div class="challenge-number">9</div>
+              <div>
+                <h3>Потрійна загроза</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-hard">Важкий</span>
+                  <span class="challenge-points">250 очків</span>
+                  <span class="challenge-category">multi_layer</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-9"></div>
+            </div>
+            <p>Два файли: WAV-аудіо та зображення-підказка. У підказці &mdash; ключ. У аудіо &mdash; зашифровані дані. Знайди прапор!</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Спочатку перевір метадані зображення <code>hint.png</code>: <code>exiftool hint.png</code></p></details>
+              <details><summary>Підказка 2</summary><p>У коментарі hint.png є base64-рядок з паролем. Декодуй його.</p></details>
+              <details><summary>Підказка 3</summary><p>Декодуй audio LSB з паролем: <code>python cli.py decode -m audio-lsb -i challenge.wav --password ПАРОЛЬ</code></p></details>
+            </div>
+          </div>
+
+          <!-- Challenge 10 -->
+          <div class="challenge-card" data-id="10" data-difficulty="insane">
+            <div class="challenge-header">
+              <div class="challenge-number">10</div>
+              <div>
+                <h3>Початок</h3>
+                <div class="challenge-meta">
+                  <span class="badge badge-insane">Божевільний</span>
+                  <span class="challenge-points">400 очків</span>
+                  <span class="challenge-category">encoding_chain</span>
+                </div>
+              </div>
+              <div class="challenge-status" id="status-10"></div>
+            </div>
+            <p>Сни у снах. Кодування в кодуванні. Наскільки глибоко ти зможеш зайти? LSB &rarr; Base64 &rarr; ROT13 &rarr; Reverse &rarr; FLAG.</p>
+            <div class="challenge-hints">
+              <details><summary>Підказка 1</summary><p>Витягни дані із зображення через LSB.</p></details>
+              <details><summary>Підказка 2</summary><p>Шар 1: декодуй base64. Шар 2: застосуй ROT13.</p></details>
+              <details><summary>Підказка 3</summary><p>Шар 3: переверни рядок задом наперед. Використай CyberChef: From Base64 &rarr; ROT13 &rarr; Reverse.</p></details>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ==================== TAB 2: ПІДГОТОВКА ==================== -->
+      <div id="tab-prep" class="tab-content active">
+
+        <div class="lecture-content">
+
+          <!-- Що таке стеганографія -->
+          <h2 class="section-title">Що таке стеганографія?</h2>
+
+          <div class="info-box">
+            <h4>Визначення</h4>
+            <p><strong>Стеганографія</strong> (грец. <em>steganos</em> — прихований, <em>graphein</em> — писати) — наука про приховану передачу інформації шляхом збереження в таємниці самого факту передачі.</p>
+            <p>На відміну від <strong>криптографії</strong>, де повідомлення зашифроване, але його наявність очевидна, стеганографія ховає сам факт існування секретного повідомлення.</p>
+          </div>
+
+          <div class="example-box">
+            <h4>Аналогія</h4>
+            <p><strong>Криптографія</strong> — ви бачите сейф, але не знаєте код.</p>
+            <p><strong>Стеганографія</strong> — ви навіть не знаєте, що сейф існує.</p>
+          </div>
+
+          <div class="prep-visual">
+            <div class="prep-visual-title">Як працює LSB-стеганографія</div>
+            <div class="prep-comparison">
+              <div class="prep-compare-item">
+                <div class="prep-compare-label">Оригінал</div>
+                <div class="prep-compare-demo">
+                  <div class="pixel-grid">
+                    <span class="px-r">192</span>
+                    <span class="px-g">140</span>
+                    <span class="px-b">96</span>
+                  </div>
+                </div>
+              </div>
+              <div class="prep-compare-arrow">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </div>
+              <div class="prep-compare-item">
+                <div class="prep-compare-label">Після LSB</div>
+                <div class="prep-compare-demo">
+                  <div class="pixel-grid">
+                    <span class="px-r">193</span>
+                    <span class="px-g">141</span>
+                    <span class="px-b">97</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="prep-binary-row">
+              <span>1100000<em class="bit-old">0</em></span>
+              <span>&rarr;</span>
+              <span>1100000<em class="bit-new">1</em></span>
+              <span class="prep-binary-label">Змінюється лише останній біт</span>
+            </div>
+            <p class="prep-caption">Різниця &plusmn;1 на канал &mdash; абсолютно непомітна людському оку</p>
+          </div>
+
+          <!-- Що шукаємо -->
+          <h2 class="section-title" style="margin-top: 40px;">Що ми шукаємо?</h2>
+
+          <div class="info-box">
+            <h4>Формат прапора (Flag)</h4>
+            <p>У CTF-змаганнях ваша мета &mdash; знайти <strong>прапор</strong> (flag). Це рядок у спеціальному форматі:</p>
+            <div class="code-block" style="margin: 12px 0 8px;">FLAG{приклад_прапора_тут}
+CTF{інший_формат}
+flag{малими_літерами}</div>
+            <p style="margin-top: 8px;"><strong>Як шукати:</strong></p>
+            <ul>
+              <li><code>strings file | grep -i flag</code> &mdash; пошук у текстових рядках</li>
+              <li><code>grep -ri "FLAG{" .</code> &mdash; рекурсивний пошук у витягнутих файлах</li>
+              <li>У CyberChef шукай патерн <code>FLAG\{.*\}</code> у результаті декодування</li>
+              <li>Прапор може бути закодований (base64, hex, rot13) &mdash; декодуй перед пошуком!</li>
+            </ul>
+          </div>
+
+          <!-- Основні методи -->
+          <h2 class="section-title" style="margin-top: 40px;">Основні методи стеганографії у CTF</h2>
+
+          <div class="prep-methods-grid">
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(14,165,233,0.12); color: #0ea5e9;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              </div>
+              <h3>LSB (Least Significant Bit)</h3>
+              <p>Найпопулярніший метод. Дані записуються у найменш значущі біти пікселів зображення. Зміна &plusmn;1 не помітна оку.</p>
+              <div class="prep-method-tools">
+                <span>zsteg</span>
+                <span>stegsolve</span>
+                <span>StegOnline</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(34,197,94,0.12); color: #22c55e;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+              </div>
+              <h3>Метадані (EXIF / PNG)</h3>
+              <p>Інформація ховається у метаданих файлу: EXIF, PNG text chunks, IPTC, XMP. Перевіряй <code>exiftool</code>!</p>
+              <div class="prep-method-tools">
+                <span>exiftool</span>
+                <span>pngcheck</span>
+                <span>identify</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(168,85,247,0.12); color: #a855f7;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>
+              </div>
+              <h3>Вбудовані файли</h3>
+              <p>Після кінця PNG можна дописати ZIP. Зображення відкриється нормально, але binwalk знайде вкладення.</p>
+              <div class="prep-method-tools">
+                <span>binwalk</span>
+                <span>foremost</span>
+                <span>xxd</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(245,158,11,0.12); color: #f59e0b;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </div>
+              <h3>Аудіо стеганографія</h3>
+              <p>Дані можуть бути у LSB аудіо, у спектрограмі (видно як зображення) або в ехо-сигналі.</p>
+              <div class="prep-method-tools">
+                <span>Audacity</span>
+                <span>sonic-visualiser</span>
+                <span>sox</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(239,68,68,0.12); color: #ef4444;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>
+              </div>
+              <h3>Текстова стеганографія</h3>
+              <p>Пробіли/табуляції в кінці рядків кодують біти. Unicode zero-width символи невидимі, але несуть інформацію.</p>
+              <div class="prep-method-tools">
+                <span>cat -A</span>
+                <span>xxd</span>
+                <span>Python</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(99,102,241,0.12); color: #6366f1;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <h3>Ланцюжки кодувань</h3>
+              <p>Прапор закодований кілька разів: base64, ROT13, hex, binary. CyberChef Magic автоматично розпізнає ланцюжок!</p>
+              <div class="prep-method-tools">
+                <span>CyberChef</span>
+                <span>base64</span>
+                <span>Python</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(236,72,153,0.12); color: #ec4899;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20"/><path d="M17 2v20"/><path d="M2 12h20"/><path d="M2 7h5"/><path d="M2 17h5"/><path d="M17 7h5"/><path d="M17 17h5"/></svg>
+              </div>
+              <h3>DCT стеганографія</h3>
+              <p>Дані ховаються у частотних коефіцієнтах JPEG (DCT). Стійкіше за LSB, але складніше для витягнення. Використовується steghide та outguess.</p>
+              <div class="prep-method-tools">
+                <span>steghide</span>
+                <span>outguess</span>
+                <span>stegdetect</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(20,184,166,0.12); color: #14b8a6;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              </div>
+              <h3>Відео стеганографія</h3>
+              <p>Дані ховаються у окремих кадрах відео через LSB або у метаданих контейнера. Витягни кадри через ffmpeg та аналізуй кожен як зображення.</p>
+              <div class="prep-method-tools">
+                <span>ffmpeg</span>
+                <span>ffprobe</span>
+                <span>Python</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Стегоаналіз -->
+          <h2 class="section-title" style="margin-top: 40px;">Стегоаналіз: як виявити приховані дані</h2>
+
+          <div class="info-box">
+            <h4>Що таке стегоаналіз?</h4>
+            <p><strong>Стегоаналіз</strong> &mdash; це наука про виявлення прихованих повідомлень у файлах. Якщо стеганографія ховає дані, то стегоаналіз намагається їх знайти. У CTF це ключовий навик: потрібно не лише знати інструменти, а й розуміти <em>як</em> і <em>чому</em> вони працюють.</p>
+          </div>
+
+          <div class="prep-methods-grid">
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(239,68,68,0.12); color: #ef4444;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 17 4-8 4 4 6-10"/></svg>
+              </div>
+              <h3>Chi-Square аналіз</h3>
+              <p>Статистичний тест, що порівнює розподіл значень LSB з очікуваним рівномірним. Якщо розподіл занадто ідеальний &mdash; є приховані дані.</p>
+              <div class="prep-method-tools">
+                <span>stegdetect</span>
+                <span>Python/scipy</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(168,85,247,0.12); color: #a855f7;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></svg>
+              </div>
+              <h3>RS-аналіз</h3>
+              <p>Метод Regular-Singular груп. Аналізує співвідношення &laquo;гладких&raquo; та &laquo;шумних&raquo; груп пікселів. Дозволяє оцінити відсоток заповнення LSB.</p>
+              <div class="prep-method-tools">
+                <span>Aletheia</span>
+                <span>Python</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(14,165,233,0.12); color: #0ea5e9;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <h3>Візуальна атака</h3>
+              <p>Перегляд окремих bit planes зображення. У чистому зображенні LSB-площина виглядає як шум; при наявності стего &mdash; з&rsquo;являються паттерни.</p>
+              <div class="prep-method-tools">
+                <span>StegOnline</span>
+                <span>Stegsolve</span>
+              </div>
+            </div>
+
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(245,158,11,0.12); color: #f59e0b;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+              </div>
+              <h3>Метрики якості</h3>
+              <p>Порівняння з оригіналом (якщо доступний): PSNR, SSIM, MSE. Якщо якість підозріло знижена &mdash; можливо, є вбудовані дані.</p>
+              <div class="prep-method-tools">
+                <span>Python/PIL</span>
+                <span>GIMP</span>
+                <span>ImageMagick</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="example-box">
+            <h4>Практичні поради зі стегоаналізу</h4>
+            <ul>
+              <li><strong>Завжди починай з візуальної атаки</strong> &mdash; завантаж зображення у StegOnline та переглянь bit planes (особливо біт 0 кожного каналу)</li>
+              <li><strong>Порівнюй з оригіналом</strong> &mdash; якщо є чисте зображення, вирахуй різницю пікселів: <code>ImageChops.difference(img1, img2)</code></li>
+              <li><strong>Перевіряй гістограму</strong> &mdash; стего-зображення часто мають характерні &laquo;гребінці&raquo; (pairs of values) на гістограмі</li>
+              <li><strong>Стежи за розміром файлу</strong> &mdash; якщо PNG або BMP файл непропорційно великий для свого розміру &mdash; в ньому можуть бути дані</li>
+            </ul>
+          </div>
+
+          <!-- Алгоритм розв'язання -->
+          <h2 class="section-title" style="margin-top: 40px;">Алгоритм розв'язання Stego CTF</h2>
+
+          <div class="algorithm-box">
+            <h4>Крок за кроком</h4>
+            <div class="solve-algorithm">
+              <div class="algo-step"><span class="step-number">1</span> <code>file</code> / <code>xxd | head</code> &mdash; визначити реальний тип файлу</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">2</span> <code>strings</code> / <code>exiftool</code> &mdash; шукати прапор у тексті та метаданих</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">3</span> <code>binwalk</code> &mdash; перевірити на вбудовані файли</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">4</span> Зображення? &rarr; <code>zsteg</code> / StegOnline / Aperi'Solve<br>Аудіо? &rarr; спектрограма + audio LSB<br>Текст? &rarr; whitespace / zero-width</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">5</span> CyberChef Magic &mdash; автоматичне декодування ланцюжка</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step"><span class="step-number">6</span> Якщо зашифровано &mdash; шукати пароль в інших шарах</div>
+              <div class="algo-arrow">&darr;</div>
+              <div class="algo-step algo-flag"><span class="step-number">7</span> FLAG{...}</div>
+            </div>
+          </div>
+
+          <!-- Покроковий приклад -->
+          <h2 class="section-title" style="margin-top: 40px;">Покроковий приклад: розв'язуємо challenge</h2>
+
+          <div class="prep-walkthrough">
+            <div class="walkthrough-scenario">
+              <h4>Сценарій</h4>
+              <p>Маємо файл <code>mystery.png</code> (звичайне фото котика). Треба знайти прапор.</p>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">1</div>
+              <div class="walkthrough-step-body">
+                <h4>Визначаємо тип і шукаємо очевидне</h4>
+                <div class="code-block">$ file mystery.png
+mystery.png: PNG image data, 800 x 600, 8-bit/color RGBA
+
+$ strings mystery.png | grep -i flag
+(нічого не знайдено)</div>
+                <p class="walkthrough-note">Файл справді PNG. Прапор не лежить відкритим текстом &mdash; йдемо далі.</p>
+              </div>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">2</div>
+              <div class="walkthrough-step-body">
+                <h4>Перевіряємо метадані</h4>
+                <div class="code-block">$ exiftool mystery.png
+...
+Comment: aHR0cHM6Ly9leGFtcGxlLmNvbQ==
+Author: Nothing here
+...</div>
+                <p class="walkthrough-note">Є підозрілий коментар! Виглядає як base64 (літери A-Z, a-z, цифри, закінчується на <code>==</code>).</p>
+              </div>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">3</div>
+              <div class="walkthrough-step-body">
+                <h4>Декодуємо знахідку</h4>
+                <div class="code-block">$ echo "aHR0cHM6Ly9leGFtcGxlLmNvbQ==" | base64 -d
+https://example.com</div>
+                <p class="walkthrough-note">Це URL, але не прапор. Можливо це підказка, а прапор в іншому шарі?</p>
+              </div>
+            </div>
+
+            <div class="walkthrough-step">
+              <div class="walkthrough-step-num">4</div>
+              <div class="walkthrough-step-body">
+                <h4>Перевіряємо вбудовані файли та LSB</h4>
+                <div class="code-block">$ binwalk mystery.png
+DECIMAL    HEXADECIMAL    DESCRIPTION
+0          0x0            PNG image, 800 x 600
+(нічого додаткового)
+
+$ zsteg mystery.png
+b1,rgb,lsb,xy .. text: "FLAG{st3g0_m4st3r_2026}"</div>
+                <p class="walkthrough-note success-note">zsteg знайшов прапор у LSB! <strong>FLAG{st3g0_m4st3r_2026}</strong></p>
+              </div>
+            </div>
+
+            <div class="walkthrough-summary">
+              <h4>Підсумок</h4>
+              <p>Алгоритм спрацював: <code>file</code> &rarr; <code>strings</code> &rarr; <code>exiftool</code> (знайшли base64-підказку) &rarr; <code>binwalk</code> &rarr; <code>zsteg</code> (знайшли прапор). Весь процес зайняв ~2 хвилини.</p>
+            </div>
+          </div>
+
+          <!-- Підготовка ОС -->
+          <h2 class="section-title" style="margin-top: 40px;">Підготовка операційної системи</h2>
+
+          <div class="prep-os-grid">
+            <div class="prep-os-card prep-os-recommended">
+              <div class="prep-os-badge">Рекомендовано</div>
+              <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4"/><path d="M12 2v4"/><path d="M12 18v4"/></svg>
+                Kali Linux
+              </h3>
+              <p>Всі інструменти вже встановлені: exiftool, binwalk, steghide, foremost, strings, xxd. Просто завантаж та працюй.</p>
+              <div class="prep-os-commands">
+                <div class="code-block">sudo apt update && sudo apt upgrade
+# Все вже є! Додатково:
+gem install zsteg
+pip install stegoveritas</div>
+              </div>
+            </div>
+            <div class="prep-os-card">
+              <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                Ubuntu / Debian
+              </h3>
+              <p>Потрібно встановити інструменти вручну, але все доступно через apt та pip.</p>
+              <div class="prep-os-commands">
+                <div class="code-block">sudo apt install exiftool binwalk steghide foremost
+pip install stegoveritas
+gem install zsteg</div>
+              </div>
+            </div>
+            <div class="prep-os-card">
+              <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+                Windows (WSL)
+              </h3>
+              <p>Встанови WSL2 з Ubuntu, далі як на Linux. Або використовуй онлайн-інструменти.</p>
+              <div class="prep-os-commands">
+                <div class="code-block">wsl --install -d Ubuntu
+# Далі в WSL:
+sudo apt install exiftool binwalk steghide</div>
+              </div>
+            </div>
+            <div class="prep-os-card">
+              <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 5-2.55 5-4.72 0-1.06-.97-3.28-3-3.28-1.43 0-2.29.93-3 .93s-1.57-.93-3-.93-1.57.93-3 .93-1.57-.93-3-.93c-2.03 0-3 2.22-3 3.28 0 2.17 2 4.72 5 4.72 1.25 0 2.5-1.06 4-1.06z"/><path d="M12 2c2.5 0 4.5 2.04 4.5 4.5S14.5 11 12 11 7.5 8.96 7.5 6.5 9.5 2 12 2"/></svg>
+                macOS
+              </h3>
+              <p>Використовуй Homebrew для встановлення CLI-інструментів.</p>
+              <div class="prep-os-commands">
+                <div class="code-block">brew install exiftool binwalk foremost
+pip install stegoveritas
+gem install zsteg</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prep-os-grid" style="margin-top: 20px;">
+            <div class="prep-os-card prep-os-recommended">
+              <div class="prep-os-badge">Швидкий старт</div>
+              <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                Docker stego-toolkit
+              </h3>
+              <p>Все в одному контейнері: 20+ CLI-інструментів + GUI (Stegsolve, SonicVisualiser, DeepSound). Одна команда &mdash; і готово.</p>
+              <div class="prep-os-commands">
+                <div class="code-block">docker pull dominicbreuker/stego-toolkit
+docker run -it --rm -v $(pwd)/data:/data \
+  dominicbreuker/stego-toolkit /bin/bash
+# Автоматичний аналіз:
+check_png.sh image.png
+check_jpg.sh image.jpg</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="success-box">
+            <h4>Немає часу встановлювати?</h4>
+            <p>Використовуй онлайн-інструменти: <a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener">CyberChef</a>, <a href="https://stegonline.georgeom.net/" target="_blank" rel="noopener">StegOnline</a>, <a href="https://www.aperisolve.com/" target="_blank" rel="noopener">Aperi'Solve</a> та <a href="https://hexed.it/" target="_blank" rel="noopener">HexEd.it</a>. Вони покривають 80% типових CTF-завдань зі стеганографії.</p>
+          </div>
+
+          <!-- Інструменти -->
+          <h2 class="section-title" style="margin-top: 40px;">Інструменти для CTF Stego</h2>
+
+          <div class="prep-tools-section">
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="M9 9h.01"/><path d="M15 15h.01"/></svg>
+                Онлайн (нічого встановлювати не треба)
+              </h3>
+              <div class="prep-tools-grid">
+                <a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>CyberChef</h4>
+                  <p>Швейцарський ніж для кодувань. Кнопка <em>Magic</em> автоматично визначає base64, hex, rot13 тощо. Перетягуй рецепти та декодуй ланцюжки.</p>
+                  <span class="prep-tool-url">gchq.github.io/CyberChef</span>
+                </a>
+                <a href="https://stegonline.georgeom.net/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>StegOnline</h4>
+                  <p>Завантаж зображення &rarr; побачиш bit planes, LSB extract, strings, metadata. Все в одному вікні браузера.</p>
+                  <span class="prep-tool-url">stegonline.georgeom.net</span>
+                </a>
+                <a href="https://www.aperisolve.com/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>Aperi'Solve</h4>
+                  <p>Завантажуєш зображення &mdash; сервер автоматично запускає zsteg, exiftool, binwalk, foremost та повертає всі результати.</p>
+                  <span class="prep-tool-url">aperisolve.com</span>
+                </a>
+                <a href="https://hexed.it/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>HexEd.it</h4>
+                  <p>Hex-редактор у браузері. Дивись магічні байти, шукай рядки, редагуй файли побайтово.</p>
+                  <span class="prep-tool-url">hexed.it</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                Десктопні програми
+              </h3>
+              <div class="prep-tools-grid">
+                <a href="https://www.audacityteam.org/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>Audacity</h4>
+                  <p>Безкоштовний аудіоредактор. Клік на доріжку &rarr; Spectrogram &mdash; шукай текст чи зображення у спектрограмі.</p>
+                  <span class="prep-tool-url">audacityteam.org</span>
+                </a>
+                <a href="https://mh-nexus.de/en/hxd/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>HxD</h4>
+                  <p>Hex-редактор для Windows. Швидкий пошук, порівняння файлів, перегляд магічних байтів.</p>
+                  <span class="prep-tool-url">mh-nexus.de/hxd</span>
+                </a>
+                <a href="https://github.com/zardus/ctf-tools/blob/master/stegsolve/install" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>Stegsolve (Java)</h4>
+                  <p>GUI для аналізу зображень: перемикання між bit planes, frame browse, data extract з налаштуванням бітів.</p>
+                  <span class="prep-tool-url">github.com &mdash; потрібна Java</span>
+                </a>
+                <a href="https://www.sonicvisualiser.org/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>Sonic Visualiser</h4>
+                  <p>Просунутий аналіз аудіо: спектрограми з точним налаштуванням, шари анотацій, плагіни VAMP. Краще за Audacity для детального аналізу частот.</p>
+                  <span class="prep-tool-url">sonicvisualiser.org</span>
+                </a>
+                <a href="https://www.gimp.org/" target="_blank" rel="noopener" class="prep-tool-card">
+                  <h4>GIMP</h4>
+                  <p>Потужний графічний редактор. Декомпозиція каналів, маніпуляція кривими, фільтри підсилення контрасту для виявлення прихованих даних.</p>
+                  <span class="prep-tool-url">gimp.org</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                Командний рядок (CLI)
+              </h3>
+              <div class="prep-tools-grid">
+                <div class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>exiftool</h4>
+                  <p>Читає ВСІ метадані: EXIF, PNG text, IPTC, XMP. Перший крок для будь-якого файлу.</p>
+                  <code class="prep-tool-install">apt install libimage-exiftool-perl</code>
+                </div>
+                <div class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>binwalk</h4>
+                  <p>Сканує файл на вбудовані архіви, зображення та інші файли. <code>-e</code> для автоматичного витягнення.</p>
+                  <code class="prep-tool-install">pip install binwalk</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>zsteg</h4>
+                  <p>Автоматичний LSB-аналіз PNG/BMP. <code>-a</code> перебирає всі варіанти бітів та каналів.</p>
+                  <code class="prep-tool-install">gem install zsteg (Ruby) або StegOnline онлайн</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>steghide</h4>
+                  <p>Стеганографія в JPEG та WAV з паролем. <code>steghide extract -sf file.jpg</code></p>
+                  <code class="prep-tool-install">apt install steghide</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>strings</h4>
+                  <p>Витягує всі текстові рядки з бінарного файлу. <code>strings file | grep FLAG</code></p>
+                  <code class="prep-tool-install">вбудована в Linux/macOS</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>foremost</h4>
+                  <p>Альтернатива binwalk для відновлення файлів за сигнатурами (magic bytes).</p>
+                  <code class="prep-tool-install">apt install foremost</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>stegseek</h4>
+                  <p>Блискавичний брутфорс паролів для steghide. Перебирає <code>rockyou.txt</code> за секунди.</p>
+                  <code class="prep-tool-install">apt install stegseek</code>
+                </div>
+                <div class="prep-tool-card">
+                  <h4>pngcheck</h4>
+                  <p>Перевіряє структуру PNG: пошкоджені chunks, CRC-помилки, tEXt-дані. <code>-vtp7f</code> для повного аналізу.</p>
+                  <code class="prep-tool-install">apt install pngcheck</code>
+                </div>
+                <div class="prep-tool-card">
+                  <div class="prep-tool-badge prep-tool-essential">must have</div>
+                  <h4>ffmpeg / ffprobe</h4>
+                  <p>Витягнення кадрів з відео, конвертація аудіо, аналіз метаданих контейнера. <code>ffmpeg -i video.mp4 frame_%04d.png</code></p>
+                  <code class="prep-tool-install">apt install ffmpeg</code>
+                </div>
+              </div>
+            </div>
+
+            <div class="prep-tools-group">
+              <h3 class="prep-tools-group-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+                Словники паролів (Wordlists)
+              </h3>
+              <div class="info-box" style="margin-bottom: 0;">
+                <h4>Навіщо потрібні словники?</h4>
+                <p>Багато CTF-завдань використовують <code>steghide</code> з паролем. Інструменти <code>stegseek</code> та <code>fcrackzip</code> перебирають паролі зі словника. Найпопулярніший &mdash; <strong>rockyou.txt</strong> (14 млн паролів).</p>
+                <div class="code-block" style="margin-top: 10px;"># Kali Linux — вже є:
+/usr/share/wordlists/rockyou.txt.gz
+sudo gunzip /usr/share/wordlists/rockyou.txt.gz
+
+# Ubuntu / інші — завантажити:
+wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+
+# Використання:
+stegseek mystery.jpg rockyou.txt
+fcrackzip -u -D -p rockyou.txt archive.zip
+john --wordlist=rockyou.txt hash.txt</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB 3: ДОВІДНИК ==================== -->
+      <div id="tab-reference" class="tab-content">
+        <div class="lecture-content">
+
+          <!-- Що робити з конкретним типом файлу -->
+          <h2 class="section-title">Що робити з конкретним типом файлу</h2>
+
+          <div class="prep-magic-table-wrap">
+            <table class="prep-magic-table prep-filetype-table">
+              <thead>
+                <tr><th>Тип файлу</th><th>Перші кроки</th><th>Специфічні інструменти</th><th>На що звернути увагу</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="prep-fmt">PNG</span></td>
+                  <td><code>exiftool</code>, <code>pngcheck</code>, <code>binwalk</code></td>
+                  <td><code>zsteg -a</code>, StegOnline, Aperi'Solve</td>
+                  <td>LSB, bit planes, alpha-канал, палітра, CRC-помилки</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">JPEG</span></td>
+                  <td><code>exiftool</code>, <code>strings</code>, <code>binwalk</code></td>
+                  <td><code>steghide</code>, <code>stegseek</code>, <code>outguess</code></td>
+                  <td>EXIF-коментарі, steghide з/без пароля, вбудовані файли після EOI</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">BMP</span></td>
+                  <td><code>strings</code>, <code>xxd</code></td>
+                  <td><code>zsteg</code>, StegOnline</td>
+                  <td>LSB (без стиснення &mdash; ідеальний для стего), великий розмір файлу</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">GIF</span></td>
+                  <td><code>exiftool</code>, <code>binwalk</code></td>
+                  <td><code>ffmpeg</code>, Stegsolve (Frame Browse)</td>
+                  <td>Окремі кадри анімації, палітра кольорів, коментарі</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">WAV</span></td>
+                  <td><code>file</code>, <code>strings</code>, <code>binwalk</code></td>
+                  <td>Audacity (спектрограма), <code>steghide</code></td>
+                  <td>Спектрограма (текст/зображення), audio LSB, ехо-приховування</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">MP3</span></td>
+                  <td><code>strings</code>, <code>binwalk</code>, <code>exiftool</code></td>
+                  <td>Audacity, mp3stego, DeepSound</td>
+                  <td>ID3-теги, спектрограма, вбудовані файли, DeepSound-пароль</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">TXT</span></td>
+                  <td><code>cat -A</code>, <code>xxd</code>, <code>file</code></td>
+                  <td>Python, CyberChef</td>
+                  <td>Whitespace (пробіли/таби), zero-width Unicode, невидимі символи</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">PDF</span></td>
+                  <td><code>strings</code>, <code>binwalk</code>, <code>exiftool</code></td>
+                  <td><code>pdf-parser</code>, <code>pdftotext</code></td>
+                  <td>Вбудовані об'єкти, JavaScript, потоки, приховані шари</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">ZIP</span></td>
+                  <td><code>file</code>, <code>unzip -l</code>, <code>binwalk</code></td>
+                  <td><code>john</code>, <code>fcrackzip</code>, <code>7z</code></td>
+                  <td>Захист паролем, коментарі архіву, вкладені архіви</td>
+                </tr>
+                <tr>
+                  <td><span class="prep-fmt">MP4 / AVI</span></td>
+                  <td><code>ffprobe</code>, <code>strings</code>, <code>binwalk</code></td>
+                  <td><code>ffmpeg</code>, Python (OpenCV)</td>
+                  <td>Витягнення кадрів, LSB у кадрах, метадані контейнера, аудіодоріжка</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Чеклист для зображень -->
+          <h2 class="section-title" style="margin-top: 40px;">Чеклист аналізу зображень</h2>
+          <p class="prep-checklist-source">Адаптовано з <a href="https://georgeom.net/StegOnline/checklist" target="_blank" rel="noopener">StegOnline Checklist</a></p>
+
+          <div class="prep-checklist">
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>1. Визначити тип файлу</strong>
+                <span>Розширення може бути підмінене! <code>file image.png</code> покаже реальний тип.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>2. Strings</strong>
+                <span><code>strings -n 7 -t x image.png</code> &mdash; текстові рядки довжиною 7+ з позицією у файлі.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>3. Метадані (EXIF)</strong>
+                <span><code>exiftool image.png</code> &mdash; коментарі, GPS, автор, нестандартні поля.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>4. Вбудовані файли</strong>
+                <span><code>binwalk -Me image.png</code> &mdash; рекурсивне витягнення вкладених архівів та файлів.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>5. Перевірка PNG-структури</strong>
+                <span><code>pngcheck -vtp7f image.png</code> &mdash; пошкоджені chunks, tEXt дані, CRC-помилки.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>6. Bit Planes / кольорові канали</strong>
+                <span>StegOnline &rarr; Browse Bit Planes. Шукай статичні патерни у верхній частині площин.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>7. LSB витягнення</strong>
+                <span><code>zsteg -a image.png</code> або StegOnline &rarr; Extract Files/Data. Спробуй різні біти та канали.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>8. RGB(A) значення</strong>
+                <span>Конвертуй значення R/G/B/A пікселів у ASCII. Перевір кожен канал окремо.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>9. Пароль? &rarr; steghide / stegseek</strong>
+                <span><code>steghide extract -sf image.jpg</code>. Немає пароля? Спробуй порожній. Є словник? &rarr; <code>stegseek image.jpg rockyou.txt</code></span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>10. Палітра кольорів</strong>
+                <span>Для PNG type 3 (indexed) &mdash; перегляд та рандомізація палітри у StegOnline.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>11. Ремонт пошкодженого файлу</strong>
+                <span>Невірні magic bytes? CRC-помилка? Відкрий у hex-редакторі та виправ заголовок вручну.</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Чеклист аналізу відео -->
+          <h2 class="section-title" style="margin-top: 40px;">Чеклист аналізу відео</h2>
+
+          <div class="prep-checklist">
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>1. Метадані контейнера</strong>
+                <span><code>ffprobe -v quiet -print_format json -show_format -show_streams video.mp4</code> &mdash; кодек, розміри, тривалість, коментарі.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>2. Витягнення всіх кадрів</strong>
+                <span><code>ffmpeg -i video.mp4 frames/frame_%04d.png</code> &mdash; кожен кадр як окреме зображення для аналізу.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>3. Порівняння сусідніх кадрів</strong>
+                <span>Вирахуй різницю між кадрами (Python + PIL). Аномальний кадр може містити приховані дані або текст.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>4. LSB-аналіз окремих кадрів</strong>
+                <span>Застосуй zsteg або StegOnline до підозрілих кадрів &mdash; дані можуть бути в LSB лише одного фрейму.</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>5. Аудіодоріжка</strong>
+                <span><code>ffmpeg -i video.mp4 -vn audio.wav</code> &mdash; витягни аудіо та аналізуй як окремий WAV (спектрограма, LSB).</span>
+              </div>
+            </label>
+            <label class="prep-check-item">
+              <input type="checkbox">
+              <div class="prep-check-body">
+                <strong>6. strings + binwalk</strong>
+                <span><code>strings video.mp4 | grep FLAG</code> та <code>binwalk video.mp4</code> &mdash; перевір на вбудовані файли та текстові рядки.</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Магічні байти -->
+          <h2 class="section-title" style="margin-top: 40px;">Магічні байти (сигнатури файлів)</h2>
+
+          <div class="prep-magic-table-wrap">
+            <table class="prep-magic-table">
+              <thead><tr><th>Формат</th><th>Hex-сигнатура</th><th>ASCII</th><th>Типове використання</th></tr></thead>
+              <tbody>
+                <tr><td><span class="prep-fmt">PNG</span></td><td><code>89 50 4E 47 0D 0A 1A 0A</code></td><td>.PNG....</td><td>LSB, bit planes, alpha channel</td></tr>
+                <tr><td><span class="prep-fmt">JPEG</span></td><td><code>FF D8 FF E0</code> / <code>FF D8 FF E1</code></td><td>&mdash;</td><td>steghide, EXIF metadata</td></tr>
+                <tr><td><span class="prep-fmt">GIF</span></td><td><code>47 49 46 38 39 61</code></td><td>GIF89a</td><td>Анімація, frame-by-frame</td></tr>
+                <tr><td><span class="prep-fmt">BMP</span></td><td><code>42 4D</code></td><td>BM</td><td>LSB (без стиснення)</td></tr>
+                <tr><td><span class="prep-fmt">ZIP</span></td><td><code>50 4B 03 04</code></td><td>PK..</td><td>Вбудовані файли, binwalk</td></tr>
+                <tr><td><span class="prep-fmt">WAV</span></td><td><code>52 49 46 46</code></td><td>RIFF</td><td>Audio LSB, спектрограма</td></tr>
+                <tr><td><span class="prep-fmt">PDF</span></td><td><code>25 50 44 46</code></td><td>%PDF</td><td>Вбудовані об'єкти, JS</td></tr>
+                <tr><td><span class="prep-fmt">MP4</span></td><td><code>00 00 00 .. 66 74 79 70</code></td><td>....ftyp</td><td>Відео кадри, LSB у фреймах</td></tr>
+                <tr><td><span class="prep-fmt">AVI</span></td><td><code>52 49 46 46 .. .. .. .. 41 56 49 20</code></td><td>RIFF....AVI </td><td>Frame-by-frame аналіз</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Ремонт пошкоджених файлів -->
+          <h2 class="section-title" style="margin-top: 40px;">Ремонт пошкоджених файлів</h2>
+
+          <div class="info-box">
+            <h4>Коли файл не відкривається &mdash; це частина завдання!</h4>
+            <p>У CTF часто зустрічаються навмисно пошкоджені файли. Ось що перевіряти:</p>
+          </div>
+
+          <div class="prep-methods-grid">
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(239,68,68,0.12); color: #ef4444;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <h3>Зламані magic bytes</h3>
+              <p>Перші байти файлу підмінені або обнулені. Відкрий у hex-редакторі та встанови правильну сигнатуру (див. таблицю вище).</p>
+              <div class="prep-method-tools">
+                <span>HxD</span>
+                <span>xxd</span>
+                <span>HexEd.it</span>
+              </div>
+            </div>
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(245,158,11,0.12); color: #f59e0b;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              </div>
+              <h3>CRC-помилки в PNG</h3>
+              <p>Розміри зображення змінені &mdash; частина картинки обрізана. <code>pngcheck</code> знайде помилку, а виправлення CRC покаже приховану частину.</p>
+              <div class="prep-method-tools">
+                <span>pngcheck</span>
+                <span>Python</span>
+                <span>010 Editor</span>
+              </div>
+            </div>
+            <div class="prep-method-card">
+              <div class="prep-method-icon" style="background: rgba(99,102,241,0.12); color: #6366f1;">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m10 15 2 2 4-4"/></svg>
+              </div>
+              <h3>Змінене розширення</h3>
+              <p>Файл має розширення <code>.png</code>, але насправді це ZIP або WAV. <code>file</code> та перші байти в hex покажуть правду.</p>
+              <div class="prep-method-tools">
+                <span>file</span>
+                <span>xxd</span>
+                <span>binwalk</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Часті помилки -->
+          <div class="warning-box" style="margin-top: 40px;">
+            <h4>Часті помилки початківців</h4>
+            <ul>
+              <li>Пропускають <code>strings</code> &mdash; іноді прапор лежить відкритим текстом!</li>
+              <li>Не перевіряють метадані &mdash; <code>exiftool</code> має бути першим кроком</li>
+              <li>Забувають про <code>binwalk</code> &mdash; багато файлів містять вкладення</li>
+              <li>Не знають про CyberChef Magic &mdash; він автоматично розпізнає кодування</li>
+              <li>Використовують тільки 1-бітну LSB &mdash; бувають 2-бітні та 4-бітні варіанти</li>
+              <li>Не пробують порожній пароль у steghide &mdash; іноді пароль просто пустий!</li>
+              <li>Не перевіряють <code>pngcheck</code> &mdash; пошкоджена структура може ховати дані</li>
+            </ul>
+          </div>
+
+          <!-- Стегоаналіз -->
+          <h2 class="section-title" style="margin-top: 40px;">Методи стегоаналізу</h2>
+
+          <div class="prep-magic-table-wrap">
+            <table class="prep-magic-table">
+              <thead>
+                <tr><th>Метод</th><th>Що виявляє</th><th>Команда / інструмент</th><th>Інтерпретація результату</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Chi-Square</strong></td>
+                  <td>LSB-заміну у зображеннях</td>
+                  <td><code>stegdetect image.jpg</code></td>
+                  <td>Виводить ймовірність наявності steghide/outguess/jphide. <code>(**)</code> = висока ймовірність</td>
+                </tr>
+                <tr>
+                  <td><strong>RS-аналіз</strong></td>
+                  <td>Відсоток заповнення LSB</td>
+                  <td>Aletheia: <code>aletheia rs image.png</code></td>
+                  <td>Повертає оцінку відсотка вбудованих даних (0% = чисте, &gt;5% = підозріле)</td>
+                </tr>
+                <tr>
+                  <td><strong>Візуальна атака</strong></td>
+                  <td>Паттерни у bit planes</td>
+                  <td>StegOnline &rarr; Browse Bit Planes</td>
+                  <td>У чистому LSB &mdash; випадковий шум. При стего &mdash; структуровані області або текст</td>
+                </tr>
+                <tr>
+                  <td><strong>PSNR / SSIM</strong></td>
+                  <td>Зниження якості vs оригінал</td>
+                  <td><code>python -c "from skimage.metrics import structural_similarity as ssim; ..."</code></td>
+                  <td>PSNR &lt; 40 дБ або SSIM &lt; 0.95 &mdash; можливе вбудовування. Норма: PSNR &gt; 45</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Де практикуватись -->
+          <h2 class="section-title" style="margin-top: 40px;">Де практикуватись</h2>
+
+          <div class="prep-tools-grid">
+            <a href="https://play.picoctf.org/" target="_blank" rel="noopener" class="prep-tool-card">
+              <div class="prep-tool-badge prep-tool-essential">для початківців</div>
+              <h4>PicoCTF</h4>
+              <p>Безкоштовна платформа від Carnegie Mellon University. Є окрема категорія Forensics зі стеганографією. Ідеальний старт.</p>
+              <span class="prep-tool-url">play.picoctf.org</span>
+            </a>
+            <a href="https://ctflearn.com/" target="_blank" rel="noopener" class="prep-tool-card">
+              <h4>CTFlearn</h4>
+              <p>Сотні завдань з рейтингом складності. Фільтруй за категорією Forensics &mdash; багато stego-тасків від easy до hard.</p>
+              <span class="prep-tool-url">ctflearn.com</span>
+            </a>
+            <a href="https://tryhackme.com/" target="_blank" rel="noopener" class="prep-tool-card">
+              <h4>TryHackMe</h4>
+              <p>Покрокові кімнати з навчанням. Шукай кімнати "Steganography" та "Forensics" &mdash; пояснення + практика.</p>
+              <span class="prep-tool-url">tryhackme.com</span>
+            </a>
+            <a href="https://ctftime.org/" target="_blank" rel="noopener" class="prep-tool-card">
+              <h4>CTFtime</h4>
+              <p>Календар CTF-змагань з усього світу. Щотижня нові jeopardy-CTF з категорією Stego. Команда + рейтинг.</p>
+              <span class="prep-tool-url">ctftime.org</span>
+            </a>
+          </div>
+
+          <!-- Шпаргалка -->
+          <h2 class="section-title" style="margin-top: 40px;">Шпаргалка</h2>
+
+          <div class="cheatsheet">
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Перше, що робимо з будь-яким файлом</summary>
+                <div class="cheat-content">
+                  <div class="code-block">file challenge.*           # Реальний тип файлу
+strings challenge.* | grep FLAG   # Пошук прапора у тексті
+exiftool challenge.*       # Метадані (EXIF, PNG comments)
+xxd challenge.* | head -5  # Магічні байти
+binwalk challenge.*        # Вбудовані файли</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Магічні байти (сигнатури файлів)</summary>
+                <div class="cheat-content">
+                  <table class="cheat-table">
+                    <thead><tr><th>Формат</th><th>Hex</th><th>ASCII</th></tr></thead>
+                    <tbody>
+                      <tr><td>PNG</td><td><code>89 50 4E 47</code></td><td>.PNG</td></tr>
+                      <tr><td>JPEG</td><td><code>FF D8 FF E0/E1</code></td><td>-</td></tr>
+                      <tr><td>GIF</td><td><code>47 49 46 38</code></td><td>GIF8</td></tr>
+                      <tr><td>ZIP</td><td><code>50 4B 03 04</code></td><td>PK..</td></tr>
+                      <tr><td>WAV</td><td><code>52 49 46 46</code></td><td>RIFF</td></tr>
+                      <tr><td>PDF</td><td><code>25 50 44 46</code></td><td>%PDF</td></tr>
+                      <tr><td>BMP</td><td><code>42 4D</code></td><td>BM</td></tr>
+                      <tr><td>MP4</td><td><code>.. .. .. .. 66 74 79 70</code></td><td>....ftyp</td></tr>
+                      <tr><td>AVI</td><td><code>52 49 46 46 .. 41 56 49</code></td><td>RIFF.AVI</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Зображення: LSB, метадані, вбудовані файли</summary>
+                <div class="cheat-content">
+                  <h4>Метадані</h4>
+                  <div class="code-block">exiftool image.png
+pngcheck -v image.png</div>
+                  <h4>LSB (Least Significant Bit)</h4>
+                  <div class="code-block">zsteg image.png            # Автоматичний аналіз
+zsteg -a image.png         # Всі комбінації
+stegsolve                  # GUI: bit planes, data extract</div>
+                  <h4>Вбудовані файли</h4>
+                  <div class="code-block">binwalk challenge.png      # Пошук
+binwalk -e challenge.png   # Витягнення
+foremost challenge.png     # Альтернатива</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Текст: whitespace, Unicode</summary>
+                <div class="cheat-content">
+                  <h4>Whitespace стеганографія</h4>
+                  <div class="code-block">cat -A challenge.txt       # $ = кінець рядка, ^I = tab
+# Пробіл = 0, Tab = 1, 8 біт = 1 ASCII символ</div>
+                  <h4>Unicode zero-width символи</h4>
+                  <div class="code-block"># Шукаємо невидимі символи: U+200B, U+200C, U+200D, U+FEFF
+python -c "
+with open('f.txt') as f:
+    for i,ch in enumerate(f.read()):
+        if ord(ch) > 127: print(f'pos {i}: U+{ord(ch):04X}')
+"</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Аудіо: LSB, спектрограма, echo hiding</summary>
+                <div class="cheat-content">
+                  <h4>Спектрограма</h4>
+                  <p>Audacity &rarr; клік на доріжку &rarr; Spectrogram &rarr; шукай текст/зображення</p>
+                  <h4>Audio LSB</h4>
+                  <div class="code-block">python -c "
+import wave
+w = wave.open('challenge.wav','rb')
+frames = w.readframes(w.getnframes())
+bits = ''.join(str(b & 1) for b in frames)
+text = ''.join(chr(int(bits[i:i+8],2)) for i in range(0,len(bits),8))
+print(text[:200])
+"</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Відео: витягнення кадрів, аналіз фреймів</summary>
+                <div class="cheat-content">
+                  <h4>Розвідка</h4>
+                  <div class="code-block">ffprobe -v quiet -print_format json -show_streams video.mp4
+strings video.mp4 | grep -i flag
+binwalk video.mp4</div>
+                  <h4>Витягнення кадрів</h4>
+                  <div class="code-block">ffmpeg -i video.mp4 frames/frame_%04d.png   # всі кадри
+ffmpeg -i video.mp4 -vf "select=eq(n\,42)" -vsync vfr frame42.png  # один кадр</div>
+                  <h4>Витягнення аудіо</h4>
+                  <div class="code-block">ffmpeg -i video.mp4 -vn -acodec pcm_s16le audio.wav</div>
+                  <h4>Порівняння кадрів (Python)</h4>
+                  <div class="code-block">from PIL import Image, ImageChops
+f1 = Image.open("frame_0001.png")
+f2 = Image.open("frame_0002.png")
+diff = ImageChops.difference(f1, f2)
+diff.save("diff.png")  # якщо не чорне — є відмінності</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Стегоаналіз: виявлення прихованих даних</summary>
+                <div class="cheat-content">
+                  <h4>Chi-Square / stegdetect</h4>
+                  <div class="code-block">stegdetect image.jpg          # автоматичне виявлення
+stegdetect -s 5 image.jpg     # підвищена чутливість</div>
+                  <h4>Візуальна атака</h4>
+                  <p>StegOnline &rarr; Browse Bit Planes &rarr; переглянь біт 0 каналів R, G, B. Шукай структуровані паттерни.</p>
+                  <h4>Порівняння з оригіналом (Python)</h4>
+                  <div class="code-block">from PIL import Image, ImageChops
+orig = Image.open("original.png")
+steg = Image.open("suspect.png")
+diff = ImageChops.difference(orig, steg)
+# Підсилення різниці для візуалізації:
+from PIL import ImageEnhance
+ImageEnhance.Brightness(diff).enhance(20).save("diff_enhanced.png")</div>
+                  <h4>PSNR / SSIM</h4>
+                  <div class="code-block">python -c "
+import numpy as np; from PIL import Image
+a = np.array(Image.open('orig.png'), float)
+b = np.array(Image.open('steg.png'), float)
+mse = np.mean((a - b) ** 2)
+psnr = 10 * np.log10(255**2 / mse) if mse > 0 else float('inf')
+print(f'MSE={mse:.2f}, PSNR={psnr:.2f} dB')
+"</div>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Кодування: base64, hex, rot13, binary</summary>
+                <div class="cheat-content">
+                  <h4>Розпізнавання</h4>
+                  <ul>
+                    <li><strong>Base64:</strong> A-Z, a-z, 0-9, +, / з = на кінці</li>
+                    <li><strong>Hex:</strong> тільки 0-9, a-f, парна кількість</li>
+                    <li><strong>Binary:</strong> тільки 0 і 1, групи по 8</li>
+                  </ul>
+                  <h4>Декодування</h4>
+                  <div class="code-block">echo "SGVsbG8=" | base64 -d         # base64
+echo "48656c6c6f" | xxd -r -p       # hex
+echo "Uryyb" | tr 'A-Za-z' 'N-ZA-Mn-za-m'  # rot13</div>
+                  <h4>CyberChef</h4>
+                  <p><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener">gchq.github.io/CyberChef</a> &mdash; кнопка <strong>Magic</strong> автоматично визначає кодування!</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="cheat-section">
+              <details>
+                <summary class="cheat-summary">Корисні інструменти</summary>
+                <div class="cheat-content">
+                  <table class="cheat-table">
+                    <thead><tr><th>Інструмент</th><th>Для чого</th><th>Посилання</th></tr></thead>
+                    <tbody>
+                      <tr><td>CyberChef</td><td>Кодування/декодування</td><td><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener">gchq.github.io/CyberChef</a></td></tr>
+                      <tr><td>StegOnline</td><td>Аналіз зображень онлайн</td><td><a href="https://stegonline.georgeom.net/" target="_blank" rel="noopener">stegonline.georgeom.net</a></td></tr>
+                      <tr><td>Aperi'Solve</td><td>Автоаналіз зображень</td><td><a href="https://www.aperisolve.com/" target="_blank" rel="noopener">aperisolve.com</a></td></tr>
+                      <tr><td>Audacity</td><td>Спектрограма аудіо</td><td><a href="https://www.audacityteam.org/" target="_blank" rel="noopener">audacityteam.org</a></td></tr>
+                      <tr><td>HxD</td><td>Hex-редактор (Windows)</td><td><a href="https://mh-nexus.de/en/hxd/" target="_blank" rel="noopener">mh-nexus.de/hxd</a></td></tr>
+                      <tr><td>zsteg</td><td>LSB аналіз PNG/BMP</td><td><code>gem install zsteg</code> (Ruby) або StegOnline</td></tr>
+                      <tr><td>binwalk</td><td>Вбудовані файли</td><td><code>pip install binwalk</code></td></tr>
+                      <tr><td>steghide</td><td>Стего в JPEG/WAV</td><td><code>apt install steghide</code></td></tr>
+                      <tr><td>Sonic Visualiser</td><td>Детальний аналіз аудіо</td><td><a href="https://www.sonicvisualiser.org/" target="_blank" rel="noopener">sonicvisualiser.org</a></td></tr>
+                      <tr><td>GIMP</td><td>Аналіз каналів зображень</td><td><a href="https://www.gimp.org/" target="_blank" rel="noopener">gimp.org</a></td></tr>
+                      <tr><td>ffmpeg</td><td>Відео: кадри, аудіо, метадані</td><td><code>apt install ffmpeg</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer></footer>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/ctf.js"></script>
+</body>
+</html>
