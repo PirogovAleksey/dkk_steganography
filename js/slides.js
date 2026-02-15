@@ -73,17 +73,18 @@ function initTopControls() {
   top.className = 'top-controls';
   top.innerHTML =
     '<a href="' + getLectureUrl() + '">' +
-      '<svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>' +
       'До лекції' +
     '</a>' +
-    '<button onclick="toggleTheme()">' +
+    '<button id="slides-theme-toggle">' +
       '<span id="theme-icon">' + sunIcon + '</span>' +
       '<span id="theme-label">Світла</span>' +
     '</button>';
   document.body.insertBefore(top, document.body.firstChild);
+  document.getElementById('slides-theme-toggle').addEventListener('click', toggleTheme);
 
   // Remove old home button from bottom controls
-  const homeBtn = document.querySelector('.controls button[onclick="goHome()"]');
+  const homeBtn = document.querySelector('.controls .btn-home');
   if (homeBtn) homeBtn.remove();
 }
 
@@ -165,3 +166,7 @@ updateProgress();
 updateButtons();
 fitSlides();
 window.addEventListener('resize', fitSlides);
+
+// Bottom controls event delegation
+if (prevBtn) prevBtn.addEventListener('click', prev);
+if (nextBtn) nextBtn.addEventListener('click', next);

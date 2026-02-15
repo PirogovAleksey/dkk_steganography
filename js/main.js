@@ -17,6 +17,9 @@ if (localStorage.getItem('theme') === 'dark') {
   document.getElementById('theme-label').textContent = 'Світла тема';
 }
 
+// Theme toggle via event delegation
+document.querySelector('.theme-toggle')?.addEventListener('click', toggleTheme);
+
 // Tab switching for lab pages (event delegation)
 document.addEventListener('click', function(e) {
   const btn = e.target.closest('.tab-button[data-tab]');
@@ -91,6 +94,11 @@ const submissionEl = document.getElementById('submission-section');
 if (submissionEl && submissionEl.dataset.config) {
   renderSubmissionSection(JSON.parse(submissionEl.dataset.config));
 }
+
+// Back-to-top button
+document.querySelector('.back-to-top')?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // Reusable footer component
 document.querySelectorAll('footer').forEach(footer => {

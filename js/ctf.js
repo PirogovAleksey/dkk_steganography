@@ -103,7 +103,7 @@ async function checkFlag() {
       const card = document.querySelector('.challenge-card[data-id="' + match.id + '"]');
       if (card) {
         card.classList.add("just-solved");
-        setTimeout(function() { card.classList.remove("just-solved"); }, 600);
+        setTimeout(() => card.classList.remove("just-solved"), 600);
       }
 
       updateUI();
@@ -117,24 +117,25 @@ async function checkFlag() {
   input.focus();
 }
 
-// Enter key to submit
-document.getElementById("flag-input").addEventListener("keydown", function(e) {
+// Submit flag via button click or Enter key
+document.getElementById("flag-submit").addEventListener("click", () => checkFlag());
+document.getElementById("flag-input").addEventListener("keydown", e => {
   if (e.key === "Enter") checkFlag();
 });
 
-// Filter challenges
-function filterChallenges(difficulty, btn) {
-  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+// Filter challenges via event delegation
+document.querySelector(".ctf-filters")?.addEventListener("click", e => {
+  const btn = e.target.closest(".filter-btn[data-difficulty]");
+  if (!btn) return;
+
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
 
-  document.querySelectorAll(".challenge-card").forEach(function(card) {
-    if (difficulty === "all" || card.dataset.difficulty === difficulty) {
-      card.style.display = "";
-    } else {
-      card.style.display = "none";
-    }
+  const difficulty = btn.dataset.difficulty;
+  document.querySelectorAll(".challenge-card").forEach(card => {
+    card.style.display = (difficulty === "all" || card.dataset.difficulty === difficulty) ? "" : "none";
   });
-}
+});
 
 // Initialize on page load
 updateUI();
