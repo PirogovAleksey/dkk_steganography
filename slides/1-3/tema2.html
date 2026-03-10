@@ -32,8 +32,8 @@
 
         <h3 style="margin-top: 2rem;">Класифікація вимог:</h3>
 
-        <div class="requirement-levels">
-        <div class="level-card card-green">
+        <div class="three-col-grid">
+        <div class="card-green">
         <h4>За критичністю</h4>
         <ul style="text-align: left;">
         <li>Обов'язкові</li>
@@ -42,7 +42,7 @@
         </ul>
         </div>
 
-        <div class="level-card card-blue">
+        <div class="card-blue">
         <h4>За областю</h4>
         <ul style="text-align: left;">
         <li>Безпека</li>
@@ -51,7 +51,7 @@
         </ul>
         </div>
 
-        <div class="level-card card-yellow">
+        <div class="card-yellow">
         <h4>За оцінкою</h4>
         <ul style="text-align: left;">
         <li>Вимірювані</li>
@@ -69,8 +69,8 @@
         <p><strong>Визначення:</strong> Здатність стегосистеми приховувати сам факт наявності секретного повідомлення так, що stego-object не відрізняється від оригінального cover-object.</p>
         </div>
 
-        <div class="metric-grid">
-        <div class="metric-card">
+        <div class="three-col-grid">
+        <div class="card-gray">
         <h4>🎨 Перцептуальна непомітність</h4>
         <ul>
         <li>Візуально непомітні артефакти</li>
@@ -80,7 +80,7 @@
         </ul>
         </div>
 
-        <div class="metric-card">
+        <div class="card-gray">
         <h4>📊 Статистична непомітність</h4>
         <ul>
         <li>Збереження статистичних властивостей</li>
@@ -90,7 +90,7 @@
         </ul>
         </div>
 
-        <div class="metric-card">
+        <div class="card-gray">
         <h4>🔗 Структурна непомітність</h4>
         <ul>
         <li>Збереження закономірностей</li>
@@ -103,7 +103,7 @@
 
         <h3 style="margin-top: 2rem;">Метрики оцінки непомітності:</h3>
 
-        <table class="metrics-table">
+        <table class="comparison-table">
         <thead>
         <tr>
         <th>Метрика</th>
@@ -197,35 +197,20 @@
         <p><strong>Визначення:</strong> Здатність стегосистеми зберігати приховану інформацію та можливість її коректного витягування після впливу різноманітних перетворень, атак та спотворень.</p>
         </div>
 
-        <div class="metric-grid">
-        <div class="metric-card" style="border-left-color: #10b981;">
-        <h4>🔄 Ненавмисні перетворення</h4>
-        <ul>
-        <li>Стиснення JPEG, MP3</li>
-        <li>Зміна масштабу, поворот</li>
-        <li>Ресамплінг сигналів</li>
-        <li>Фільтрація та згладжування</li>
-        </ul>
+        <div class="three-col-grid">
+        <div class="card-green">
+        <h4>🔄 Ненавмисні</h4>
+        <p>Стиснення JPEG/MP3, масштабування, поворот, ресамплінг, фільтрація</p>
         </div>
 
-        <div class="metric-card" style="border-left-color: #dc2626;">
+        <div class="card-red">
         <h4>⚔️ Активні атаки</h4>
-        <ul>
-        <li>Цілеспрямоване видалення</li>
-        <li>Додавання шуму</li>
-        <li>Геометричні трансформації</li>
-        <li>Комбіновані атаки</li>
-        </ul>
+        <p>Цілеспрямоване видалення, додавання шуму, геометричні трансформації</p>
         </div>
 
-        <div class="metric-card" style="border-left-color: #f59e0b;">
-        <h4>📊 Статистичні атаки</h4>
-        <ul>
-        <li>Аналіз гістограм</li>
-        <li>Машинне навчання</li>
-        <li>Кореляційний аналіз</li>
-        <li>Стохастичні методи</li>
-        </ul>
+        <div class="card-yellow">
+        <h4>📊 Статистичні</h4>
+        <p>Аналіз гістограм, машинне навчання, кореляційний аналіз</p>
         </div>
         </div>
 
@@ -250,69 +235,45 @@
     <section class="slide">
         <h2>⚖️ Трикутник компромісів</h2>
 
-        <div class="requirements-triangle">
-        <!-- Вершини трикутника -->
-        <div class="triangle-point" style="top: 0; left: 50%; transform: translateX(-50%); background: #667eea;">
-        <span style="font-size: 1.5rem;">👁️</span>
-        <span>Непомітність</span>
-        </div>
-        <div class="triangle-point" style="bottom: 0; left: 0; background: #10b981;">
-        <span style="font-size: 1.5rem;">💾</span>
-        <span>Ємність</span>
-        </div>
-        <div class="triangle-point" style="bottom: 0; right: 0; background: #f59e0b;">
-        <span style="font-size: 1.5rem;">💪</span>
-        <span>Стійкість</span>
-        </div>
-
-        <!-- Лінії трикутника -->
-        <svg style="position: absolute; width: 100%; height: 100%; pointer-events: none;">
-        <line x1="200" y1="60" x2="60" y2="290" stroke="#e5e7eb" stroke-width="3"/>
-        <line x1="200" y1="60" x2="340" y2="290" stroke="#e5e7eb" stroke-width="3"/>
-        <line x1="60" y1="290" x2="340" y2="290" stroke="#e5e7eb" stroke-width="3"/>
+        <div style="display: flex; justify-content: center; margin: 1rem 0;">
+        <svg viewBox="0 0 460 280" width="460" height="280" style="max-width: 100%;">
+            <!-- Трикутник -->
+            <polygon points="230,40 60,240 400,240" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.4"/>
+            <!-- Стрілки вздовж ребер -->
+            <text x="145" y="140" text-anchor="middle" fill="#cbd5e1" font-size="16" font-family="sans-serif" transform="rotate(-50, 145, 140)">⟷</text>
+            <text x="315" y="140" text-anchor="middle" fill="#cbd5e1" font-size="16" font-family="sans-serif" transform="rotate(50, 315, 140)">⟷</text>
+            <text x="230" y="240" text-anchor="middle" fill="#cbd5e1" font-size="16" font-family="sans-serif">⟷</text>
+            <!-- Вершини -->
+            <circle cx="230" cy="40" r="9" fill="#a78bfa"/>
+            <circle cx="60" cy="240" r="9" fill="#4ade80"/>
+            <circle cx="400" cy="240" r="9" fill="#fbbf24"/>
+            <!-- Підписи -->
+            <text x="230" y="25" text-anchor="middle" fill="#a78bfa" font-size="16" font-weight="600" font-family="'Plus Jakarta Sans', sans-serif">Непомітність</text>
+            <text x="60" y="270" text-anchor="middle" fill="#4ade80" font-size="16" font-weight="600" font-family="'Plus Jakarta Sans', sans-serif">Ємність</text>
+            <text x="400" y="270" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="600" font-family="'Plus Jakarta Sans', sans-serif">Стійкість</text>
         </svg>
         </div>
 
-        <h3 style="margin-top: 2rem;">Основні компроміси:</h3>
+        <div class="three-col-grid">
+        <div class="card-purple">
+        <h4>👁️ ⟷ 💾</h4>
+        <p>Збільшення ємності призводить до більших модифікацій контейнера</p>
+        </div>
 
-        <div class="compromise-diagram">
-        <div class="compromise-item">
-        <h4>👁️ Непомітність</h4>
+        <div class="card-blue">
+        <h4>👁️ ⟷ 💪</h4>
+        <p>Стійкі алгоритми часто вносять більше помітних змін у контейнер</p>
         </div>
-        <span class="compromise-arrow">⟷</span>
-        <div class="compromise-item">
-        <h4>💾 Ємність</h4>
-        </div>
-        </div>
-        <p class="card-gray" style="text-align: center;">
-        Збільшення ємності призводить до більших модифікацій контейнера
-        </p>
 
-        <div class="compromise-diagram">
-        <div class="compromise-item">
-        <h4>👁️ Непомітність</h4>
-        </div>
-        <span class="compromise-arrow">⟷</span>
-        <div class="compromise-item">
-        <h4>💪 Стійкість</h4>
+        <div class="card-yellow">
+        <h4>💾 ⟷ 💪</h4>
+        <p>Завадостійке кодування зменшує корисну ємність для даних</p>
         </div>
         </div>
-        <p class="card-gray" style="text-align: center;">
-        Стійкі алгоритми часто вносять більше змін у контейнер
-        </p>
 
-        <div class="compromise-diagram">
-        <div class="compromise-item">
-        <h4>💾 Ємність</h4>
+        <div class="alert alert-warning" style="margin-top: 1rem;">
+            <strong>Головне правило:</strong> неможливо одночасно максимізувати всі три параметри — завжди доводиться обирати пріоритет
         </div>
-        <span class="compromise-arrow">⟷</span>
-        <div class="compromise-item">
-        <h4>💪 Стійкість</h4>
-        </div>
-        </div>
-        <p class="card-gray" style="text-align: center;">
-        Завадостійке кодування зменшує корисну ємність
-        </p>
     </section>
 
     <!-- Слайд 7: Додаткові критерії якості -->
@@ -387,74 +348,49 @@
     <section class="slide">
         <h2>🎯 Специфічні вимоги для різних класів застосувань</h2>
 
-        <div class="application-grid">
-        <div class="application-card">
-        <h3>🎖️ Військові та розвідувальні системи</h3>
-        <h4>Критичні вимоги:</h4>
+        <div class="two-column">
+        <div class="card-red">
+        <h4>🎖️ Військові системи</h4>
         <ul>
         <li>Максимальна безпека та стійкість</li>
         <li>Протидія активному противнику</li>
-        <li>Робота в обмежених каналах</li>
-        <li>Захист від побічних витоків</li>
-        </ul>
-        <h4>Особливості:</h4>
-        <ul>
         <li>Жорстка сертифікація</li>
-        <li>Найвищий рівень криптозахисту</li>
-        <li>Інтеграція з захищеними системами</li>
         </ul>
         </div>
 
-        <div class="application-card">
-        <h3>🏢 Корпоративні системи</h3>
-        <h4>Критичні вимоги:</h4>
+        <div class="card-blue">
+        <h4>🏢 Корпоративні системи</h4>
         <ul>
         <li>Інтеграція з ІТ-інфраструктурою</li>
         <li>Централізоване управління</li>
-        <li>Масштабованість</li>
-        <li>Простота адміністрування</li>
-        </ul>
-        <h4>Особливості:</h4>
-        <ul>
         <li>Баланс безпеки та зручності</li>
-        <li>Корпоративні політики</li>
-        <li>Інтеграція з DLP системами</li>
         </ul>
         </div>
+        </div>
 
-        <div class="application-card">
-        <h3>👤 Персональні застосування</h3>
-        <h4>Критичні вимоги:</h4>
+        <div class="two-column">
+        <div class="card-green">
+        <h4>👤 Персональні застосування</h4>
         <ul>
         <li>Простота без спецзнань</li>
-        <li>Висока продуктивність</li>
-        <li>Мінімальні системні вимоги</li>
         <li>Інтуїтивний інтерфейс</li>
-        </ul>
-        <h4>Особливості:</h4>
-        <ul>
         <li>Автоналаштування параметрів</li>
-        <li>Інтеграція з популярними додатками</li>
-        <li>Доступність для всіх</li>
         </ul>
         </div>
 
-        <div class="application-card">
-        <h3>⚡ Системи реального часу</h3>
-        <h4>Критичні вимоги:</h4>
+        <div class="card-yellow">
+        <h4>⚡ Системи реального часу</h4>
         <ul>
         <li>Мінімальна затримка</li>
         <li>Детермінована швидкість</li>
-        <li>Потокова обробка</li>
-        <li>Стабільна продуктивність</li>
-        </ul>
-        <h4>Особливості:</h4>
-        <ul>
-        <li>Оптимізація для швидкодії</li>
         <li>Апаратне прискорення</li>
-        <li>Мінімізація використання ресурсів</li>
-        </ul>        </div>
-    </div>
+        </ul>
+        </div>
+        </div>
+
+        <div class="alert alert-info">
+            <strong>💡 Ключове:</strong> Вимоги визначаються класом застосування — універсального рішення не існує
+        </div>
 
     </section>
     <!-- Слайд 9: Методи оптимізації компромісів -->

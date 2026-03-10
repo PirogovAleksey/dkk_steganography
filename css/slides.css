@@ -32,7 +32,8 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   transform-origin: top center;
 }
 

@@ -70,194 +70,121 @@
     <section class="slide">
         <h2>📋 Етапи розробки стегосистеми</h2>
 
-        <div class="methodology-timeline">
-        <div class="timeline-item">
-        <div class="timeline-number">1</div>
-        <div class="timeline-content">
-        <h4>Аналіз вимог та постановка задачі</h4>
+        <div class="two-column">
+        <div class="card-blue">
+        <h4>1. Аналіз вимог</h4>
         <p>Визначення функціональних та нефункціональних вимог, дослідження предметної області</p>
         </div>
-        </div>
-
-        <div class="timeline-item">
-        <div class="timeline-number">2</div>
-        <div class="timeline-content">
-        <h4>Концептуальне проектування</h4>
-        <p>Вибір архітектурної парадигми, розробка концептуальної моделі, вибір алгоритмічних підходів</p>
+        <div class="card-green">
+        <h4>2. Концептуальне проектування</h4>
+        <p>Вибір архітектурної парадигми, розробка концептуальної моделі та алгоритмічних підходів</p>
         </div>
         </div>
 
-        <div class="timeline-item">
-        <div class="timeline-number">3</div>
-        <div class="timeline-content">
-        <h4>Детальне проектування</h4>
+        <div class="two-column">
+        <div class="card-yellow">
+        <h4>3. Детальне проектування</h4>
         <p>Специфікація компонентів системи, проектування алгоритмів, розробка інтерфейсів</p>
         </div>
+        <div class="card-purple">
+        <h4>4. Реалізація</h4>
+        <p>Вибір технологічної платформи, кодування та інтеграція компонентів</p>
         </div>
-
-        <div class="timeline-item">
-        <div class="timeline-number">4</div>
-        <div class="timeline-content">
-        <h4>Реалізація та імплементація</h4>
-        <p>Вибір технологічної платформи, кодування, інтеграція компонентів</p>            </div>
         </div>
-    </div>
 
     </section>
     <!-- Слайд 4: Аналіз вимог (Етап 1) -->
     <section class="slide">
         <h2>1️⃣ Етап 1: Аналіз вимог та постановка задачі</h2>
 
-        <div class="design-stage">
-        <span class="stage-number">Етап 1</span>
+        <div class="info-box">
+        <h4>Функціональні вимоги</h4>
+        <p>Типи контейнерів, обсяги даних (ємність), рівень безпеки та стійкості, вимоги до непомітності, обмеження на ресурси</p>
+        </div>
 
-        <h3>Визначення функціональних вимог</h3>
-        <ul>
-        <li>Ідентифікація типів контейнерів для роботи системи</li>
-        <li>Визначення обсягів даних для приховування (ємність)</li>
-        <li>Специфікація рівня безпеки та стійкості до атак</li>
-        <li>Формулювання вимог до непомітності модифікацій</li>
-        <li>Встановлення обмежень на обчислювальні ресурси</li>
-        </ul>
-
-        <h3 style="margin-top: 1.5rem;">Аналіз нефункціональних вимог</h3>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+        <div class="three-col-grid">
         <div class="card-blue">
         <h4>Продуктивність</h4>
-        <small>Швидкість, пропускна здатність</small>
+        <p>Швидкість обробки, пропускна здатність</p>
         </div>
         <div class="card-green">
         <h4>Надійність</h4>
-        <small>Стабільність, обробка помилок</small>
+        <p>Стабільність роботи, обробка помилок</p>
         </div>
         <div class="card-yellow">
         <h4>Безпека</h4>
-        <small>Захист, управління ключами</small>
+        <p>Криптозахист, управління ключами</p>
         </div>
         </div>
 
-        <h3 style="margin-top: 1.5rem;">Дослідження предметної області</h3>
-        <ul>
-        <li>Аналіз існуючих рішень та їх обмежень</li>
-        <li>Дослідження особливостей цільових контейнерів</li>
-        <li>Вивчення потенційних загроз та атак</li>
-        <li>Огляд релевантних стандартів та регулятивних вимог</li>
-        </ul>    </div>
+        <div class="info-box">
+        <h4>Дослідження предметної області</h4>
+        <p>Аналіз існуючих рішень, особливості цільових контейнерів, потенційні загрози, релевантні стандарти</p>
+        </div>
 
     </section>
     <!-- Слайд 5: Вибір контейнера -->
     <section class="slide">
         <h2>📦 Вибір контейнера та методу вбудовування</h2>
 
-        <h3>Критерії вибору типу контейнера</h3>
+        <table class="comparison-table">
+        <thead>
+        <tr>
+        <th>Контейнер</th>
+        <th>Ємність</th>
+        <th>Стійкість</th>
+        <th>Непомітність</th>
+        <th>Формати</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>🖼️ Зображення</strong></td>
+        <td class="cell-green">Висока</td>
+        <td class="cell-yellow">Середня</td>
+        <td class="cell-green">Висока</td>
+        <td>BMP, PNG, JPEG</td>
+        </tr>
+        <tr>
+        <td><strong>🎵 Аудіо</strong></td>
+        <td class="cell-green">Висока</td>
+        <td class="cell-yellow">Середня</td>
+        <td class="cell-green">Дуже висока</td>
+        <td>WAV, MP3, FLAC</td>
+        </tr>
+        <tr>
+        <td><strong>🎥 Відео</strong></td>
+        <td class="cell-green">Дуже висока</td>
+        <td class="cell-yellow">Середня</td>
+        <td class="cell-green">Висока</td>
+        <td>AVI, MP4, MKV</td>
+        </tr>
+        <tr>
+        <td><strong>📄 Текст</strong></td>
+        <td class="cell-red">Низька</td>
+        <td class="cell-green">Висока</td>
+        <td class="cell-yellow">Середня</td>
+        <td>TXT, DOC, PDF</td>
+        </tr>
+        </tbody>
+        </table>
 
-        <div class="container-comparison">
-        <div class="container-type">
-        <h4>🖼️ Зображення</h4>
-        <div class="rating">
-        <span>Ємність:</span>
-        <span class="rating-star">⭐⭐⭐⭐⭐</span>
-        </div>
-        <div class="rating">
-        <span>Стійкість:</span>
-        <span class="rating-star">⭐⭐</span>
-        <span class="rating-empty">⭐⭐⭐</span>
-        </div>
-        <div class="rating">
-        <span>Непомітність:</span>
-        <span class="rating-star">⭐⭐⭐⭐</span>
-        <span class="rating-empty">⭐</span>
-        </div>
-        <small>BMP, PNG, JPEG</small>
-        </div>
-
-        <div class="container-type">
-        <h4>🎵 Аудіо</h4>
-        <div class="rating">
-        <span>Ємність:</span>
-        <span class="rating-star">⭐⭐⭐⭐</span>
-        <span class="rating-empty">⭐</span>
-        </div>
-        <div class="rating">
-        <span>Стійкість:</span>
-        <span class="rating-star">⭐⭐⭐</span>
-        <span class="rating-empty">⭐⭐</span>
-        </div>
-        <div class="rating">
-        <span>Непомітність:</span>
-        <span class="rating-star">⭐⭐⭐⭐⭐</span>
-        </div>
-        <small>WAV, MP3, FLAC</small>
-        </div>
-
-        <div class="container-type">
-        <h4>🎥 Відео</h4>
-        <div class="rating">
-        <span>Ємність:</span>
-        <span class="rating-star">⭐⭐⭐⭐⭐</span>
-        </div>
-        <div class="rating">
-        <span>Стійкість:</span>
-        <span class="rating-star">⭐⭐</span>
-        <span class="rating-empty">⭐⭐⭐</span>
-        </div>
-        <div class="rating">
-        <span>Непомітність:</span>
-        <span class="rating-star">⭐⭐⭐⭐</span>
-        <span class="rating-empty">⭐</span>
-        </div>
-        <small>AVI, MP4, MKV</small>
-        </div>
-
-        <div class="container-type">
-        <h4>📄 Текст</h4>
-        <div class="rating">
-        <span>Ємність:</span>
-        <span class="rating-star">⭐</span>
-        <span class="rating-empty">⭐⭐⭐⭐</span>
-        </div>
-        <div class="rating">
-        <span>Стійкість:</span>
-        <span class="rating-star">⭐⭐⭐⭐⭐</span>
-        </div>
-        <div class="rating">
-        <span>Непомітність:</span>
-        <span class="rating-star">⭐⭐</span>
-        <span class="rating-empty">⭐⭐⭐</span>
-        </div>
-        <small>TXT, DOC, PDF</small>
-        </div>
-        </div>
-
-        <h3 style="margin-top: 2rem;">Стратегії вибору методу вбудовування</h3>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+        <div class="three-col-grid" style="margin-top: 1rem;">
         <div class="card-green">
-        <h4>🔲 Просторові методи</h4>
-        <ul>
-        <li>Пряма модифікація пікселів</li>
-        <li>Висока швидкість</li>
-        <li>Простота реалізації</li>
-        </ul>
+        <h4>🔲 Просторові</h4>
+        <p>Пряма модифікація пікселів. Швидко та просто, але низька стійкість.</p>
         </div>
 
         <div class="card-blue">
-        <h4>🌊 Частотні методи</h4>
-        <ul>
-        <li>Робота в DCT, DWT</li>
-        <li>Стійкість до стиснення</li>
-        <li>Адаптивне вбудовування</li>
-        </ul>
+        <h4>🌊 Частотні</h4>
+        <p>Робота в DCT/DWT. Стійкість до стиснення, адаптивне вбудовування.</p>
         </div>
 
         <div class="card-yellow">
-        <h4>🎯 Адаптивні методи</h4>
-        <ul>
-        <li>Аналіз локальних властивостей</li>
-        <li>Оптимізація балансу</li>
-        <li>Машинне навчання</li>
-        </ul>        </div>
-    </div>
+        <h4>🎯 Адаптивні</h4>
+        <p>Аналіз локальних властивостей. Найкраща безпека, але повільні.</p>
+        </div>
+        </div>
 
     </section>
     <!-- Слайд 6: Алгоритми генерації ключів -->
@@ -266,59 +193,35 @@
 
         <h3>Типи ключів у стеганографічних системах</h3>
 
-        <div class="key-management">
-        <div class="key-card">
-        <h4>🔐 Головний ключ (Master Key)</h4>
-        <ul>
-        <li>Генерація всіх інших ключів</li>
-        <li>Найвищий рівень захисту</li>
-        <li>Генерується при ініціалізації</li>
-        <li>Довжина 256-512 біт</li>
-        </ul>
+        <div class="two-column">
+        <div class="card-red">
+        <h4>🔐 Головний (Master Key)</h4>
+        <p>Генерує всі інші ключі. Найвищий захист, довжина 256-512 біт.</p>
         </div>
-
-        <div class="key-card">
-        <h4>🔄 Сеансовий ключ (Session Key)</h4>
-        <ul>
-        <li>Для кожної операції</li>
-        <li>Виводиться з головного ключа</li>
-        <li>Обмежений час життя</li>
-        <li>Автоматичне видалення</li>
-        </ul>
-        </div>
-
-        <div class="key-card">
-        <h4>📍 Ключ локалізації (Location Key)</h4>
-        <ul>
-        <li>Визначає позиції вбудовування</li>
-        <li>Псевдовипадкова послідовність</li>
-        <li>Рівномірний розподіл</li>
-        <li>Синхронізація encoder/decoder</li>
-        </ul>
-        </div>
-
-        <div class="key-card">
-        <h4>🛡️ Криптографічний ключ</h4>
-        <ul>
-        <li>Шифрування повідомлення</li>
-        <li>AES-256 або вище</li>
-        <li>Незалежний від стего-ключа</li>
-        <li>Подвійний захист даних</li>
-        </ul>
+        <div class="card-blue">
+        <h4>🔄 Сеансовий (Session Key)</h4>
+        <p>Для кожної операції. Виводиться з головного, обмежений час життя.</p>
         </div>
         </div>
 
-        <h3 style="margin-top: 2rem;">Генератори псевдовипадкових чисел</h3>
+        <div class="two-column">
+        <div class="card-green">
+        <h4>📍 Ключ локалізації</h4>
+        <p>Визначає позиції вбудовування. Псевдовипадкова послідовність з рівномірним розподілом.</p>
+        </div>
+        <div class="card-yellow">
+        <h4>🛡️ Криптографічний</h4>
+        <p>Шифрування повідомлення (AES-256+). Незалежний від стего-ключа.</p>
+        </div>
+        </div>
 
-        <div class="algorithm-box">
-        # Криптографічно стійкий PRNG<br>
-        Seed = HMAC-SHA256(Master_Key, Container_Hash || Timestamp)<br>
-        Positions = PRNG(Seed)<br>
-        <br>
-        # Генерація позицій для вбудовування<br>
-        for i in range(message_length):<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;position[i] = (Seed * prime[i]) mod container_size<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;embed_at(position[i], message[i])    </div>
+        <div class="code-block">
+Seed = HMAC-SHA256(Master_Key, Container_Hash || Timestamp)
+Positions = PRNG(Seed)
+for i in range(message_length):
+    position[i] = (Seed * prime[i]) mod container_size
+    embed_at(position[i], message[i])
+        </div>
 
     </section>
     <!-- Слайд 7: Тестування та валідація -->
@@ -327,41 +230,26 @@
 
         <h3>Стратегії тестування стегосистем</h3>
 
-        <div class="testing-grid">
-        <div class="testing-card">
-        <h4>🔬 Модульне тестування</h4>
-        <ul>
-        <li>Алгоритми вбудовування</li>
-        <li>Алгоритми витягування</li>
-        <li>Управління ключами</li>
-        <li>Обробка помилок</li>
-        </ul>
+        <div class="three-col-grid">
+        <div class="card-blue">
+        <h4>🔬 Модульне</h4>
+        <p>Алгоритми вбудовування та витягування, управління ключами, обробка помилок</p>
         </div>
 
-        <div class="testing-card">
-        <h4>🔗 Інтеграційне тестування</h4>
-        <ul>
-        <li>End-to-end процеси</li>
-        <li>Взаємодія модулів</li>
-        <li>Передача даних</li>
-        <li>Системні помилки</li>
-        </ul>
+        <div class="card-green">
+        <h4>🔗 Інтеграційне</h4>
+        <p>End-to-end процеси, взаємодія модулів, передача даних між компонентами</p>
         </div>
 
-        <div class="testing-card">
-        <h4>💻 Системне тестування</h4>
-        <ul>
-        <li>Функціональність</li>
-        <li>Продуктивність</li>
-        <li>Безпека</li>
-        <li>Зручність</li>
-        </ul>
+        <div class="card-yellow">
+        <h4>💻 Системне</h4>
+        <p>Функціональність, продуктивність, безпека та зручність використання</p>
         </div>
         </div>
 
-        <h3 style="margin-top: 2rem;">Методи оцінки непомітності</h3>
+        <h3 style="margin-top: 1rem;">Методи оцінки непомітності</h3>
 
-        <table class="validation-matrix">
+        <table class="comparison-table">
         <thead>
         <tr>
         <th>Тип метрики</th>
@@ -412,14 +300,11 @@
     <section class="slide">
         <h2>🛡️ Тестування стійкості до атак</h2>
 
-        <h3>Стандартні набори атак</h3>
-
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
         <div class="card-red">
         <h4>🗜️ Атаки на стиснення</h4>
         <ul>
-        <li>JPEG стиснення (50-95% якості)</li>
-        <li>PNG оптимізація</li>
+        <li>JPEG (50-95% якості)</li>
         <li>Відео кодеки H.264, H.265</li>
         <li>Аудіо кодеки MP3, AAC</li>
         </ul>
@@ -431,15 +316,13 @@
         <li>Масштабування (0.5x - 2.0x)</li>
         <li>Поворот (±1°, ±5°, ±15°)</li>
         <li>Обрізання країв (5-25%)</li>
-        <li>Афінні перетворення</li>
         </ul>
         </div>
 
         <div class="card-blue">
-        <h4>📊 Атаки додавання шуму</h4>
+        <h4>📊 Додавання шуму</h4>
         <ul>
-        <li>Гаусівський шум</li>
-        <li>Сіль-перець шум</li>
+        <li>Гаусівський, сіль-перець</li>
         <li>Спекл-шум</li>
         <li>Кольорові спотворення</li>
         </ul>
@@ -451,97 +334,75 @@
         <li>Медіанна фільтрація</li>
         <li>Гаусівське розмиття</li>
         <li>Загострення (sharpening)</li>
-        <li>Морфологічні операції</li>
         </ul>
         </div>
         </div>
 
-        <h3 style="margin-top: 2rem;">Тестування проти стеганоаналізу</h3>
-
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem;">
+        <div class="two-column" style="margin-top: 1rem;">
         <div class="card-gray">
         <h4>📈 Статистичні детектори</h4>
-        <ul>
-        <li>Chi-square тест для LSB</li>
-        <li>RS аналіз (Regular/Singular)</li>
-        <li>Weighted Stego аналіз</li>
-        <li>Sample Pairs Analysis</li>
-        </ul>
+        <p>Chi-square, RS-аналіз, SPA, Weighted Stego</p>
         </div>
 
         <div class="card-gray">
         <h4>🤖 ML детектори</h4>
-        <ul>
-        <li>SVM класифікатори</li>
-        <li>Глибокі нейронні мережі</li>
-        <li>Ансамблі детекторів</li>
-        <li>Transfer learning моделі</li>
-        </ul>        </div>
-    </div>
+        <p>SVM, глибокі нейромережі, ансамблі, transfer learning</p>
+        </div>
+        </div>
 
     </section>
-    <!-- Слайд 9: Життєвий цикл розробки -->
+    <!-- Слайд 9: Моделі життєвого циклу -->
     <section class="slide">
-        <h2>🔄 Життєвий цикл розробки стегосистем</h2>
+        <h2>🔄 Моделі життєвого циклу розробки</h2>
 
-        <h3>Моделі життєвого циклу</h3>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0;">
+        <div class="three-col-grid">
         <div class="card-green">
-        <h4>📊 Каскадна модель</h4>
-        <p><strong>Характеристики:</strong></p>
+        <h4>📊 Каскадна</h4>
         <ul>
         <li>Послідовні етапи</li>
         <li>Детальна документація</li>
         <li>Передбачуваність</li>
         </ul>
-        <p><strong>Підходить для:</strong></p>
-        <ul>
-        <li>Стабільні вимоги</li>
-        <li>Чіткі специфікації</li>
-        </ul>
+        <p><strong>Для:</strong> стабільні вимоги, чіткі специфікації</p>
         </div>
 
         <div class="card-blue">
-        <h4>🔄 Ітеративна модель</h4>
-        <p><strong>Характеристики:</strong></p>
+        <h4>🔄 Ітеративна</h4>
         <ul>
         <li>Короткі цикли</li>
         <li>Поступове нарощування</li>
         <li>Регулярна демонстрація</li>
         </ul>
-        <p><strong>Підходить для:</strong></p>
-        <ul>
-        <li>Змінні вимоги</li>
-        <li>Швидкі результати</li>
-        </ul>
+        <p><strong>Для:</strong> змінні вимоги, швидкі результати</p>
         </div>
 
         <div class="card-yellow">
-        <h4>🌀 Спіральна модель</h4>
-        <p><strong>Характеристики:</strong></p>
+        <h4>🌀 Спіральна</h4>
         <ul>
         <li>Управління ризиками</li>
         <li>Прототипування</li>
         <li>Еволюційна розробка</li>
         </ul>
-        <p><strong>Підходить для:</strong></p>
-        <ul>
-        <li>Складні проекти</li>
-        <li>Високі ризики</li>
-        </ul>
+        <p><strong>Для:</strong> складні проекти, високі ризики</p>
         </div>
         </div>
 
-        <h3>Забезпечення якості</h3>
+        <div class="alert alert-info" style="margin-top: 1rem;">
+            <strong>💡 Рекомендація:</strong> Для стегосистем найкраще підходить ітеративна модель — вона дозволяє швидко тестувати безпеку на кожній ітерації
+        </div>
+    </section>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+    <!-- Слайд 10: Забезпечення якості -->
+    <section class="slide">
+        <h2>✅ Забезпечення якості розробки</h2>
+
+        <div class="three-col-grid">
         <div class="card-gray">
         <h4>👥 Код-рев'ю</h4>
         <ul>
         <li>Перевірка колегами</li>
-        <li>Чеклисти</li>
-        <li>Автоаналіз</li>
+        <li>Чеклисти безпеки</li>
+        <li>Статичний автоаналіз</li>
         </ul>
         </div>
 
@@ -559,9 +420,20 @@
         <ul>
         <li>Покриття тестами</li>
         <li>Складність коду</li>
-        <li>Дублювання</li>
-        </ul>        </div>
-    </div>
+        <li>Дублювання коду</li>
+        </ul>
+        </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 1rem;">
+            <h4>🎯 Критерії успішної валідації:</h4>
+            <ul>
+            <li>Всі функціональні тести пройдені (BER = 0)</li>
+            <li>Продуктивність відповідає вимогам</li>
+            <li>Відсутні критичні уразливості безпеки</li>
+            <li>Документація повна та актуальна</li>
+            </ul>
+        </div>
 
     </section>
     <!-- Слайд 10: Процедури валідації -->
@@ -610,18 +482,8 @@
         </div>
         </div>
 
-        <div class="card-blue" style="margin-top: 2rem;">
-        <h3>🎯 Критерії успішної валідації:</h3>
-        <ul style="line-height: 1.8;">
-        <li>✓ Всі функціональні тести пройдені успішно</li>
-        <li>✓ Продуктивність відповідає вимогам</li>
-        <li>✓ Відсутні критичні уразливості безпеки</li>
-        <li>✓ Документація повна та актуальна</li>
-        <li>✓ Користувачі пройшли навчання</li>
-        </ul>    </div>
-
     </section>
-    <!-- Слайд 11: Висновки -->
+    <!-- Слайд 12: Висновки -->
     <section class="slide">
         <h2>📌 Висновки</h2>
 
